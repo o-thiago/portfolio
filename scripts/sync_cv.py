@@ -45,7 +45,7 @@ def get_cv_root() -> Path:
 
     cache.parent.mkdir(parents=True, exist_ok=True)
     clean_url = re.sub(r"^https?://(?:[^@]+@)?github\.com/", "", REMOTE_REPO)
-    repo_url = f"https://x-access-token:{token}@github.com/{clean_url}"
+    repo_url = f"https://{token}@github.com/{clean_url}"
 
     res = subprocess.run(
         ["git", "clone", "--depth", "1", repo_url, str(cache)],
