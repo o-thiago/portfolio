@@ -255,15 +255,9 @@ html.theme-light .bg-\[\#1e293b\] {
 }
 
 .prose-custom ul {
-  list-style-type: none;
-  padding-left: 0.5rem;
+  list-style-type: disc;
+  padding-left: 1.25rem;
   margin-bottom: 1rem;
-}
-
-.prose-custom ul li::before {
-  content: "- ";
-  color: var(--accent-cyan);
-  font-weight: bold;
 }
 
 .prose-custom code:not(pre code) {
