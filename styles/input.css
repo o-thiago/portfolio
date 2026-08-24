@@ -27,8 +27,8 @@
   --accent-amber: #fbbf24;
 }
 
-/* Pure CSS Light Mode Theme (Triggered by #theme-toggle checkbox) */
-:root:has(#theme-toggle:checked) {
+/* Light Mode Theme (Triggered by class "theme-light" on <html> - Persisted via localStorage) */
+html.theme-light {
   --bg-main: #f5f2eb;
   --bg-box: #ffffff;
   --bg-subtle: #e8e3d8;
@@ -53,10 +53,10 @@
   display: none;
 }
 
-:root:has(#theme-toggle:checked) .theme-icon-light {
+html.theme-light .theme-icon-light {
   display: none !important;
 }
-:root:has(#theme-toggle:checked) .theme-icon-dark {
+html.theme-light .theme-icon-dark {
   display: inline !important;
 }
 
@@ -144,37 +144,37 @@ footer.retro-footer {
 }
 
 /* Dynamic Text Overrides for light mode */
-:root:has(#theme-toggle:checked) .text-white {
+html.theme-light .text-white {
   color: #0f172a !important;
 }
 
-:root:has(#theme-toggle:checked) .text-slate-200,
-:root:has(#theme-toggle:checked) .text-slate-300 {
+html.theme-light .text-slate-200,
+html.theme-light .text-slate-300 {
   color: #1e293b !important;
 }
 
-:root:has(#theme-toggle:checked) .text-slate-400 {
+html.theme-light .text-slate-400 {
   color: #475569 !important;
 }
 
-:root:has(#theme-toggle:checked) .text-slate-500 {
+html.theme-light .text-slate-500 {
   color: #64748b !important;
 }
 
-:root:has(#theme-toggle:checked) .border-\[\#2d3748\],
-:root:has(#theme-toggle:checked) .border-\[\#1e293b\],
-:root:has(#theme-toggle:checked) .border-\[\#334155\] {
+html.theme-light .border-\[\#2d3748\],
+html.theme-light .border-\[\#1e293b\],
+html.theme-light .border-\[\#334155\] {
   border-color: #cbd5e1 !important;
 }
 
-:root:has(#theme-toggle:checked) .bg-\[\#11141a\],
-:root:has(#theme-toggle:checked) .bg-\[\#080a0e\],
-:root:has(#theme-toggle:checked) .bg-\[\#0c0e12\] {
+html.theme-light .bg-\[\#11141a\],
+html.theme-light .bg-\[\#080a0e\],
+html.theme-light .bg-\[\#0c0e12\] {
   background-color: #ffffff !important;
 }
 
-:root:has(#theme-toggle:checked) .bg-\[\#1e2430\],
-:root:has(#theme-toggle:checked) .bg-\[\#1e293b\] {
+html.theme-light .bg-\[\#1e2430\],
+html.theme-light .bg-\[\#1e293b\] {
   background-color: #e8e3d8 !important;
 }
 

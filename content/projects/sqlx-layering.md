@@ -6,6 +6,7 @@ weight = 4
 
 [extra]
 category = "Rust / Systems"
+author = "@o-thiago"
 github = "https://github.com/o-thiago/sqlx-conditional-queries-layering"
 stack = ["Rust", "SQLx", "PostgreSQL", "Async Rust", "Type Safety"]
 +++
@@ -16,7 +17,7 @@ When building complex search filters and pagination engines in backend systems, 
 1. **Bulky ORMs:** Heavy runtime overhead and loss of control over raw SQL execution.
 2. **String Concatenation:** High risk of SQL injection and fragile parameter bindings.
 
-This repository implements a composable **Query Layering Pattern** in **Rust** using **SQLx**, providing compile-time type guarantees alongside modular query predicate composition.
+This open-source project (published under the **`@o-thiago`** handle) implements a composable **Query Layering Pattern** in **Rust** using **SQLx**, providing compile-time type guarantees alongside modular query predicate composition.
 
 ---
 
@@ -59,3 +60,4 @@ impl UserFilter {
 - Zero runtime allocation overhead beyond parameter vectors.
 - Complete protection against SQL injection via parameterized bindings.
 - Highly testable and reusable query fragments across different microservices.
+- Published and maintained on GitHub: [github.com/o-thiago/sqlx-conditional-queries-layering](https://github.com/o-thiago/sqlx-conditional-queries-layering).

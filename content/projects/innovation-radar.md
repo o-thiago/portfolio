@@ -2,10 +2,11 @@
 title = "Innovation Radar: Institutional Web Platform"
 description = "Web solution for mapping technological innovation and research initiatives developed for GoTec (Technological Solutions Research Group)."
 date = 2024-07-01
-weight = 6
+weight = 3
 
 [extra]
 category = "Web / Research"
+author = "@o-thiago"
 stack = ["TypeScript", "ReactJS", "Laravel", "PHP", "MySQL", "Docker", "Storybook"]
 +++
 

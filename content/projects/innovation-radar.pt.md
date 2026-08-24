@@ -2,21 +2,23 @@
 title = "Radar da Inovação: Plataforma Web Institucional"
 description = "Solução web desenvolvida para o grupo de pesquisa GoTec (IFRO) para mapeamento de iniciativas de inovação tecnológica e propriedade intelectual."
 date = 2024-07-01
-weight = 6
+weight = 3
 
 [extra]
 category = "Web / Pesquisa"
+author = "@o-thiago"
 stack = ["TypeScript", "ReactJS", "Laravel", "PHP", "MySQL", "Docker", "Storybook"]
 +++
 
 ## Visão Geral
 
-O **Radar da Inovação** é uma plataforma institucional concebida e desenvolvida no âmbito do grupo de pesquisa **GoTec** (IFRO) para catalogar, acompanhar e dar visibilidade aos projetos de inovação tecnológica, produção científica e patentes desenvolvidas nos polos de ensino.
+O **Radar da Inovação** é uma plataforma web institucional desenvolvida para o grupo de pesquisa **GoTec** (IFRO) destinada a catalogar, mapear e acompanhar iniciativas de inovação tecnológica, patentes e projetos de pesquisa aplicada.
 
 ---
 
-## Principais Atividades
+## Principais Contribuições Técnicas
 
-- **Biblioteca de Componentes Frontend:** Criação de componentes de interface modulares em **TypeScript e ReactJS**, documentados e testados no **Storybook**.
-- **Backend RESTful:** Implementação de rotas e regras de negócio em **Laravel (PHP)** com banco de dados **MySQL**, contemplando controle de acesso baseado em papéis (RBAC).
-- **Divulgação Científica:** Apresentação da solução tecnológica e seus impactos em eventos regionais de grande alcance, como a **Expo Favela** e a **Semana Nacional de Ciência e Tecnologia (SNCT)**.
+- **Biblioteca de Componentes Frontend:** Modelagem e desenvolvimento de componentes visuais reutilizáveis em **TypeScript & ReactJS**, documentados e testados em isolamento com **Storybook**.
+- **Backend & APIs RESTful:** Implementação de endpoints seguros em **Laravel (PHP)** integrado a banco de dados relacional **MySQL**, com controle de acesso baseado em papéis (RBAC) e métricas de projetos.
+- **Divulgação Científica:** Apresentação da arquitetura e do impacto social do software em feiras acadêmicas e congressos como a **Expo Favela** e a **Semana Nacional de Ciência e Tecnologia (SNCT)**.
+- **Ambiente Conteinerizado com Docker:** Padronização de todo o ambiente de desenvolvimento em contêineres Docker para acelerar o onboarding de novos pesquisadores.

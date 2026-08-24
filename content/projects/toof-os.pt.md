@@ -6,24 +6,25 @@ weight = 1
 
 [extra]
 category = "NixOS / Sistemas"
-github = "https://github.com/o-thiago/toof-os"
+author = "@o-thiago"
+github = "https://github.com/o-thiago/ToofOS"
 stack = ["Nix Flakes", "NixOS", "Raspberry Pi 4", "Kernel Linux", "Devicetree"]
 +++
 
 ## Visão Geral
 
-O **`toof-os`** é uma configuração personalizada de sistema operacional desenvolvida em **NixOS** e **Nix Flakes**, criada especificamente para computadores de placa única Raspberry Pi 4 (ARM64).
+O **`toof-os`** é uma configuração declarativa de sistema operacional desenvolvida com **NixOS** e **Nix Flakes**, projetada especificamente para placas de desenvolvimento Raspberry Pi 4 (arquitetura ARM64 / AArch64).
 
-Através da arquitetura puramente funcional do Nix, o `toof-os` transforma toda a configuração do sistema operacional — incluindo parâmetros de kernel, aceleração gráfica, conectividade de rede e ambiente de usuário — em um código versionável e determinístico.
+Utilizando o modelo puramente funcional do ecossistema Nix, o `toof-os` transforma todo o ambiente operacional — incluindo parâmetros de kernel, drivers gráficos acelerados, rede e perfis de usuário — em uma especificação imutável, versionada e reproduzível.
 
 ---
 
-## Destaques Técnicos
+## Destaques do Projeto
 
-- **Arquitetura Baseada em Flakes:** Utiliza `nixpkgs` e `nixos-raspberrypi` para compor módulos de sistema sem depender de canais legados.
-- **Aceleração de Hardware:** Suporte nativo ao driver de vídeo Broadcom VC4 DRM, pilha Bluetooth e firmware embarcado.
-- **Caches Binários Remotos:** Integração com substituters do Cachix para acelerar a inicialização e evitar compilações demoradas diretamente na placa.
-- **Módulos Limpos:** Separação estrita entre módulos de hardware, configurações de rede e perfis de usuário.
+- **Arquitetura Baseada em Flakes:** Utiliza os módulos do `nixos-raspberrypi` e `nixpkgs` sem depender de canais legados (`nix-channel`), garantindo builds herméticos.
+- **Aceleração Gráfica de Hardware:** Configurado com suporte a drivers VC4 DRM/KMS da Broadcom, stack Bluetooth e firmwares específicos de hardware.
+- **Caches Binários Remotos:** Integração com substituters Cachix para eliminar a compilação extensiva de pacotes na própria placa ARM durante a inicialização.
+- **Módulos Limpos e Isolados:** Estrutura modular separando configuração de sistema, perfis de usuários, serviços de rede e overlays de hardware.
 
 ```nix
 {
@@ -51,3 +52,9 @@ Através da arquitetura puramente funcional do Nix, o `toof-os` transforma toda 
   };
 }
 ```
+
+---
+
+## Aprendizados Técnicos
+
+O desenvolvimento do `toof-os` proporcionou sólida experiência prática em compilação cruzada (x86_64 -> AArch64), manipulação de Devicetrees do Linux para plataformas ARM e administração avançada do NixOS.

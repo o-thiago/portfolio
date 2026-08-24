@@ -2,10 +2,11 @@
 title = "GPMecatrônica Cards & Research Platform"
 description = "Full-stack web application and member card generation platform for the Mechatronics Research Group at IFRO."
 date = 2025-04-10
-weight = 3
+weight = 2
 
 [extra]
 category = "Web / Full-Stack"
+author = "@o-thiago"
 github = "https://github.com/o-thiago/gpm-cards"
 stack = ["Next.js 14", "TypeScript", "PostgreSQL", "Tailwind CSS", "Nix / process-compose", "Docker"]
 +++

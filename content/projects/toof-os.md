@@ -6,7 +6,8 @@ weight = 1
 
 [extra]
 category = "NixOS / Systems"
-github = "https://github.com/o-thiago/toof-os"
+author = "@o-thiago"
+github = "https://github.com/o-thiago/ToofOS"
 stack = ["Nix Flakes", "NixOS", "Raspberry Pi 4", "Linux Kernel", "Devicetree"]
 +++
 
