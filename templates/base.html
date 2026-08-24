@@ -34,7 +34,7 @@
   <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
   <meta property="og:image" content="{{ config.base_url }}/avatar.svg">
-  <meta property="og:locale" content="{% if lang == 'pt' %}pt_BR{% else %}en_US{% endif %}">
+  <meta property="og:locale" content="{{ trans(key='og_locale') }}">
   <meta property="og:site_name" content="{{ config.title }}">
 
   <!-- Favicon -->
