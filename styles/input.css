@@ -27,6 +27,39 @@
   --accent-amber: #b45309;
 }
 
+/* Dark Mode Theme via Pure No-JS :checked State */
+:root:has(#theme-toggle:checked) {
+  --bg-main: #0c0e12;
+  --bg-box: #11141a;
+  --bg-subtle: #1e2430;
+  --bg-code: #080a0e;
+  --border-color: #2d3748;
+  --border-subtle: #1e293b;
+  --shadow-color: #1a202c;
+  --text-main: #d1d5db;
+  --text-bright: #ffffff;
+  --text-muted: #94a3b8;
+  --text-heading: #ffffff;
+  --accent-cyan: #38bdf8;
+  --accent-green: #4ade80;
+  --accent-amber: #fbbf24;
+}
+
+/* Theme Toggle Button Icon Visibility */
+.theme-icon-light {
+  display: inline;
+}
+.theme-icon-dark {
+  display: none;
+}
+
+:root:has(#theme-toggle:checked) .theme-icon-light {
+  display: none !important;
+}
+:root:has(#theme-toggle:checked) .theme-icon-dark {
+  display: inline !important;
+}
+
 /* Custom Retro-Minimalist Scrollbar */
 * {
   scrollbar-width: thin;
@@ -171,6 +204,41 @@ footer.retro-footer {
 .bg-\[\#1e2430\],
 .bg-\[\#1e293b\] {
   background-color: #e8e3d8 !important;
+}
+
+/* Dark Mode Overrides when checkbox is checked */
+:root:has(#theme-toggle:checked) .text-white {
+  color: #ffffff !important;
+}
+
+:root:has(#theme-toggle:checked) .text-slate-200,
+:root:has(#theme-toggle:checked) .text-slate-300 {
+  color: #d1d5db !important;
+}
+
+:root:has(#theme-toggle:checked) .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+:root:has(#theme-toggle:checked) .text-slate-500 {
+  color: #64748b !important;
+}
+
+:root:has(#theme-toggle:checked) .border-\[\#2d3748\],
+:root:has(#theme-toggle:checked) .border-\[\#1e293b\],
+:root:has(#theme-toggle:checked) .border-\[\#334155\] {
+  border-color: #2d3748 !important;
+}
+
+:root:has(#theme-toggle:checked) .bg-\[\#11141a\],
+:root:has(#theme-toggle:checked) .bg-\[\#080a0e\],
+:root:has(#theme-toggle:checked) .bg-\[\#0c0e12\] {
+  background-color: #11141a !important;
+}
+
+:root:has(#theme-toggle:checked) .bg-\[\#1e2430\],
+:root:has(#theme-toggle:checked) .bg-\[\#1e293b\] {
+  background-color: #1e2430 !important;
 }
 
 /* Markdown typography for old web */

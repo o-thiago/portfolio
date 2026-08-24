@@ -31,6 +31,7 @@ nav_projects = "Projects"
 nav_experience = "Experience"
 nav_awards = "Awards"
 nav_resume = "Resume"
+toggle_theme = "Toggle Light/Dark Theme"
 
 # 404
 error_404_title = "FILE NOT FOUND"
@@ -140,6 +141,7 @@ nav_projects = "Projetos"
 nav_experience = "Experiência"
 nav_awards = "Prêmios"
 nav_resume = "Currículo"
+toggle_theme = "Alternar Tema Claro/Escuro"
 
 # 404
 error_404_title = "ARQUIVO NÃO ENCONTRADO"
