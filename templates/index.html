@@ -13,36 +13,36 @@
   <section class="retro-box p-5 sm:p-6 space-y-4">
     
     <!-- ASCII Title -->
-    <div class="text-xs sm:text-sm text-[#4ade80] font-mono leading-tight whitespace-pre overflow-x-auto pb-1 border-b border-[#2d3748]">{{ trans(key="banner_top") }}</div>
+    <div class="text-xs sm:text-sm text-[#4ade80] font-mono leading-tight whitespace-pre overflow-x-auto pb-1 border-b border-[#2d3748]">{{ trans(lang=lang, key="banner_top") }}</div>
 
     <!-- Intro Text -->
     <div class="space-y-3 pt-1">
       <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-        {{ trans(key="hero_greeting") }} <span class="text-[#38bdf8]">{{ config.extra.name }}</span>
+        {{ trans(lang=lang, key="hero_greeting") }} <span class="text-[#38bdf8]">{{ config.extra.name }}</span>
       </h1>
       
       <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-        {{ trans(key="hero_desc") | safe }}
+        {{ trans(lang=lang, key="hero_desc") | safe }}
       </p>
 
       <!-- System Meta Table -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs pt-2 border-t border-[#1e293b] text-slate-400">
-        <div><span class="text-slate-500">{{ trans(key="location_label") }}:</span> <span class="text-slate-200">{{ trans(key="location_text") }}</span></div>
-        <div><span class="text-slate-500">{{ trans(key="education_label") }}:</span> <span class="text-slate-200">{{ trans(key="education_text") }}</span></div>
-        <div><span class="text-slate-500">{{ trans(key="researcher_label") }}:</span> <span class="text-slate-200">{{ trans(key="researcher_text") }}</span></div>
+        <div><span class="text-slate-500">{{ trans(lang=lang, key="location_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="location_text") }}</span></div>
+        <div><span class="text-slate-500">{{ trans(lang=lang, key="education_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="education_text") }}</span></div>
+        <div><span class="text-slate-500">{{ trans(lang=lang, key="researcher_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="researcher_text") }}</span></div>
       </div>
     </div>
 
     <!-- Quick Action Buttons -->
     <div class="flex flex-wrap gap-2 pt-3 border-t border-[#2d3748]">
       <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="retro-btn">
-        <span>&gt; {{ trans(key="btn_projects") }}</span>
+        <span>&gt; {{ trans(lang=lang, key="btn_projects") }}</span>
       </a>
       <a href="{{ config.base_url }}{{ lang_prefix }}/resume/" class="retro-btn">
-        <span>&gt; {{ trans(key="btn_resume") }}</span>
+        <span>&gt; {{ trans(lang=lang, key="btn_resume") }}</span>
       </a>
       <a href="mailto:{{ config.extra.email }}" class="retro-btn">
-        <span>&gt; {{ trans(key="btn_contact") }}</span>
+        <span>&gt; {{ trans(lang=lang, key="btn_contact") }}</span>
       </a>
       <a href="{{ config.base_url }}/llms.txt" class="retro-btn text-amber-400 hover:text-amber-300">
         <span>&gt; llms.txt</span>
@@ -55,10 +55,10 @@
   <section class="space-y-4">
     <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
       <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 01. {{ trans(key="section_who_i_am") }}
+        <span class="text-[#38bdf8]">&gt;&gt;</span> 01. {{ trans(lang=lang, key="section_who_i_am") }}
       </h2>
       <a href="{{ config.base_url }}{{ lang_prefix }}/about/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
-        [{{ trans(key="link_complete_bio") }}]
+        [{{ trans(lang=lang, key="link_complete_bio") }}]
       </a>
     </div>
 
@@ -68,11 +68,11 @@
       <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="text-xs text-sky-400 font-bold uppercase tracking-wider">
-            [01. {{ trans(key="dev_tag") }}]
+            [01. {{ trans(lang=lang, key="dev_tag") }}]
           </div>
-          <h3 class="text-base font-bold text-white">{{ trans(key="dev_title") }}</h3>
+          <h3 class="text-base font-bold text-white">{{ trans(lang=lang, key="dev_title") }}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            {{ trans(key="dev_desc") }}
+            {{ trans(lang=lang, key="dev_desc") }}
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
@@ -84,11 +84,11 @@
       <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">
-            [02. {{ trans(key="student_tag") }}]
+            [02. {{ trans(lang=lang, key="student_tag") }}]
           </div>
-          <h3 class="text-base font-bold text-white">{{ trans(key="student_title") }}</h3>
+          <h3 class="text-base font-bold text-white">{{ trans(lang=lang, key="student_title") }}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            {{ trans(key="student_desc") }}
+            {{ trans(lang=lang, key="student_desc") }}
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
@@ -100,15 +100,15 @@
       <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">
-            [03. {{ trans(key="person_tag") }}]
+            [03. {{ trans(lang=lang, key="person_tag") }}]
           </div>
-          <h3 class="text-base font-bold text-white">{{ trans(key="person_title") }}</h3>
+          <h3 class="text-base font-bold text-white">{{ trans(lang=lang, key="person_title") }}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            {{ trans(key="person_desc") }}
+            {{ trans(lang=lang, key="person_desc") }}
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
-          <code>[Linux] [PT/EN] [{{ trans(key="person_code_free_software") }}]</code>
+          <code>[Linux] [PT/EN] [{{ trans(lang=lang, key="person_code_free_software") }}]</code>
         </div>
       </div>
 
@@ -119,10 +119,10 @@
   <section class="space-y-4">
     <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
       <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 02. {{ trans(key="section_featured_projects") }}
+        <span class="text-[#38bdf8]">&gt;&gt;</span> 02. {{ trans(lang=lang, key="section_featured_projects") }}
       </h2>
       <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
-        [{{ trans(key="link_all_projects") }}]
+        [{{ trans(lang=lang, key="link_all_projects") }}]
       </a>
     </div>
 
@@ -134,7 +134,7 @@
           <div class="flex items-center justify-between text-xs">
             <span class="text-[#38bdf8] font-bold">[NixOS / Systems]</span>
             <a href="https://github.com/o-thiago/ToofOS" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [{{ trans(key="project_src_github") }}]
+              [{{ trans(lang=lang, key="project_src_github") }}]
             </a>
           </div>
           <h3 class="text-base font-bold text-white">
@@ -147,7 +147,7 @@
         <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
           <span class="text-slate-500 font-mono">NixOS, DACC Station (UNIR)</span>
           <a href="{{ config.base_url }}{{ lang_prefix }}/projects/toof-os/" class="text-[#4ade80]">
-            {{ trans(key="link_read_deep_dive") }}
+            {{ trans(lang=lang, key="link_read_deep_dive") }}
           </a>
         </div>
       </article>
@@ -158,7 +158,7 @@
           <div class="flex items-center justify-between text-xs">
             <span class="text-[#4ade80] font-bold">[Web / Research]</span>
             <a href="https://github.com/o-thiago/gpm-cards" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [{{ trans(key="project_src_github") }}]
+              [{{ trans(lang=lang, key="project_src_github") }}]
             </a>
           </div>
           <h3 class="text-base font-bold text-white">
@@ -171,7 +171,7 @@
         <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
           <span class="text-slate-500 font-mono">Next.js, PostgreSQL</span>
           <a href="{{ config.base_url }}{{ lang_prefix }}/projects/gpm-cards/" class="text-[#4ade80]">
-            {{ trans(key="link_read_deep_dive") }}
+            {{ trans(lang=lang, key="link_read_deep_dive") }}
           </a>
         </div>
       </article>
@@ -182,7 +182,7 @@
           <div class="flex items-center justify-between text-xs">
             <span class="text-[#c084fc] font-bold">[Rust / Metaprogramming]</span>
             <a href="https://github.com/o-thiago/sqlx-conditional-queries-layering" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [{{ trans(key="project_src_github") }}]
+              [{{ trans(lang=lang, key="project_src_github") }}]
             </a>
           </div>
           <h3 class="text-base font-bold text-white">
@@ -195,7 +195,7 @@
         <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
           <span class="text-slate-500 font-mono">Rust, SQLx</span>
           <a href="{{ config.base_url }}{{ lang_prefix }}/projects/sqlx-layering/" class="text-[#4ade80]">
-            {{ trans(key="link_read_deep_dive") }}
+            {{ trans(lang=lang, key="link_read_deep_dive") }}
           </a>
         </div>
       </article>
@@ -216,7 +216,7 @@
         <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
           <span class="text-slate-500 font-mono">React, Laravel, MySQL</span>
           <a href="{{ config.base_url }}{{ lang_prefix }}/projects/innovation-radar/" class="text-[#4ade80]">
-            {{ trans(key="link_read_deep_dive") }}
+            {{ trans(lang=lang, key="link_read_deep_dive") }}
           </a>
         </div>
       </article>
@@ -228,10 +228,10 @@
   <section class="space-y-4">
     <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
       <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 03. {{ trans(key="section_experience") }}
+        <span class="text-[#38bdf8]">&gt;&gt;</span> 03. {{ trans(lang=lang, key="section_experience") }}
       </h2>
       <a href="{{ config.base_url }}{{ lang_prefix }}/experience/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
-        [{{ trans(key="link_detailed_timeline") }}]
+        [{{ trans(lang=lang, key="link_detailed_timeline") }}]
       </a>
     </div>
 
@@ -241,12 +241,12 @@
       <div class="retro-box p-4 space-y-1 text-xs">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
           <span class="font-bold text-white">
-            {{ trans(key="home_exp1_title") | safe }}
+            {{ trans(lang=lang, key="home_exp1_title") | safe }}
           </span>
-          <span class="text-slate-500 font-mono">{{ trans(key="home_exp1_date") }}</span>
+          <span class="text-slate-500 font-mono">{{ trans(lang=lang, key="home_exp1_date") }}</span>
         </div>
         <p class="text-slate-400">
-          {{ trans(key="home_exp1_desc") }}
+          {{ trans(lang=lang, key="home_exp1_desc") }}
         </p>
       </div>
 
@@ -254,12 +254,12 @@
       <div class="retro-box p-4 space-y-1 text-xs">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
           <span class="font-bold text-white">
-            {{ trans(key="home_exp2_title") | safe }}
+            {{ trans(lang=lang, key="home_exp2_title") | safe }}
           </span>
-          <span class="text-slate-500 font-mono">{{ trans(key="home_exp2_date") }}</span>
+          <span class="text-slate-500 font-mono">{{ trans(lang=lang, key="home_exp2_date") }}</span>
         </div>
         <p class="text-slate-400">
-          {{ trans(key="home_exp2_desc") }}
+          {{ trans(lang=lang, key="home_exp2_desc") }}
         </p>
       </div>
 
@@ -267,12 +267,12 @@
       <div class="retro-box p-4 space-y-1 text-xs">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
           <span class="font-bold text-white">
-            {{ trans(key="home_exp3_title") | safe }}
+            {{ trans(lang=lang, key="home_exp3_title") | safe }}
           </span>
-          <span class="text-slate-500 font-mono">{{ trans(key="home_exp3_date") }}</span>
+          <span class="text-slate-500 font-mono">{{ trans(lang=lang, key="home_exp3_date") }}</span>
         </div>
         <p class="text-slate-400">
-          {{ trans(key="home_exp3_desc") }}
+          {{ trans(lang=lang, key="home_exp3_desc") }}
         </p>
       </div>
 
@@ -283,45 +283,45 @@
   <section class="space-y-4">
     <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
       <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 04. {{ trans(key="section_awards") }}
+        <span class="text-[#38bdf8]">&gt;&gt;</span> 04. {{ trans(lang=lang, key="section_awards") }}
       </h2>
       <a href="{{ config.base_url }}{{ lang_prefix }}/awards/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
-        [{{ trans(key="link_all_awards") }}]
+        [{{ trans(lang=lang, key="link_all_awards") }}]
       </a>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
       
       <div class="retro-box p-3 space-y-1 border-l-4 border-l-amber-400">
-        <div class="text-amber-400 font-bold">🥇 {{ trans(key="home_award1_badge") }}</div>
+        <div class="text-amber-400 font-bold">🥇 {{ trans(lang=lang, key="home_award1_badge") }}</div>
         <div class="text-white font-medium">
-          {{ trans(key="home_award1_title") }}
+          {{ trans(lang=lang, key="home_award1_title") }}
         </div>
-        <p class="text-slate-400">{{ trans(key="home_award1_desc") }}</p>
+        <p class="text-slate-400">{{ trans(lang=lang, key="home_award1_desc") }}</p>
       </div>
 
       <div class="retro-box p-3 space-y-1 border-l-4 border-l-slate-400">
-        <div class="text-slate-300 font-bold">🥈 {{ trans(key="home_award2_badge") }}</div>
+        <div class="text-slate-300 font-bold">🥈 {{ trans(lang=lang, key="home_award2_badge") }}</div>
         <div class="text-white font-medium">
-          {{ trans(key="home_award2_title") }}
+          {{ trans(lang=lang, key="home_award2_title") }}
         </div>
-        <p class="text-slate-400">{{ trans(key="home_award2_desc") }}</p>
+        <p class="text-slate-400">{{ trans(lang=lang, key="home_award2_desc") }}</p>
       </div>
 
       <div class="retro-box p-3 space-y-1 border-l-4 border-l-purple-400">
-        <div class="text-purple-400 font-bold">🏆 {{ trans(key="home_award3_badge") }}</div>
+        <div class="text-purple-400 font-bold">🏆 {{ trans(lang=lang, key="home_award3_badge") }}</div>
         <div class="text-white font-medium">
-          {{ trans(key="home_award3_title") }}
+          {{ trans(lang=lang, key="home_award3_title") }}
         </div>
-        <p class="text-slate-400">{{ trans(key="home_award3_desc") }}</p>
+        <p class="text-slate-400">{{ trans(lang=lang, key="home_award3_desc") }}</p>
       </div>
 
       <div class="retro-box p-3 space-y-1 border-l-4 border-l-sky-400">
-        <div class="text-sky-400 font-bold">🏅 {{ trans(key="home_award4_badge") }}</div>
+        <div class="text-sky-400 font-bold">🏅 {{ trans(lang=lang, key="home_award4_badge") }}</div>
         <div class="text-white font-medium">
-          {{ trans(key="home_award4_title") }}
+          {{ trans(lang=lang, key="home_award4_title") }}
         </div>
-        <p class="text-slate-400">{{ trans(key="home_award4_desc") }}</p>
+        <p class="text-slate-400">{{ trans(lang=lang, key="home_award4_desc") }}</p>
       </div>
 
     </div>
@@ -330,11 +330,11 @@
   <!-- Section 05: Machine / AI Crawlers Endpoints Box -->
   <section class="retro-box p-5 space-y-3">
     <div class="text-xs font-bold text-[#38bdf8] uppercase tracking-wider">
-      [05. {{ trans(key="section_crawlers") }}]
+      [05. {{ trans(lang=lang, key="section_crawlers") }}]
     </div>
     
     <p class="text-xs text-slate-300 leading-relaxed">
-      {{ trans(key="ai_agent_desc") }}
+      {{ trans(lang=lang, key="ai_agent_desc") }}
     </p>
 
     <div class="flex flex-wrap items-center gap-2 pt-2 text-xs">

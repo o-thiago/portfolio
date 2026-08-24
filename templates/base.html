@@ -34,7 +34,7 @@
   <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
   <meta property="og:image" content="{{ config.base_url }}/avatar.svg">
-  <meta property="og:locale" content="{{ trans(key='og_locale') }}">
+  <meta property="og:locale" content="{{ trans(lang=lang, key='og_locale') }}">
   <meta property="og:site_name" content="{{ config.title }}">
 
   <!-- Favicon -->
@@ -140,31 +140,31 @@
       <nav class="flex flex-wrap items-center gap-2 text-xs">
         <a href="{{ config.base_url }}{{ lang_prefix }}/about/" 
            class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
-          [{{ trans(key="nav_about") }}]
+          [{{ trans(lang=lang, key="nav_about") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" 
            class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
-          [{{ trans(key="nav_projects") }}]
+          [{{ trans(lang=lang, key="nav_projects") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/experience/" 
            class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
-          [{{ trans(key="nav_experience") }}]
+          [{{ trans(lang=lang, key="nav_experience") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/awards/" 
            class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
-          [{{ trans(key="nav_awards") }}]
+          [{{ trans(lang=lang, key="nav_awards") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/resume/" 
            class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
-          [{{ trans(key="nav_resume") }}]
+          [{{ trans(lang=lang, key="nav_resume") }}]
         </a>
 
         <!-- Persisted Light / Dark Theme Button -->
         <button id="theme-toggle-btn" 
                 type="button"
                 class="retro-btn text-[11px] px-1.5 py-0.5" 
-                title="{{ trans(key='toggle_theme') }}" 
-                aria-label="{{ trans(key='toggle_theme') }}"
+                title="{{ trans(lang=lang, key='toggle_theme') }}" 
+                aria-label="{{ trans(lang=lang, key='toggle_theme') }}"
                 onclick="(function(){
                   var el = document.documentElement;
                   var isLight = el.classList.toggle('theme-light');
@@ -230,7 +230,7 @@
         <div>
           <span class="font-bold">{{ config.extra.name }}</span>
           <span class="text-slate-400"> :: </span>
-          <span>{{ trans(key="location_text") }}</span>
+          <span>{{ trans(lang=lang, key="location_text") }}</span>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
@@ -262,8 +262,8 @@
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between text-slate-400 text-[11px] pt-2">
-        <p>© {{ now() | date(format="%Y") }} {{ config.extra.name }} — {{ trans(key="rights_reserved") }}</p>
-        <p class="font-mono">{{ trans(key="footer_hosted") }}</p>
+        <p>© {{ now() | date(format="%Y") }} {{ config.extra.name }} — {{ trans(lang=lang, key="rights_reserved") }}</p>
+        <p class="font-mono">{{ trans(lang=lang, key="footer_hosted") }}</p>
       </div>
 
     </div>

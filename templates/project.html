@@ -11,7 +11,7 @@
 
   <!-- Breadcrumb -->
   <div class="text-xs text-slate-500 font-mono">
-    <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-[#38bdf8]">&lt;-- {{ trans(key="project_breadcrumb") }}</a> / {{ page.slug }}
+    <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-[#38bdf8]">&lt;-- {{ trans(lang=lang, key="project_breadcrumb") }}</a> / {{ page.slug }}
   </div>
 
   <!-- Project Header -->
@@ -25,7 +25,7 @@
       </div>
       {% if page.extra.author %}
         <span class="text-slate-400 font-mono text-[11px]">
-          {{ trans(key="project_author_label") }} <strong class="text-white">{{ page.extra.author }}</strong>
+          {{ trans(lang=lang, key="project_author_label") }} <strong class="text-white">{{ page.extra.author }}</strong>
         </span>
       {% endif %}
     </div>
@@ -40,12 +40,12 @@
     <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#1e293b] text-xs">
       {% if page.extra.github %}
         <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="retro-btn">
-          <span>&gt; {{ trans(key="project_repo_btn") }}</span>
+          <span>&gt; {{ trans(lang=lang, key="project_repo_btn") }}</span>
         </a>
       {% endif %}
       {% if page.extra.link %}
         <a href="{{ page.extra.link }}" target="_blank" rel="noopener noreferrer" class="retro-btn text-emerald-400">
-          <span>&gt; {{ trans(key="project_demo_btn") }}</span>
+          <span>&gt; {{ trans(lang=lang, key="project_demo_btn") }}</span>
         </a>
       {% endif %}
     </div>
@@ -67,10 +67,10 @@
   <!-- Navigation Footer -->
   <div class="flex flex-wrap items-center justify-between gap-3 text-xs pt-4 border-t border-[#2d3748]">
     <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-[#38bdf8]">
-      &lt;-- {{ trans(key="project_back_btn") }}
+      &lt;-- {{ trans(lang=lang, key="project_back_btn") }}
     </a>
     <div class="flex items-center gap-2 text-slate-400">
-      <span>{{ trans(key="project_profiles_label") }}</span>
+      <span>{{ trans(lang=lang, key="project_profiles_label") }}</span>
       <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400">@o-thiago</a>
     </div>
   </div>
