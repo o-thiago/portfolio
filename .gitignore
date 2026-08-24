@@ -3,8 +3,13 @@ public/
 result
 result-*
 
-# Generated CSS (built during build / dev)
+# Generated CSS & PDFs
 static/style.css
+static/*.pdf
+
+# Generated CV & Experience content
+content/resume/_index*.md
+content/experience/_index*.md
 
 # Cache & local temp
 .cache/

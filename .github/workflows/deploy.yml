@@ -34,6 +34,7 @@ jobs:
 
       - name: Build site
         env:
+          CV_PAT: ${{ secrets.CV_PAT }}
           CV_REPO_URL: ${{ secrets.CV_REPO_URL || 'https://github.com/o-thiago/resume-template.git' }}
         run: nix develop --command just build
 
