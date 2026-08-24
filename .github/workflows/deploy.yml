@@ -20,14 +20,11 @@ concurrency:
 
 jobs:
   build:
-    environment:
-      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
           fetch-depth: 0
 
       - name: Install Nix
@@ -36,8 +33,6 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Build site
-        env:
-          CV_PAT: ${{ secrets.CV_PAT }}
         run: nix develop --command just build
 
       - name: Upload GitHub Pages artifact
