@@ -1,24 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}" class="theme-light scroll-smooth">
+<html lang="{{ lang }}" class="scroll-smooth">
 {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} | {% elif section.title %}{{ section.title }} | {% endif %}{{ cv.name }} [{{ cv.handle }}]</title>
-  
-  <!-- Synchronous Theme Initializer (No Flash of Unstyled Theme - Light Mode Default) -->
-  <script>
-    (function() {
-      try {
-        var stored = localStorage.getItem('theme');
-        if (stored === 'dark' || (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.remove('theme-light');
-        } else {
-          document.documentElement.classList.add('theme-light');
-        }
-      } catch (e) {}
-    })();
-  </script>
 
   <!-- Primary Meta Tags -->
   <meta name="title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ cv.name }}">
@@ -159,21 +145,6 @@
            class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
           [{{ trans(lang=lang, key="nav_resume") }}]
         </a>
-
-        <!-- Persisted Light / Dark Theme Button -->
-        <button id="theme-toggle-btn" 
-                type="button"
-                class="retro-btn text-[11px] px-1.5 py-0.5" 
-                title="{{ trans(lang=lang, key='toggle_theme') }}" 
-                aria-label="{{ trans(lang=lang, key='toggle_theme') }}"
-                onclick="(function(){
-                  var el = document.documentElement;
-                  var isLight = el.classList.toggle('theme-light');
-                  try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch(e){}
-                })()">
-          <span class="theme-icon-light">☀️ LIGHT</span>
-          <span class="theme-icon-dark">🌙 DARK</span>
-        </button>
 
         <!-- Retro Language Switcher (US Flag & Brazil Flag) -->
         <div class="flex items-center gap-1 border-l border-[#334155] pl-2 ml-1">
