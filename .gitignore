@@ -3,11 +3,16 @@ public/
 result
 result-*
 
-# Generated CSS & PDFs
+# Generated CSS, PDFs & AI endpoints
 static/style.css
 static/*.pdf
+static/llms.txt
+static/llms-full.txt
 
-
+# Generated CV, Experience & Awards sections
+content/resume/
+content/experience/
+content/awards/
 
 # Cache & local temp
 .cache/

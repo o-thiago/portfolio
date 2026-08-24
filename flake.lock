@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "cv": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787603147,
+        "narHash": "sha256-HdSDM0RwRl6nEUKoBVUMQo5e7izJ52wwQ00cQTaKZWc=",
+        "owner": "o-thiago",
+        "repo": "resume-template",
+        "rev": "1de8ec40d4d04eefc67d23f1a9758e310ee47fac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "o-thiago",
+        "repo": "resume-template",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -51,6 +67,7 @@
     },
     "root": {
       "inputs": {
+        "cv": "cv",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "systems": "systems"
