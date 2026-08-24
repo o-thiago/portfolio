@@ -68,4 +68,4 @@ Feel free to reach out:
 
 - **Email:** [thiagomm@pm.me](mailto:thiagomm@pm.me)
 - **LinkedIn:** [linkedin.com/in/thiagomacedomendes](https://www.linkedin.com/in/thiagomacedomendes)
-- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago) • [github.com/o-thiago](https://github.com/o-thiago)
+- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago) / [github.com/o-thiago](https://github.com/o-thiago)

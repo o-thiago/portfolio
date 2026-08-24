@@ -56,7 +56,7 @@
             shellHook = ''
               echo ""
               echo "   Thiago Macedo Mendes - Personal Portfolio Dev Shell"
-              echo "   Stack: Pure No-JS • Zola (Rust SSG) • Tailwind CSS v4 • Nix"
+              echo "   Stack: Pure No-JS / Zola (Rust SSG) / Tailwind CSS v4 / Nix"
               echo ""
               echo "Available commands (via just):"
               echo "  just dev       - Watch CSS and run Zola live-reload dev server"

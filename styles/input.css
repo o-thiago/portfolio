@@ -261,7 +261,7 @@ html.theme-light .bg-\[\#1e293b\] {
 }
 
 .prose-custom ul li::before {
-  content: "• ";
+  content: "- ";
   color: var(--accent-cyan);
   font-weight: bold;
 }

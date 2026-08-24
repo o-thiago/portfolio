@@ -35,17 +35,17 @@
     <!-- Resume Header -->
     <div class="text-center space-y-1 border-b-2 border-[#2d3748] pb-4 print:border-black">
       <h1 class="text-xl sm:text-2xl font-bold text-white print:text-black uppercase">{{ config.extra.name }}</h1>
-      <div class="flex flex-wrap items-center justify-center gap-x-2 text-xs text-slate-400 print:text-black">
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-slate-400 print:text-black">
         <span>{{ trans(key="location_text") }}</span>
-        <span>•</span>
+        <span>/</span>
         <a href="tel:+5569993146868" class="text-slate-300 print:text-black">{{ config.extra.phone }}</a>
-        <span>•</span>
+        <span>/</span>
         <a href="mailto:{{ config.extra.email }}" class="text-sky-400 print:text-black">{{ config.extra.email }}</a>
-        <span>•</span>
+        <span>/</span>
         <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">linkedin.com/in/thiagomacedomendes</a>
-        <span>•</span>
+        <span>/</span>
         <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">github.com/o-thiago</a>
-        <span>•</span>
+        <span>/</span>
         <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">github.com/o-thiago</a>
       </div>
     </div>
@@ -76,11 +76,11 @@
           {{ trans(key="exp1_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          <li>• {{ trans(key="exp1_b1") }}</li>
-          <li>• {{ trans(key="exp1_b2") }}</li>
-          <li>• {{ trans(key="exp1_b3") }}</li>
-          <li>• {{ trans(key="exp1_b4") }}</li>
-          <li>• {{ trans(key="exp1_b5") }}</li>
+          <li>- {{ trans(key="exp1_b1") }}</li>
+          <li>- {{ trans(key="exp1_b2") }}</li>
+          <li>- {{ trans(key="exp1_b3") }}</li>
+          <li>- {{ trans(key="exp1_b4") }}</li>
+          <li>- {{ trans(key="exp1_b5") }}</li>
         </ul>
       </div>
 
@@ -94,10 +94,10 @@
           {{ trans(key="exp2_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          <li>• {{ trans(key="exp2_b1") }}</li>
-          <li>• {{ trans(key="exp2_b2") }}</li>
-          <li>• {{ trans(key="exp2_b3") }}</li>
-          <li>• {{ trans(key="exp2_b4") }}</li>
+          <li>- {{ trans(key="exp2_b1") }}</li>
+          <li>- {{ trans(key="exp2_b2") }}</li>
+          <li>- {{ trans(key="exp2_b3") }}</li>
+          <li>- {{ trans(key="exp2_b4") }}</li>
         </ul>
       </div>
 
@@ -111,9 +111,9 @@
           {{ trans(key="exp3_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          <li>• {{ trans(key="exp3_b1") }}</li>
-          <li>• {{ trans(key="exp3_b2") }}</li>
-          <li>• {{ trans(key="exp3_b3") }}</li>
+          <li>- {{ trans(key="exp3_b1") }}</li>
+          <li>- {{ trans(key="exp3_b2") }}</li>
+          <li>- {{ trans(key="exp3_b3") }}</li>
         </ul>
       </div>
 
@@ -127,8 +127,8 @@
           {{ trans(key="exp4_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          <li>• {{ trans(key="exp4_b1") }}</li>
-          <li>• {{ trans(key="exp4_b2") }}</li>
+          <li>- {{ trans(key="exp4_b1") }}</li>
+          <li>- {{ trans(key="exp4_b2") }}</li>
         </ul>
       </div>
     </section>
@@ -166,10 +166,10 @@
         == {{ trans(key="resume_skills_title") }} ==
       </div>
       <ul class="text-slate-300 print:text-black space-y-1 text-xs">
-        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l1") }}</strong> C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind.</li>
-        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l2") }}</strong> NixOS, Linux Administration, Docker, Git, CI/CD.</li>
-        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l3") }}</strong> PostgreSQL, MySQL, SQLite, MongoDB, Redes de Computadores, Telefonia IP.</li>
-        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l4") }}</strong> {{ trans(key="resume_skills_l4_val") }}</li>
+        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l1") }}</strong> C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind.</li>
+        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l2") }}</strong> NixOS, Linux Administration, Docker, Git, CI/CD.</li>
+        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l3") }}</strong> PostgreSQL, MySQL, SQLite, MongoDB, Redes de Computadores, Telefonia IP.</li>
+        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l4") }}</strong> {{ trans(key="resume_skills_l4_val") }}</li>
       </ul>
     </section>
 
@@ -179,13 +179,13 @@
         == {{ trans(key="resume_awards_title") }} ==
       </div>
       <ul class="text-slate-300 print:text-black space-y-0.5 text-xs">
-        <li>• 🥇 {{ trans(key="award1_badge") }} – {{ trans(key="award1_title") }} ({{ trans(key="award1_date") }})</li>
-        <li>• 🥈 {{ trans(key="award2_badge") }} – {{ trans(key="award2_title") }} ({{ trans(key="award2_date") }})</li>
-        <li>• 🏆 {{ trans(key="award3_badge") }} – {{ trans(key="award3_title") }} ({{ trans(key="award3_date") }})</li>
-        <li>• 🏅 {{ trans(key="award4_badge") }} – {{ trans(key="award4_title") }} ({{ trans(key="award4_date") }})</li>
-        <li>• 🎖️ {{ trans(key="award5_badge") }} – {{ trans(key="award5_title") }} ({{ trans(key="award5_date") }})</li>
-        <li>• <strong class="text-white print:text-black">{{ trans(key="awards_p2_title") }}:</strong> {{ trans(key="awards_p2_desc") }}</li>
-        <li>• <strong class="text-white print:text-black">{{ trans(key="awards_p3_title") }}:</strong> {{ trans(key="awards_p3_desc") }}</li>
+        <li>- 🥇 {{ trans(key="award1_badge") }} – {{ trans(key="award1_title") }} ({{ trans(key="award1_date") }})</li>
+        <li>- 🥈 {{ trans(key="award2_badge") }} – {{ trans(key="award2_title") }} ({{ trans(key="award2_date") }})</li>
+        <li>- 🏆 {{ trans(key="award3_badge") }} – {{ trans(key="award3_title") }} ({{ trans(key="award3_date") }})</li>
+        <li>- 🏅 {{ trans(key="award4_badge") }} – {{ trans(key="award4_title") }} ({{ trans(key="award4_date") }})</li>
+        <li>- 🎖️ {{ trans(key="award5_badge") }} – {{ trans(key="award5_title") }} ({{ trans(key="award5_date") }})</li>
+        <li>- <strong class="text-white print:text-black">{{ trans(key="awards_p2_title") }}:</strong> {{ trans(key="awards_p2_desc") }}</li>
+        <li>- <strong class="text-white print:text-black">{{ trans(key="awards_p3_title") }}:</strong> {{ trans(key="awards_p3_desc") }}</li>
       </ul>
     </section>
 
