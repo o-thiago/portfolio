@@ -117,18 +117,15 @@
     {% endif %}
 
     <!-- Skills -->
-    {% if section.extra.skills_tech or section.extra.skills_lang %}
+    {% if section.extra.skills %}
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
         == {{ section.extra.skills_title | upper }} ==
       </div>
       <ul class="text-slate-300 print:text-black space-y-1 text-xs pl-4 list-disc">
-        {% if section.extra.skills_tech %}
-        <li><strong class="text-white print:text-black">{{ section.extra.skills_tech_label }}:</strong> {{ section.extra.skills_tech }}</li>
-        {% endif %}
-        {% if section.extra.skills_lang %}
-        <li><strong class="text-white print:text-black">{{ section.extra.skills_lang_label }}:</strong> {{ section.extra.skills_lang }}</li>
-        {% endif %}
+        {% for sk in section.extra.skills %}
+        <li><strong class="text-white print:text-black">{{ sk.label }}:</strong> {{ sk.value }}</li>
+        {% endfor %}
       </ul>
     </section>
     {% endif %}
