@@ -26,18 +26,18 @@
   <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
     <div class="retro-box p-3 space-y-1">
       <div class="text-slate-500 font-bold">{{ trans(lang=lang, key="about_location_label") }}</div>
-      <div class="text-white font-semibold">{{ trans(lang=lang, key="about_location_val") }}</div>
+      <div class="text-white font-semibold">{{ section.extra.location | default(value=trans(lang=lang, key="about_location_val")) }}</div>
       <div class="text-slate-400 text-[11px]">{{ trans(lang=lang, key="about_location_sub") }}</div>
     </div>
     <div class="retro-box p-3 space-y-1">
       <div class="text-slate-500 font-bold">{{ trans(lang=lang, key="about_handles_label") }}</div>
-      <div class="text-white font-semibold">@o-thiago</div>
+      <div class="text-white font-semibold">@{{ config.extra.handle }}</div>
       <div class="text-slate-400 text-[11px]">{{ trans(lang=lang, key="about_handles_sub") }}</div>
     </div>
     <div class="retro-box p-3 space-y-1">
       <div class="text-slate-500 font-bold">{{ trans(lang=lang, key="about_edu_label") }}</div>
-      <div class="text-white font-semibold">{{ trans(lang=lang, key="about_edu_val") }}</div>
-      <div class="text-slate-400 text-[11px]">{{ trans(lang=lang, key="about_edu_sub") }}</div>
+      <div class="text-white font-semibold">{% if section.extra.education and section.extra.education | length > 0 %}{{ section.extra.education[0].institution }}{% else %}{{ trans(lang=lang, key="about_edu_val") }}{% endif %}</div>
+      <div class="text-slate-400 text-[11px]">{% if section.extra.education and section.extra.education | length > 0 %}{{ section.extra.education[0].degree }}{% else %}{{ trans(lang=lang, key="about_edu_sub") }}{% endif %}</div>
     </div>
     <div class="retro-box p-3 space-y-1">
       <div class="text-slate-500 font-bold">{{ trans(lang=lang, key="about_lang_label") }}</div>
