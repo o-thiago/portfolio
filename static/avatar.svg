@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0284c7" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#0369a1" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="40" y1="40" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="0.5" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="200" height="200" rx="40" fill="#090d13"/>
+  <rect x="2" y="2" width="196" height="196" rx="38" fill="url(#avatarGrad)" stroke="url(#accentGrad)" stroke-width="3" stroke-opacity="0.4"/>
+  
+  <!-- Terminal Prompt Symbol & Lambda -->
+  <g transform="translate(45, 50)">
+    <!-- Terminal prompt symbol >_ -->
+    <path d="M10 20L35 45L10 70" stroke="url(#accentGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45 70H85" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+    <!-- Binary / Tech Dots -->
+    <circle cx="85" cy="20" r="4" fill="#34d399" opacity="0.8"/>
+    <circle cx="100" cy="20" r="4" fill="#38bdf8" opacity="0.8"/>
+    <circle cx="70" cy="20" r="4" fill="#f59e0b" opacity="0.8"/>
+  </g>
+</svg>

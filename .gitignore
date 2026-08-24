@@ -1,0 +1,15 @@
+# Build output
+public/
+result
+result-*
+
+# Generated CSS (built during build / dev)
+static/style.css
+
+# OS & Editor files
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+.direnv/

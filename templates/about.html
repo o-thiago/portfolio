@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-12">
+  
+  <!-- Header -->
+  <header class="space-y-4 border-b border-slate-800 pb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/60 border border-sky-800/60 text-xs font-mono text-sky-400">
+      <span>Who I Am</span>
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">About Me</h1>
+    <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+      A dive into my background, engineering philosophy, hardware fascination, and academic path.
+    </p>
+  </header>
+
+  <!-- Overview Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+      <div class="text-sky-400 font-mono font-bold text-xs uppercase tracking-wider">Location</div>
+      <div class="text-white font-medium text-base">Porto Velho, RO - Brazil</div>
+      <p class="text-slate-400 text-xs">Heart of the Brazilian Amazon basin, Western region.</p>
+    </div>
+    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+      <div class="text-teal-400 font-mono font-bold text-xs uppercase tracking-wider">Education</div>
+      <div class="text-white font-medium text-base">B.S. in Computer Science</div>
+      <p class="text-slate-400 text-xs">UNIR (2026-2029) • Informatics IFRO (2023-2025)</p>
+    </div>
+    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+      <div class="text-emerald-400 font-mono font-bold text-xs uppercase tracking-wider">Languages</div>
+      <div class="text-white font-medium text-base">Portuguese & English</div>
+      <p class="text-slate-400 text-xs">Fluent/Bilingual (Public Speaker) • Elementary Spanish</p>
+    </div>
+  </div>
+
+  <!-- Main Narrative Content -->
+  <article class="prose-custom space-y-8">
+    {{ section.content | safe }}
+  </article>
+
+  <!-- Action Footer -->
+  <div class="pt-8 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
+    <a href="{{ config.base_url }}/projects/" class="inline-flex items-center gap-2 text-sky-400 font-mono text-sm hover:underline">
+      <span>← Explore My Projects</span>
+    </a>
+    <a href="{{ config.base_url }}/experience/" class="inline-flex items-center gap-2 text-sky-400 font-mono text-sm hover:underline">
+      <span>Read Work & Research History →</span>
+    </a>
+  </div>
+
+</div>
+{% endblock content %}

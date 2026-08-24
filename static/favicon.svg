@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#090d13"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="2"/>
+  <!-- Lambda Symbol -->
+  <path d="M22 46L34 22M32 26L42 46M38 38H45" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

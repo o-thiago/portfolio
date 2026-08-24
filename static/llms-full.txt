@@ -1,0 +1,123 @@
+# Thiago Macedo Mendes - Full Portfolio & Biography Context
+
+> Complete, unabridged context for AI agents, LLM assistants, search crawlers, and automated indexers.
+> URL: https://o-thiago.github.io
+> Contact: thiagomm@pm.me | https://www.linkedin.com/in/thiagomacedomendes | https://github.com/o-thiago
+
+---
+
+## 1. Persona & Background
+
+Thiago Macedo Mendes is a Computer Science undergraduate student at the Federal University of Rondônia (UNIR) and software developer from Porto Velho, Rondônia, in the Brazilian Western Amazon basin.
+
+His work spans three main dimensions:
+1. **The Systems Developer:** Building low-overhead, zero-bloat systems in C and Rust, managing declarative operating systems with Nix and NixOS, configuring low-latency embedded firmware for split ergonomic mechanical keyboards (ZMK, QMK), and developing high-performance web systems.
+2. **The Student & Researcher:** Academic researcher at GPMecatrônica (Mechatronics Research Group) and GoTec (Technological Solutions Research Group), co-authoring scientific papers, building institutional web platforms, and winning medals in national and international academic olympiads (Robotics, Mathematics, Financial Education, Informatics).
+3. **The Person:** Enthusiast of minimalist computing, the Unix philosophy, 34-key columnar ergonomic keyboards (Urchin, Ferris Sweep), linguistics (fluent/bilingual in Portuguese and English, public speaker on language acquisition, studying Spanish), and open-source software advocacy.
+
+---
+
+## 2. Education
+
+### Federal University of Rondônia (UNIR)
+- **Degree:** Bachelor of Science (B.S.) in Computer Science
+- **Duration:** Feb 2026 – Dec 2029
+- **Location:** Porto Velho, Rondônia, Brazil
+- **Focus:** Algorithms, compiler construction, automata theory, operating systems, distributed computing, discrete mathematics.
+
+### Federal Institute of Rondônia (IFRO)
+- **Degree:** Technical Course in Informatics Integrated with High School
+- **Duration:** Feb 2023 – Dec 2025
+- **Location:** Porto Velho, Rondônia, Brazil
+- **Focus:** Software development, computer networking, relational databases, operating systems administration.
+
+---
+
+## 3. Experience & Research Appointments
+
+### IFRO - Federal Institute of Rondônia / GPMecatrônica
+- **Role:** Administrative Assistant & Software Developer (Outsourced via Belém Rio Segurança Ltda)
+- **Period:** Jan 2025 – Dec 2025
+- **Location:** Porto Velho, Rondônia, Brazil
+- **Responsibilities:**
+  - Developed full-stack web applications using Next.js, React, Tailwind CSS, and oRPC.
+  - Standardized development environments and build pipelines across the laboratory using Docker and Nix flakes.
+  - Participated in robotics laboratory activities, control systems, and scientific paper production.
+  - Provided hardware diagnostics, system maintenance, and network configuration.
+
+### Censipam - Amazon Protection System (Ministry of Defense)
+- **Role:** IT Infrastructure Intern
+- **Period:** Aug 2023 – Oct 2024
+- **Location:** Porto Velho, Rondônia, Brazil
+- **Responsibilities:**
+  - Maintained federal operational IT infrastructure monitoring the Amazon region.
+  - Conducted hardware assembly, component-level diagnostics, and Linux/Windows enterprise deployments.
+  - Installed and patched structured cabling, switch panels, and IP telephony (VoIP) network endpoints.
+  - Provided direct technical user support adhering to federal data security protocols.
+
+### IFRO - Technological Solutions Research Group (GoTec)
+- **Role:** Scientific Researcher (Fellow)
+- **Period:** Feb 2024 – Jul 2024
+- **Responsibilities:**
+  - Developed the "Innovation Radar" web application using TypeScript, ReactJS, Laravel (PHP), MySQL, Docker, and Storybook.
+  - Implemented component libraries and backend REST API endpoints.
+
+### IFRO - Technological Solutions Research Group (GoTec)
+- **Role:** Voluntary Researcher
+- **Period:** Sep 2023 – Feb 2024
+- **Responsibilities:**
+  - Researched web architectures, assisted in database schema design.
+  - Represented the group at scientific exhibitions including Expo Favela and the National Week of Science & Technology (SNCT).
+
+---
+
+## 4. Featured Projects
+
+### toof-os
+- **URL:** https://github.com/o-thiago/toof-os
+- **Stack:** Nix Flakes, NixOS, Raspberry Pi 4, Linux Kernel, Broadcom VC4
+- **Summary:** Declarative operating system configuration for Raspberry Pi 4 ARM64 single-board computers using Nix flakes, custom kernel modules, VC4 graphics drivers, and Bluetooth.
+
+### Urchin 34-Key Split Keyboard ZMK Firmware
+- **URL:** https://github.com/o-thiago/urchin-zmk-firmware
+- **Stack:** ZMK Firmware, Zephyr RTOS, C, Devicetree, BLE
+- **Summary:** Custom firmware for an ultra-compact 34-key columnar ergonomic split keyboard featuring home-row mods, custom multi-key combos, sticky layers, and power-optimized wireless Bluetooth.
+
+### GPMecatrônica Cards & Research Platform
+- **URL:** https://github.com/o-thiago/gpm-cards
+- **Stack:** Next.js 14, TypeScript, PostgreSQL, Tailwind CSS, Nix process-compose, Docker
+- **Summary:** Full-stack member showcase and card generation web application with automated local services via Nix flakes.
+
+### SQLx Conditional Queries Layering Pattern
+- **URL:** https://github.com/o-thiago/sqlx-conditional-queries-layering
+- **Stack:** Rust, SQLx, PostgreSQL, Async Rust
+- **Summary:** Architectural pattern in Rust for compile-time safe, dynamic SQL query composition and filtering using `sqlx::QueryBuilder`.
+
+### fifine-rgb
+- **URL:** https://github.com/o-thiago/fifine-rgb
+- **Stack:** C / Rust, Linux HID, libusb, Nix Flakes
+- **Summary:** Native Linux command-line tool to configure RGB illumination modes on Fifine USB microphones via raw HID feature reports.
+
+---
+
+## 5. Honors, Medals & Distinctions
+
+- **Gold Medal (2025):** Tesouro Direto Financial Education Olympiad (National financial mathematics & economic concepts competition).
+- **Silver Medal (2025):** Brazilian Robotics Olympiad (OBR - Theoretical modality).
+- **Honorable Mention (2025):** International Math Olympiad "Math Without Borders".
+- **Merit Honor (2024):** Brazilian Robotics Olympiad (OBR - Theoretical modality).
+- **Competitor (2024, 2025):** Brazilian Olympiad in Informatics (OBI - Phase 2 Competitor; Phase 1 in 2023).
+- **Guest Speaker (2024):** 1st Polyglot Meeting of Calama – Keynote lecture on "English Fundamentals: Accelerated Cognitive Acquisition".
+- **Participant (2025):** Brazilian Astronomy and Astronautics Olympiad (OBA).
+- **Exhibitor (2023, 2024):** National Week of Science and Technology (SNCT) & Rondoniense Week of Art, Heritage and Culture.
+- **Certifications:** Python Developer & Full Stack Developer Bootcamps (IGTI), LGPD Personal Data Protection (Ministry of Defense), Oratory (IFRO).
+
+---
+
+## 6. Technical Stack & Skills
+
+- **Programming Languages:** C, Rust, TypeScript, JavaScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3.
+- **Systems & DevOps:** NixOS, Linux Administration, Docker, Git, ZMK Firmware, QMK, Zephyr RTOS, process-compose, Bash/Shell.
+- **Frameworks & Libraries:** Next.js, React, Laravel, Tailwind CSS, SQLx, Storybook.
+- **Databases:** PostgreSQL, MySQL, SQLite, MongoDB.
+- **Natural Languages:** Portuguese (Native), English (Fluent / Bilingual), Spanish (Elementary).
