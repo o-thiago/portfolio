@@ -1,6 +1,6 @@
 +++
-title = "GPMecatrônica Cards & Plataforma Web"
-description = "Aplicação web full-stack e sistema gerador de cartões para os membros do Grupo de Pesquisa em Mecatrônica do IFRO."
+title = "GPMecatrônica Cards: Plataforma Web de Membros"
+description = "Aplicação web desenvolvida com Next.js e PostgreSQL para cadastro e geração de cartões de membros do GPMecatrônica (IFRO)."
 date = 2025-04-10
 weight = 2
 
@@ -8,23 +8,23 @@ weight = 2
 category = "Web / Full-Stack"
 author = "@o-thiago"
 github = "https://github.com/o-thiago/gpm-cards"
-stack = ["Next.js 14", "TypeScript", "PostgreSQL", "Tailwind CSS", "Nix / process-compose", "Docker"]
+stack = ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Nix", "Docker"]
 +++
 
-## Visão Geral
+## O que é o projeto
 
-Desenvolvida para o grupo de pesquisa **GPMecatrônica** no Instituto Federal de Rondônia (IFRO), esta aplicação atua como vitrine interativa, gerenciador de credenciais de membros e gerador dinâmico de cartões de identificação para eventos científicos e perfis acadêmicos.
+Aplicação web desenvolvida para o grupo de pesquisa **GPMecatrônica** do IFRO (Campus Porto Velho Calama). O sistema serve para cadastrar membros do laboratório, exibir seus perfis e gerar cartões digitais de identificação para eventos e apresentações científicas.
 
 ---
 
-## Decisões Técnicas & Arquitetura
+## Como foi feito
 
-- **Arquitetura Full-Stack:** Desenvolvida sobre o **Next.js** App Router com **TypeScript**, utilizando server actions, renderização de imagem dinâmica e tipagem rigorosa de esquemas de banco de dados.
-- **Ambiente de Desenvolvimento Reproduzível com Nix:** Criação de pipeline de orquestração local de serviços via `flake.nix` e `process-compose-flake`, automatizando a inicialização de bancos PostgreSQL locais e padronizando os runtimes para toda a equipe do laboratório sem passos manuais.
-- **Conteinerização Determinística:** Builds de imagens Docker em camadas geradas diretamente pelo Nix (`dockerTools.buildLayeredImage`), garantindo imagens de produção compactas e seguras.
+- **Frontend & Backend:** Feito com **Next.js** (App Router) e **TypeScript**, com rotas de API tipadas e estilização em Tailwind CSS.
+- **Ambiente Local com Nix:** Utilizei o `process-compose` no Nix Flakes para subir o banco de dados PostgreSQL localmente de forma automática. Com isso, novos membros do laboratório conseguem rodar o projeto local com um único comando, sem precisar instalar e configurar o PostgreSQL manualmente no sistema operacional.
+- **Docker:** Criação de contêineres Docker para facilitar o deploy e padronizar as dependências em produção.
 
 ```nix
-/* Composição declarativa de processos locais via process-compose */
+/* Exemplo da configuração do PostgreSQL local com process-compose */
 services.postgres."gpm-cards-db" = {
   enable = true;
   initialDatabases = [ { name = "gpm-cards"; } ];
@@ -36,6 +36,7 @@ services.postgres."gpm-cards-db" = {
 
 ---
 
-## Impacto
+## Repositório
 
-Padronizou a geração de identidades visuais de membros, credenciamento para congressos científicos e acelerou o onboarding de novos bolsistas e pesquisadores no grupo.
+- **GitHub:** [github.com/o-thiago/gpm-cards](https://github.com/o-thiago/gpm-cards)
+- **Autor:** Thiago Macedo Mendes (`@o-thiago`)

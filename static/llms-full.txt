@@ -1,119 +1,116 @@
-# Thiago Macedo Mendes - Full Portfolio & Biography Context
+# Thiago Macedo Mendes - Full Portfolio & Profile Context
 
-> Complete, unabridged context for AI agents, LLM assistants, search crawlers, and automated indexers.
-> URL: https://o-thiago.github.io
-> Contact: thiagomm@pm.me | https://www.linkedin.com/in/thiagomacedomendes | https://github.com/o-thiago
+- **Author:** Thiago Macedo Mendes
+- **GitHub:** https://github.com/o-thiago
+- **GitHub (Alias):** https://github.com/o-thiago
+- **LinkedIn:** https://www.linkedin.com/in/thiagomacedomendes/
+- **Email:** thiagomm@pm.me
+- **Phone:** +55 (69) 99314-6868
+- **Location:** Porto Velho, Rondônia, Brazil
+- **Website:** https://o-thiago.github.io
 
 ---
 
-## 1. Persona & Background
+## 1. Summary
 
-Thiago Macedo Mendes is a Computer Science undergraduate student at the Federal University of Rondônia (UNIR) and software developer from Porto Velho, Rondônia, in the Brazilian Western Amazon basin.
-
-His work spans three main dimensions:
-1. **The Systems Developer:** Building low-overhead, zero-bloat systems in C and Rust, managing declarative operating systems with Nix and NixOS, and developing high-performance web systems.
-2. **The Student & Researcher:** Academic researcher at GPMecatrônica (Mechatronics Research Group) and GoTec (Technological Solutions Research Group), co-authoring scientific papers, building institutional web platforms, and winning medals in national and international academic olympiads (Robotics, Mathematics, Financial Education, Informatics).
-3. **The Person:** Enthusiast of minimalist computing, the Unix philosophy, linguistics (fluent/bilingual in Portuguese and English, public speaker on language acquisition, studying Spanish), and open-source software advocacy.
+Thiago Macedo Mendes is a Computer Science undergraduate at UNIR ('29) and Informatics graduate from IFRO ('25) living in Porto Velho, Rondônia, Brazil. He works with systems programming in C and Rust, declarative Linux setups with NixOS, and web development using TypeScript, Next.js, React, and Laravel. He has experience in academic research labs (GPMecatrônica, GoTec) and IT infrastructure support at Censipam (Ministry of Defense).
 
 ---
 
 ## 2. Education
 
 ### Federal University of Rondônia (UNIR)
-- **Degree:** Bachelor of Science (B.S.) in Computer Science
-- **Duration:** Feb 2026 – Dec 2029
+- **Degree:** Bachelor's Degree in Computer Science
+- **Period:** Feb 2026 – Dec 2029
 - **Location:** Porto Velho, Rondônia, Brazil
-- **Focus:** Algorithms, compiler construction, automata theory, operating systems, distributed computing, discrete mathematics.
 
 ### Federal Institute of Rondônia (IFRO)
 - **Degree:** Technical Course in Informatics Integrated with High School
-- **Duration:** Feb 2023 – Dec 2025
+- **Period:** Feb 2023 – Dec 2025
 - **Location:** Porto Velho, Rondônia, Brazil
-- **Focus:** Software development, computer networking, relational databases, operating systems administration.
 
 ---
 
-## 3. Experience & Research Appointments
+## 3. Work & Research Experience
 
-### IFRO - Federal Institute of Rondônia / GPMecatrônica
-- **Role:** Administrative Assistant & Software Developer (Outsourced via Belém Rio Segurança Ltda)
+### IFRO / GPMecatrônica Research Group (via Belém Rio Segurança Ltda)
+- **Role:** Administrative Assistant & Software Developer
 - **Period:** Jan 2025 – Dec 2025
 - **Location:** Porto Velho, Rondônia, Brazil
 - **Responsibilities:**
-  - Developed full-stack web applications using Next.js, React, Tailwind CSS, and oRPC.
-  - Standardized development environments and build pipelines across the laboratory using Docker and Nix flakes.
-  - Participated in robotics laboratory activities, control systems, and scientific paper production.
-  - Provided hardware diagnostics, system maintenance, and network configuration.
+  - Built web applications using Next.js, React, Tailwind CSS, and oRPC.
+  - Set up development environments using Docker and Nix flakes.
+  - Assisted with robotics studies and co-authored scientific research papers.
+  - Provided hardware maintenance, PC troubleshooting, and local network setups.
 
-### Censipam - Amazon Protection System (Ministry of Defense)
+### Censipam – Amazon Protection System (Ministry of Defense)
 - **Role:** IT Infrastructure Intern
 - **Period:** Aug 2023 – Oct 2024
 - **Location:** Porto Velho, Rondônia, Brazil
 - **Responsibilities:**
-  - Maintained federal operational IT infrastructure monitoring the Amazon region.
-  - Conducted hardware assembly, component-level diagnostics, and Linux/Windows enterprise deployments.
-  - Installed and patched structured cabling, switch panels, and IP telephony (VoIP) network endpoints.
-  - Provided direct technical user support adhering to federal data security protocols.
+  - Supported IT equipment at Censipam's regional center in Porto Velho.
+  - Assembled PCs, diagnosed hardware problems, and installed Linux/Windows systems.
+  - Installed structured network cabling, switch panel patching, and configured IP phones (VoIP).
+  - Provided technical user support following data security procedures.
 
 ### IFRO - Technological Solutions Research Group (GoTec)
 - **Role:** Scientific Researcher (Fellow)
 - **Period:** Feb 2024 – Jul 2024
 - **Responsibilities:**
-  - Developed the "Innovation Radar" web application using TypeScript, ReactJS, Laravel (PHP), MySQL, Docker, and Storybook.
-  - Implemented component libraries and backend REST API endpoints.
+  - Developed the "Innovation Radar" web platform using TypeScript, React, Laravel, and MySQL.
+  - Documented interface components using Storybook and configured Docker.
 
 ### IFRO - Technological Solutions Research Group (GoTec)
 - **Role:** Voluntary Researcher
 - **Period:** Sep 2023 – Feb 2024
 - **Responsibilities:**
-  - Researched web architectures, assisted in database schema design.
-  - Represented the group at scientific exhibitions including Expo Favela and the National Week of Science & Technology (SNCT).
+  - Studied web architecture and assisted with initial database design.
+  - Presented research prototypes at Expo Favela and the National Science & Tech Week (SNCT).
 
 ---
 
 ## 4. Featured Projects
 
-### toof-os (UNIR DACC Station Operating System)
+### toof-os
 - **URL:** https://github.com/o-thiago/ToofOS
 - **Stack:** Nix Flakes, NixOS, Raspberry Pi 4, DACC Station (UNIR), nix-ld, SDL2, Wayland
-- **Summary:** Bespoke, fully declarative NixOS operating system engineered to power the DACC Station (custom game console & arcade project by the Department of Computer Science at UNIR). Features universal `nix-ld` dynamically linked game runtime (Steam-inspired), low-latency audio via PipeWire/rtkit, ananicy-cpp process scheduling, SD card write optimization, and custom gamepad support (Xbox/DualShock 4).
+- **Summary:** Declarative NixOS configuration built for the DACC Station (a gaming arcade console project at UNIR) on Raspberry Pi 4. Features a universal `nix-ld` game runtime for student games, low-latency audio via PipeWire/rtkit, ananicy-cpp process scheduling, SD card wear optimizations, and gamepad support (Xbox and DualShock 4).
 
-### GPMecatrônica Cards & Research Platform
+### GPMecatrônica Cards Platform
 - **URL:** https://github.com/o-thiago/gpm-cards
-- **Stack:** Next.js 14, TypeScript, PostgreSQL, Tailwind CSS, Nix process-compose, Docker
-- **Summary:** Full-stack member showcase and card generation web application with automated local services via Nix flakes.
+- **Stack:** Next.js, TypeScript, PostgreSQL, Tailwind CSS, Nix / process-compose, Docker
+- **Summary:** Web application built with Next.js and PostgreSQL for member profiles and digital card generation, featuring automated local database setup via Nix process-compose.
 
-### SQLx Conditional Queries Layering Pattern
+### sqlx-conditional-queries-layering
 - **URL:** https://github.com/o-thiago/sqlx-conditional-queries-layering
 - **Author:** Thiago Macedo Mendes (@o-thiago)
-- **Stack:** Rust, SQLx, Declarative Macros, Metaprogramming, paste, macro_metavar_expr
-- **Summary:** Advanced declarative macro library in Rust enabling template definition, variable inheritance, and pairwise merging of conditional SQL queries on top of sqlx_conditional_queries with zero runtime overhead.
+- **Stack:** Rust, SQLx, Declarative Macros, paste, macro_metavar_expr
+- **Summary:** Rust declarative macro library for defining, extending, and merging conditional SQL query templates on top of sqlx_conditional_queries at compile time.
 
 ### Innovation Radar
-- **Stack:** TypeScript, ReactJS, Laravel, PHP, MySQL, Docker, Storybook
-- **Summary:** Institutional web application developed for the GoTec research group to track innovation projects and research intellectual property.
+- **Stack:** TypeScript, React, Laravel, PHP, MySQL, Docker, Storybook
+- **Summary:** Web platform built at GoTec (IFRO) to catalog and track innovation initiatives and intellectual property.
 
 ---
 
 ## 5. Honors, Medals & Distinctions
 
-- **Gold Medal (2025):** Tesouro Direto Financial Education Olympiad (National financial mathematics & economic concepts competition).
+- **Gold Medal (2025):** Tesouro Direto Financial Education Olympiad (National competition on financial mathematics and economics).
 - **Silver Medal (2025):** Brazilian Robotics Olympiad (OBR - Theoretical modality).
 - **4th Place State Level (2025):** Brazilian Robotics Olympiad (OBR - Artistic Robotics modality, Rondônia State Stage).
-- **Honorable Mention (2025):** International Math Olympiad "Math Without Borders".
+- **Honorable Mention (2025):** Math Without Borders International Olympiad.
 - **Merit Honor (2024):** Brazilian Robotics Olympiad (OBR - Theoretical modality).
 - **Competitor (2024, 2025):** Brazilian Olympiad in Informatics (OBI - Phase 2 Competitor; Phase 1 in 2023).
-- **Guest Speaker (2024):** 1st Polyglot Meeting of Calama – Keynote lecture on "English Fundamentals: Accelerated Cognitive Acquisition".
+- **Speaker (2024):** 1st Polyglot Meeting of Calama – Presentation on practical strategies for learning English.
 - **Participant (2025):** Brazilian Astronomy and Astronautics Olympiad (OBA).
 - **Exhibitor (2023, 2024):** National Week of Science and Technology (SNCT) & Rondoniense Week of Art, Heritage and Culture.
-- **Certifications:** Python Developer & Full Stack Developer Bootcamps (IGTI), LGPD Personal Data Protection (Ministry of Defense), Oratory (IFRO).
 
 ---
 
 ## 6. Technical Stack & Skills
 
-- **Programming Languages:** C, Rust, TypeScript, JavaScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3.
+- **Programming Languages:** C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind CSS.
 - **Systems & DevOps:** NixOS, Linux Administration, Docker, Git, process-compose, Bash/Shell.
-- **Frameworks & Libraries:** Next.js, React, Laravel, Tailwind CSS, SQLx, Storybook.
+- **Frameworks & Tools:** Next.js, React, Laravel, Tailwind CSS, SQLx, Storybook.
 - **Databases:** PostgreSQL, MySQL, SQLite, MongoDB.
-- **Natural Languages:** Portuguese (Native), English (Fluent / Bilingual), Spanish (Elementary).
+- **Spoken Languages:** Portuguese (Native), English (Fluent), Spanish (Basic).
