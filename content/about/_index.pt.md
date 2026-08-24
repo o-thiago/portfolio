@@ -238,7 +238,7 @@ date = "Fev 2023 - Dez 2025"
 
 ## Apresentação
 
-Sou o **Thiago Macedo Mendes**, estudante de Ciência da Computação na **UNIR** e técnico em Informática formado pelo **IFRO**, morando em **Porto Velho, Rondônia**.
+Sou o **{{ name() }}**, estudante de Ciência da Computação na **UNIR** e técnico em Informática formado pelo **IFRO**, morando em **Porto Velho, Rondônia**.
 
 Trabalho principalmente com programação de sistemas (C, Rust), gerenciamento declarativo de ambientes Linux com **NixOS** e desenvolvimento de aplicações web (TypeScript, React, Next.js, Laravel).
 
@@ -293,6 +293,6 @@ Minha trajetória combina a graduação universitária e a vivência em projetos
 
 Fique à vontade para entrar em contato:
 
-- **E-mail:** [thiagomm@pm.me](mailto:thiagomm@pm.me)
-- **LinkedIn:** [linkedin.com/in/thiagomacedomendes](https://www.linkedin.com/in/thiagomacedomendes)
-- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago)
+- **E-mail:** [{{ email() }}](mailto:{{ email() }})
+- **LinkedIn:** [{{ linkedin_handle() }}]({{ linkedin_url() }})
+- **GitHub:** [{{ github_handle() }}]({{ github_url() }})

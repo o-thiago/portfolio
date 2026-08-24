@@ -6,7 +6,6 @@ weight = 2
 
 [extra]
 category = "Web / Full-Stack"
-author = "@o-thiago"
 github = "https://github.com/o-thiago/gpm-cards"
 stack = ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Nix", "Docker"]
 +++
@@ -38,5 +37,5 @@ services.postgres."gpm-cards-db" = {
 
 ## Repository
 
-- **GitHub:** [github.com/o-thiago/gpm-cards](https://github.com/o-thiago/gpm-cards)
-- **Author:** Thiago Macedo Mendes (`@o-thiago`)
+- **GitHub:** [{{ github_handle() }}/gpm-cards]({{ github_url() }}/gpm-cards)
+- **Author:** {{ name() }} (`@{{ handle() }}`)

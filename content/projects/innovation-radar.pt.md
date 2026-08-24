@@ -6,7 +6,6 @@ weight = 3
 
 [extra]
 category = "Web / Pesquisa"
-author = "@o-thiago"
 stack = ["TypeScript", "React", "Laravel", "PHP", "MySQL", "Docker", "Storybook"]
 +++
 
@@ -27,4 +26,4 @@ O **Radar da Inovação** é uma plataforma web criada dentro do grupo de pesqui
 
 ## Autor
 
-- Thiago Macedo Mendes (`@o-thiago`)
+- {{ name() }} (`@{{ handle() }}`)
