@@ -23,7 +23,11 @@ def get_cv_root() -> Path:
         subprocess.run(["git", "pull"], cwd=cache, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         return cache
     cache.parent.mkdir(parents=True, exist_ok=True)
-    res = subprocess.run(["git", "clone", "--depth", "1", REMOTE_REPO, str(cache)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    token = os.environ.get("CV_PAT") or os.environ.get("GITHUB_TOKEN")
+    repo_url = REMOTE_REPO
+    if token and "github.com" in repo_url and "@" not in repo_url:
+        repo_url = repo_url.replace("https://", f"https://x-access-token:{token}@")
+    res = subprocess.run(["git", "clone", "--depth", "1", repo_url, str(cache)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return cache if res.returncode == 0 and (cache / "resumes").exists() else None
 
 def clean(s: str) -> str:
