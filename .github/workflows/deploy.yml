@@ -25,14 +25,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository (with submodules)
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          token: ${{ secrets.SUBMODULE_TOKEN || github.token }}
           fetch-depth: 0
 
+      - name: Update submodules (optional)
+        run: |
+          git submodule update --init --recursive || echo "Submodule access skipped; using committed assets."
+
       - name: Install Nix
-        uses: cachix/install-nix-action@v27
+        uses: cachix/install-nix-action@v30
         with:
           nix_path: nixpkgs=channel:nixos-unstable
 
