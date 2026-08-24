@@ -21,9 +21,3 @@ The **Innovation Radar** is an institutional web platform built inside the **GoT
 - **Backend with Laravel:** Created API routes and database schemas in **Laravel (PHP)** connected to **MySQL**.
 - **Docker:** Configured local Docker container setups to simplify onboarding for other student researchers.
 - **Scientific Outreach:** Demonstrated the platform to visitors at **Expo Favela** and the **National Science and Technology Week (SNCT)**.
-
----
-
-## Author
-
-- {{ name() }} (@{{ handle() }})

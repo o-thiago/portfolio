@@ -52,13 +52,3 @@ My background combines undergraduate coursework and hands-on experience in resea
 
 - **Academic Distinctions:**  
   See the distinctions and awards section below for my medals in national olympiads and robotics competitions.
-
----
-
-## Get In Touch
-
-Feel free to reach out:
-
-- **Email:** [{{ email() }}](mailto:{{ email() }})
-- **LinkedIn:** [{{ linkedin_handle() }}]({{ linkedin_url() }})
-- **GitHub:** [{{ github_handle() }}]({{ github_url() }})

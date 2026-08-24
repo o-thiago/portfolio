@@ -296,17 +296,32 @@ footer.retro-footer {
 .prose-custom code:not(pre code) {
   background-color: var(--bg-subtle);
   color: var(--accent-amber);
-  padding: 0.1rem 0.35rem;
+  padding: 0.15rem 0.4rem;
   border: 1px solid var(--border-subtle);
+  border-radius: 2px;
   font-size: 0.85em;
+  font-family: var(--font-mono);
+  font-weight: 600;
 }
 
 pre {
-  background-color: var(--bg-code) !important;
+  background-color: #1a1e24 !important;
+  color: #e5e9f0 !important;
   border: 2px solid var(--border-color);
-  padding: 1rem;
+  box-shadow: 3px 3px 0px 0px var(--shadow-color);
+  padding: 1rem 1.25rem;
+  border-radius: 2px;
   overflow-x: auto;
-  margin: 1.25rem 0;
+  margin: 1.5rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+pre code {
+  color: inherit !important;
+  background: transparent !important;
+  font-family: var(--font-mono);
 }
 
 /* Classic 88x31 Button Badges */
