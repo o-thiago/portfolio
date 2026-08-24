@@ -235,47 +235,31 @@
       </a>
     </div>
 
+    {% if lang == "pt" %}
+      {% set exp_path = "experience/_index.pt.md" %}
+    {% else %}
+      {% set exp_path = "experience/_index.md" %}
+    {% endif %}
+    {% set exp_sec = get_section(path=exp_path, default=false) %}
+
     <div class="space-y-3">
-      
-      <!-- Role 1 -->
-      <div class="retro-box p-4 space-y-1 text-xs">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
-          <span class="font-bold text-white">
-            {{ trans(lang=lang, key="home_exp1_title") | safe }}
-          </span>
-          <span class="text-slate-500 font-mono">{{ trans(lang=lang, key="home_exp1_date") }}</span>
-        </div>
-        <p class="text-slate-400">
-          {{ trans(lang=lang, key="home_exp1_desc") }}
-        </p>
-      </div>
-
-      <!-- Role 2 -->
-      <div class="retro-box p-4 space-y-1 text-xs">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
-          <span class="font-bold text-white">
-            {{ trans(lang=lang, key="home_exp2_title") | safe }}
-          </span>
-          <span class="text-slate-500 font-mono">{{ trans(lang=lang, key="home_exp2_date") }}</span>
-        </div>
-        <p class="text-slate-400">
-          {{ trans(lang=lang, key="home_exp2_desc") }}
-        </p>
-      </div>
-
-      <!-- Role 3 -->
-      <div class="retro-box p-4 space-y-1 text-xs">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
-          <span class="font-bold text-white">
-            {{ trans(lang=lang, key="home_exp3_title") | safe }}
-          </span>
-          <span class="text-slate-500 font-mono">{{ trans(lang=lang, key="home_exp3_date") }}</span>
-        </div>
-        <p class="text-slate-400">
-          {{ trans(lang=lang, key="home_exp3_desc") }}
-        </p>
-      </div>
-
+      {% if exp_sec and exp_sec.extra.experience %}
+        {% for exp in exp_sec.extra.experience | slice(end=3) %}
+          <div class="retro-box p-4 space-y-1 text-xs">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
+              <span class="font-bold text-white">
+                {{ exp.role }} @ <span class="text-[#38bdf8]">{{ exp.company }}</span>
+              </span>
+              <span class="text-slate-500 font-mono">{{ exp.date }}</span>
+            </div>
+            {% if exp.bullets and exp.bullets | length > 0 %}
+              <p class="text-slate-400">
+                {{ exp.bullets[0] }}
+              </p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </section>
 
@@ -290,40 +274,24 @@
       </a>
     </div>
 
+    {% if lang == "pt" %}
+      {% set aw_path = "awards/_index.pt.md" %}
+    {% else %}
+      {% set aw_path = "awards/_index.md" %}
+    {% endif %}
+    {% set aw_sec = get_section(path=aw_path, default=false) %}
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-      
-      <div class="retro-box p-3 space-y-1 border-l-4 border-l-amber-400">
-        <div class="text-amber-400 font-bold">🥇 {{ trans(lang=lang, key="home_award1_badge") }}</div>
-        <div class="text-white font-medium">
-          {{ trans(lang=lang, key="home_award1_title") }}
-        </div>
-        <p class="text-slate-400">{{ trans(lang=lang, key="home_award1_desc") }}</p>
-      </div>
-
-      <div class="retro-box p-3 space-y-1 border-l-4 border-l-slate-400">
-        <div class="text-slate-300 font-bold">🥈 {{ trans(lang=lang, key="home_award2_badge") }}</div>
-        <div class="text-white font-medium">
-          {{ trans(lang=lang, key="home_award2_title") }}
-        </div>
-        <p class="text-slate-400">{{ trans(lang=lang, key="home_award2_desc") }}</p>
-      </div>
-
-      <div class="retro-box p-3 space-y-1 border-l-4 border-l-purple-400">
-        <div class="text-purple-400 font-bold">🏆 {{ trans(lang=lang, key="home_award3_badge") }}</div>
-        <div class="text-white font-medium">
-          {{ trans(lang=lang, key="home_award3_title") }}
-        </div>
-        <p class="text-slate-400">{{ trans(lang=lang, key="home_award3_desc") }}</p>
-      </div>
-
-      <div class="retro-box p-3 space-y-1 border-l-4 border-l-sky-400">
-        <div class="text-sky-400 font-bold">🏅 {{ trans(lang=lang, key="home_award4_badge") }}</div>
-        <div class="text-white font-medium">
-          {{ trans(lang=lang, key="home_award4_title") }}
-        </div>
-        <p class="text-slate-400">{{ trans(lang=lang, key="home_award4_desc") }}</p>
-      </div>
-
+      {% if aw_sec and aw_sec.extra.awards %}
+        {% for aw in aw_sec.extra.awards | slice(end=4) %}
+          <div class="retro-box p-3 space-y-1 border-l-4 {{ aw.border }}">
+            <div class="{{ aw.color }} font-bold">{{ aw.icon }} {{ aw.badge }}</div>
+            <div class="text-white font-medium line-clamp-2">
+              {{ aw.title }}
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </section>
 

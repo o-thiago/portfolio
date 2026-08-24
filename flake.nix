@@ -22,6 +22,7 @@
               ps.pylatexenc
             ]))
             texliveFull
+            git
           ];
 
           portfolioSite = pkgs.stdenv.mkDerivation {
