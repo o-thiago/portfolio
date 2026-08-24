@@ -1,0 +1,1 @@
+{% set p = load_data(path="data/profile.toml") %}<a href="{{ p.github }}{% if repo %}/{{ repo }}{% endif %}" target="_blank" rel="noopener noreferrer">{{ p.github | replace(from="https://", to="") }}{% if repo %}/{{ repo }}{% endif %}</a>

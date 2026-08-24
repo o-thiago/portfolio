@@ -21,3 +21,9 @@ O **Radar da Inovação** é uma plataforma web criada dentro do grupo de pesqui
 - **Backend com Laravel:** Criação de rotas e APIs em **Laravel (PHP)** integradas com banco de dados relacional **MySQL**.
 - **Docker:** Configuração de contêineres Docker para facilitar a execução local do ambiente pelos membros do laboratório.
 - **Apresentações:** Ajudei a expor o projeto e demonstrar a ferramenta na **Expo Favela** e na **Semana Nacional de Ciência e Tecnologia (SNCT)**.
+
+---
+
+## Autor
+
+- {{ author_link() }}

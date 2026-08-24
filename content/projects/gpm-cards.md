@@ -32,3 +32,10 @@ services.postgres."gpm-cards-db" = {
   '';
 };
 ```
+
+---
+
+## Repository
+
+- **GitHub:** {{ github_link(repo="gpm-cards") }}
+- **Author:** {{ author_link() }}
