@@ -24,9 +24,11 @@ def clean(s: str) -> str:
     return " ".join(LatexNodes2Text().latex_to_text(s).split())
 
 
-def find_match(pattern: str, text: str, group: int = 1) -> str:
+def find_match(
+    pattern: str, text: str, group: int = 1, flags: int = re.DOTALL | re.MULTILINE
+) -> str:
     """Extract a regex group match or empty string if not found."""
-    m = re.search(pattern, text)
+    m = re.search(pattern, text, flags=flags)
     return m.group(group) if m else ""
 
 
