@@ -144,14 +144,14 @@
           </h3>
           <p class="text-xs text-slate-300 leading-relaxed">
             {% if lang == "pt" %}
-              Configuração declarativa do NixOS para placas Raspberry Pi 4. Módulos de kernel, aceleração VC4 DRM e Bluetooth gerenciados via Flakes.
+              Sistema operacional declarativo em NixOS desenvolvido para alimentar a console arcade <strong>DACC Station da UNIR</strong> (Raspberry Pi 4), com runtime universal <code>nix-ld</code> para jogos, baixa latência e kernel tunado.
             {% else %}
-              Declarative NixOS configuration tailored for Raspberry Pi 4 boards. Features custom kernel modules, VC4 DRM acceleration, and Bluetooth stack via Flakes.
+              Declarative NixOS operating system engineered to power the <strong>UNIR DACC Station</strong> arcade console (Raspberry Pi 4), featuring universal <code>nix-ld</code> game runtime and low-latency tuning.
             {% endif %}
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
-          <span class="text-slate-500 font-mono">NixFlakes • RPi4</span>
+          <span class="text-slate-500 font-mono">NixOS • DACC Station (UNIR)</span>
           <a href="{{ config.base_url }}{{ lang_prefix }}/projects/toof-os/" class="text-[#4ade80]">
             {{ trans(key="link_read_deep_dive") }}
           </a>

@@ -73,10 +73,10 @@ His work spans three main dimensions:
 
 ## 4. Featured Projects
 
-### toof-os
-- **URL:** https://github.com/o-thiago/toof-os
-- **Stack:** Nix Flakes, NixOS, Raspberry Pi 4, Linux Kernel, Broadcom VC4
-- **Summary:** Declarative operating system configuration for Raspberry Pi 4 ARM64 single-board computers using Nix flakes, custom kernel modules, VC4 graphics drivers, and Bluetooth.
+### toof-os (UNIR DACC Station Operating System)
+- **URL:** https://github.com/o-thiago/ToofOS
+- **Stack:** Nix Flakes, NixOS, Raspberry Pi 4, DACC Station (UNIR), nix-ld, SDL2, Wayland
+- **Summary:** Bespoke, fully declarative NixOS operating system engineered to power the DACC Station (custom game console & arcade project by the Department of Computer Science at UNIR). Features universal `nix-ld` dynamically linked game runtime (Steam-inspired), low-latency audio via PipeWire/rtkit, ananicy-cpp process scheduling, SD card write optimization, and custom gamepad support (Xbox/DualShock 4).
 
 ### GPMecatrônica Cards & Research Platform
 - **URL:** https://github.com/o-thiago/gpm-cards
