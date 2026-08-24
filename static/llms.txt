@@ -24,7 +24,7 @@
 ## Featured Projects
 - **toof-os** (https://github.com/o-thiago/toof-os): Declarative NixOS configuration tailored for Raspberry Pi 4 boards with VC4 DRM GPU drivers and custom modules.
 - **gpm-cards** (https://github.com/o-thiago/gpm-cards): Full-stack credential and showcase platform for GPMecatrônica with Next.js, PostgreSQL, and Nix process-compose services.
-- **sqlx-conditional-queries-layering** (https://github.com/o-thiago/sqlx-conditional-queries-layering): Architectural pattern in Rust for compile-time safe, dynamic SQL query composition via SQLx QueryBuilder.
+- **sqlx-conditional-queries-layering** (https://github.com/o-thiago/sqlx-conditional-queries-layering): Metaprogramming macro engine in Rust for composable, layered, and mergeable conditional SQL query templates on top of SQLx. Author: @o-thiago.
 - **Innovation Radar**: Institutional web platform for tracking research projects and IP at IFRO with React, Laravel, Docker.
 
 ## Honors & Olympiad Medals
