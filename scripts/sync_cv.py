@@ -31,11 +31,11 @@ def get_cv_root() -> Path:
             stderr=subprocess.DEVNULL,
         )
         return cache
-    cache.parent.mkdir(parents=True, exist_ok=True)
     token = os.environ.get("CV_PAT") or os.environ.get("GH_PAT")
     repo_url = REMOTE_REPO
-    if token and "github.com" in repo_url and "@" not in repo_url:
-        repo_url = repo_url.replace("https://", f"https://x-access-token:{token}@")
+    if token and "github.com" in repo_url:
+        clean_url = re.sub(r"https?://(?:[^@]+@)?github\.com/", "", repo_url)
+        repo_url = f"https://{token}@github.com/{clean_url}"
     res = subprocess.run(
         ["git", "clone", "--depth", "1", repo_url, str(cache)],
         check=False,
@@ -43,9 +43,11 @@ def get_cv_root() -> Path:
         text=True,
     )
     if res.returncode != 0 or not (cache / "resumes").exists():
+        err_detail = res.stderr.strip() or res.stdout.strip()
         msg = (
-            f"Failed to clone private CV repository from {REMOTE_REPO}.\n"
-            "If running in CI, add a GitHub secret named 'CV_PAT' with repo access."
+            f"Failed to clone CV repository from {REMOTE_REPO}.\n"
+            f"Git error output: {err_detail}\n"
+            "If the repository is private, ensure the secret 'CV_PAT' is set with read access."
         )
         raise RuntimeError(msg)
     return cache
@@ -137,14 +139,24 @@ def parse_cv(path: Path) -> dict:
 
 def build_pdf(src_dir: Path, tex_file: str, dst_pdf: Path) -> None:
     cmd = ["pdflatex", "-interaction=nonstopmode", tex_file]
-    run_res = subprocess.run(
-        cmd,
-        cwd=src_dir,
-        check=False,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
-    if run_res.returncode != 0:
+    pdf_path = src_dir / tex_file.replace(".tex", ".pdf")
+    try:
+        run_res = subprocess.run(
+            cmd,
+            cwd=src_dir,
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        if run_res.returncode != 0:
+            subprocess.run(
+                ["nix", "shell", "nixpkgs#texliveFull", "--command", *cmd],
+                cwd=src_dir,
+                check=False,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+    except FileNotFoundError:
         subprocess.run(
             ["nix", "shell", "nixpkgs#texliveFull", "--command", *cmd],
             cwd=src_dir,
@@ -152,7 +164,12 @@ def build_pdf(src_dir: Path, tex_file: str, dst_pdf: Path) -> None:
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-    shutil.copy2(src_dir / tex_file.replace(".tex", ".pdf"), dst_pdf)
+
+    if not pdf_path.exists():
+        msg = f"Failed to generate PDF for {tex_file} in {src_dir}."
+        raise RuntimeError(msg)
+
+    shutil.copy2(pdf_path, dst_pdf)
 
 
 def format_bullets(bullets: list[str]) -> str:
