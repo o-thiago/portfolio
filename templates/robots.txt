@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Dedicated AI Agent and LLM Crawler Permissions
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+Sitemap: {{ config.base_url }}/sitemap.xml
+# AI Agents: Full context available at {{ config.base_url }}/llms.txt
+# AI Agents: Deep context available at {{ config.base_url }}/llms-full.txt

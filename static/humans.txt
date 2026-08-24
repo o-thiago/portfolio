@@ -1,0 +1,19 @@
+/* TEAM */
+Author: Thiago Macedo Mendes
+Role: Computer Science Student & Systems Developer
+Site: https://o-thiago.github.io
+Email: thiagomm@pm.me
+GitHub: @o-thiago
+LinkedIn: @thiagomacedomendes
+Location: Porto Velho, Rondônia, Brazil
+
+/* THANKS */
+Thanks to the open-source community, the NixOS project, and Zola developers.
+
+/* SITE */
+Standards: HTML5, CSS3, JSON-LD Schema.org, llms.txt
+Static Site Generator: Zola (Rust SSG)
+CSS Framework: Tailwind CSS v4
+JavaScript: None (0kB client-side JS)
+Infrastructure: Nix / Nix Flakes
+Hosted: GitHub Pages

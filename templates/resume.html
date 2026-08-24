@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-10">
+  
+  <!-- Resume Action Bar (Hidden when printed) -->
+  <div class="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+    <div>
+      <div class="font-bold text-white text-sm">Curriculum Vitae / Resume</div>
+      <p class="text-xs text-slate-400">Printable, semantic HTML format. Matches LaTeX CV standards.</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="mailto:{{ config.extra.email }}" 
+         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700 transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>Contact Thiago</span>
+      </a>
+      <a href="{{ config.base_url }}/llms.txt" 
+         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-sky-950/80 hover:bg-sky-900/80 text-xs font-mono text-sky-400 border border-sky-800/80 transition-colors">
+        <span>Raw Context (llms.txt)</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Resume Sheet -->
+  <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-10 space-y-8 font-sans print:border-none print:p-0 print:bg-transparent">
+    
+    <!-- Resume Header -->
+    <div class="text-center space-y-2 border-b border-slate-800 pb-6 print:border-black">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white print:text-black">Thiago Macedo Mendes</h1>
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs sm:text-sm text-slate-400 print:text-black font-mono">
+        <span>Porto Velho, Rondônia, Brazil</span>
+        <span>•</span>
+        <a href="tel:+5569993146868" class="hover:text-white">+55 (69) 99314-6868</a>
+        <span>•</span>
+        <a href="mailto:{{ config.extra.email }}" class="text-sky-400 print:text-black hover:underline">{{ config.extra.email }}</a>
+        <span>•</span>
+        <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black hover:underline">linkedin.com/in/thiagomacedomendes</a>
+        <span>•</span>
+        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black hover:underline">github.com/o-thiago</a>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-bold text-white print:text-black uppercase tracking-wider font-mono border-b border-slate-800 pb-1 print:border-black">
+        Summary
+      </h2>
+      <p class="text-sm text-slate-300 print:text-black leading-relaxed">
+        Computer Science student (UNIR) and IT Technician (IFRO) focused on software development, systems programming, and IT infrastructure. Experience working as a researcher for the GPMecatrônica and GoTec groups, and in IT infrastructure at Censipam (Ministry of Defense). Skilled in C, Rust, TypeScript, Python, Java, PHP, React, Next.js, NixOS, and databases (MySQL, PostgreSQL, MongoDB). Seeking a Software Development internship to apply my technical background to real-world projects.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-bold text-white print:text-black uppercase tracking-wider font-mono border-b border-slate-800 pb-1 print:border-black">
+        Experience
+      </h2>
+
+      <!-- Role 1 -->
+      <div class="space-y-1 text-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between font-medium">
+          <span class="text-white print:text-black font-bold">IFRO - Federal Institute of Rondônia</span>
+          <span class="text-slate-400 print:text-black text-xs font-mono">Porto Velho, RO, Brazil</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between italic text-slate-300 print:text-black text-xs">
+          <span>Administrative Assistant / Outsourced Developer (GPMecatrônica)</span>
+          <span>Jan 2025 – Dec 2025</span>
+        </div>
+        <ul class="list-disc pl-5 text-slate-300 print:text-black space-y-1 text-xs sm:text-sm pt-1">
+          <li>Outsourced contractor at the GPMecatrônica Research Group, in partnership with Belém Rio Segurança Ltda.</li>
+          <li>Developed web applications (Next.js, React, Tailwind CSS, oRPC) for internal GPMecatrônica projects.</li>
+          <li>Contributed to robotics activities and the production of scientific papers for the group.</li>
+          <li>Performed technical support, hardware maintenance, and environment standardization using Docker and Nix.</li>
+        </ul>
+      </div>
+
+      <!-- Role 2 -->
+      <div class="space-y-1 text-sm pt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between font-medium">
+          <span class="text-white print:text-black font-bold">Censipam (Ministry of Defense)</span>
+          <span class="text-slate-400 print:text-black text-xs font-mono">Porto Velho, RO, Brazil</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between italic text-slate-300 print:text-black text-xs">
+          <span>IT Infrastructure Intern</span>
+          <span>Aug 2023 – Oct 2024</span>
+        </div>
+        <ul class="list-disc pl-5 text-slate-300 print:text-black space-y-1 text-xs sm:text-sm pt-1">
+          <li>Maintained the IT infrastructure for Censipam (Ministry of Defense).</li>
+          <li>Performed hardware maintenance (assembly, diagnostics) and installed operating systems.</li>
+          <li>Configured IP telephony network points within the building's infrastructure and provided technical support to internal users.</li>
+        </ul>
+      </div>
+
+      <!-- Role 3 -->
+      <div class="space-y-1 text-sm pt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between font-medium">
+          <span class="text-white print:text-black font-bold">IFRO - Federal Institute of Rondônia</span>
+          <span class="text-slate-400 print:text-black text-xs font-mono">Porto Velho, RO, Brazil</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between italic text-slate-300 print:text-black text-xs">
+          <span>Scientific Researcher (GoTec Group)</span>
+          <span>Feb 2024 – Jul 2024</span>
+        </div>
+        <ul class="list-disc pl-5 text-slate-300 print:text-black space-y-1 text-xs sm:text-sm pt-1">
+          <li>Research fellow at the Technological Solutions Research Group (GoTec), focusing on web system development.</li>
+          <li>Contributed to the development of the "Innovation Radar" web solution, working on front-end and back-end (TypeScript, ReactJS, Laravel, PHP, MySQL).</li>
+          <li>Utilized Docker for containerization and Storybook for component documentation.</li>
+        </ul>
+      </div>
+
+      <!-- Role 4 -->
+      <div class="space-y-1 text-sm pt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between font-medium">
+          <span class="text-white print:text-black font-bold">IFRO - Federal Institute of Rondônia</span>
+          <span class="text-slate-400 print:text-black text-xs font-mono">Porto Velho, RO, Brazil</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between italic text-slate-300 print:text-black text-xs">
+          <span>Voluntary Researcher (GoTec Group)</span>
+          <span>Sep 2023 – Feb 2024</span>
+        </div>
+        <ul class="list-disc pl-5 text-slate-300 print:text-black space-y-1 text-xs sm:text-sm pt-1">
+          <li>Voluntary researcher at GoTec, focusing on technical training in web development (TypeScript, ReactJS, Laravel, PHP).</li>
+          <li>Assisted with the initial architecture of the "Innovation Radar" project.</li>
+          <li>Represented GoTec at scientific dissemination events, including presentations at Expo Favela.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="space-y-3">
+      <h2 class="text-lg font-bold text-white print:text-black uppercase tracking-wider font-mono border-b border-slate-800 pb-1 print:border-black">
+        Education
+      </h2>
+
+      <div class="space-y-1 text-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between font-medium">
+          <span class="text-white print:text-black font-bold">Federal University of Rondônia (UNIR)</span>
+          <span class="text-slate-400 print:text-black text-xs font-mono">Porto Velho, RO, Brazil</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between italic text-slate-300 print:text-black text-xs">
+          <span>Bachelor's Degree, Computer Science</span>
+          <span>Feb 2026 – Dec 2029</span>
+        </div>
+      </div>
+
+      <div class="space-y-1 text-sm pt-1">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between font-medium">
+          <span class="text-white print:text-black font-bold">IFRO - Federal Institute of Rondônia</span>
+          <span class="text-slate-400 print:text-black text-xs font-mono">Porto Velho, RO, Brazil</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between italic text-slate-300 print:text-black text-xs">
+          <span>Technical Course in Informatics Integrated with High School</span>
+          <span>Feb 2023 – Dec 2025</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-bold text-white print:text-black uppercase tracking-wider font-mono border-b border-slate-800 pb-1 print:border-black">
+        Skills & Technologies
+      </h2>
+      <ul class="text-xs sm:text-sm text-slate-300 print:text-black space-y-1.5 list-disc pl-5">
+        <li><strong class="text-white print:text-black">Technologies & Languages:</strong> C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind CSS.</li>
+        <li><strong class="text-white print:text-black">Frameworks & Tools:</strong> Next.js, React, Laravel, Docker, NixOS, Git, ZMK/QMK Embedded Firmware, Storybook.</li>
+        <li><strong class="text-white print:text-black">Databases & Infrastructure:</strong> PostgreSQL, MySQL, SQLite, MongoDB, Linux System Administration, Computer Networking, IP Telephony (VoIP).</li>
+        <li><strong class="text-white print:text-black">Spoken Languages:</strong> Portuguese (Native/Bilingual), English (Native/Bilingual), Spanish (Elementary).</li>
+      </ul>
+    </section>
+
+    <!-- Certifications & Awards -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-bold text-white print:text-black uppercase tracking-wider font-mono border-b border-slate-800 pb-1 print:border-black">
+        Certifications & Awards
+      </h2>
+      <ul class="text-xs sm:text-sm text-slate-300 print:text-black space-y-1 list-disc pl-5">
+        <li>Gold Medal – Tesouro Direto Financial Education Olympiad (2025)</li>
+        <li>Silver Medal – Brazilian Robotics Olympiad (Theoretical 2025)</li>
+        <li>Honorable Mention – International Math Olympiad "Math Without Borders" (2025)</li>
+        <li>Merit Honor – Brazilian Robotics Olympiad (Theoretical 2024)</li>
+        <li>Participation in the Brazilian Olympiad in Informatics (OBI Phase 2 in 2024, 2025; Phase 1 in 2023)</li>
+        <li>Speaker at the 1st Polyglot Meeting of Calama – English Fundamentals (2024)</li>
+        <li>Python Developer and Full Stack Developer Bootcamps (IGTI / XP Educação)</li>
+        <li>Personal Data Processing and Protection Course (Ministry of Defense 2024)</li>
+        <li>Course "Oratory: The Art of Expressing Yourself Well" (IFRO 2024)</li>
+        <li>Exhibitor at the Rondoniense Week of Art, Heritage and Culture (2023)</li>
+        <li>Participation in the Brazilian Astronomy and Astronautics Olympiad (OBA 2025)</li>
+      </ul>
+    </section>
+
+  </div>
+
+</div>
+{% endblock content %}
