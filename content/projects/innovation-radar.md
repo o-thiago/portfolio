@@ -26,4 +26,4 @@ The **Innovation Radar** is an institutional web platform built inside the **GoT
 
 ## Author
 
-- {{ name() }} (`@{{ handle() }}`)
+- {{ name() }} (@{{ handle() }})
