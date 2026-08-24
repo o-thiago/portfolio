@@ -1,1 +1,1 @@
-{% set current_lang = lang | default(value="en") %}{% set cv = load_data(path="data/cv." ~ current_lang ~ ".toml") %}{{ cv.name }}
+{% set p = load_data(path="data/profile.toml") %}{{ p.name }}

@@ -249,6 +249,18 @@ def write_cv_data(lang: str, d: dict) -> None:
     data_dir = ROOT / "data"
     data_dir.mkdir(exist_ok=True)
     (data_dir / f"cv.{lang}.toml").write_text(tomli_w.dumps(data), encoding="utf-8")
+    if lang == "en":
+        profile = {
+            "name": d["name"],
+            "handle": d["handle"],
+            "email": d["email"],
+            "phone": d["phone"],
+            "location": d["location"],
+            "github": d["github"],
+            "linkedin": d["linkedin"],
+            "site_url": f"https://{github_handle}.github.io",
+        }
+        (data_dir / "profile.toml").write_text(tomli_w.dumps(profile), encoding="utf-8")
 
 
 def make_humans_txt(d: dict) -> str:
