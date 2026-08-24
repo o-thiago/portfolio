@@ -8,14 +8,14 @@ import subprocess
 from pathlib import Path
 
 import tomli_w
+from pylatexenc.latex2text import LatexNodes2Text
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGETS = [
     (
         False,
         "en",
-        "resume.tex",
-        "resume.pdf",
+        "resume",
         ".md",
         "Curriculum Vitae / Resume",
         "Professional and academic CV of Thiago Macedo Mendes.",
@@ -25,8 +25,7 @@ TARGETS = [
     (
         True,
         "pt-br",
-        "curriculo.tex",
-        "curriculo.pdf",
+        "curriculo",
         ".pt.md",
         "Currículo / CV",
         "Currículo profissional e acadêmico de Thiago Macedo Mendes.",
@@ -36,13 +35,17 @@ TARGETS = [
 ]
 
 
+def clean(s: str) -> str:
+    return " ".join(LatexNodes2Text().latex_to_text(s).split())
+
+
 def get_cv_root() -> Path | None:
-    candidates = (
+    for p in (
         ROOT.parent / "curriculum-vitae",
         Path.home() / "Programming/curriculum-vitae",
-    )
-    if p := next((p for p in candidates if (p / "resumes").exists()), None):
-        return p
+    ):
+        if (p / "resumes").exists():
+            return p
     cache = ROOT / ".cache/curriculum-vitae"
     if (cache / "resumes").exists():
         subprocess.run(
@@ -51,49 +54,40 @@ def get_cv_root() -> Path | None:
             check=False,
         )
         return cache
-
     shutil.rmtree(cache, ignore_errors=True)
     cache.parent.mkdir(parents=True, exist_ok=True)
-    repo = os.getenv(
-        "CV_REPO_URL", "https://github.com/o-thiago/resume-template.git"
-    )
-    res = subprocess.run(
-        ["git", "clone", "--depth=1", repo, str(cache)],
+    subprocess.run(
+        [
+            "git",
+            "clone",
+            "--depth=1",
+            os.getenv(
+                "CV_REPO_URL",
+                "https://github.com/o-thiago/resume-template.git",
+            ),
+            str(cache),
+        ],
         capture_output=True,
-        text=True,
         check=False,
     )
-    if (cache / "resumes").exists():
-        return cache
-    err = res.stderr.strip() or "clone failed"
-    print(f"Notice: CV sources unavailable ({err}). Proceeding with existing content.")
-    return None
+    return cache if (cache / "resumes").exists() else None
 
 
-def build_pdf(src: Path, tex: str, dst: Path) -> None:
-    cmd = ["pdflatex", "-interaction=nonstopmode", tex]
-    try:
-        res = subprocess.run(cmd, cwd=src, capture_output=True, check=False)
-    except FileNotFoundError:
-        res = None
-    if not res or res.returncode != 0:
+def build_pdf(src: Path, name: str, dst: Path) -> None:
+    cmd = ["pdflatex", "-interaction=nonstopmode", f"{name}.tex"]
+    if (
+        subprocess.run(
+            cmd, cwd=src, capture_output=True, check=False
+        ).returncode
+        != 0
+    ):
         subprocess.run(
             ["nix", "shell", "nixpkgs#texliveFull", "--command", *cmd],
             cwd=src,
             capture_output=True,
             check=False,
         )
-    if not (pdf := (src / tex).with_suffix(".pdf")).exists():
-        raise RuntimeError(f"Failed to generate PDF for {tex} in {src}")
-    shutil.copy2(pdf, dst)
-
-
-def clean(s: str) -> str:
-    s = re.sub(r"(?<!\\)%.*$", "", s, flags=re.MULTILINE)
-    s = re.sub(r"\\(?:begin|end)\{[^}]+\}", "", s)
-    s = re.sub(r"\\(?:textbf|textit|emph|c|href\{[^}]*\})\{([^}]*)\}", r"\1", s)
-    s = re.sub(r"\\([_&%$])", r"\1", re.sub(r"``|''", '"', s))
-    return " ".join(s.split())
+    shutil.copy2(src / f"{name}.pdf", dst)
 
 
 def parse_cv(path: Path, is_pt: bool) -> dict:
@@ -130,28 +124,30 @@ def parse_cv(path: Path, is_pt: bool) -> dict:
             == 4
         ]
 
-    sum_k, exp_k, edu_k, sk_k, cert_k = (
+    exp_k, edu_k = (
         get_sec(en, pt)
-        for en, pt in [
-            ("Summary", "Resumo"),
+        for en, pt in (
             ("Experience", "Experiência"),
             ("Education", "Educação"),
-            ("Skills", "Habilidades"),
-            ("Certifications", "Certificações"),
-        ]
+        )
     )
     skills = [
         clean(m)
         for m in re.findall(
             r"\\textbf\{[^}]+\}\s*(.*?)(?=\\item|\Z)",
-            secs.get(sk_k, ""),
+            secs.get(get_sec("Skills", "Habilidades"), ""),
             re.DOTALL,
         )
     ]
+    sum_k, cert_k = get_sec("Summary", "Resumo"), get_sec(
+        "Certifications", "Certificações"
+    )
 
     return {
         "name": "Thiago Macedo Mendes",
-        "location": f"Porto Velho, Rondônia, {'Brasil' if is_pt else 'Brazil'}",
+        "location": (
+            "Porto Velho, Rondônia, " + ("Brasil" if is_pt else "Brazil")
+        ),
         "phone": "+55 (69) 99314-6868",
         "email": "thiagomm@pm.me",
         "linkedin": "https://www.linkedin.com/in/thiagomacedomendes",
@@ -160,7 +156,7 @@ def parse_cv(path: Path, is_pt: bool) -> dict:
         "summary": clean(secs.get(sum_k, "")),
         "experience_title": exp_k,
         "education_title": edu_k,
-        "skills_title": sk_k,
+        "skills_title": get_sec("Skills", "Habilidades"),
         "skills_tech_label": "Tecnologias" if is_pt else "Technologies",
         "skills_tech": skills[0] if skills else "",
         "skills_lang_label": "Idiomas" if is_pt else "Languages",
@@ -179,11 +175,10 @@ def parse_cv(path: Path, is_pt: bool) -> dict:
 def main() -> None:
     if not (cv := get_cv_root()):
         return
-
     (ROOT / "static").mkdir(exist_ok=True)
-    for is_pt, sub, tex, pdf_name, ext, rt, rd, et, ed in TARGETS:
-        build_pdf(cv / "resumes" / sub, tex, ROOT / "static" / pdf_name)
-        extra = parse_cv(cv / "resumes" / sub / tex, is_pt)
+    for is_pt, sub, name, ext, rt, rd, et, ed in TARGETS:
+        build_pdf(cv / "resumes" / sub, name, ROOT / "static" / f"{name}.pdf")
+        extra = parse_cv(cv / "resumes" / sub / f"{name}.tex", is_pt)
         for folder, page in [
             (
                 "resume",
