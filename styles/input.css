@@ -4,159 +4,212 @@
 @source "../content/**/*.md";
 
 @theme {
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', Courier, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', Times, serif;
 }
 
-/* Custom Base Styles */
+/* Base Terminal / Old Web Styling */
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  background-color: #0c0e12;
 }
 
 body {
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  background-color: #090d13;
-  color: #e2e8f0;
+  font-family: var(--font-mono);
+  background-color: #0c0e12;
+  color: #d1d5db;
+  line-height: 1.6;
 }
 
-/* Monospace code styling */
-pre {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  overflow-x: auto;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  background-color: #0d1117 !important;
-}
-
-code:not(pre code) {
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-  background-color: rgba(255, 255, 255, 0.08);
-  padding: 0.15rem 0.4rem;
-  border-radius: 0.375rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+/* Retro Links */
+a {
   color: #38bdf8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-/* Markdown typography styling */
+a:hover {
+  color: #4ade80;
+  background-color: #1e293b;
+}
+
+/* Retro ASCII Box / Card */
+.retro-box {
+  background-color: #11141a;
+  border: 2px solid #2d3748;
+  box-shadow: 4px 4px 0px 0px #1a202c;
+  transition: all 0.1s ease;
+}
+
+.retro-box:hover {
+  border-color: #4b5563;
+}
+
+.retro-box-accent {
+  background-color: #11141a;
+  border: 2px solid #0284c7;
+  box-shadow: 4px 4px 0px 0px #0369a1;
+}
+
+/* Retro Buttons */
+.retro-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: #1e2430;
+  border: 2px solid #475569;
+  color: #f1f5f9;
+  box-shadow: 3px 3px 0px 0px #0f172a;
+  transition: all 0.05s ease;
+}
+
+.retro-btn:hover {
+  background-color: #334155;
+  color: #38bdf8;
+  border-color: #38bdf8;
+  text-decoration: none;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #0284c7;
+}
+
+.retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000;
+}
+
+.retro-btn-green {
+  background-color: #14532d;
+  border-color: #22c55e;
+  color: #f0fdf4;
+  box-shadow: 3px 3px 0px 0px #052e16;
+}
+
+.retro-btn-green:hover {
+  background-color: #166534;
+  color: #86efac;
+  border-color: #86efac;
+  box-shadow: 4px 4px 0px 0px #15803d;
+}
+
+/* Retro Header Divider */
+.retro-hr {
+  border: 0;
+  border-top: 2px dashed #334155;
+  margin: 1.5rem 0;
+}
+
+/* Markdown typography for old web */
 .prose-custom {
   color: #cbd5e1;
-  line-height: 1.75;
+  font-size: 0.9375rem;
 }
 
 .prose-custom h1 {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #f8fafc;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  letter-spacing: -0.025em;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 0.35rem;
 }
 
 .prose-custom h2 {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: #f1f5f9;
-  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-top: 1.75rem;
   margin-bottom: 0.75rem;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  letter-spacing: -0.02em;
+}
+
+.prose-custom h2::before {
+  content: "## ";
+  color: #64748b;
 }
 
 .prose-custom h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #e2e8f0;
-  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #4ade80;
+  margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
+.prose-custom h3::before {
+  content: "### ";
+  color: #64748b;
+}
+
 .prose-custom p {
-  margin-bottom: 1.15rem;
+  margin-bottom: 1rem;
 }
 
 .prose-custom ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 1.25rem;
+  list-style-type: none;
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.prose-custom ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.prose-custom li {
-  margin-bottom: 0.4rem;
-}
-
-.prose-custom a {
+.prose-custom ul li::before {
+  content: "• ";
   color: #38bdf8;
-  text-decoration: underline;
-  text-decoration-color: rgba(56, 189, 248, 0.4);
-  text-underline-offset: 3px;
-  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  font-weight: bold;
 }
 
-.prose-custom a:hover {
-  color: #7dd3fc;
-  text-decoration-color: #38bdf8;
+.prose-custom code:not(pre code) {
+  background-color: #1e293b;
+  color: #f59e0b;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid #334155;
+  font-size: 0.85em;
 }
 
-.prose-custom blockquote {
-  border-left: 3px solid #0284c7;
-  padding-left: 1rem;
+pre {
+  background-color: #080a0e !important;
+  border: 2px solid #2d3748;
+  padding: 1rem;
+  overflow-x: auto;
   margin: 1.25rem 0;
-  color: #94a3b8;
-  font-style: italic;
 }
 
-/* Subtle glow effect for cards */
-.card-glow {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+/* Classic 88x31 Button Badges */
+.badge-88x31 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 31px;
+  padding: 0 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid;
+  text-decoration: none;
 }
 
-.card-glow:hover {
-  transform: translateY(-2px);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.12);
-}
-
-/* Printable CV stylesheet */
+/* Printable CV */
 @media print {
   body {
     background-color: white !important;
     color: black !important;
-    font-size: 10.5pt;
   }
-
-  header, footer, .no-print {
+  .no-print {
     display: none !important;
   }
-
-  .print-only {
-    display: block !important;
-  }
-
-  .card-glow {
-    border: none !important;
+  .retro-box {
+    border: 1px solid black !important;
     box-shadow: none !important;
-    transform: none !important;
+    background: transparent !important;
   }
-
   a {
     color: black !important;
-    text-decoration: none !important;
-  }
-
-  a[href^="http"]:after {
-    content: " (" attr(href) ")";
-    font-size: 80%;
-    color: #444;
+    text-decoration: underline !important;
   }
 }
