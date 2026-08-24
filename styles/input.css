@@ -9,26 +9,8 @@
   --font-serif: 'Georgia', 'Times New Roman', Times, serif;
 }
 
-/* CSS Theme Variables (Dark Mode Default) */
+/* CSS Theme Variables (Light Mode Default - Pure No-JS) */
 :root {
-  --bg-main: #0c0e12;
-  --bg-box: #11141a;
-  --bg-subtle: #1e2430;
-  --bg-code: #080a0e;
-  --border-color: #2d3748;
-  --border-subtle: #1e293b;
-  --shadow-color: #1a202c;
-  --text-main: #d1d5db;
-  --text-bright: #ffffff;
-  --text-muted: #94a3b8;
-  --text-heading: #ffffff;
-  --accent-cyan: #38bdf8;
-  --accent-green: #4ade80;
-  --accent-amber: #fbbf24;
-}
-
-/* Light Mode Theme (Triggered by class "theme-light" on <html> - Persisted via localStorage) */
-html.theme-light {
   --bg-main: #f5f2eb;
   --bg-box: #ffffff;
   --bg-subtle: #e8e3d8;
@@ -43,21 +25,6 @@ html.theme-light {
   --accent-cyan: #0284c7;
   --accent-green: #16a34a;
   --accent-amber: #b45309;
-}
-
-/* Theme Toggle Button Icon Visibility */
-.theme-icon-light {
-  display: inline;
-}
-.theme-icon-dark {
-  display: none;
-}
-
-html.theme-light .theme-icon-light {
-  display: none !important;
-}
-html.theme-light .theme-icon-dark {
-  display: inline !important;
 }
 
 /* Custom Retro-Minimalist Scrollbar */
@@ -94,7 +61,6 @@ html.theme-light .theme-icon-dark {
 html {
   scroll-behavior: smooth;
   background-color: var(--bg-main);
-  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 body {
@@ -102,7 +68,6 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
-  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 /* Retro Links */
@@ -173,38 +138,38 @@ footer.retro-footer {
   border-top: 2px solid var(--border-color);
 }
 
-/* Dynamic Text Overrides for light mode */
-html.theme-light .text-white {
+/* Base Light Mode Utility Overrides */
+.text-white {
   color: #0f172a !important;
 }
 
-html.theme-light .text-slate-200,
-html.theme-light .text-slate-300 {
+.text-slate-200,
+.text-slate-300 {
   color: #1e293b !important;
 }
 
-html.theme-light .text-slate-400 {
+.text-slate-400 {
   color: #475569 !important;
 }
 
-html.theme-light .text-slate-500 {
+.text-slate-500 {
   color: #64748b !important;
 }
 
-html.theme-light .border-\[\#2d3748\],
-html.theme-light .border-\[\#1e293b\],
-html.theme-light .border-\[\#334155\] {
+.border-\[\#2d3748\],
+.border-\[\#1e293b\],
+.border-\[\#334155\] {
   border-color: #cbd5e1 !important;
 }
 
-html.theme-light .bg-\[\#11141a\],
-html.theme-light .bg-\[\#080a0e\],
-html.theme-light .bg-\[\#0c0e12\] {
+.bg-\[\#11141a\],
+.bg-\[\#080a0e\],
+.bg-\[\#0c0e12\] {
   background-color: #ffffff !important;
 }
 
-html.theme-light .bg-\[\#1e2430\],
-html.theme-light .bg-\[\#1e293b\] {
+.bg-\[\#1e2430\],
+.bg-\[\#1e293b\] {
   background-color: #e8e3d8 !important;
 }
 
