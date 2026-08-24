@@ -31,7 +31,7 @@ def get_cv_root() -> Path:
             stderr=subprocess.DEVNULL,
         )
         return cache
-    token = (os.environ.get("CV_PAT") or os.environ.get("cv_pat") or "").strip()
+    token = os.environ.get("CV_PAT", "").strip()
     repo_url = REMOTE_REPO
     if token and "github.com" in repo_url:
         clean_url = re.sub(r"^https?://(?:[^@]+@)?github\.com/", "", repo_url)
