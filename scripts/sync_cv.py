@@ -1,13 +1,30 @@
 #!/usr/bin/env python3
-"""Sync curriculum-vitae LaTeX resumes and generate portfolio page content."""
+"""Programmatically fetch curriculum-vitae LaTeX sources and generate site content."""
 
+import os
 import re
 import subprocess
 import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CV_ROOT = next((p for p in [ROOT / "submodules" / "curriculum-vitae", ROOT.parent / "curriculum-vitae"] if (p / "resumes").exists()), None)
+LOCAL_CANDIDATES = [
+    ROOT.parent / "curriculum-vitae",
+    Path.home() / "Programming" / "curriculum-vitae",
+]
+REMOTE_REPO = os.environ.get("CV_REPO_URL", "https://github.com/o-thiago/resume-template.git")
+
+def get_cv_root() -> Path:
+    for p in LOCAL_CANDIDATES:
+        if (p / "resumes").exists():
+            return p
+    cache = ROOT / ".cache" / "curriculum-vitae"
+    if (cache / "resumes").exists():
+        subprocess.run(["git", "pull"], cwd=cache, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return cache
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    res = subprocess.run(["git", "clone", "--depth", "1", REMOTE_REPO, str(cache)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    return cache if res.returncode == 0 and (cache / "resumes").exists() else None
 
 def clean(s: str) -> str:
     s = re.sub(r'(?<!\\)%.*$', '', s, flags=re.M)
@@ -107,19 +124,25 @@ experience_title = "{data['experience_title']}"
     return resume, experience
 
 def main():
-    if not CV_ROOT:
+    cv_root = get_cv_root()
+    if not cv_root:
         return
-    subprocess.run(["git", "submodule", "update", "--init", "--recursive"], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+
     (ROOT / "static").mkdir(exist_ok=True)
-    build_pdf(CV_ROOT / "resumes" / "en", "resume.tex", ROOT / "static" / "resume.pdf")
-    build_pdf(CV_ROOT / "resumes" / "pt-br", "curriculo.tex", ROOT / "static" / "curriculo.pdf")
+    build_pdf(cv_root / "resumes" / "en", "resume.tex", ROOT / "static" / "resume.pdf")
+    build_pdf(cv_root / "resumes" / "pt-br", "curriculo.tex", ROOT / "static" / "curriculo.pdf")
 
     for lang, tex, ext in [("en", "resumes/en/resume.tex", ".md"), ("pt", "resumes/pt-br/curriculo.tex", ".pt.md")]:
-        data = parse_cv(CV_ROOT / tex)
+        data = parse_cv(cv_root / tex)
         res_md, exp_md = make_pages(data, lang == "pt")
-        (ROOT / f"content/resume/_index{ext}").write_text(res_md, encoding="utf-8")
-        (ROOT / f"content/experience/_index{ext}").write_text(exp_md, encoding="utf-8")
+        
+        res_dir = ROOT / "content/resume"
+        res_dir.mkdir(parents=True, exist_ok=True)
+        (res_dir / f"_index{ext}").write_text(res_md, encoding="utf-8")
+
+        exp_dir = ROOT / "content/experience"
+        exp_dir.mkdir(parents=True, exist_ok=True)
+        (exp_dir / f"_index{ext}").write_text(exp_md, encoding="utf-8")
 
 if __name__ == "__main__":
     main()
