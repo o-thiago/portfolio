@@ -5,6 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
+    cv = {
+      url = "github:o-thiago/resume-template";
+      flake = false;
+    };
   };
 
   outputs =
@@ -35,7 +39,7 @@
             buildPhase = ''
               mkdir -p static
               if [ -f scripts/sync_cv.py ]; then
-                python3 scripts/sync_cv.py || true
+                CV_DIR=${inputs.cv} python3 scripts/sync_cv.py
               fi
               tailwindcss -i styles/input.css -o static/style.css --minify
               zola build -o $out

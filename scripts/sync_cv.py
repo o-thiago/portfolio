@@ -6,6 +6,7 @@ import os
 import re
 import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 
 import tomli_w
@@ -49,6 +50,10 @@ def clean(s: str) -> str:
 
 
 def get_cv_root() -> Path | None:
+    if cv_env := os.getenv("CV_DIR"):
+        p = Path(cv_env)
+        if (p / "resumes").exists():
+            return p
     for p in (
         ROOT.parent / "curriculum-vitae",
         Path.home() / "Programming/curriculum-vitae",
@@ -85,20 +90,21 @@ def get_cv_root() -> Path | None:
 
 
 def build_pdf(src: Path, name: str, dst: Path) -> None:
-    cmd = ["pdflatex", "-interaction=nonstopmode", f"{name}.tex"]
-    if (
-        subprocess.run(
-            cmd, cwd=src, capture_output=True, check=False
-        ).returncode
-        != 0
-    ):
-        subprocess.run(
-            ["nix", "shell", "nixpkgs#texliveFull", "--command", *cmd],
-            cwd=src,
-            capture_output=True,
-            check=False,
-        )
-    shutil.copy2(src / f"{name}.pdf", dst)
+    if not (src / f"{name}.tex").exists():
+        return
+    with tempfile.TemporaryDirectory() as tmp:
+        for f in src.iterdir():
+            if f.is_file():
+                shutil.copy2(f, tmp)
+        with contextlib.suppress(OSError, subprocess.SubprocessError):
+            subprocess.run(
+                ["pdflatex", "-interaction=nonstopmode", f"{name}.tex"],
+                cwd=tmp,
+                capture_output=True,
+                check=False,
+            )
+        if (out := Path(tmp) / f"{name}.pdf").exists():
+            shutil.copy2(out, dst)
 
 
 def parse_award(item: str) -> dict:
