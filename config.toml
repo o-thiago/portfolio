@@ -1,13 +1,12 @@
 # Zola Configuration for Thiago Macedo Mendes' Portfolio
 base_url = "https://o-thiago.github.io"
 title = "Thiago Macedo Mendes"
-description = "Computer Science Student, Systems Developer & IT Infrastructure Enthusiast. Exploring low-level systems, NixOS, declarative computing, and performant web architecture."
+description = "Computer Science Student, Systems Developer & IT Infrastructure Enthusiast."
 default_language = "en"
 compile_sass = false
 minify_html = true
 build_search_index = false
 generate_feeds = true
-feed_filenames = ["rss.xml"]
 
 taxonomies = [
   { name = "tags", feed = false }
@@ -22,6 +21,94 @@ external_links_no_referrer = false
 [markdown.highlighting]
 theme = "nord"
 
+[languages.en]
+
+[languages.en.translations]
+lang_code = "en"
+lang_name = "English"
+nav_about = "About"
+nav_projects = "Projects"
+nav_experience = "Experience"
+nav_awards = "Awards"
+nav_resume = "Resume"
+hero_status = "Open for Software Engineering Internships & Research Collaborations"
+hero_greeting = "Hi, I'm"
+hero_desc = "A <strong class=\"text-white font-medium\">Computer Science student</strong> at UNIR and <strong class=\"text-white font-medium\">Systems Developer</strong> passionate about low-level computing, NixOS reproducibility, embedded firmware, and performant web architecture."
+location_text = "Porto Velho, RO - Brazil"
+education_text = "UNIR (B.S. CS '29) & IFRO ('25)"
+researcher_text = "Researcher @ GPMecatrônica"
+btn_projects = "View Projects"
+btn_resume = "Resume / CV"
+btn_contact = "Get in Touch"
+section_who_i_am = "Who I Am"
+link_complete_bio = "Read complete bio →"
+dev_title = "The Developer"
+dev_desc = "Focused on systems programming, memory safety, and reproducible infrastructure. Passionate about C, Rust, NixOS, TypeScript, and building zero-bloat, high-performance software."
+student_title = "The Student & Researcher"
+student_desc = "Pursuing Computer Science at UNIR and Informatics graduate from IFRO. Active researcher in mechatronics, robotics, and authoring scientific papers."
+person_title = "The Person"
+person_desc = "Minimalist and ergonomics nerd building 34-key split columnar keyboards (Urchin, Ferris). Bilingual in PT & EN, avid reader, math enthusiast, and open source advocate."
+section_featured_projects = "Featured Projects"
+link_all_projects = "All projects (6) →"
+link_read_deep_dive = "Read deep-dive →"
+section_experience = "Experience & Research"
+link_detailed_timeline = "Detailed timeline →"
+section_awards = "Distinctions & Olympiads"
+link_all_awards = "All awards (12+) →"
+ai_agent_badge = "AI-Agent & Machine Friendly"
+ai_agent_title = "Looking to ingest or index this portfolio with an AI agent?"
+ai_agent_desc = "This entire site is built with zero client-side JavaScript, semantic markup, and complies with the modern /llms.txt standard for instant parsing by LLMs, bots, and curl."
+btn_fetch_llms = "Fetch /llms.txt"
+btn_fetch_llms_full = "Fetch /llms-full.txt"
+footer_summary = "Computer Science student at UNIR & researcher at GPMecatrônica. Focused on low-level systems, Nix, web architecture, and clean engineering."
+no_js_badge = "⚡ 0kB JS • Pure Static HTML+CSS"
+rights_reserved = "All rights reserved."
+
+[languages.pt]
+title = "Thiago Macedo Mendes"
+description = "Estudante de Ciência da Computação (UNIR) e Desenvolvedor de Sistemas. Foco em sistemas de baixo nível, NixOS e arquitetura web de alta performance."
+
+[languages.pt.translations]
+lang_code = "pt"
+lang_name = "Português"
+nav_about = "Sobre"
+nav_projects = "Projetos"
+nav_experience = "Experiência"
+nav_awards = "Prêmios"
+nav_resume = "Currículo"
+hero_status = "Aberto a Estágios em Desenvolvimento de Software e Pesquisa"
+hero_greeting = "Olá, eu sou o"
+hero_desc = "<strong class=\"text-white font-medium\">Estudante de Ciência da Computação</strong> na UNIR e <strong class=\"text-white font-medium\">Desenvolvedor de Sistemas</strong> apaixonado por computação de baixo nível, reprodutibilidade com NixOS, firmware embarcado e arquitetura web de alta performance."
+location_text = "Porto Velho, RO - Brasil"
+education_text = "UNIR (Bacharelado CC '29) & IFRO ('25)"
+researcher_text = "Pesquisador @ GPMecatrônica"
+btn_projects = "Ver Projetos"
+btn_resume = "Currículo / CV"
+btn_contact = "Entrar em Contato"
+section_who_i_am = "Quem Sou Eu"
+link_complete_bio = "Ler biografia completa →"
+dev_title = "O Desenvolvedor"
+dev_desc = "Foco em programação de sistemas, segurança de memória e infraestrutura reproduzível. Apaixonado por C, Rust, NixOS, TypeScript e software de alta performance sem excessos."
+student_title = "O Estudante & Pesquisador"
+student_desc = "Graduando em Ciência da Computação na UNIR e formado em Informática pelo IFRO. Pesquisador ativo em mecatrônica, robótica e coautor de artigos científicos."
+person_title = "A Pessoa"
+person_desc = "Entusiasta de ergonomia e minimalismo construindo teclados divididos de 34 teclas (Urchin, Ferris). Bilíngue (PT/EN), leitor ávido, apaixonado por matemática e software livre."
+section_featured_projects = "Projetos em Destaque"
+link_all_projects = "Todos os projetos (6) →"
+link_read_deep_dive = "Ver detalhes →"
+section_experience = "Experiência & Pesquisa"
+link_detailed_timeline = "Linha do tempo detalhada →"
+section_awards = "Distinções & Olimpíadas"
+link_all_awards = "Todas as premiações (12+) →"
+ai_agent_badge = "Otimizado para Agentes de IA & LLMs"
+ai_agent_title = "Deseja indexar ou consultar este portfólio com um agente de IA?"
+ai_agent_desc = "Este site foi desenvolvido com zero JavaScript no cliente, marcação semântica e segue o padrão /llms.txt para leitura direta por LLMs, bots e curl."
+btn_fetch_llms = "Acessar /llms.txt"
+btn_fetch_llms_full = "Acessar /llms-full.txt"
+footer_summary = "Estudante de Ciência da Computação na UNIR e pesquisador no GPMecatrônica. Foco em sistemas de baixo nível, Nix, arquitetura web e engenharia limpa."
+no_js_badge = "⚡ 0kB JS • HTML+CSS 100% Estático"
+rights_reserved = "Todos os direitos reservados."
+
 [extra]
 name = "Thiago Macedo Mendes"
 handle = "o-thiago"
@@ -33,17 +120,7 @@ github = "https://github.com/o-thiago"
 linkedin = "https://www.linkedin.com/in/thiagomacedomendes"
 site_url = "https://o-thiago.github.io"
 
-# Structured profile facts
 university = "Federal University of Rondônia (UNIR)"
 university_degree = "B.S. in Computer Science (2026 - 2029)"
 institute = "Federal Institute of Rondônia (IFRO)"
 institute_degree = "Informatics Technician (2023 - 2025)"
-
-# Navigation Items
-nav_links = [
-  { name = "About", url = "/about/" },
-  { name = "Projects", url = "/projects/" },
-  { name = "Experience", url = "/experience/" },
-  { name = "Awards", url = "/awards/" },
-  { name = "Resume", url = "/resume/" }
-]

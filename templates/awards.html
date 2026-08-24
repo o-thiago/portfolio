@@ -1,155 +1,109 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto space-y-12">
+<div class="space-y-8">
   
+  {% if lang == "pt" %}
+    {% set lang_prefix = "/pt" %}
+  {% else %}
+    {% set lang_prefix = "" %}
+  {% endif %}
+
   <!-- Header -->
-  <header class="space-y-4 border-b border-slate-800 pb-8">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-800/60 text-xs font-mono text-amber-400">
-      <span>Honors & Certifications</span>
+  <header class="border-b-2 border-[#2d3748] pb-4 space-y-2">
+    <div class="text-xs text-[#38bdf8] font-bold uppercase tracking-wider">
+      [04. OLYMPIADS, MEDALS & DISTINCTIONS]
     </div>
-    <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">Awards, Olympiads & Distinctions</h1>
-    <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-      A record of competitive academic olympiad medals, scientific dissemination talks, and technical certifications.
+    <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+      {% if lang == "pt" %}Prêmios, Olimpíadas & Distinções{% else %}Awards, Olympiads & Distinctions{% endif %}
+    </h1>
+    <p class="text-xs sm:text-sm text-slate-300">
+      {% if lang == "pt" %}
+        Medalhas em competições acadêmicas, palestras de divulgação científica e certificações.
+      {% else %}
+        Record of competitive academic olympiad medals, scientific dissemination talks, and technical certifications.
+      {% endif %}
     </p>
   </header>
 
-  <!-- Major Medals & Honors Grid -->
-  <section class="space-y-6">
-    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-      <span class="text-amber-400 font-mono">✦</span> Academic Olympiad Medals & Honors
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      
-      <!-- Gold Medal -->
-      <div class="card-glow rounded-xl bg-slate-900/70 border border-amber-500/30 p-6 space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="px-2.5 py-1 rounded bg-amber-950/80 border border-amber-700/60 text-amber-300 font-bold font-mono text-xs">
-            🥇 Gold Medal
-          </span>
-          <span class="font-mono text-xs text-slate-400">2025</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">Tesouro Direto Financial Education Olympiad</h3>
-        <p class="text-slate-300 text-sm leading-relaxed">
-          Awarded the top national honor in financial mathematics, economics concepts, and strategic asset management.
-        </p>
+  <!-- Major Medals Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    
+    <!-- Gold Medal -->
+    <div class="retro-box p-4 space-y-2 border-l-4 border-l-amber-400">
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-amber-400 font-bold">🥇 {% if lang == "pt" %}MEDALHA DE OURO{% else %}GOLD MEDAL{% endif %}</span>
+        <span class="text-slate-500 font-mono">2025</span>
       </div>
-
-      <!-- Silver Medal -->
-      <div class="card-glow rounded-xl bg-slate-900/70 border border-slate-400/30 p-6 space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-600/60 text-slate-200 font-bold font-mono text-xs">
-            🥈 Silver Medal
-          </span>
-          <span class="font-mono text-xs text-slate-400">2025</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">Brazilian Robotics Olympiad (OBR - Theoretical)</h3>
-        <p class="text-slate-300 text-sm leading-relaxed">
-          National silver medal evaluating computational thinking, algorithmic state machines, kinematics, sensors, and robotics logic.
-        </p>
-      </div>
-
-      <!-- Math Without Borders -->
-      <div class="card-glow rounded-xl bg-slate-900/70 border border-sky-500/30 p-6 space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="px-2.5 py-1 rounded bg-sky-950/80 border border-sky-700/60 text-sky-300 font-bold font-mono text-xs">
-            🏅 Honorable Mention
-          </span>
-          <span class="font-mono text-xs text-slate-400">2025</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">International Math Olympiad "Math Without Borders"</h3>
-        <p class="text-slate-300 text-sm leading-relaxed">
-          International mathematical competition testing advanced combinatorial problem solving, geometry, and number theory.
-        </p>
-      </div>
-
-      <!-- OBR Merit Honor -->
-      <div class="card-glow rounded-xl bg-slate-900/70 border border-teal-500/30 p-6 space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="px-2.5 py-1 rounded bg-teal-950/80 border border-teal-700/60 text-teal-300 font-bold font-mono text-xs">
-            🎖️ Merit Honor
-          </span>
-          <span class="font-mono text-xs text-slate-400">2024</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">Brazilian Robotics Olympiad (OBR - Theoretical)</h3>
-        <p class="text-slate-300 text-sm leading-relaxed">
-          State/National merit recognition in robotics principles, microcontrollers, and logic control.
-        </p>
-      </div>
-
+      <h2 class="text-sm font-bold text-white">
+        {% if lang == "pt" %}Olimpíada de Educação Financeira Tesouro Direto{% else %}Tesouro Direto Financial Education Olympiad{% endif %}
+      </h2>
+      <p class="text-xs text-slate-300">
+        {% if lang == "pt" %}Conquista nacional em conceitos econômicos e matemática financeira.{% else %}National-level financial mathematics & economics competition.{% endif %}
+      </p>
     </div>
-  </section>
 
-  <!-- Olympiad Participations & Speaking -->
-  <section class="space-y-6">
-    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-      <span class="text-sky-400 font-mono">✦</span> Competitions, Talks & Dissemination
-    </h2>
-
-    <div class="rounded-xl bg-slate-900/60 border border-slate-800 p-6 space-y-4">
-      <ul class="space-y-3 text-slate-300 text-sm">
-        <li class="flex items-start gap-2.5">
-          <span class="text-sky-400 font-mono">▸</span>
-          <div>
-            <strong class="text-white">Brazilian Olympiad in Informatics (OBI)</strong>: Programming Phase 2 Competitor (2024, 2025); Phase 1 (2023). Competitive algorithmic problem-solving in C/C++.
-          </div>
-        </li>
-        <li class="flex items-start gap-2.5">
-          <span class="text-sky-400 font-mono">▸</span>
-          <div>
-            <strong class="text-white">Speaker at 1st Polyglot Meeting of Calama (2024)</strong>: Delivered keynote lecture on <em>"English Fundamentals: Cognitive Strategies for Rapid Acquisition"</em>.
-          </div>
-        </li>
-        <li class="flex items-start gap-2.5">
-          <span class="text-sky-400 font-mono">▸</span>
-          <div>
-            <strong class="text-white">Brazilian Astronomy and Astronautics Olympiad (OBA 2025)</strong>: Participant in astrophysics, celestial mechanics, and space technology problems.
-          </div>
-        </li>
-        <li class="flex items-start gap-2.5">
-          <span class="text-sky-400 font-mono">▸</span>
-          <div>
-            <strong class="text-white">National Week of Science and Technology (SNCT 2023, 2024)</strong>: Scientific exhibitor presenting technological prototypes and software research.
-          </div>
-        </li>
-        <li class="flex items-start gap-2.5">
-          <span class="text-sky-400 font-mono">▸</span>
-          <div>
-            <strong class="text-white">Rondoniense Week of Art, Heritage and Culture (2023)</strong>: Exhibitor representing regional innovation and informatics projects.
-          </div>
-        </li>
-      </ul>
+    <!-- Silver Medal -->
+    <div class="retro-box p-4 space-y-2 border-l-4 border-l-slate-400">
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-slate-300 font-bold">🥈 {% if lang == "pt" %}MEDALHA DE PRATA{% else %}SILVER MEDAL{% endif %}</span>
+        <span class="text-slate-500 font-mono">2025</span>
+      </div>
+      <h2 class="text-sm font-bold text-white">
+        {% if lang == "pt" %}Olimpíada Brasileira de Robótica (OBR Teórica){% else %}Brazilian Robotics Olympiad (OBR - Theoretical){% endif %}
+      </h2>
+      <p class="text-xs text-slate-300">
+        {% if lang == "pt" %}Medalha de prata avaliando algoritmos, sensores e controle.{% else %}National silver medal in control systems, sensors, and robotics logic.{% endif %}
+      </p>
     </div>
-  </section>
 
-  <!-- Technical Courses & Certifications -->
-  <section class="space-y-6">
-    <h2 class="text-xl font-bold text-white flex items-center gap-2">
-      <span class="text-teal-400 font-mono">✦</span> Additional Certifications & Courses
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-      <div class="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 space-y-1">
-        <div class="font-medium text-white">Python Developer Bootcamp</div>
-        <div class="text-xs text-slate-400">IGTI / XP Educação</div>
+    <!-- Honorable Mention -->
+    <div class="retro-box p-4 space-y-2 border-l-4 border-l-sky-400">
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-sky-400 font-bold">🏅 {% if lang == "pt" %}MENÇÃO HONROSA{% else %}HONORABLE MENTION{% endif %}</span>
+        <span class="text-slate-500 font-mono">2025</span>
       </div>
-      <div class="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 space-y-1">
-        <div class="font-medium text-white">Full Stack Developer Bootcamp</div>
-        <div class="text-xs text-slate-400">IGTI / XP Educação</div>
-      </div>
-      <div class="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 space-y-1">
-        <div class="font-medium text-white">Personal Data Processing & Protection (LGPD)</div>
-        <div class="text-xs text-slate-400">Ministry of Defense (2024)</div>
-      </div>
-      <div class="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 space-y-1">
-        <div class="font-medium text-white">Oratory: The Art of Expressing Yourself Well</div>
-        <div class="text-xs text-slate-400">IFRO (2024)</div>
-      </div>
+      <h2 class="text-sm font-bold text-white">
+        {% if lang == "pt" %}Olimpíada Internacional "Matemática Sem Fronteiras"{% else %}International Math Olympiad "Math Without Borders"{% endif %}
+      </h2>
+      <p class="text-xs text-slate-300">
+        {% if lang == "pt" %}Competição internacional de resolução de problemas matemáticos.{% else %}International math competition covering combinatorics, geometry, and number theory.{% endif %}
+      </p>
     </div>
-  </section>
 
-  <div class="prose-custom pt-6">
+    <!-- Merit Honor -->
+    <div class="retro-box p-4 space-y-2 border-l-4 border-l-teal-400">
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-teal-400 font-bold">🎖️ {% if lang == "pt" %}HONRA AO MÉRITO{% else %}MERIT HONOR{% endif %}</span>
+        <span class="text-slate-500 font-mono">2024</span>
+      </div>
+      <h2 class="text-sm font-bold text-white">
+        {% if lang == "pt" %}Olimpíada Brasileira de Robótica (OBR Teórica){% else %}Brazilian Robotics Olympiad (OBR - Theoretical){% endif %}
+      </h2>
+      <p class="text-xs text-slate-300">
+        {% if lang == "pt" %}Reconhecimento de mérito estadual e nacional em princípios de robótica.{% else %}State and national merit recognition in microcontrollers and robotics theory.{% endif %}
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Participations List -->
+  <div class="retro-box p-5 space-y-3">
+    <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+      [COMPETIÇÕES, PALESTRAS & EVENTOS]
+    </div>
+    
+    <ul class="space-y-2 text-xs text-slate-300">
+      <li>• <strong class="text-white">Olimpíada Brasileira de Informática (OBI):</strong> Participação na Fase 2 (2024, 2025) e Fase 1 (2023). Programação competitiva em C/C++.</li>
+      <li>• <strong class="text-white">Palestrante no 1º Encontro Poliglota de Calama (2024):</strong> Apresentação sobre <em>"Fundamentos do Inglês: Estratégias Cognitivas para Aquisição Acelerada"</em>.</li>
+      <li>• <strong class="text-white">Olimpíada Brasileira de Astronomia e Astronáutica (OBA 2025):</strong> Participação em astrofísica e mecânica celeste.</li>
+      <li>• <strong class="text-white">Semana Nacional de Ciência e Tecnologia (SNCT 2023, 2024):</strong> Expositor científico de soluções em software.</li>
+      <li>• <strong class="text-white">Semana Rondoniense de Arte, Patrimônio e Cultura (2023):</strong> Expositor de projetos de informática.</li>
+    </ul>
+  </div>
+
+  <!-- Additional Narrative -->
+  <div class="prose-custom pt-4">
     {{ section.content | safe }}
   </div>
 

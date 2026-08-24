@@ -1,50 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto space-y-12">
+<div class="space-y-8">
   
+  {% if lang == "pt" %}
+    {% set lang_prefix = "/pt" %}
+  {% else %}
+    {% set lang_prefix = "" %}
+  {% endif %}
+
   <!-- Header -->
-  <header class="space-y-4 border-b border-slate-800 pb-8">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/60 border border-sky-800/60 text-xs font-mono text-sky-400">
-      <span>Who I Am</span>
+  <header class="border-b-2 border-[#2d3748] pb-4 space-y-2">
+    <div class="text-xs text-[#38bdf8] font-bold uppercase tracking-wider">
+      [01. WHOAMI & BACKGROUND]
     </div>
-    <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">About Me</h1>
-    <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-      A dive into my background, engineering philosophy, hardware fascination, and academic path.
+    <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+      {% if lang == "pt" %}Sobre Mim / Biografia{% else %}About Me / Biography{% endif %}
+    </h1>
+    <p class="text-xs sm:text-sm text-slate-300">
+      {% if lang == "pt" %}
+        Engenharia de sistemas, computação declarativa, hardware ergonômico e formação científica.
+      {% else %}
+        Systems engineering, declarative computing, ergonomic hardware, and academic research.
+      {% endif %}
     </p>
   </header>
 
-  <!-- Overview Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-      <div class="text-sky-400 font-mono font-bold text-xs uppercase tracking-wider">Location</div>
-      <div class="text-white font-medium text-base">Porto Velho, RO - Brazil</div>
-      <p class="text-slate-400 text-xs">Heart of the Brazilian Amazon basin, Western region.</p>
+  <!-- Quick Info Box -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+    <div class="retro-box p-3 space-y-1">
+      <div class="text-slate-500 font-bold">LOCATION</div>
+      <div class="text-white font-semibold">Porto Velho, RO - Brazil</div>
+      <div class="text-slate-400 text-[11px]">Amazon Basin (Western Region)</div>
     </div>
-    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-      <div class="text-teal-400 font-mono font-bold text-xs uppercase tracking-wider">Education</div>
-      <div class="text-white font-medium text-base">B.S. in Computer Science</div>
-      <p class="text-slate-400 text-xs">UNIR (2026-2029) • Informatics IFRO (2023-2025)</p>
+    <div class="retro-box p-3 space-y-1">
+      <div class="text-slate-500 font-bold">EDUCATION</div>
+      <div class="text-white font-semibold">B.S. in Computer Science</div>
+      <div class="text-slate-400 text-[11px]">UNIR (2026-2029) • IFRO (2023-2025)</div>
     </div>
-    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-      <div class="text-emerald-400 font-mono font-bold text-xs uppercase tracking-wider">Languages</div>
-      <div class="text-white font-medium text-base">Portuguese & English</div>
-      <p class="text-slate-400 text-xs">Fluent/Bilingual (Public Speaker) • Elementary Spanish</p>
+    <div class="retro-box p-3 space-y-1">
+      <div class="text-slate-500 font-bold">LANGUAGES</div>
+      <div class="text-white font-semibold">Portuguese & English</div>
+      <div class="text-slate-400 text-[11px]">Bilingual (Speaker) • Spanish</div>
     </div>
   </div>
 
-  <!-- Main Narrative Content -->
-  <article class="prose-custom space-y-8">
+  <!-- Narrative Content -->
+  <article class="retro-box p-6 prose-custom">
     {{ section.content | safe }}
   </article>
 
-  <!-- Action Footer -->
-  <div class="pt-8 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
-    <a href="{{ config.base_url }}/projects/" class="inline-flex items-center gap-2 text-sky-400 font-mono text-sm hover:underline">
-      <span>← Explore My Projects</span>
+  <!-- Retro Navigation Footer -->
+  <div class="flex flex-wrap items-center justify-between gap-3 text-xs pt-4 border-t border-[#2d3748]">
+    <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-[#38bdf8]">
+      &lt;-- {% if lang == "pt" %}Ver Projetos{% else %}Explore Projects{% endif %}
     </a>
-    <a href="{{ config.base_url }}/experience/" class="inline-flex items-center gap-2 text-sky-400 font-mono text-sm hover:underline">
-      <span>Read Work & Research History →</span>
+    <a href="{{ config.base_url }}{{ lang_prefix }}/experience/" class="text-[#38bdf8]">
+      {% if lang == "pt" %}Histórico Profissional & Pesquisa{% else %}Experience & Research Log{% endif %} --&gt;
     </a>
   </div>
 
