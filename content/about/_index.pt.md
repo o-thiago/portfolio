@@ -1,6 +1,6 @@
 +++
 title = "Sobre Thiago Macedo Mendes"
-description = "Estudante de Ciência da Computação na UNIR, desenvolvedor e pesquisador."
+description = "Estudante de Ciência da Computação na UNIR e desenvolvedor de software."
 template = "about.html"
 +++
 
@@ -27,9 +27,9 @@ No desenvolvimento de software, priorizo soluções simples, código legível e 
 
 ---
 
-## 02. Formação & Atuação em Pesquisa
+## 02. Formação & Experiência em Pesquisa
 
-Minha trajetória combina a graduação universitária e a vivência em grupos de pesquisa:
+Minha trajetória combina a graduação universitária e a vivência em projetos de pesquisa institucional:
 
 - **Universidade Federal de Rondônia (UNIR):**  
   Cursando o **Bacharelado em Ciência da Computação** (2026 – 2029).
@@ -68,4 +68,4 @@ Fique à vontade para entrar em contato:
 
 - **E-mail:** [thiagomm@pm.me](mailto:thiagomm@pm.me)
 - **LinkedIn:** [linkedin.com/in/thiagomacedomendes](https://www.linkedin.com/in/thiagomacedomendes)
-- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago) / [github.com/o-thiago](https://github.com/o-thiago)
+- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago), [github.com/o-thiago](https://github.com/o-thiago)

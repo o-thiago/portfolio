@@ -1,6 +1,6 @@
 +++
 title = "About Thiago Macedo Mendes"
-description = "Computer Science student at UNIR, software developer, and researcher."
+description = "Computer Science student at UNIR and software developer."
 template = "about.html"
 +++
 
@@ -29,7 +29,7 @@ When building software, I prefer straightforward solutions, clean code, and pred
 
 ## 02. Education & Research Background
 
-My background combines undergraduate coursework and hands-on participation in research labs:
+My background combines undergraduate coursework and hands-on experience in research projects:
 
 - **Federal University of Rondônia (UNIR):**  
   Pursuing a **Bachelor's Degree in Computer Science** (2026 – 2029).
@@ -68,4 +68,4 @@ Feel free to reach out:
 
 - **Email:** [thiagomm@pm.me](mailto:thiagomm@pm.me)
 - **LinkedIn:** [linkedin.com/in/thiagomacedomendes](https://www.linkedin.com/in/thiagomacedomendes)
-- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago) / [github.com/o-thiago](https://github.com/o-thiago)
+- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago), [github.com/o-thiago](https://github.com/o-thiago)
