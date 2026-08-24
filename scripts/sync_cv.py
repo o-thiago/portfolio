@@ -48,7 +48,16 @@ def get_cv_root() -> Path:
     repo_url = f"https://{token}@github.com/{clean_url}"
 
     res = subprocess.run(
-        ["git", "clone", "--depth", "1", repo_url, str(cache)],
+        [
+            "git",
+            "-c",
+            "http.https://github.com/.extraheader=",
+            "clone",
+            "--depth",
+            "1",
+            repo_url,
+            str(cache),
+        ],
         check=False,
         capture_output=True,
         text=True,
