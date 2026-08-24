@@ -60,6 +60,36 @@ html.theme-light .theme-icon-dark {
   display: inline !important;
 }
 
+/* Custom Retro-Minimalist Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) var(--bg-main);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+  border-left: 1px solid var(--border-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border: 1px solid var(--bg-box);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-main);
+}
+
 /* Base Terminal / Old Web Styling */
 html {
   scroll-behavior: smooth;
