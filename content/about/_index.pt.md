@@ -50,15 +50,5 @@ Minha trajetória combina a graduação universitária e a vivência em projetos
 - **Idiomas:**  
   Sou fluente em inglês. Em 2024, participei como palestrante no *1º Encontro Poliglota de Calama*, compartilhando métodos práticos de estudo e aprendizado da língua inglesa. Também tenho noções básicas de espanhol.
 
-- **Premiações Acadêmicas:**  
-  Confira a seção de distinções e prêmios abaixo com todas as medalhas em olimpíadas do conhecimento e robótica.
-
----
-
-## Contato
-
-Fique à vontade para entrar em contato:
-
-- **E-mail:** [{{ email() }}](mailto:{{ email() }})
-- **LinkedIn:** [{{ linkedin_handle() }}]({{ linkedin_url() }})
-- **GitHub:** [{{ github_handle() }}]({{ github_url() }})
+- **Distinções Acadêmicas:**  
+  Veja a seção de premiações e olimpíadas abaixo para detalhes sobre medalhas nacionais e competições de robótica.
