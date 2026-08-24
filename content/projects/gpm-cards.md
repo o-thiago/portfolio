@@ -38,4 +38,4 @@ services.postgres."gpm-cards-db" = {
 ## Repository
 
 - **GitHub:** [{{ github_handle() }}/gpm-cards]({{ github_url() }}/gpm-cards)
-- **Author:** {{ name() }} (`@{{ handle() }}`)
+- **Author:** {{ name() }} (@{{ handle() }})

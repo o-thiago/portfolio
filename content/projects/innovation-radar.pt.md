@@ -26,4 +26,4 @@ O **Radar da Inovação** é uma plataforma web criada dentro do grupo de pesqui
 
 ## Autor
 
-- {{ name() }} (`@{{ handle() }}`)
+- {{ name() }} (@{{ handle() }})
