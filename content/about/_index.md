@@ -5,10 +5,11 @@ template = "about.html"
 
 [extra]
 name = "Thiago Macedo Mendes"
+handle = "o-thiago"
 location = "Porto Velho, Rondônia, Brazil"
 phone = "+55 (69) 99314-6868"
 email = "thiagomm@pm.me"
-linkedin = "https://www.linkedin.com/in/thiagomacedomendes"
+linkedin = "https://linkedin.com/in/thiagomacedomendes"
 github = "https://github.com/o-thiago"
 summary_title = "Summary"
 summary = "Computer Science student (UNIR) and IT Technician (IFRO) focused on software development and IT infrastructure. Experience working as a researcher for the GPMecatrônica and Gotec groups, and in IT infrastructure at Censipam. Skilled in TypeScript, Python, Java, Rust, PHP, React, Next.js, and databases (MySQL, PostgreSQL, MongoDB). Seeking a Software Development internship to apply my technical background to real-world projects."
@@ -284,12 +285,7 @@ My background combines undergraduate coursework and hands-on experience in resea
   I am fluent in English. In 2024, I gave a talk at the *1st Polyglot Meeting of Calama* sharing practical language-learning methods. I am also currently studying basic Spanish.
 
 - **Academic Distinctions:**  
-  - 🥇 **Gold Medal** – Tesouro Direto Financial Education Olympiad (2025)
-  - 🥈 **Silver Medal** – Brazilian Robotics Olympiad (OBR Theoretical, 2025)
-  - 🏆 **4th Place (State Level)** – Brazilian Robotics Olympiad (OBR Artistic, 2025)
-  - 🏅 **Honorable Mention** – Math Without Borders International Olympiad (2025)
-  - 🎖️ **Merit Honor** – Brazilian Robotics Olympiad (OBR Theoretical, 2024)
-  - 💻 **Phase 2 Competitor** – Brazilian Olympiad in Informatics (OBI)
+  See the distinctions and awards section below for my medals in national olympiads and robotics competitions.
 
 ---
 
