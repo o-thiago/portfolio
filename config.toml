@@ -1,6 +1,5 @@
-# Zola Configuration for Thiago Macedo Mendes' Portfolio
+# Zola Configuration for the Personal Portfolio
 base_url = "https://o-thiago.github.io/portfolio"
-title = "Thiago Macedo Mendes"
 description = "Estudante de Ciência da Computação (UNIR) e desenvolvedor. C, Rust, TypeScript, NixOS e infraestrutura."
 default_language = "en"
 compile_sass = false
@@ -39,7 +38,7 @@ error_404_title = "FILE NOT FOUND"
 error_404_desc = "The page you're looking for doesn't exist on this server."
 
 # Home Hero
-banner_top = "+====================================================================+\n|  THIAGO MACEDO MENDES :: PORTFOLIO & REPOSITORIES (NO-JS)          |\n|  UNIR (B.S. CS '29) | IFRO ('25) | C, Rust, TypeScript, NixOS      |\n+====================================================================+"
+banner_top = "+====================================================================+\n|  PORTFOLIO & REPOSITORIES (NO-JS)                                  |\n|  UNIR (B.S. CS '29) | IFRO ('25) | C, Rust, TypeScript, NixOS      |\n+====================================================================+"
 hero_greeting = "Hi, I'm"
 hero_desc = "Computer Science student at <strong class=\"text-white font-medium\">UNIR</strong> and Informatics graduate from <strong class=\"text-white font-medium\">IFRO</strong>. I build software using C, Rust, TypeScript, and NixOS, with practical experience in research labs and IT infrastructure."
 location_label = "HOST"
@@ -131,7 +130,6 @@ resume_btn_print = "Print / Save PDF"
 btn_download_pdf = "Download PDF (LaTeX)"
 
 [languages.pt]
-title = "Thiago Macedo Mendes"
 description = "Estudante de Ciência da Computação (UNIR) e desenvolvedor. C, Rust, TypeScript, NixOS e infraestrutura."
 
 [languages.pt.translations]
@@ -150,7 +148,7 @@ error_404_title = "ARQUIVO NÃO ENCONTRADO"
 error_404_desc = "A página solicitada não existe neste servidor."
 
 # Home Hero
-banner_top = "+====================================================================+\n|  THIAGO MACEDO MENDES :: PORTFÓLIO & REPOSITÓRIOS (NO-JS)          |\n|  UNIR (Bacharelado CC '29) | IFRO ('25) | C, Rust, TypeScript, NixOS|\n+====================================================================+"
+banner_top = "+====================================================================+\n|  PORTFÓLIO & REPOSITÓRIOS (NO-JS)                                  |\n|  UNIR (Bacharelado CC '29) | IFRO ('25) | C, Rust, TypeScript, NixOS|\n+====================================================================+"
 hero_greeting = "Olá, eu sou o"
 hero_desc = "Estudante de Ciência da Computação na <strong class=\"text-white font-medium\">UNIR</strong> e formado em Informática pelo <strong class=\"text-white font-medium\">IFRO</strong>. Trabalho com C, Rust, TypeScript e NixOS, com experiência prática em grupos de pesquisa e infraestrutura de TI."
 location_label = "LOCAL"
@@ -263,15 +261,7 @@ resume_btn_print = "Imprimir / Salvar PDF"
 btn_download_pdf = "Baixar PDF (LaTeX)"
 
 [extra]
-name = "Thiago Macedo Mendes"
-handle = "o-thiago"
 tagline = "Computer Science Student & Systems Developer"
-location = "Porto Velho, Rondônia, Brazil"
-email = "thiagomm@pm.me"
-phone = "+55 (69) 99314-6868"
-github = "https://github.com/o-thiago"
-linkedin = "https://linkedin.com/in/thiagomacedomendes"
-site_url = "https://o-thiago.github.io"
 
 university = "Universidade Federal de Rondônia (UNIR)"
 university_degree = "Bacharelado em Ciência da Computação (2026 - 2029)"

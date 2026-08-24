@@ -9,6 +9,8 @@
     {% set lang_prefix = "" %}
   {% endif %}
 
+  {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+
   <!-- Terminal Header / Banner Box -->
   <section class="retro-box p-5 sm:p-6 space-y-4">
     
@@ -18,7 +20,7 @@
     <!-- Intro Text -->
     <div class="space-y-3 pt-1">
       <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-        {{ trans(lang=lang, key="hero_greeting") }} <span class="text-[#38bdf8]">{{ config.extra.name }}</span>
+        {{ trans(lang=lang, key="hero_greeting") }} <span class="text-[#38bdf8]">{{ cv.name }}</span>
       </h1>
       
       <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
@@ -27,7 +29,7 @@
 
       <!-- System Meta Table -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs pt-2 border-t border-[#1e293b] text-slate-400">
-        <div><span class="text-slate-500">{{ trans(lang=lang, key="location_label") }}:</span> <span class="text-slate-200">{{ config.extra.location }}</span></div>
+        <div><span class="text-slate-500">{{ trans(lang=lang, key="location_label") }}:</span> <span class="text-slate-200">{{ cv.location }}</span></div>
         <div><span class="text-slate-500">{{ trans(lang=lang, key="education_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="education_text") }}</span></div>
         <div><span class="text-slate-500">{{ trans(lang=lang, key="researcher_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="researcher_text") }}</span></div>
       </div>
@@ -41,7 +43,7 @@
       <a href="{{ config.base_url }}{{ lang_prefix }}/resume/" class="retro-btn">
         <span>&gt; {{ trans(lang=lang, key="btn_resume") }}</span>
       </a>
-      <a href="mailto:{{ config.extra.email }}" class="retro-btn">
+      <a href="mailto:{{ cv.email }}" class="retro-btn">
         <span>&gt; {{ trans(lang=lang, key="btn_contact") }}</span>
       </a>
       <a href="{{ config.base_url }}/llms.txt" class="retro-btn text-amber-400 hover:text-amber-300">
@@ -133,7 +135,7 @@
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
             <span class="text-[#38bdf8] font-bold">[NixOS / Systems]</span>
-            <a href="{{ config.extra.github }}/ToofOS" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
+            <a href="{{ cv.github }}/ToofOS" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
               [{{ trans(lang=lang, key="project_src_github") }}]
             </a>
           </div>
@@ -157,7 +159,7 @@
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
             <span class="text-[#4ade80] font-bold">[Web / Research]</span>
-            <a href="{{ config.extra.github }}/gpm-cards" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
+            <a href="{{ cv.github }}/gpm-cards" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
               [{{ trans(lang=lang, key="project_src_github") }}]
             </a>
           </div>

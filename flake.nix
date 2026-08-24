@@ -1,5 +1,5 @@
 {
-  description = "Thiago Macedo Mendes - Personal Portfolio (No-JS, Static, Tailwind CSS, Zola)";
+  description = "Personal Portfolio (No-JS, Static, Tailwind CSS, Zola)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -72,7 +72,7 @@
 
             shellHook = ''
               echo ""
-              echo "   Thiago Macedo Mendes - Personal Portfolio Dev Shell"
+              echo "   Personal Portfolio Dev Shell"
               echo "   Stack: Pure No-JS / Zola (Rust SSG) / Tailwind CSS v4 / Nix"
               echo ""
               echo "Available commands (via just):"

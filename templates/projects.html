@@ -9,6 +9,8 @@
     {% set lang_prefix = "" %}
   {% endif %}
 
+  {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+
   <!-- Header -->
   <header class="border-b-2 border-[#2d3748] pb-4 space-y-2">
     <div class="text-xs text-[#38bdf8] font-bold uppercase tracking-wider">
@@ -18,7 +20,7 @@
       {{ trans(lang=lang, key="projects_title") }}
     </h1>
     <p class="text-xs sm:text-sm text-slate-300">
-      {{ config.extra.name }} (@{{ config.extra.handle }}) — {{ trans(lang=lang, key="projects_subtitle") }}
+      {{ cv.name }} (@{{ cv.handle }}) — {{ trans(lang=lang, key="projects_subtitle") }}
     </p>
   </header>
 
@@ -37,7 +39,7 @@
           </div>
           
           <div class="flex items-center gap-2 text-xs">
-            <span class="text-slate-500 font-mono text-[11px]">{{ page.extra.author | default(value="@" ~ config.extra.handle) }}</span>
+            <span class="text-slate-500 font-mono text-[11px]">{{ page.extra.author | default(value="@" ~ cv.handle) }}</span>
             {% if page.extra.github %}
               <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-white">
                 [{{ trans(lang=lang, key="project_src_github") }}]

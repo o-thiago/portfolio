@@ -1,4 +1,4 @@
-# Justfile for Thiago Macedo Mendes' Personal Portfolio
+# Justfile for my own Personal Portfolio
 
 # Default recipe: print help
 default:
