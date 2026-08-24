@@ -14,34 +14,8 @@ from pylatexenc.latex2text import LatexNodes2Text
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGETS = [
-    (
-        False,
-        "en",
-        "resume",
-        ".md",
-        "Curriculum Vitae / Resume",
-        "Professional and academic CV of Thiago Macedo Mendes.",
-        "Work & Research Experience",
-        "Professional roles and research grants.",
-        "Awards, Olympiads & Distinctions",
-        "Honors, national olympiad medals, scientific speaking engagements, and technical certifications.",
-        "About Thiago Macedo Mendes",
-        "Computer Science student at UNIR and software developer.",
-    ),
-    (
-        True,
-        "pt-br",
-        "curriculo",
-        ".pt.md",
-        "Currículo / CV",
-        "Currículo profissional e acadêmico de Thiago Macedo Mendes.",
-        "Experiência Profissional & Pesquisa",
-        "Histórico profissional e acadêmico.",
-        "Prêmios, Olimpíadas & Distinções",
-        "Honras, medalhas em olimpíadas nacionais, palestras científicas e certificações técnicas.",
-        "Sobre Thiago Macedo Mendes",
-        "Estudante de Ciência da Computação na UNIR e desenvolvedor de software.",
-    ),
+    (False, "en", "resume", ".md"),
+    (True, "pt-br", "curriculo", ".pt.md"),
 ]
 
 
@@ -172,30 +146,14 @@ def parse_cv(path: Path, is_pt: bool) -> dict:
     )
     header = header_m.group(1) if header_m else ""
 
-    name_m = re.search(r"\\textbf\{([^}]+)\}", header)
-    name = clean(name_m.group(1)) if name_m else "Thiago Macedo Mendes"
-    email_m = re.search(r"\\href\{mailto:([^}]+)\}", header)
-    email = email_m.group(1) if email_m else "thiagomm@pm.me"
-    linkedin_m = re.search(r"\\href\{(https://[^}]*linkedin\.com/[^}]+)\}", header)
-    linkedin = (
-        linkedin_m.group(1)
-        if linkedin_m
-        else "https://www.linkedin.com/in/thiagomacedomendes"
-    )
-    github_m = re.search(r"\\href\{(https://[^}]*github\.com/[^}]+)\}", header)
-    github = github_m.group(1) if github_m else "https://github.com/o-thiago"
-    handle = github.rstrip("/").split("/")[-1] if github else "o-thiago"
-    phone_m = re.search(r"(\+55[^\n\\{]+)", header)
-    phone = clean(phone_m.group(1)) if phone_m else "+55 (69) 99314-6868"
-    loc_part = (
-        header.split(r"\\ [0.1cm]")[1].split(r"{\textbullet}")[0]
-        if r"\\ [0.1cm]" in header
-        else ""
-    )
-    location = (
-        clean(loc_part)
-        or f"Porto Velho, Rondônia, {'Brasil' if is_pt else 'Brazil'}"
-    )
+    name = clean(re.search(r"\\textbf\{([^}]+)\}", header).group(1))
+    email = re.search(r"\\href\{mailto:([^}]+)\}", header).group(1)
+    linkedin = re.search(r"\\href\{(https://[^}]*linkedin\.com/[^}]+)\}", header).group(1)
+    github = re.search(r"\\href\{(https://[^}]*github\.com/[^}]+)\}", header).group(1)
+    handle = github.rstrip("/").split("/")[-1]
+    phone = clean(re.search(r"(\+55[^\n\\{]+)", header).group(1))
+    loc_part = header.split(r"\\ [0.1cm]")[1].split(r"{\textbullet}")[0]
+    location = clean(loc_part)
 
     secs = dict(
         re.findall(
@@ -308,6 +266,8 @@ def make_llms_txt(d: dict) -> str:
         for e in d["experience"]
     )
     certs = "\n".join(f"- {c}" for c in d["certifications"])
+    github_handle = d["github"].rstrip("/").split("/")[-1]
+    site_url = f"https://{github_handle}.github.io"
     return f"""# {d['name']}
 
 > {d['summary']}
@@ -318,19 +278,13 @@ def make_llms_txt(d: dict) -> str:
 - LinkedIn: {d['linkedin']}
 - Email: {d['email']}
 - Location: {d['location']}
-- Website: https://o-thiago.github.io
+- Website: {site_url}
 
 ## Education
 {edu}
 
 ## Experience & Research
 {exp}
-
-## Featured Projects
-- **toof-os** (https://github.com/o-thiago/ToofOS): Declarative NixOS configuration built for the DACC Station on Raspberry Pi 4.
-- **gpm-cards** (https://github.com/o-thiago/gpm-cards): Web platform for member profiles and card generation for GPMecatrônica.
-- **sqlx-conditional-queries-layering** (https://github.com/o-thiago/sqlx-conditional-queries-layering): Declarative macro library in Rust for composing SQLx queries.
-- **Innovation Radar**: Web platform for tracking innovation initiatives and research IP at IFRO.
 
 ## Honors & Olympiad Medals
 {certs}
@@ -340,7 +294,7 @@ def make_llms_txt(d: dict) -> str:
 - Languages: {d['skills_lang']}
 
 ## Full Context
-For the complete unabridged markdown portfolio context, see: https://o-thiago.github.io/llms-full.txt
+For the complete unabridged markdown portfolio context, see: {site_url}/llms-full.txt
 """
 
 
@@ -360,6 +314,8 @@ def make_llms_full_txt(d: dict) -> str:
         for e in d["experience"]
     )
     certs = "\n".join(f"- {c}" for c in d["certifications"])
+    github_handle = d["github"].rstrip("/").split("/")[-1]
+    site_url = f"https://{github_handle}.github.io"
     return f"""# {d['name']} - Full Portfolio & Profile Context
 
 - **Author:** {d['name']}
@@ -368,7 +324,7 @@ def make_llms_full_txt(d: dict) -> str:
 - **Email:** {d['email']}
 - **Phone:** {d['phone']}
 - **Location:** {d['location']}
-- **Website:** https://o-thiago.github.io
+- **Website:** {site_url}
 
 ---
 
@@ -408,20 +364,7 @@ def main() -> None:
         return
     (ROOT / "static").mkdir(exist_ok=True)
     en_data = None
-    for (
-        is_pt,
-        sub,
-        name,
-        ext,
-        rt,
-        rd,
-        et,
-        ed,
-        at,
-        ad,
-        abt_t,
-        abt_d,
-    ) in TARGETS:
+    for is_pt, sub, name, ext in TARGETS:
         build_pdf(cv / "resumes" / sub, name, ROOT / "static" / f"{name}.pdf")
         extra = parse_cv(cv / "resumes" / sub / f"{name}.tex", is_pt)
         if not is_pt:
@@ -432,8 +375,8 @@ def main() -> None:
             (
                 "resume",
                 {
-                    "title": rt,
-                    "description": rd,
+                    "title": extra["name"],
+                    "description": extra["summary"],
                     "template": "resume.html",
                     "extra": extra,
                 },
@@ -441,8 +384,8 @@ def main() -> None:
             (
                 "experience",
                 {
-                    "title": et,
-                    "description": ed,
+                    "title": extra["experience_title"],
+                    "description": extra["summary"],
                     "template": "experience.html",
                     "extra": {
                         "experience_title": extra["experience_title"],
@@ -453,8 +396,8 @@ def main() -> None:
             (
                 "awards",
                 {
-                    "title": at,
-                    "description": ad,
+                    "title": extra["certifications_title"],
+                    "description": extra["summary"],
                     "template": "awards.html",
                     "extra": {
                         "awards": extra["awards"],
@@ -475,8 +418,8 @@ def main() -> None:
             if len(parts) >= 3:
                 body = "+++\n".join(parts[2:])
         abt_front = {
-            "title": abt_t,
-            "description": abt_d,
+            "title": extra["name"],
+            "description": extra["summary"],
             "template": "about.html",
             "extra": extra,
         }
