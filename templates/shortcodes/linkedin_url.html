@@ -1,1 +1,1 @@
-{{ config.extra.linkedin }}
+{% set current_lang = lang | default(value="en") %}{% set cv = load_data(path="data/cv." ~ current_lang ~ ".toml") %}{{ cv.linkedin }}

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}" class="scroll-smooth">
+{% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {% elif section.title %}{{ section.title }} | {% endif %}{{ config.title }} [{{ config.extra.handle }}]</title>
+  <title>{% if page.title %}{{ page.title }} | {% elif section.title %}{{ section.title }} | {% endif %}{{ cv.name }} [{{ cv.handle }}]</title>
   
   <!-- Synchronous Theme Initializer (No Flash of Unstyled Theme - Zero External Dependencies) -->
   <script>
@@ -18,10 +19,10 @@
   </script>
 
   <!-- Primary Meta Tags -->
-  <meta name="title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}">
+  <meta name="title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ cv.name }}">
   <meta name="description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
-  <meta name="author" content="{{ config.extra.name }} (@{{ config.extra.handle }})">
-  <meta name="keywords" content="{{ config.extra.name }}, {{ config.extra.handle }}, {{ config.extra.location }}, Systems Developer, Nix, NixOS, Rust, C, TypeScript, Next.js">
+  <meta name="author" content="{{ cv.name }} (@{{ cv.handle }})">
+  <meta name="keywords" content="{{ cv.name }}, {{ cv.handle }}, {{ cv.location }}, Systems Developer, Nix, NixOS, Rust, C, TypeScript, Next.js">
   <link rel="canonical" href="{{ current_url | default(value=config.base_url) }}">
   
   <!-- AI Agent & LLM Discoverability (llms.txt standard) -->
@@ -31,11 +32,11 @@
   <!-- Open Graph / Social -->
   <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ current_url | default(value=config.base_url) }}">
-  <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ cv.name }}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
   <meta property="og:image" content="{{ config.base_url }}/avatar.svg">
   <meta property="og:locale" content="{{ trans(lang=lang, key='og_locale') }}">
-  <meta property="og:site_name" content="{{ config.title }}">
+  <meta property="og:site_name" content="{{ cv.name }}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ config.base_url }}/favicon.svg">
@@ -50,17 +51,17 @@
     "@graph": [
       {
         "@type": "Person",
-        "@id": "{{ config.extra.site_url }}/#person",
-        "name": "{{ config.extra.name }}",
-        "alternateName": ["{{ config.extra.handle }}"],
-        "url": "{{ config.extra.site_url }}",
-        "image": "{{ config.extra.site_url }}/avatar.svg",
+        "@id": "{{ cv.site_url }}/#person",
+        "name": "{{ cv.name }}",
+        "alternateName": ["{{ cv.handle }}"],
+        "url": "{{ cv.site_url }}",
+        "image": "{{ cv.site_url }}/avatar.svg",
         "jobTitle": "{{ config.extra.tagline }}",
-        "email": "mailto:{{ config.extra.email }}",
-        "telephone": "{{ config.extra.phone }}",
+        "email": "mailto:{{ cv.email }}",
+        "telephone": "{{ cv.phone }}",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "{{ config.extra.location }}"
+          "addressLocality": "{{ cv.location }}"
         },
         "alumniOf": [
           {
@@ -73,15 +74,15 @@
           }
         ],
         "sameAs": [
-          "{{ config.extra.linkedin }}",
-          "{{ config.extra.github }}"
+          "{{ cv.linkedin }}",
+          "{{ cv.github }}"
         ]
       },
       {
         "@type": "WebSite",
-        "@id": "{{ config.extra.site_url }}/#website",
-        "url": "{{ config.extra.site_url }}",
-        "name": "{{ config.title }}"
+        "@id": "{{ cv.site_url }}/#website",
+        "url": "{{ cv.site_url }}",
+        "name": "{{ cv.name }}"
       }
     ]
   }
@@ -131,7 +132,7 @@
       
       <!-- Prompt Logo -->
       <a href="{{ config.base_url }}{{ lang_prefix }}/" class="text-sm font-bold tracking-tight hover:text-sky-400 no-underline flex items-center gap-2">
-        <span class="text-emerald-500 font-bold">{{ config.extra.handle }}@portovelho</span><span class="text-slate-400">:</span><span class="text-sky-500">~</span><span class="text-slate-400">$</span>
+        <span class="text-emerald-500 font-bold">{{ cv.handle }}@portovelho</span><span class="text-slate-400">:</span><span class="text-sky-500">~</span><span class="text-slate-400">$</span>
       </a>
 
       <!-- Retro Navigation Menu -->
@@ -226,17 +227,17 @@
       <!-- Status -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <span class="font-bold">{{ config.extra.name }}</span>
+          <span class="font-bold">{{ cv.name }}</span>
           <span class="text-slate-400"> :: </span>
-          <span>{{ config.extra.location }}</span>
+          <span>{{ cv.location }}</span>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <a href="mailto:{{ config.extra.email }}" class="text-sky-500">{{ config.extra.email }}</a>
+          <a href="mailto:{{ cv.email }}" class="text-sky-500">{{ cv.email }}</a>
           <span class="text-slate-400">|</span>
-          <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-500">github/{{ config.extra.handle }}</a>
+          <a href="{{ cv.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-500">github/{{ cv.handle }}</a>
           <span class="text-slate-400">|</span>
-          <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-sky-500">linkedin/{{ config.extra.handle }}</a>
+          <a href="{{ cv.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-sky-500">linkedin/{{ cv.handle }}</a>
         </div>
       </div>
 
@@ -260,7 +261,7 @@
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between text-slate-400 text-[11px] pt-2">
-        <p>© {{ now() | date(format="%Y") }} {{ config.extra.name }} — {{ trans(lang=lang, key="rights_reserved") }}</p>
+        <p>© {{ now() | date(format="%Y") }} {{ cv.name }} — {{ trans(lang=lang, key="rights_reserved") }}</p>
         <p class="font-mono">{{ trans(lang=lang, key="footer_hosted") }}</p>
       </div>
 

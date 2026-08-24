@@ -9,6 +9,8 @@
     {% set lang_prefix = "" %}
   {% endif %}
 
+  {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+
   <!-- Breadcrumb -->
   <div class="text-xs text-slate-500 font-mono">
     <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-[#38bdf8]">&lt;-- {{ trans(lang=lang, key="project_breadcrumb") }}</a> / {{ page.slug }}
@@ -24,7 +26,7 @@
         {% endif %}
       </div>
       <span class="text-slate-400 font-mono text-[11px]">
-        {{ trans(lang=lang, key="project_author_label") }} <strong class="text-white">{{ page.extra.author | default(value="@" ~ config.extra.handle) }}</strong>
+        {{ trans(lang=lang, key="project_author_label") }} <strong class="text-white">{{ page.extra.author | default(value="@" ~ cv.handle) }}</strong>
       </span>
     </div>
 
@@ -69,7 +71,7 @@
     </a>
     <div class="flex items-center gap-2 text-slate-400">
       <span>{{ trans(lang=lang, key="project_profiles_label") }}</span>
-      <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400">@{{ config.extra.handle }}</a>
+      <a href="{{ cv.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400">@{{ cv.handle }}</a>
     </div>
   </div>
 

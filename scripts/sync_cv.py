@@ -236,46 +236,19 @@ def parse_cv(path: Path, is_pt: bool) -> dict:
     }
 
 
-def sync_config_globals(d: dict) -> None:
-    cfg = ROOT / "config.toml"
-    if not cfg.exists():
-        return
-    text = cfg.read_text(encoding="utf-8")
+def write_cv_data(lang: str, d: dict) -> None:
+    """Write the fully parsed CV for `lang` to a git-ignored data file.
 
-    # Pick up whatever identity values are currently on record in [extra] so
-    # every literal mention of them elsewhere in the file (the header
-    # comment, page titles, ASCII banners, the GitHub Pages base_url host,
-    # etc.) can be swapped for the freshly parsed CV values too, instead of
-    # only updating the [extra] block itself.
-    extra_m = re.search(r"\[extra\](.*?)(?=\n\[|\Z)", text, re.DOTALL)
-    old = dict(
-        re.findall(
-            r'^(name|handle|email|phone|location|github|linkedin)\s*=\s*"([^"]*)"',
-            extra_m.group(1),
-            re.MULTILINE,
-        )
-    ) if extra_m else {}
+    Templates load this via Zola's `load_data(path="data/cv.<lang>.toml")`
+    instead of reading from `config.toml` or page front matter, so nothing
+    generated from the CV ever needs to be hand-committed to the repo.
+    """
+    github_handle = d["github"].rstrip("/").split("/")[-1]
+    data = {**d, "site_url": f"https://{github_handle}.github.io"}
 
-    for key in ("name", "handle", "email", "phone", "location", "github", "linkedin"):
-        old_val, new_val = old.get(key), d[key]
-        if old_val and old_val != new_val:
-            text = text.replace(old_val, new_val)
-            text = text.replace(old_val.upper(), new_val.upper())
-
-    for key, val in [
-        ("name", d["name"]),
-        ("handle", d["handle"]),
-        ("email", d["email"]),
-        ("phone", d["phone"]),
-        ("location", d["location"]),
-        ("github", d["github"]),
-        ("linkedin", d["linkedin"]),
-        ("title", d["name"]),
-    ]:
-        text = re.sub(
-            rf'^{key}\s*=.*$', f'{key} = "{val}"', text, flags=re.MULTILINE
-        )
-    cfg.write_text(text, encoding="utf-8")
+    data_dir = ROOT / "data"
+    data_dir.mkdir(exist_ok=True)
+    (data_dir / f"cv.{lang}.toml").write_text(tomli_w.dumps(data), encoding="utf-8")
 
 
 def make_humans_txt(d: dict) -> str:
@@ -422,9 +395,9 @@ def main() -> None:
     for is_pt, sub, name, ext in TARGETS:
         build_pdf(cv / "resumes" / sub, name, ROOT / "static" / f"{name}.pdf")
         extra = parse_cv(cv / "resumes" / sub / f"{name}.tex", is_pt)
+        write_cv_data("pt" if is_pt else "en", extra)
         if not is_pt:
             en_data = extra
-            sync_config_globals(extra)
 
         for folder, page in [
             (
@@ -464,24 +437,6 @@ def main() -> None:
             out = ROOT / "content" / folder / f"_index{ext}"
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(f"+++\n{tomli_w.dumps(page)}+++\n", encoding="utf-8")
-
-        # Inject dynamic extra frontmatter into about/_index{ext} while preserving content body
-        abt_file = ROOT / "content/about" / f"_index{ext}"
-        body = ""
-        if abt_file.exists():
-            parts = abt_file.read_text(encoding="utf-8").split("+++\n")
-            if len(parts) >= 3:
-                body = "+++\n".join(parts[2:])
-        abt_front = {
-            "title": extra["name"],
-            "description": extra["summary"],
-            "template": "about.html",
-            "extra": extra,
-        }
-        abt_file.parent.mkdir(parents=True, exist_ok=True)
-        abt_file.write_text(
-            f"+++\n{tomli_w.dumps(abt_front)}+++\n{body}", encoding="utf-8"
-        )
 
     if en_data:
         (ROOT / "static/humans.txt").write_text(

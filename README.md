@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio and curriculum vitae of Thiago Macedo Mendes.
+Personal portfolio and curriculum vitae site.
 
 Static site built with [Zola](https://www.getzola.org/) and [Tailwind CSS](https://tailwindcss.com/), packaged with Nix.
 

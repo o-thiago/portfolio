@@ -8,11 +8,15 @@ static/style.css
 static/*.pdf
 static/llms.txt
 static/llms-full.txt
+static/humans.txt
 
 # Generated CV, Experience & Awards sections
 content/resume/
 content/experience/
 content/awards/
+
+# Generated CV identity/content data consumed via Zola's load_data()
+data/
 
 # Cache & local temp
 .cache/

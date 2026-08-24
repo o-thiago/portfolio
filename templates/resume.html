@@ -9,6 +9,8 @@
     {% set lang_prefix = "" %}
   {% endif %}
 
+  {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+
   <!-- Action Bar -->
   <div class="no-print retro-box p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
     <div>
@@ -16,20 +18,20 @@
         [05. {{ trans(lang=lang, key="resume_tag") }}]
       </span>
       <p class="text-slate-400 text-[11px]">
-        {{ config.extra.name }} — {{ trans(lang=lang, key="resume_subtitle") }}
+        {{ cv.name }} — {{ trans(lang=lang, key="resume_subtitle") }}
       </p>
     </div>
     <div class="flex items-center gap-2">
       {% if lang == "pt" %}
-        <a href="{{ config.base_url }}/curriculo.pdf" target="_blank" download="curriculo-{{ config.extra.handle }}.pdf" class="retro-btn text-emerald-400">
+        <a href="{{ config.base_url }}/curriculo.pdf" target="_blank" download="curriculo-{{ cv.handle }}.pdf" class="retro-btn text-emerald-400">
           <span>&gt; {{ trans(lang=lang, key="btn_download_pdf") }}</span>
         </a>
       {% else %}
-        <a href="{{ config.base_url }}/resume.pdf" target="_blank" download="resume-{{ config.extra.handle }}.pdf" class="retro-btn text-emerald-400">
+        <a href="{{ config.base_url }}/resume.pdf" target="_blank" download="resume-{{ cv.handle }}.pdf" class="retro-btn text-emerald-400">
           <span>&gt; {{ trans(lang=lang, key="btn_download_pdf") }}</span>
         </a>
       {% endif %}
-      <a href="mailto:{{ config.extra.email }}" class="retro-btn">
+      <a href="mailto:{{ cv.email }}" class="retro-btn">
         <span>&gt; {{ trans(lang=lang, key="btn_contact") }}</span>
       </a>
       <a href="{{ config.base_url }}/llms.txt" class="retro-btn text-amber-400">
