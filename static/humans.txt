@@ -1,11 +1,11 @@
 /* TEAM */
-Author: Thiago Macedo Mendes
-Role: Computer Science Student & Systems Developer
-Site: https://o-thiago.github.io
-Email: thiagomm@pm.me
-GitHub: @o-thiago
-LinkedIn: @thiagomacedomendes
-Location: Porto Velho, Rondônia, Brazil
+Author: 
+Role: 
+Site: https://.github.io
+Email: 
+GitHub: @
+LinkedIn: @
+Location: 
 
 /* THANKS */
 Thanks to the open-source community, the NixOS project, and Zola developers.
