@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Programmatically fetch curriculum-vitae LaTeX sources and generate site content."""
+"""Fetch curriculum-vitae LaTeX sources and generate site content."""
 
 import os
 import re
@@ -9,251 +9,207 @@ from pathlib import Path
 
 import tomli_w
 
-ROOT = Path(__file__).resolve().parent.parent
-LOCAL_CANDIDATES = [
-    ROOT.parent / "curriculum-vitae",
-    Path.home() / "Programming" / "curriculum-vitae",
+ROOT = Path(__file__).resolve().parents[1]
+TARGETS = [
+    (
+        False,
+        "en",
+        "resume.tex",
+        "resume.pdf",
+        ".md",
+        "Curriculum Vitae / Resume",
+        "Professional and academic CV of Thiago Macedo Mendes.",
+        "Work & Research Experience",
+        "Professional roles and research grants.",
+    ),
+    (
+        True,
+        "pt-br",
+        "curriculo.tex",
+        "curriculo.pdf",
+        ".pt.md",
+        "Currículo / CV",
+        "Currículo profissional e acadêmico de Thiago Macedo Mendes.",
+        "Experiência Profissional & Pesquisa",
+        "Histórico profissional e acadêmico.",
+    ),
 ]
-REMOTE_REPO = os.environ.get(
-    "CV_REPO_URL", "https://github.com/o-thiago/resume-template.git"
-)
 
 
-def get_cv_root() -> Path:
-    for p in LOCAL_CANDIDATES:
-        if (p / "resumes").exists():
-            return p
-
-    cache = ROOT / ".cache" / "curriculum-vitae"
+def get_cv_root() -> Path | None:
+    candidates = (
+        ROOT.parent / "curriculum-vitae",
+        Path.home() / "Programming/curriculum-vitae",
+    )
+    if p := next((p for p in candidates if (p / "resumes").exists()), None):
+        return p
+    cache = ROOT / ".cache/curriculum-vitae"
     if (cache / "resumes").exists():
         subprocess.run(
-            ["git", "pull"],
-            cwd=cache,
+            ["git", "-C", str(cache), "pull"],
+            capture_output=True,
             check=False,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
         )
         return cache
 
+    shutil.rmtree(cache, ignore_errors=True)
     cache.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(
-        ["git", "clone", "--depth", "1", REMOTE_REPO, str(cache)],
-        check=True,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+    repo = os.getenv(
+        "CV_REPO_URL", "https://github.com/o-thiago/resume-template.git"
     )
-    return cache
+    res = subprocess.run(
+        ["git", "clone", "--depth=1", repo, str(cache)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if (cache / "resumes").exists():
+        return cache
+    err = res.stderr.strip() or "clone failed"
+    print(f"Notice: CV sources unavailable ({err}). Proceeding with existing content.")
+    return None
+
+
+def build_pdf(src: Path, tex: str, dst: Path) -> None:
+    cmd = ["pdflatex", "-interaction=nonstopmode", tex]
+    try:
+        res = subprocess.run(cmd, cwd=src, capture_output=True, check=False)
+    except FileNotFoundError:
+        res = None
+    if not res or res.returncode != 0:
+        subprocess.run(
+            ["nix", "shell", "nixpkgs#texliveFull", "--command", *cmd],
+            cwd=src,
+            capture_output=True,
+            check=False,
+        )
+    if not (pdf := (src / tex).with_suffix(".pdf")).exists():
+        raise RuntimeError(f"Failed to generate PDF for {tex} in {src}")
+    shutil.copy2(pdf, dst)
 
 
 def clean(s: str) -> str:
     s = re.sub(r"(?<!\\)%.*$", "", s, flags=re.MULTILINE)
     s = re.sub(r"\\(?:begin|end)\{[^}]+\}", "", s)
-    s = re.sub(r"\\(?:textbf|textit|emph|c)\{([^}]*)\}", r"\1", s)
-    s = re.sub(r"\\href\{[^}]*\}\{([^}]*)\}", r"\1", s)
-    for a, b in [
-        (r"\_", "_"),
-        (r"\&", "&"),
-        (r"\%", "%"),
-        (r"\$", "$"),
-        ("``", '"'),
-        ("''", '"'),
-    ]:
-        s = s.replace(a, b)
-    return re.sub(r"\s+", " ", s).strip()
+    s = re.sub(r"\\(?:textbf|textit|emph|c|href\{[^}]*\})\{([^}]*)\}", r"\1", s)
+    s = re.sub(r"\\([_&%$])", r"\1", re.sub(r"``|''", '"', s))
+    return " ".join(s.split())
 
 
-def parse_cv(path: Path) -> dict:
+def parse_cv(path: Path, is_pt: bool) -> dict:
     text = path.read_text(encoding="utf-8")
-    secs = {
-        m.group(1): m.group(2)
-        for m in re.finditer(
+    secs = dict(
+        re.findall(
             r"\\section\{([^}]+)\}(.*?)(?=\\section\{|\\end\{document\})",
             text,
             re.DOTALL,
         )
-    }
-
-    def entries(sec: str) -> list[dict]:
-        res = []
-        for chunk in secs.get(sec, "").split(r"\cventry")[1:]:
-            p = [clean(x) for x in re.findall(r"\{([^}]*)\}", chunk[:300])]
-            if len(p) >= 4:
-                items = [
-                    clean(it)
-                    for it in re.findall(r"\\item\s+([^\n\\]+(?:\\.[^\n\\]*)*)", chunk)
-                ]
-                res.append(
-                    {
-                        "company": p[0],
-                        "location": p[1],
-                        "role": p[2],
-                        "date": p[3],
-                        "bullets": items,
-                    }
-                )
-        return res
-
-    summary_k = next((k for k in secs if k in ("Summary", "Resumo")), "Summary")
-    exp_k = next((k for k in secs if k in ("Experience", "Experiência")), "Experience")
-    edu_k = next((k for k in secs if k in ("Education", "Educação")), "Education")
-    skills_k = next((k for k in secs if k in ("Skills", "Habilidades")), "Skills")
-    cert_k = next(
-        (k for k in secs if k in ("Certifications", "Certificações")),
-        "Certifications",
     )
 
-    skills_raw = secs.get(skills_k, "")
-    tech = re.search(r"\\textbf\{[^}]+\}\s*(.*?)(?=\\item|\Z)", skills_raw, re.DOTALL)
-    lang_chunk = skills_raw.split(r"\item")[-1] if r"\item" in skills_raw else ""
-    lang = re.search(r"\\textbf\{[^}]+\}\s*(.*?)(?=\\item|\Z)", lang_chunk, re.DOTALL)
+    def get_sec(*keys: str) -> str:
+        return next((k for k in keys if k in secs), keys[0])
+
+    def items(s: str) -> list[str]:
+        return [
+            clean(x)
+            for x in re.findall(r"\\item\s+([^\n\\]+(?:\\.[^\n\\]*)*)", s)
+        ]
+
+    def entries(
+        sec: str, keys: tuple[str, ...], *, with_bullets: bool = False
+    ) -> list[dict]:
+        return [
+            dict(
+                zip(keys, p, strict=False),
+                **({"bullets": items(c)} if with_bullets else {}),
+            )
+            for c in secs.get(sec, "").split(r"\cventry")[1:]
+            if len(
+                p := [clean(x) for x in re.findall(r"\{([^}]*)\}", c[:300])][:4]
+            )
+            == 4
+        ]
+
+    sum_k, exp_k, edu_k, sk_k, cert_k = (
+        get_sec(en, pt)
+        for en, pt in [
+            ("Summary", "Resumo"),
+            ("Experience", "Experiência"),
+            ("Education", "Educação"),
+            ("Skills", "Habilidades"),
+            ("Certifications", "Certificações"),
+        ]
+    )
+    skills = [
+        clean(m)
+        for m in re.findall(
+            r"\\textbf\{[^}]+\}\s*(.*?)(?=\\item|\Z)",
+            secs.get(sk_k, ""),
+            re.DOTALL,
+        )
+    ]
 
     return {
-        "summary_title": summary_k,
-        "summary": clean(secs.get(summary_k, "")),
+        "name": "Thiago Macedo Mendes",
+        "location": f"Porto Velho, Rondônia, {'Brasil' if is_pt else 'Brazil'}",
+        "phone": "+55 (69) 99314-6868",
+        "email": "thiagomm@pm.me",
+        "linkedin": "https://www.linkedin.com/in/thiagomacedomendes",
+        "github": "https://github.com/o-thiago",
+        "summary_title": sum_k,
+        "summary": clean(secs.get(sum_k, "")),
         "experience_title": exp_k,
-        "experiences": entries(exp_k),
         "education_title": edu_k,
-        "educations": entries(edu_k),
-        "skills_title": skills_k,
-        "skills_tech": clean(tech.group(1)) if tech else "",
-        "skills_lang": clean(lang.group(1)) if lang else "",
+        "skills_title": sk_k,
+        "skills_tech_label": "Tecnologias" if is_pt else "Technologies",
+        "skills_tech": skills[0] if skills else "",
+        "skills_lang_label": "Idiomas" if is_pt else "Languages",
+        "skills_lang": skills[1] if len(skills) > 1 else "",
         "certifications_title": cert_k,
-        "certifications": [
-            clean(it)
-            for it in re.findall(
-                r"\\item\s+([^\n\\]+(?:\\.[^\n\\]*)*)", secs.get(cert_k, "")
-            )
-        ],
-    }
-
-
-def build_pdf(src_dir: Path, tex_file: str, dst_pdf: Path) -> None:
-    cmd = ["pdflatex", "-interaction=nonstopmode", tex_file]
-    pdf_path = src_dir / tex_file.replace(".tex", ".pdf")
-    try:
-        run_res = subprocess.run(
-            cmd,
-            cwd=src_dir,
-            check=False,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-        if run_res.returncode != 0:
-            subprocess.run(
-                ["nix", "shell", "nixpkgs#texliveFull", "--command", *cmd],
-                cwd=src_dir,
-                check=False,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
-    except FileNotFoundError:
-        subprocess.run(
-            ["nix", "shell", "nixpkgs#texliveFull", "--command", *cmd],
-            cwd=src_dir,
-            check=False,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-
-    if not pdf_path.exists():
-        msg = f"Failed to generate PDF for {tex_file} in {src_dir}."
-        raise RuntimeError(msg)
-
-    shutil.copy2(pdf_path, dst_pdf)
-
-
-def make_pages(data: dict, is_pt: bool) -> tuple[str, str]:
-    loc = "Porto Velho, Rondônia, Brasil" if is_pt else "Porto Velho, Rondônia, Brazil"
-    resume_page = {
-        "title": "Currículo / CV" if is_pt else "Curriculum Vitae / Resume",
-        "description": (
-            "Currículo profissional e acadêmico de Thiago Macedo Mendes."
-            if is_pt
-            else "Professional and academic CV of Thiago Macedo Mendes."
+        "certifications": items(secs.get(cert_k, "")),
+        "experience": entries(
+            exp_k, ("company", "location", "role", "date"), with_bullets=True
         ),
-        "template": "resume.html",
-        "extra": {
-            "name": "Thiago Macedo Mendes",
-            "location": loc,
-            "phone": "+55 (69) 99314-6868",
-            "email": "thiagomm@pm.me",
-            "linkedin": "https://www.linkedin.com/in/thiagomacedomendes",
-            "github": "https://github.com/o-thiago",
-            "summary_title": data["summary_title"],
-            "summary": data["summary"],
-            "experience_title": data["experience_title"],
-            "education_title": data["education_title"],
-            "skills_title": data["skills_title"],
-            "skills_tech_label": "Tecnologias" if is_pt else "Technologies",
-            "skills_tech": data["skills_tech"],
-            "skills_lang_label": "Idiomas" if is_pt else "Languages",
-            "skills_lang": data["skills_lang"],
-            "certifications_title": data["certifications_title"],
-            "certifications": data["certifications"],
-            "experience": data["experiences"],
-            "education": [
-                {
-                    "institution": e["company"],
-                    "location": e["location"],
-                    "degree": e["role"],
-                    "date": e["date"],
-                }
-                for e in data["educations"]
-            ],
-        },
-    }
-
-    experience_page = {
-        "title": (
-            "Experiência Profissional & Pesquisa"
-            if is_pt
-            else "Work & Research Experience"
+        "education": entries(
+            edu_k, ("institution", "location", "degree", "date")
         ),
-        "description": (
-            "Histórico profissional e acadêmico."
-            if is_pt
-            else "Professional roles and research grants."
-        ),
-        "template": "experience.html",
-        "extra": {
-            "experience_title": data["experience_title"],
-            "experience": data["experiences"],
-        },
     }
-
-    res_md = f"+++\n{tomli_w.dumps(resume_page)}+++\n"
-    exp_md = f"+++\n{tomli_w.dumps(experience_page)}+++\n"
-    return res_md, exp_md
 
 
 def main() -> None:
-    cv_root = get_cv_root()
-    if not cv_root:
+    if not (cv := get_cv_root()):
         return
 
     (ROOT / "static").mkdir(exist_ok=True)
-    build_pdf(cv_root / "resumes" / "en", "resume.tex", ROOT / "static" / "resume.pdf")
-    build_pdf(
-        cv_root / "resumes" / "pt-br",
-        "curriculo.tex",
-        ROOT / "static" / "curriculo.pdf",
-    )
-
-    targets = [
-        ("en", "resumes/en/resume.tex", ".md"),
-        ("pt", "resumes/pt-br/curriculo.tex", ".pt.md"),
-    ]
-    for lang, tex, ext in targets:
-        data = parse_cv(cv_root / tex)
-        res_md, exp_md = make_pages(data, lang == "pt")
-
-        res_dir = ROOT / "content/resume"
-        res_dir.mkdir(parents=True, exist_ok=True)
-        (res_dir / f"_index{ext}").write_text(res_md, encoding="utf-8")
-
-        exp_dir = ROOT / "content/experience"
-        exp_dir.mkdir(parents=True, exist_ok=True)
-        (exp_dir / f"_index{ext}").write_text(exp_md, encoding="utf-8")
+    for is_pt, sub, tex, pdf_name, ext, rt, rd, et, ed in TARGETS:
+        build_pdf(cv / "resumes" / sub, tex, ROOT / "static" / pdf_name)
+        extra = parse_cv(cv / "resumes" / sub / tex, is_pt)
+        for folder, page in [
+            (
+                "resume",
+                {
+                    "title": rt,
+                    "description": rd,
+                    "template": "resume.html",
+                    "extra": extra,
+                },
+            ),
+            (
+                "experience",
+                {
+                    "title": et,
+                    "description": ed,
+                    "template": "experience.html",
+                    "extra": {
+                        "experience_title": extra["experience_title"],
+                        "experience": extra["experience"],
+                    },
+                },
+            ),
+        ]:
+            out = ROOT / "content" / folder / f"_index{ext}"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(f"+++\n{tomli_w.dumps(page)}+++\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
