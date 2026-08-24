@@ -77,6 +77,8 @@
   </script>
 </head>
 <body class="min-h-screen flex flex-col font-mono selection:bg-[#38bdf8] selection:text-black">
+  <!-- Pure No-JS CSS Theme Checkbox -->
+  <input type="checkbox" id="theme-toggle" class="sr-only hidden" aria-label="{{ trans(lang=lang, key='toggle_theme') }}">
   
   {% if lang == "pt" %}
     {% set lang_prefix = "/pt" %}
@@ -145,6 +147,15 @@
            class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
           [{{ trans(lang=lang, key="nav_resume") }}]
         </a>
+
+        <!-- Pure No-JS Theme Toggle Button -->
+        <label for="theme-toggle" 
+               class="retro-btn text-[11px] px-1.5 py-0.5 cursor-pointer select-none" 
+               title="{{ trans(lang=lang, key='toggle_theme') }}" 
+               aria-label="{{ trans(lang=lang, key='toggle_theme') }}">
+          <span class="theme-icon-light">🌙 DARK</span>
+          <span class="theme-icon-dark">☀️ LIGHT</span>
+        </label>
 
         <!-- Retro Language Switcher (US Flag & Brazil Flag) -->
         <div class="flex items-center gap-1 border-l border-[#334155] pl-2 ml-1">
