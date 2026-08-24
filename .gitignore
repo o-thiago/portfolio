@@ -3,17 +3,11 @@ public/
 result
 result-*
 
-# Generated CSS & PDFs
+# Generated CSS (built during build / dev)
 static/style.css
-static/*.pdf
 
-# Generated CV & Experience content
-content/resume/_index*.md
-content/experience/_index*.md
-
-# Cache & local submodules
+# Cache & local temp
 .cache/
-submodules/
 
 # OS & Editor files
 .DS_Store
