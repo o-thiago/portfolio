@@ -167,6 +167,36 @@ def parse_award(item: str) -> dict:
 
 def parse_cv(path: Path, is_pt: bool) -> dict:
     text = path.read_text(encoding="utf-8")
+    header_m = re.search(
+        r"\\begin\{center\}(.*?)\\end\{center\}", text, re.DOTALL
+    )
+    header = header_m.group(1) if header_m else ""
+
+    name_m = re.search(r"\\textbf\{([^}]+)\}", header)
+    name = clean(name_m.group(1)) if name_m else "Thiago Macedo Mendes"
+    email_m = re.search(r"\\href\{mailto:([^}]+)\}", header)
+    email = email_m.group(1) if email_m else "thiagomm@pm.me"
+    linkedin_m = re.search(r"\\href\{(https://[^}]*linkedin\.com/[^}]+)\}", header)
+    linkedin = (
+        linkedin_m.group(1)
+        if linkedin_m
+        else "https://www.linkedin.com/in/thiagomacedomendes"
+    )
+    github_m = re.search(r"\\href\{(https://[^}]*github\.com/[^}]+)\}", header)
+    github = github_m.group(1) if github_m else "https://github.com/o-thiago"
+    handle = github.rstrip("/").split("/")[-1] if github else "o-thiago"
+    phone_m = re.search(r"(\+55[^\n\\{]+)", header)
+    phone = clean(phone_m.group(1)) if phone_m else "+55 (69) 99314-6868"
+    loc_part = (
+        header.split(r"\\ [0.1cm]")[1].split(r"{\textbullet}")[0]
+        if r"\\ [0.1cm]" in header
+        else ""
+    )
+    location = (
+        clean(loc_part)
+        or f"Porto Velho, Rondônia, {'Brasil' if is_pt else 'Brazil'}"
+    )
+
     secs = dict(
         re.findall(
             r"\\section\{([^}]+)\}(.*?)(?=\\section\{|\\end\{document\})",
@@ -220,14 +250,13 @@ def parse_cv(path: Path, is_pt: bool) -> dict:
     raw_certs = items(secs.get(cert_k, ""))
 
     return {
-        "name": "Thiago Macedo Mendes",
-        "location": (
-            "Porto Velho, Rondônia, " + ("Brasil" if is_pt else "Brazil")
-        ),
-        "phone": "+55 (69) 99314-6868",
-        "email": "thiagomm@pm.me",
-        "linkedin": "https://www.linkedin.com/in/thiagomacedomendes",
-        "github": "https://github.com/o-thiago",
+        "name": name,
+        "handle": handle,
+        "location": location,
+        "phone": phone,
+        "email": email,
+        "linkedin": linkedin,
+        "github": github,
         "summary_title": sum_k,
         "summary": clean(secs.get(sum_k, "")),
         "experience_title": exp_k,
@@ -247,6 +276,26 @@ def parse_cv(path: Path, is_pt: bool) -> dict:
             edu_k, ("institution", "location", "degree", "date")
         ),
     }
+
+
+def sync_config_globals(d: dict) -> None:
+    cfg = ROOT / "config.toml"
+    if not cfg.exists():
+        return
+    text = cfg.read_text(encoding="utf-8")
+    for key, val in [
+        ("name", d["name"]),
+        ("handle", d["handle"]),
+        ("email", d["email"]),
+        ("phone", d["phone"]),
+        ("location", d["location"]),
+        ("github", d["github"]),
+        ("linkedin", d["linkedin"]),
+    ]:
+        text = re.sub(
+            rf'^{key}\s*=.*$', f'{key} = "{val}"', text, flags=re.MULTILINE
+        )
+    cfg.write_text(text, encoding="utf-8")
 
 
 def make_llms_txt(d: dict) -> str:
@@ -377,6 +426,7 @@ def main() -> None:
         extra = parse_cv(cv / "resumes" / sub / f"{name}.tex", is_pt)
         if not is_pt:
             en_data = extra
+            sync_config_globals(extra)
 
         for folder, page in [
             (

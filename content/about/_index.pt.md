@@ -5,10 +5,11 @@ template = "about.html"
 
 [extra]
 name = "Thiago Macedo Mendes"
+handle = "o-thiago"
 location = "Porto Velho, Rondônia, Brasil"
 phone = "+55 (69) 99314-6868"
 email = "thiagomm@pm.me"
-linkedin = "https://www.linkedin.com/in/thiagomacedomendes"
+linkedin = "https://linkedin.com/in/thiagomacedomendes"
 github = "https://github.com/o-thiago"
 summary_title = "Resumo"
 summary = "Estudante de Ciência da Computação (UNIR) e Técnico em Informática (IFRO) com foco em desenvolvimento de software e infraestrutura de TI. Experiência como pesquisador nos grupos GPMecatrônica e Gotec, e atuação com infraestrutura no Censipam. Habilidades em TypeScript, Python, Java, Rust, PHP, React, Next.js e bancos de dados (MySQL, PostgreSQL, MongoDB). Busco estágio em Desenvolvimento de Software para aplicar minha base técnica em desafios reais."
@@ -284,12 +285,7 @@ Minha trajetória combina a graduação universitária e a vivência em projetos
   Sou fluente em inglês. Em 2024, participei como palestrante no *1º Encontro Poliglota de Calama*, compartilhando métodos práticos de estudo e aprendizado da língua inglesa. Também tenho noções básicas de espanhol.
 
 - **Premiações Acadêmicas:**  
-  - 🥇 **Medalha de Ouro** – Olimpíada de Educação Financeira Tesouro Direto (2025)
-  - 🥈 **Medalha de Prata** – Olimpíada Brasileira de Robótica (OBR Teórica, 2025)
-  - 🏆 **4º Lugar Estadual** – Olimpíada Brasileira de Robótica (OBR Artística, 2025)
-  - 🏅 **Menção Honrosa** – Olimpíada Internacional de Matemática "Matemática Sem Fronteiras" (2025)
-  - 🎖️ **Honra ao Mérito** – Olimpíada Brasileira de Robótica (OBR Teórica, 2024)
-  - 💻 **Fase 2** – Olimpíada Brasileira de Informática (OBI)
+  Confira a seção de distinções e prêmios abaixo com todas as medalhas em olimpíadas do conhecimento e robótica.
 
 ---
 

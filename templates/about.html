@@ -26,12 +26,12 @@
   <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
     <div class="retro-box p-3 space-y-1">
       <div class="text-slate-500 font-bold">{{ trans(lang=lang, key="about_location_label") }}</div>
-      <div class="text-white font-semibold">{{ section.extra.location | default(value=trans(lang=lang, key="about_location_val")) }}</div>
+      <div class="text-white font-semibold">{{ section.extra.location | default(value=config.extra.location) }}</div>
       <div class="text-slate-400 text-[11px]">{{ trans(lang=lang, key="about_location_sub") }}</div>
     </div>
     <div class="retro-box p-3 space-y-1">
       <div class="text-slate-500 font-bold">{{ trans(lang=lang, key="about_handles_label") }}</div>
-      <div class="text-white font-semibold">@{{ config.extra.handle }}</div>
+      <div class="text-white font-semibold">@{{ section.extra.handle | default(value=config.extra.handle) }}</div>
       <div class="text-slate-400 text-[11px]">{{ trans(lang=lang, key="about_handles_sub") }}</div>
     </div>
     <div class="retro-box p-3 space-y-1">
@@ -50,6 +50,36 @@
   <article class="retro-box p-6 prose-custom">
     {{ section.content | safe }}
   </article>
+
+  <!-- Dynamic Distinctions & Awards Box -->
+  {% if section.extra.awards %}
+  <div class="retro-box p-6 space-y-4">
+    <div class="flex items-center justify-between border-b border-[#2d3748] pb-2">
+      <h2 class="text-base font-bold text-white flex items-center gap-2">
+        <span class="text-[#38bdf8]">&gt;&gt;</span> {{ trans(lang=lang, key="section_awards") }}
+      </h2>
+      <a href="{{ config.base_url }}{{ lang_prefix }}/awards/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
+        [{{ trans(lang=lang, key="link_all_awards") }}]
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      {% for aw in section.extra.awards %}
+        {% if aw.is_major %}
+          <div class="retro-box p-3 space-y-1 border-l-4 {{ aw.border }}">
+            <div class="flex items-center justify-between text-xs">
+              <span class="{{ aw.color }} font-bold">{{ aw.icon }} {{ aw.badge }}</span>
+              {% if aw.year %}<span class="text-slate-500 font-mono">{{ aw.year }}</span>{% endif %}
+            </div>
+            <div class="text-white font-medium">
+              {{ aw.title }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 
   <!-- Retro Navigation Footer -->
   <div class="flex flex-wrap items-center justify-between gap-3 text-xs pt-4 border-t border-[#2d3748]">
