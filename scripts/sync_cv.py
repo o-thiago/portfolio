@@ -7,6 +7,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+import tomli_w
+
 ROOT = Path(__file__).resolve().parent.parent
 LOCAL_CANDIDATES = [
     ROOT.parent / "curriculum-vitae",
@@ -73,7 +75,6 @@ def clean(s: str) -> str:
         (r"\$", "$"),
         ("``", '"'),
         ("''", '"'),
-        ('"', '\\"'),
     ]
     for a, b in replacements:
         s = s.replace(a, b)
@@ -180,83 +181,68 @@ def build_pdf(src_dir: Path, tex_file: str, dst_pdf: Path) -> None:
     shutil.copy2(pdf_path, dst_pdf)
 
 
-def format_bullets(bullets: list[str]) -> str:
-    return ", ".join(f'"{x}"' for x in bullets)
-
-
 def make_pages(data: dict, is_pt: bool) -> tuple[str, str]:
     loc = "Porto Velho, Rondônia, Brasil" if is_pt else "Porto Velho, Rondônia, Brazil"
-    exp = "\n".join(
-        f'[[extra.experience]]\ncompany = "{e["company"]}"\n'
-        f'location = "{e["location"]}"\nrole = "{e["role"]}"\n'
-        f'date = "{e["date"]}"\nbullets = [{format_bullets(e["bullets"])}]\n'
-        for e in data["experiences"]
-    )
-    edu = "\n".join(
-        f'[[extra.education]]\ninstitution = "{e["company"]}"\n'
-        f'location = "{e["location"]}"\ndegree = "{e["role"]}"\n'
-        f'date = "{e["date"]}"\n'
-        for e in data["educations"]
-    )
-    certs = ",\n  ".join(f'"{c}"' for c in data["certifications"])
+    resume_page = {
+        "title": "Currículo / CV" if is_pt else "Curriculum Vitae / Resume",
+        "description": (
+            "Currículo profissional e acadêmico de Thiago Macedo Mendes."
+            if is_pt
+            else "Professional and academic CV of Thiago Macedo Mendes."
+        ),
+        "template": "resume.html",
+        "extra": {
+            "name": "Thiago Macedo Mendes",
+            "location": loc,
+            "phone": "+55 (69) 99314-6868",
+            "email": "thiagomm@pm.me",
+            "linkedin": "https://www.linkedin.com/in/thiagomacedomendes",
+            "github": "https://github.com/o-thiago",
+            "summary_title": data["summary_title"],
+            "summary": data["summary"],
+            "experience_title": data["experience_title"],
+            "education_title": data["education_title"],
+            "skills_title": data["skills_title"],
+            "skills_tech_label": "Tecnologias" if is_pt else "Technologies",
+            "skills_tech": data["skills_tech"],
+            "skills_lang_label": "Idiomas" if is_pt else "Languages",
+            "skills_lang": data["skills_lang"],
+            "certifications_title": data["certifications_title"],
+            "certifications": data["certifications"],
+            "experience": data["experiences"],
+            "education": [
+                {
+                    "institution": e["company"],
+                    "location": e["location"],
+                    "degree": e["role"],
+                    "date": e["date"],
+                }
+                for e in data["educations"]
+            ],
+        },
+    }
 
-    res_title = "Currículo / CV" if is_pt else "Curriculum Vitae / Resume"
-    res_desc = (
-        "Currículo profissional e acadêmico de Thiago Macedo Mendes."
-        if is_pt
-        else "Professional and academic CV of Thiago Macedo Mendes."
-    )
-    tech_label = "Tecnologias" if is_pt else "Technologies"
-    lang_label = "Idiomas" if is_pt else "Languages"
+    experience_page = {
+        "title": (
+            "Experiência Profissional & Pesquisa"
+            if is_pt
+            else "Work & Research Experience"
+        ),
+        "description": (
+            "Histórico profissional e acadêmico."
+            if is_pt
+            else "Professional roles and research grants."
+        ),
+        "template": "experience.html",
+        "extra": {
+            "experience_title": data["experience_title"],
+            "experience": data["experiences"],
+        },
+    }
 
-    resume = f"""+++
-title = "{res_title}"
-description = "{res_desc}"
-template = "resume.html"
-
-[extra]
-name = "Thiago Macedo Mendes"
-location = "{loc}"
-phone = "+55 (69) 99314-6868"
-email = "thiagomm@pm.me"
-linkedin = "https://www.linkedin.com/in/thiagomacedomendes"
-github = "https://github.com/o-thiago"
-summary_title = "{data["summary_title"]}"
-summary = "{data["summary"]}"
-experience_title = "{data["experience_title"]}"
-education_title = "{data["education_title"]}"
-skills_title = "{data["skills_title"]}"
-skills_tech_label = "{tech_label}"
-skills_tech = "{data["skills_tech"]}"
-skills_lang_label = "{lang_label}"
-skills_lang = "{data["skills_lang"]}"
-certifications_title = "{data["certifications_title"]}"
-certifications = [
-  {certs}
-]
-
-{exp}
-{edu}+++
-"""
-    exp_title = (
-        "Experiência Profissional & Pesquisa" if is_pt else "Work & Research Experience"
-    )
-    exp_desc = (
-        "Histórico profissional e acadêmico."
-        if is_pt
-        else "Professional roles and research grants."
-    )
-    experience = f"""+++
-title = "{exp_title}"
-description = "{exp_desc}"
-template = "experience.html"
-
-[extra]
-experience_title = "{data["experience_title"]}"
-
-{exp}+++
-"""
-    return resume, experience
+    res_md = f"+++\n{tomli_w.dumps(resume_page)}+++\n"
+    exp_md = f"+++\n{tomli_w.dumps(experience_page)}+++\n"
+    return res_md, exp_md
 
 
 def main() -> None:
