@@ -1,76 +1,73 @@
 +++
 title = "Sobre Thiago Macedo Mendes"
-description = "Trajetória biográfica, filosofia em engenharia de sistemas, teclados ergonômicos e formação acadêmica."
+description = "Trajetória biográfica, filosofia de engenharia de software e pesquisa acadêmica."
 template = "about.html"
 +++
 
 ## Olá, Mundo!
 
-Sou **Thiago Macedo Mendes**, estudante de Ciência da Computação e desenvolvedor de software em **Porto Velho, Rondônia, Brasil**.
+Sou **Thiago Macedo Mendes**, estudante de Ciência da Computação e desenvolvedor de software residente em **Porto Velho, Rondônia, Brasil**.
 
-Tenho forte interesse por programação de baixo nível, infraestrutura declarativa, firmware para sistemas embarcados e desenvolvimento web focado em alta performance, acessibilidade e simplicidade técnica.
+Dedico meus estudos a sistemas de baixo nível, infraestrutura declarativa e desenvolvimento de aplicações web focadas em velocidade, acessibilidade e ausência de excessos.
 
 ---
 
-## 01. Como Desenvolvedor: Sistemas de Baixo Nível & Reprodutibilidade com Nix
+## 01. O Desenvolvedor: Sistemas de Baixo Nível & Reprodutibilidade Declarativa
 
-Minha filosofia de engenharia se baseia na tradição Unix: **escreva programas que façam apenas uma coisa bem feita, minimize sobrecargas desnecessárias e projete sistemas compreensíveis e verificáveis diretamente do código-fonte.**
+Minha filosofia de engenharia é guiada pelos princípios Unix: **faça programas que realizem uma única tarefa de forma excelente, minimize overhead em tempo de execução e crie sistemas compreensíveis e verificáveis a partir do código-fonte.**
 
-- **Programação de Baixo Nível (C & Rust):**  
-  Gosto de trabalhar próximo ao hardware. Em C, estudo gerenciamento manual de memória, layout de estruturas de dados e otimização algorítmica. Em Rust, utilizo tipagem estática rigorosa, abstrações de custo zero e concorrência assíncrona (como camadas de consultas SQL dinâmicas com verificação em tempo de compilação via SQLx).
+- **Programação de Sistemas & Baixo Nível (C & Rust):**  
+  Tenho grande interesse em programar próximo ao hardware. Em C, estudo gerenciamento manual de memória, layout de estruturas de dados e otimização algorítmica. Em Rust, utilizo o sistema de tipos estáticos para garantias de segurança de memória e I/O assíncrono (como a composição tipada de queries SQL dinâmicas com SQLx).
 
 - **Infraestrutura Declarativa com Nix & NixOS:**  
-  Acredito que ambientes de software devem ser puramente reprodutíveis. Gerencio minhas estações de trabalho e sistemas embarcados (`toof-os` no Raspberry Pi 4) de forma puramente declarativa com Nix Flakes, eliminando discrepâncias de ambiente e automatizando builds herméticos.
-
-- **Firmware Embarcado & Teclados Ergonômicos:**  
-  Desenvolvo e customizo firmware com **ZMK** e **QMK** em C e Devicetree do Zephyr RTOS para teclados mecânicos ergonômicos divididos, programando algoritmos de combos, modificadores na linha base (home-row mods) e camadas rápidas.
+  Acredito que ambientes de software devem ser puros e matematicamente reproduzíveis. Gerencio minhas estações de trabalho e ambientes (`toof-os` no Raspberry Pi 4) inteiramente por meio de Nix Flakes, eliminando divergências de dependências e construindo pipelines herméticos.
 
 - **Arquitetura Web de Alta Performance:**  
-  Em projetos web (TypeScript, React, Next.js, Laravel, PostgreSQL, MySQL), priorizo renderização estática ou no servidor, CSS compilado sob demanda com Tailwind CSS e fronteiras rígidas de tipagem.
+  No desenvolvimento web (TypeScript, React, Next.js, Laravel, PostgreSQL, MySQL), priorizo arquiteturas estáticas ou pré-renderizadas no servidor, estilização enxuta com Tailwind CSS e validações estritas de tipo.
 
 ---
 
-## 02. Como Estudante & Pesquisador Acadêmico
+## 02. O Estudante & Pesquisador Científico
 
-A investigação científica e a formação sólida são pilares centrais da minha atuação:
+A pesquisa acadêmica e a formação científica estruturam minha trajetória:
 
 - **Universidade Federal de Rondônia (UNIR):**  
-  Graduando no **Bacharelado em Ciência da Computação** (2026 – 2029), aprofundando fundamentos em teoria da computação, algoritmos, compiladores, sistemas operacionais e matemática discreta.
+  Graduando no **Bacharelado em Ciência da Computação** (2026 – 2029), aprofundando conceitos em teoria da computação, compiladores, algoritmos avançados e sistemas distribuídos.
 
 - **Instituto Federal de Rondônia (IFRO):**  
-  Formado no **Curso Técnico em Informática Integrado ao Ensino Médio** (2023 – 2025), com base sólida em redes de computadores, banco de dados e arquitetura de sistemas.
+  Formado no **Curso Técnico em Informática Integrado ao Ensino Médio** (2023 – 2025), com formação prática em redes estruturadas, arquitetura de computadores e programação orientada a objetos.
 
-- **Grupos de Pesquisa:**
-  - **GPMecatrônica (IFRO):** Desenvolvimento de aplicações web, padronização de ambientes laboratoriais com Nix e Docker, teoria de robótica e redação de artigos científicos.
-  - **GoTec (IFRO):** Desenvolvimento da plataforma "Radar da Inovação" em TypeScript, ReactJS, Laravel e Docker, além de apresentações em eventos científicos como a Expo Favela e a Semana Nacional de Ciência e Tecnologia (SNCT).
+- **Atuação em Grupos de Pesquisa:**
+  - **GPMecatrônica (IFRO):** Desenvolvimento de plataformas web, padronização de ambientes de pesquisa com Nix, estudos em robótica teórica e coautoria de artigos científicos.
+  - **GoTec (IFRO):** Desenvolvimento da plataforma institucional "Radar da Inovação" em ReactJS, TypeScript, Laravel e Docker, além de apresentações de divulgação científica em congressos como a Expo Favela e a Semana Nacional de Ciência & Tecnologia (SNCT).
 
-- **Olimpíadas Acadêmicas e Prêmios:**  
+- **Olimpíadas Acadêmicas & Premiações:**  
   - 🥇 **Medalha de Ouro** – Olimpíada de Educação Financeira Tesouro Direto (2025)
   - 🥈 **Medalha de Prata** – Olimpíada Brasileira de Robótica (OBR Teórica, 2025)
-  - 🏅 **Menção Honrosa** – Olimpíada Internacional "Matemática Sem Fronteiras" (2025)
+  - 🏅 **Menção Honrosa** – Olimpíada Internacional de Matemática "Matemática Sem Fronteiras" (2025)
   - 🎖️ **Honra ao Mérito** – Olimpíada Brasileira de Robótica (2024)
-  - 💻 **Competidor Fase 2** – Olimpíada Brasileira de Informática (OBI)
+  - 💻 **Participação na Fase 2** – Olimpíada Brasileira de Informática (OBI)
 
 ---
 
-## 03. Como Pessoa: Minimalismo e Ergonomia
+## 03. A Pessoa: Minimalismo & Software Livre
 
-Além do código e das salas de aula:
+Fora da universidade e dos projetos técnicos:
 
-- **Teclados Divididos de 34 Teclas:**  
-  Sou fascinado por ergonomia e computação minimalista. Utilizo e monto teclados mecânicos divididos com disposição colunar de 34 teclas (Urchin, Ferris Sweep), projetando mapas de teclas altamente eficientes que reduzem o deslocamento dos dedos.
+- **Produtividade Minimalista & Linux:**  
+  Aprecio ambientes Linux limpos, ferramentas de terminal eficientes e interfaces minimalistas.
 
 - **Idiomas & Comunicação:**  
-  Sou bilíngue em **Português** (nativo) e **Inglês** (fluente/bilíngue). Em 2024, fui palestrante convidado no *1º Encontro Poliglota de Calama*, ministrando a palestra sobre estratégias cognitivas para aquisição acelerada da língua inglesa. Também estudo Espanhol.
+  Sou bilíngue em **Português** (nativo) e **Inglês** (fluente/bilíngue). Em 2024, fui palestrante convidado no *1º Encontro Poliglota de Calama*, ministrando palestra sobre estratégias cognitivas para aquisição acelerada do idioma inglês. Atualmente estudo espanhol.
 
 - **Vivência na Amazônia Ocidental:**  
-  Viver em Porto Velho me traz uma visão muito clara sobre desenvolvimento científico e tecnológico regional e a relevância de infraestruturas resilientes de TI (como na minha experiência no Censipam / Ministério da Defesa).
+  Viver em Porto Velho me proporciona uma perspectiva única sobre o papel da tecnologia, da interiorização científica e da relevância crítica de infraestruturas de TI resilientes (como no período de atuação no Censipam para o Ministério da Defesa).
 
 ---
 
 ## Contato
 
-Estou sempre aberto a conversar sobre sistemas, NixOS, projetos de código aberto e oportunidades profissionais.
+Estou sempre aberto a dialogar sobre programação de sistemas, NixOS, projetos de software livre e oportunidades de estágio.
 
 - **E-mail:** [thiagomm@pm.me](mailto:thiagomm@pm.me)
 - **LinkedIn:** [linkedin.com/in/thiagomacedomendes](https://www.linkedin.com/in/thiagomacedomendes)

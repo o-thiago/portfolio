@@ -1,6 +1,6 @@
 +++
 title = "About Thiago Macedo Mendes"
-description = "Biographical background, systems engineering philosophy, ergonomic keyboard builds, and academic pursuits."
+description = "Biographical background, systems engineering philosophy, and academic pursuits."
 template = "about.html"
 +++
 
@@ -8,7 +8,7 @@ template = "about.html"
 
 I am **Thiago Macedo Mendes**, a Computer Science student and software developer based in **Porto Velho, Rondônia, Brazil**.
 
-I gravitate toward systems programming, declarative infrastructure, embedded firmware, and building web systems that prioritize speed, accessibility, and zero-bloat engineering.
+I gravitate toward systems programming, declarative infrastructure, and building web systems that prioritize speed, accessibility, and zero-bloat engineering.
 
 ---
 
@@ -20,10 +20,7 @@ My engineering philosophy is rooted in the Unix philosophy: **make each program 
   I love working close to the machine. In C, I study low-level memory allocation, data structure layout, and algorithmic efficiency. In Rust, I leverage strong type guarantees, zero-cost abstractions, and asynchronous I/O (such as type-safe dynamic SQL query builders using SQLx).
 
 - **Declarative Infrastructure with Nix & NixOS:**  
-  I believe software environments should be pure and mathematically reproducible. I manage my workstations and embedded systems (`toof-os` on Raspberry Pi 4) entirely through declarative Nix Flakes, eliminating "works on my machine" issues and replacing ad-hoc shell scripts with reproducible package builds.
-
-- **Embedded Firmware & Hardware Integration:**  
-  I build and program custom embedded firmware using **ZMK** and **QMK** in C and Zephyr RTOS Devicetree for split ergonomic keyboards, writing custom combo algorithms, sticky keys, and home-row mod layers.
+  I believe software environments should be pure and mathematically reproducible. I manage my workstations and systems (`toof-os` on Raspberry Pi 4) entirely through declarative Nix Flakes, eliminating "works on my machine" issues and replacing ad-hoc shell scripts with reproducible package builds.
 
 - **Performant Web & Systems Architecture:**  
   When developing web software (TypeScript, React, Next.js, Laravel, PostgreSQL, MySQL), I favor server-rendered or static architectures, lightweight styling with Tailwind CSS, and strict type boundaries.
@@ -53,12 +50,12 @@ Academic exploration and scientific inquiry are core to my trajectory:
 
 ---
 
-## 03. As a Person: Minimalist Computing & Ergonomics
+## 03. As a Person: Minimalist Computing & Open Source
 
 Outside of formal engineering and university coursework:
 
-- **Custom Split Ergonomic Keyboards:**  
-  I am an avid builder and user of ultra-compact, 34-key columnar split keyboards (such as the Urchin and Ferris Sweep). Designing custom layers, home-row modifiers, and custom keymaps has taught me a great deal about low-latency human-computer interaction, microcontroller pinouts, and embedded C firmware.
+- **Minimalist Computing & Linux:**  
+  I prioritize minimal, keyboard-driven Linux workflows, terminal productivity, and clean design.
 
 - **Languages & Communication:**  
   I am bilingual in **Portuguese** (native) and **English** (fluent/bilingual). In 2024, I had the privilege of serving as a guest speaker at the *1st Polyglot Meeting of Calama*, delivering a keynote lecture on cognitive strategies for accelerated English acquisition. I am also currently studying Spanish.

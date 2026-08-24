@@ -78,7 +78,7 @@
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
-          <code>[C] [Rust] [NixOS] [ZMK] [TS]</code>
+          <code>[C] [Rust] [NixOS] [TypeScript]</code>
         </div>
       </div>
 
@@ -99,14 +99,14 @@
       <!-- Box 3: Person -->
       <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
         <div class="space-y-2">
-          <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">[03. PERSON / ERGO]</div>
+          <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">[03. PERSON / LINUX]</div>
           <h3 class="text-base font-bold text-white">{{ trans(key="person_title") }}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
             {{ trans(key="person_desc") }}
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
-          <code>[34-Key Urchin] [PT/EN] [Linux]</code>
+          <code>[Minimalism] [PT/EN] [Free Software]</code>
         </div>
       </div>
 
@@ -130,7 +130,7 @@
       <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
-            <span class="text-[#38bdf8] font-bold">[NixOS / Embedded]</span>
+            <span class="text-[#38bdf8] font-bold">[NixOS / Systems]</span>
             <a href="https://github.com/o-thiago/toof-os" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
               [src/github]
             </a>
@@ -154,39 +154,11 @@
         </div>
       </article>
 
-      <!-- Project 2: urchin-firmware -->
+      <!-- Project 2: gpm-cards -->
       <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
-            <span class="text-[#4ade80] font-bold">[Firmware / C]</span>
-            <a href="https://github.com/o-thiago/urchin-zmk-firmware" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [src/github]
-            </a>
-          </div>
-          <h3 class="text-base font-bold text-white">
-            <a href="{{ config.base_url }}{{ lang_prefix }}/projects/urchin-firmware/">Urchin 34-Key ZMK Firmware</a>
-          </h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            {% if lang == "pt" %}
-              Arquitetura de firmware e keymap para teclado ergonômico dividido de 34 teclas. Combos de hardware, home-row mods e BLE de baixo consumo.
-            {% else %}
-              Custom firmware and keymap architecture for 34-key split columnar keyboard. Incorporates hardware combos, home-row mods, and low-latency BLE.
-            {% endif %}
-          </p>
-        </div>
-        <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
-          <span class="text-slate-500 font-mono">ZMK • C • BLE</span>
-          <a href="{{ config.base_url }}{{ lang_prefix }}/projects/urchin-firmware/" class="text-[#4ade80]">
-            {{ trans(key="link_read_deep_dive") }}
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 3: gpm-cards -->
-      <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
-        <div class="space-y-2">
-          <div class="flex items-center justify-between text-xs">
-            <span class="text-[#f59e0b] font-bold">[Web / Research]</span>
+            <span class="text-[#4ade80] font-bold">[Web / Research]</span>
             <a href="https://github.com/o-thiago/gpm-cards" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
               [src/github]
             </a>
@@ -210,7 +182,7 @@
         </div>
       </article>
 
-      <!-- Project 4: sqlx-layering -->
+      <!-- Project 3: sqlx-layering -->
       <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
@@ -233,6 +205,31 @@
         <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
           <span class="text-slate-500 font-mono">Rust • SQLx • TypeSafe</span>
           <a href="{{ config.base_url }}{{ lang_prefix }}/projects/sqlx-layering/" class="text-[#4ade80]">
+            {{ trans(key="link_read_deep_dive") }}
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 4: innovation-radar -->
+      <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[#f59e0b] font-bold">[Web / Research]</span>
+          </div>
+          <h3 class="text-base font-bold text-white">
+            <a href="{{ config.base_url }}{{ lang_prefix }}/projects/innovation-radar/">Radar da Inovação (GoTec)</a>
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            {% if lang == "pt" %}
+              Plataforma institucional para mapeamento de projetos de inovação tecnológica e propriedade intelectual desenvolvido para o GoTec (IFRO).
+            {% else %}
+              Institutional web platform for tracking innovation initiatives and research intellectual property developed for GoTec (IFRO).
+            {% endif %}
+          </p>
+        </div>
+        <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
+          <span class="text-slate-500 font-mono">React • Laravel • MySQL</span>
+          <a href="{{ config.base_url }}{{ lang_prefix }}/projects/innovation-radar/" class="text-[#4ade80]">
             {{ trans(key="link_read_deep_dive") }}
           </a>
         </div>
