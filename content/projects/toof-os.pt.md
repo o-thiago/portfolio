@@ -6,7 +6,6 @@ weight = 1
 
 [extra]
 category = "NixOS / Sistemas"
-author = "@o-thiago"
 github = "https://github.com/o-thiago/ToofOS"
 stack = ["Nix Flakes", "NixOS", "Raspberry Pi 4", "DACC Station (UNIR)", "nix-ld", "SDL2", "Wayland"]
 +++
@@ -78,5 +77,5 @@ Como os alunos criam jogos em ferramentas diversas, empacotar cada jogo individu
 ## Links
 
 - **Projeto:** [DACC Station](https://github.com/vinytacana/dacc_station_integration) — UNIR
-- **Repositório:** [github.com/o-thiago/ToofOS](https://github.com/o-thiago/ToofOS)
-- **Autor:** Thiago Macedo Mendes (`@o-thiago`)
+- **Repositório:** [{{ github_handle() }}/ToofOS]({{ github_url() }}/ToofOS)
+- **Autor:** {{ name() }} (`@{{ handle() }}`)

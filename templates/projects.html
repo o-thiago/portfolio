@@ -37,9 +37,7 @@
           </div>
           
           <div class="flex items-center gap-2 text-xs">
-            {% if page.extra.author %}
-              <span class="text-slate-500 font-mono text-[11px]">{{ page.extra.author }}</span>
-            {% endif %}
+            <span class="text-slate-500 font-mono text-[11px]">{{ page.extra.author | default(value="@" ~ config.extra.handle) }}</span>
             {% if page.extra.github %}
               <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-white">
                 [{{ trans(lang=lang, key="project_src_github") }}]

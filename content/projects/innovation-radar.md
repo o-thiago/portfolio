@@ -6,7 +6,6 @@ weight = 3
 
 [extra]
 category = "Web / Research"
-author = "@o-thiago"
 stack = ["TypeScript", "React", "Laravel", "PHP", "MySQL", "Docker", "Storybook"]
 +++
 
@@ -27,4 +26,4 @@ The **Innovation Radar** is an institutional web platform built inside the **GoT
 
 ## Author
 
-- Thiago Macedo Mendes (`@o-thiago`)
+- {{ name() }} (`@{{ handle() }}`)

@@ -241,6 +241,27 @@ def sync_config_globals(d: dict) -> None:
     if not cfg.exists():
         return
     text = cfg.read_text(encoding="utf-8")
+
+    # Pick up whatever identity values are currently on record in [extra] so
+    # every literal mention of them elsewhere in the file (the header
+    # comment, page titles, ASCII banners, the GitHub Pages base_url host,
+    # etc.) can be swapped for the freshly parsed CV values too, instead of
+    # only updating the [extra] block itself.
+    extra_m = re.search(r"\[extra\](.*?)(?=\n\[|\Z)", text, re.DOTALL)
+    old = dict(
+        re.findall(
+            r'^(name|handle|email|phone|location|github|linkedin)\s*=\s*"([^"]*)"',
+            extra_m.group(1),
+            re.MULTILINE,
+        )
+    ) if extra_m else {}
+
+    for key in ("name", "handle", "email", "phone", "location", "github", "linkedin"):
+        old_val, new_val = old.get(key), d[key]
+        if old_val and old_val != new_val:
+            text = text.replace(old_val, new_val)
+            text = text.replace(old_val.upper(), new_val.upper())
+
     for key, val in [
         ("name", d["name"]),
         ("handle", d["handle"]),
@@ -249,11 +270,45 @@ def sync_config_globals(d: dict) -> None:
         ("location", d["location"]),
         ("github", d["github"]),
         ("linkedin", d["linkedin"]),
+        ("title", d["name"]),
     ]:
         text = re.sub(
             rf'^{key}\s*=.*$', f'{key} = "{val}"', text, flags=re.MULTILINE
         )
     cfg.write_text(text, encoding="utf-8")
+
+
+def make_humans_txt(d: dict) -> str:
+    github_handle = d["github"].rstrip("/").split("/")[-1]
+    linkedin_handle = d["linkedin"].rstrip("/").split("/")[-1]
+    site_url = f"https://{github_handle}.github.io"
+
+    cfg = ROOT / "config.toml"
+    tagline = ""
+    if cfg.exists():
+        m = re.search(r'^tagline\s*=\s*"([^"]*)"', cfg.read_text(encoding="utf-8"), re.MULTILINE)
+        tagline = m.group(1) if m else ""
+
+    return f"""/* TEAM */
+Author: {d['name']}
+Role: {tagline}
+Site: {site_url}
+Email: {d['email']}
+GitHub: @{github_handle}
+LinkedIn: @{linkedin_handle}
+Location: {d['location']}
+
+/* THANKS */
+Thanks to the open-source community, the NixOS project, and Zola developers.
+
+/* SITE */
+Standards: HTML5, CSS3, JSON-LD Schema.org, llms.txt
+Static Site Generator: Zola (Rust SSG)
+CSS Framework: Tailwind CSS v4
+JavaScript: None (0kB client-side JS)
+Infrastructure: Nix / Nix Flakes
+Hosted: GitHub Pages
+"""
 
 
 def make_llms_txt(d: dict) -> str:
@@ -429,6 +484,9 @@ def main() -> None:
         )
 
     if en_data:
+        (ROOT / "static/humans.txt").write_text(
+            make_humans_txt(en_data), encoding="utf-8"
+        )
         (ROOT / "static/llms.txt").write_text(
             make_llms_txt(en_data), encoding="utf-8"
         )

@@ -238,7 +238,7 @@ date = "Feb 2023 - Dec 2025"
 
 ## Hello!
 
-I'm **Thiago Macedo Mendes**, a Computer Science student at **UNIR** and Informatics graduate from **IFRO**, based in **Porto Velho, Rondônia, Brazil**.
+I'm **{{ name() }}**, a Computer Science student at **UNIR** and Informatics graduate from **IFRO**, based in **Porto Velho, Rondônia, Brazil**.
 
 I mainly work with systems programming in C and Rust, declarative Linux system management with **NixOS**, and full-stack web development using TypeScript, React, Next.js, and Laravel.
 
@@ -293,6 +293,6 @@ My background combines undergraduate coursework and hands-on experience in resea
 
 Feel free to reach out:
 
-- **Email:** [thiagomm@pm.me](mailto:thiagomm@pm.me)
-- **LinkedIn:** [linkedin.com/in/thiagomacedomendes](https://www.linkedin.com/in/thiagomacedomendes)
-- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago)
+- **Email:** [{{ email() }}](mailto:{{ email() }})
+- **LinkedIn:** [{{ linkedin_handle() }}]({{ linkedin_url() }})
+- **GitHub:** [{{ github_handle() }}]({{ github_url() }})
