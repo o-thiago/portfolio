@@ -1,6 +1,6 @@
 +++
-title = "toof-os: Sistema Operacional NixOS para a DACC Station da UNIR"
-description = "Sistema operacional declarativo desenvolvido em NixOS sob medida para alimentar a console arcade DACC Station do Departamento Acadêmico de Ciência da Computação da UNIR."
+title = "toof-os: Sistema Operacional NixOS para o DACC Station da UNIR"
+description = "Configuração declarativa em NixOS desenvolvida para ser o sistema operacional do DACC Station, o console arcade da UNIR."
 date = 2025-06-01
 weight = 1
 
@@ -8,50 +8,47 @@ weight = 1
 category = "NixOS / Sistemas"
 author = "@o-thiago"
 github = "https://github.com/o-thiago/ToofOS"
-stack = ["Nix Flakes", "NixOS", "Raspberry Pi 4", "DACC Station (UNIR)", "nix-ld", "SDL2", "Wayland", "Kernel Linux"]
+stack = ["Nix Flakes", "NixOS", "Raspberry Pi 4", "DACC Station (UNIR)", "nix-ld", "SDL2", "Wayland"]
 +++
 
-## Visão Geral
+## O que é o projeto
 
-O **`toof-os`** é um sistema operacional personalizado, imutável e declarativo desenvolvido com **NixOS** e **Nix Flakes** projetado especificamente para ser o sistema operacional que alimenta a **DACC Station** — projeto de console / estação arcade do **Departamento Acadêmico de Ciência da Computação (DACC)** da **Universidade Federal de Rondônia (UNIR)**.
+O **`toof-os`** é uma configuração personalizada do **NixOS** feita para rodar no **DACC Station** — um projeto de console arcade desenvolvido no **Departamento Acadêmico de Ciência da Computação (DACC)** da **Universidade Federal de Rondônia (UNIR)**.
 
-A **DACC Station** foi concebida como uma estação interativa de hardware para demonstração e execução de jogos desenvolvidos pelos próprios alunos do curso de Ciência da Computação da UNIR (utilizando engines como Godot, SDL2, Unity, Java, além de executáveis em C/C++). O `toof-os` opera nas placas Raspberry Pi 4 da estação, inicializando diretamente na interface da DACC Station com foco em alta performance e baixa latência.
-
----
-
-## Decisões Técnicas & Arquitetura do Sistema
-
-### 1. Integração Direta com a Interface da DACC Station
-- Integração e empacotamento em Nix da suíte em C++/SDL2 da estação (`dacc-ui`, `process-manager` e `log-server`), orquestrados por sockets Unix de IPC (`/tmp/dacc-station.sock` e `/tmp/gameman.sock`).
-- Inicialização direta no ambiente gráfico Wayland via SDDM em modo quiosque (kiosk console mode).
-
-### 2. Runtime Universal para Jogos dos Alunos via `nix-ld`
-Para que os estudantes possam rodar jogos compilados dinamicamente em diversas engines sem a necessidade de empacotar cada jogo individualmente no Nix, o `toof-os` fornece um ambiente de runtime universal baseado no padrão do **Steam Runtime**:
-- **Gráficos e GPU:** Drivers Mesa, Vulkan loader, libGL, libdrm, Wayland e bibliotecas de compatibilidade X11.
-- **Áudio & Multimídia:** PipeWire de baixa latência, ALSA com suporte a 32-bit, PulseAudio e suíte completa SDL2 (`SDL2_image`, `SDL2_mixer`, `SDL2_ttf`, `SDL2_gfx`).
-- **Múltiplos Ambientes Java:** Conjunto de runtimes Eclipse Temurin pré-instalados (JRE 8, 11, 17, 21 e 25).
-
-### 3. Otimizações de Desempenho e Áudio em Tempo Real
-- **Agendamento de Processos:** Integração do daemon `ananicy-cpp` com conjunto de regras do CachyOS para ajuste dinâmico de prioridade de CPU e IO (nice/ionice), mitigando engasgos (stuttering) em tempo de jogo.
-- **Prioridade de Áudio:** Configuração do `rtkit` para escalonamento em tempo real do PipeWire.
-- **Frequência da CPU:** Fixação de `cpuFreqGovernor = "performance"` para manter clocks estáveis.
-- **Gerenciamento de RAM:** Configuração de `zramSwap` (50% da memória física) para otimizar os 8GB de RAM do Raspberry Pi.
-
-### 4. Suporte a Controles e Periféricos
-- Suporte nativo a controles sem fio do Xbox via módulo `xpadneo`.
-- Suporte a gamepads não convencionais e **DualShock 4** via camada `uinput`.
-
-### 5. Preservação do Cartão SD & Otimização do Armazenamento
-- Montagem com parâmetros `noatime` e `commit=120` para reduzir ciclos desnecessários de escrita na memória flash do cartão SD.
-- Deduplicação automática de arquivos na Nix Store (`auto-optimise-store = true`) e coleta de lixo periódica retendo as 3 gerações mais recentes do sistema.
+O objetivo do **DACC Station** é permitir que estudantes da UNIR exibam e joguem projetos desenvolvidos ao longo do curso (jogos feitos em Godot, Unity, SDL2, Java ou binários em C/C++). O `toof-os` foi criado para rodar diretamente nas placas Raspberry Pi 4 do console, cuidando de toda a inicialização, compatibilidade com controles e execução dos jogos.
 
 ---
 
-## Estrutura Flake do Sistema
+## Como foi construído
+
+### 1. Inicialização e Interface do DACC Station
+- O sistema empacota a suíte em C++/SDL2 do console (`dacc-ui`, `process-manager` e `log-server`), que se comunicam através de sockets Unix (`/tmp/dacc-station.sock` e `/tmp/gameman.sock`).
+- A inicialização entra direto no ambiente gráfico Wayland via SDDM em modo quiosque, sem precisar abrir desktop tradicional.
+
+### 2. Execução de Jogos com `nix-ld`
+Como os alunos criam jogos em ferramentas diversas, empacotar cada jogo individualmente no Nix seria inviável. Por isso, configurei o **`nix-ld`** com uma camada de bibliotecas dinâmicas semelhante ao runtime da Steam:
+- Bibliotecas gráficas (Mesa, Vulkan loader, libGL, libdrm, Wayland e X11).
+- Áudio e mídia com PipeWire e SDL2 (`SDL2_image`, `SDL2_mixer`, `SDL2_ttf`, `SDL2_gfx`).
+- Múltiplas versões do Java JRE pré-instaladas (versões 8, 11, 17, 21 e 25).
+
+### 3. Ajustes de Desempenho e Áudio
+- `ananicy-cpp` com regras do CachyOS para priorizar CPU e IO dos jogos em execução.
+- PipeWire configurado com `rtkit` para reduzir latência de áudio.
+- Governador de CPU fixado em `performance` para evitar engasgos com trocas de frequência no ARM.
+- `zramSwap` ativado para gerenciar melhor a memória RAM de 8GB do Raspberry Pi.
+
+### 4. Controles e Armazenamento
+- Suporte a controles sem fio de Xbox via `xpadneo` e outros controles/DualShock 4 via `uinput`.
+- Sistema de arquivos com `noatime` e `commit=120` para reduzir ciclos de escrita no cartão SD.
+- Limpeza automática da Nix Store retendo as 3 últimas gerações do sistema.
+
+---
+
+## Configuração Flake
 
 ```nix
 {
-  description = "toofos - Sistema Operacional Declarativo para a DACC Station da UNIR";
+  description = "toofos - Sistema Operacional para o DACC Station da UNIR";
 
   inputs = {
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
@@ -78,9 +75,8 @@ Para que os estudantes possam rodar jogos compilados dinamicamente em diversas e
 
 ---
 
-## Contexto Acadêmico & Repositório
+## Links
 
-- **Instituição:** Universidade Federal de Rondônia (UNIR) — Departamento Acadêmico de Ciência da Computação (DACC).
-- **Finalidade:** Sistema Operacional dedicado da console arcade **DACC Station**.
+- **Projeto:** [DACC Station](https://github.com/vinytacana/dacc_station_integration) — UNIR
 - **Repositório:** [github.com/o-thiago/ToofOS](https://github.com/o-thiago/ToofOS)
 - **Autor:** Thiago Macedo Mendes (`@o-thiago`)

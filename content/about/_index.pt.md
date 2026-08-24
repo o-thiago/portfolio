@@ -1,74 +1,71 @@
 +++
 title = "Sobre Thiago Macedo Mendes"
-description = "Trajetória biográfica, filosofia de engenharia de software e pesquisa acadêmica."
+description = "Estudante de Ciência da Computação na UNIR, desenvolvedor e pesquisador."
 template = "about.html"
 +++
 
-## Olá, Mundo!
+## Apresentação
 
-Sou **Thiago Macedo Mendes**, estudante de Ciência da Computação e desenvolvedor de software residente em **Porto Velho, Rondônia, Brasil**.
+Sou o **Thiago Macedo Mendes**, estudante de Ciência da Computação na **UNIR** e técnico em Informática formado pelo **IFRO**, morando em **Porto Velho, Rondônia**.
 
-Dedico meus estudos a sistemas de baixo nível, infraestrutura declarativa e desenvolvimento de aplicações web focadas em velocidade, acessibilidade e ausência de excessos.
-
----
-
-## 01. O Desenvolvedor: Sistemas de Baixo Nível & Reprodutibilidade Declarativa
-
-Minha filosofia de engenharia é guiada pelos princípios Unix: **faça programas que realizem uma única tarefa de forma excelente, minimize overhead em tempo de execução e crie sistemas compreensíveis e verificáveis a partir do código-fonte.**
-
-- **Programação de Sistemas & Baixo Nível (C & Rust):**  
-  Tenho grande interesse em programar próximo ao hardware. Em C, estudo gerenciamento manual de memória, layout de estruturas de dados e otimização algorítmica. Em Rust, utilizo o sistema de tipos estáticos para garantias de segurança de memória e I/O assíncrono (como a composição tipada de queries SQL dinâmicas com SQLx).
-
-- **Infraestrutura Declarativa com Nix & NixOS:**  
-  Acredito que ambientes de software devem ser puros e matematicamente reproduzíveis. Gerencio minhas estações de trabalho e ambientes (`toof-os` no Raspberry Pi 4) inteiramente por meio de Nix Flakes, eliminando divergências de dependências e construindo pipelines herméticos.
-
-- **Arquitetura Web de Alta Performance:**  
-  No desenvolvimento web (TypeScript, React, Next.js, Laravel, PostgreSQL, MySQL), priorizo arquiteturas estáticas ou pré-renderizadas no servidor, estilização enxuta com Tailwind CSS e validações estritas de tipo.
+Trabalho principalmente com programação de sistemas (C, Rust), gerenciamento declarativo de ambientes Linux com **NixOS** e desenvolvimento de aplicações web (TypeScript, React, Next.js, Laravel).
 
 ---
 
-## 02. O Estudante & Pesquisador Científico
+## 01. Desenvolvimento & Sistemas
 
-A pesquisa acadêmica e a formação científica estruturam minha trajetória:
+No desenvolvimento de software, priorizo soluções simples, código legível e ferramentas que funcionem de forma previsível:
+
+- **Linguagens de Baixo Nível (C e Rust):**  
+  Tenho interesse em entender como as coisas funcionam por baixo dos panos. Em C, estudo gerenciamento de memória, algoritmos e estruturas de dados. Em Rust, aproveito o sistema de tipos para construir ferramentas seguras, como o projeto de macros para consultas dinâmicas no SQLx.
+
+- **Ambientes Declarativos com Nix & NixOS:**  
+  Uso o Nix e o NixOS para manter minhas máquinas e projetos configurados de forma reproduzível. Foi a base que usei para criar o `toof-os`, o sistema operacional feito para rodar no **DACC Station** (projeto de console arcade da UNIR no Raspberry Pi 4).
+
+- **Desenvolvimento Web:**  
+  Trabalho com TypeScript, React, Next.js e Laravel, utilizando bancos relacionais como PostgreSQL e MySQL, e Docker para padronizar os serviços locais da equipe.
+
+---
+
+## 02. Formação & Atuação em Pesquisa
+
+Minha trajetória combina a graduação universitária e a vivência em grupos de pesquisa:
 
 - **Universidade Federal de Rondônia (UNIR):**  
-  Graduando no **Bacharelado em Ciência da Computação** (2026 – 2029), aprofundando conceitos em teoria da computação, compiladores, algoritmos avançados e sistemas distribuídos.
+  Cursando o **Bacharelado em Ciência da Computação** (2026 – 2029).
 
 - **Instituto Federal de Rondônia (IFRO):**  
-  Formado no **Curso Técnico em Informática Integrado ao Ensino Médio** (2023 – 2025), com formação prática em redes estruturadas, arquitetura de computadores e programação orientada a objetos.
+  Concluí o **Técnico em Informática Integrado ao Ensino Médio** (2023 – 2025).
 
-- **Atuação em Grupos de Pesquisa:**
-  - **GPMecatrônica (IFRO):** Desenvolvimento de plataformas web, padronização de ambientes de pesquisa com Nix, estudos em robótica teórica e coautoria de artigos científicos.
-  - **GoTec (IFRO):** Desenvolvimento da plataforma institucional "Radar da Inovação" em ReactJS, TypeScript, Laravel e Docker, além de apresentações de divulgação científica em congressos como a Expo Favela e a Semana Nacional de Ciência & Tecnologia (SNCT).
-
-- **Olimpíadas Acadêmicas & Premiações:**  
-  - 🥇 **Medalha de Ouro** – Olimpíada de Educação Financeira Tesouro Direto (2025)
-  - 🥈 **Medalha de Prata** – Olimpíada Brasileira de Robótica (OBR Teórica, 2025)
-  - 🏅 **Menção Honrosa** – Olimpíada Internacional de Matemática "Matemática Sem Fronteiras" (2025)
-  - 🎖️ **Honra ao Mérito** – Olimpíada Brasileira de Robótica (2024)
-  - 💻 **Participação na Fase 2** – Olimpíada Brasileira de Informática (OBI)
+- **Projetos e Grupos de Pesquisa:**
+  - **GPMecatrônica (IFRO):** Atuei no desenvolvimento de plataformas web da equipe, configuração de ambientes de desenvolvimento via Nix e apoio em estudos de robótica.
+  - **GoTec (IFRO):** Desenvolvi a plataforma "Radar da Inovação" em React, Laravel e Docker, e ajudei a apresentar os projetos do laboratório em eventos como a Expo Favela e a Semana Nacional de Ciência e Tecnologia (SNCT).
+  - **Censipam (Ministério da Defesa):** Estágio na área de infraestrutura de TI, cuidando de manutenção de computadores, instalação de sistemas Linux/Windows, cabeamento de rede e telefonia IP.
 
 ---
 
-## 03. A Pessoa: Minimalismo & Software Livre
+## 03. Interesses & Atividades
 
-Fora da universidade e dos projetos técnicos:
+- **Linux & Terminal:**  
+  Uso Linux no dia a dia com foco em ferramentas de terminal e produtividade pelo teclado.
 
-- **Produtividade Minimalista & Linux:**  
-  Aprecio ambientes Linux limpos, ferramentas de terminal eficientes e interfaces minimalistas.
+- **Idiomas:**  
+  Sou fluente em inglês. Em 2024, participei como palestrante no *1º Encontro Poliglota de Calama*, compartilhando métodos práticos de estudo e aprendizado da língua inglesa. Também tenho noções básicas de espanhol.
 
-- **Idiomas & Comunicação:**  
-  Sou bilíngue em **Português** (nativo) e **Inglês** (fluente/bilíngue). Em 2024, fui palestrante convidado no *1º Encontro Poliglota de Calama*, ministrando palestra sobre estratégias cognitivas para aquisição acelerada do idioma inglês. Atualmente estudo espanhol.
-
-- **Vivência na Amazônia Ocidental:**  
-  Viver em Porto Velho me proporciona uma perspectiva única sobre o papel da tecnologia, da interiorização científica e da relevância crítica de infraestruturas de TI resilientes (como no período de atuação no Censipam para o Ministério da Defesa).
+- **Premiações Acadêmicas:**  
+  - 🥇 **Medalha de Ouro** – Olimpíada de Educação Financeira Tesouro Direto (2025)
+  - 🥈 **Medalha de Prata** – Olimpíada Brasileira de Robótica (OBR Teórica, 2025)
+  - 🏆 **4º Lugar Estadual** – Olimpíada Brasileira de Robótica (OBR Artística, 2025)
+  - 🏅 **Menção Honrosa** – Olimpíada Internacional de Matemática "Matemática Sem Fronteiras" (2025)
+  - 🎖️ **Honra ao Mérito** – Olimpíada Brasileira de Robótica (OBR Teórica, 2024)
+  - 💻 **Fase 2** – Olimpíada Brasileira de Informática (OBI)
 
 ---
 
 ## Contato
 
-Estou sempre aberto a dialogar sobre programação de sistemas, NixOS, projetos de software livre e oportunidades de estágio.
+Fique à vontade para entrar em contato:
 
 - **E-mail:** [thiagomm@pm.me](mailto:thiagomm@pm.me)
 - **LinkedIn:** [linkedin.com/in/thiagomacedomendes](https://www.linkedin.com/in/thiagomacedomendes)
-- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago)
+- **GitHub:** [github.com/o-thiago](https://github.com/o-thiago) • [github.com/o-thiago](https://github.com/o-thiago)

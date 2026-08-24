@@ -1,31 +1,32 @@
 # Thiago Macedo Mendes
 
-> Computer Science Student at UNIR & Systems Developer based in Porto Velho, Rondônia, Brazil.
-> Focus: Low-level Systems (C, Rust), NixOS / Declarative Computing, and High-Performance Web Architecture.
+> Computer Science Student at UNIR & Software Developer based in Porto Velho, Rondônia, Brazil.
+> Focus: Systems (C, Rust), NixOS / Linux, and Web Development (TypeScript, Next.js, Laravel).
 
 ## Core Information
 - Full Name: Thiago Macedo Mendes
 - GitHub: https://github.com/o-thiago
+- GitHub (Alias): https://github.com/o-thiago
 - LinkedIn: https://www.linkedin.com/in/thiagomacedomendes/
 - Email: thiagomm@pm.me
 - Location: Porto Velho, Rondônia, Brazil
 - Website: https://o-thiago.github.io
 
 ## Education
-- **Federal University of Rondônia (UNIR)**: Bachelor's Degree in Computer Science (Feb 2026 – Dec 2029)
-- **Federal Institute of Rondônia (IFRO)**: Technical Course in Informatics Integrated with High School (Feb 2023 – Dec 2025)
+- **Federal University of Rondônia (UNIR)**: Bachelor's Degree in Computer Science (2026 – 2029)
+- **Federal Institute of Rondônia (IFRO)**: Technical Course in Informatics Integrated with High School (2023 – 2025)
 
 ## Experience & Research
-- **IFRO / GPMecatrônica Research Group** (Jan 2025 – Dec 2025): Administrative Assistant / Outsourced Software Developer & Researcher. Web applications with Next.js, React, Tailwind CSS, oRPC; environment reproducibility with Docker & Nix; robotics and scientific papers.
-- **Censipam / Ministry of Defense** (Aug 2023 – Oct 2024): IT Infrastructure Intern. Amazon monitoring infrastructure maintenance, hardware diagnostics, Linux OS deployment, IP telephony VoIP cabling and support.
-- **IFRO / GoTec Research Group** (Feb 2024 – Jul 2024): Scientific Researcher (Fellow). Developed "Innovation Radar" with TypeScript, ReactJS, Laravel, PHP, MySQL, Docker, Storybook.
-- **IFRO / GoTec Research Group** (Sep 2023 – Feb 2024): Voluntary Researcher. Web architecture, scientific dissemination at Expo Favela and SNCT.
+- **IFRO / GPMecatrônica Research Group** (Jan 2025 – Dec 2025): Administrative Assistant & Software Developer. Web development with Next.js and oRPC, Docker and Nix environments, and robotics studies.
+- **Censipam / Ministry of Defense** (Aug 2023 – Oct 2024): IT Infrastructure Intern. Computer assembly, hardware diagnostics, Linux/Windows OS deployment, and network/VoIP cabling.
+- **IFRO / GoTec Research Group** (Feb 2024 – Jul 2024): Scientific Researcher (Fellow). Developed the "Innovation Radar" web platform with React, Laravel, and MySQL.
+- **IFRO / GoTec Research Group** (Sep 2023 – Feb 2024): Voluntary Researcher. Web architecture and database modeling. Outreach at Expo Favela and SNCT.
 
 ## Featured Projects
-- **toof-os** (https://github.com/o-thiago/ToofOS): Tailored declarative NixOS operating system powering the DACC Station (arcade / game console project at UNIR - Federal University of Rondônia) on Raspberry Pi 4 with custom `nix-ld` game runtimes.
-- **gpm-cards** (https://github.com/o-thiago/gpm-cards): Full-stack credential and showcase platform for GPMecatrônica with Next.js, PostgreSQL, and Nix process-compose services.
-- **sqlx-conditional-queries-layering** (https://github.com/o-thiago/sqlx-conditional-queries-layering): Metaprogramming macro engine in Rust for composable, layered, and mergeable conditional SQL query templates on top of SQLx. Author: @o-thiago.
-- **Innovation Radar**: Institutional web platform for tracking research projects and IP at IFRO with React, Laravel, Docker.
+- **toof-os** (https://github.com/o-thiago/ToofOS): Declarative NixOS configuration built for the DACC Station (a gaming arcade console project at UNIR) on Raspberry Pi 4 with custom `nix-ld` game runtimes.
+- **gpm-cards** (https://github.com/o-thiago/gpm-cards): Web platform for member profiles and card generation for GPMecatrônica with Next.js, PostgreSQL, and Nix process-compose services.
+- **sqlx-conditional-queries-layering** (https://github.com/o-thiago/sqlx-conditional-queries-layering): Declarative macro library in Rust for composing and merging conditional SQL query templates on top of SQLx. Author: @o-thiago.
+- **Innovation Radar**: Web platform for tracking innovation initiatives and research IP at IFRO with React, Laravel, Docker.
 
 ## Honors & Olympiad Medals
 - 🥇 Gold Medal: Tesouro Direto Financial Education Olympiad (2025)
@@ -38,9 +39,9 @@
 
 ## Technical Skills
 - Languages: C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind CSS
-- Systems & Tools: NixOS, Linux System Administration, Docker, Git, process-compose
+- Systems & Tools: NixOS, Linux Administration, Docker, Git, process-compose
 - Databases: PostgreSQL, MySQL, SQLite, MongoDB
-- Spoken Languages: Portuguese (Native/Bilingual), English (Native/Bilingual), Spanish (Elementary)
+- Spoken Languages: Portuguese (Native), English (Fluent), Spanish (Basic)
 
 ## Full Context
 For the complete unabridged markdown portfolio context, see: https://o-thiago.github.io/llms-full.txt
