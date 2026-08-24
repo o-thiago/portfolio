@@ -12,16 +12,16 @@
   <!-- Header -->
   <header class="border-b-2 border-[#2d3748] pb-4 space-y-2">
     <div class="text-xs text-[#38bdf8] font-bold uppercase tracking-wider">
-      [02. REPOSITORIES & OPEN SOURCE]
+      {% if lang == "pt" %}[02. REPOSITÓRIOS & CÓDIGO ABERTO]{% else %}[02. REPOSITORIES & OPEN SOURCE]{% endif %}
     </div>
     <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
       {% if lang == "pt" %}Projetos & Repositórios{% else %}Projects & Repositories{% endif %}
     </h1>
     <p class="text-xs sm:text-sm text-slate-300">
       {% if lang == "pt" %}
-        Ferramentas de código aberto, configurações em Nix Flakes, firmwares para teclados e plataformas web.
+        Projetos desenvolvidos por Thiago Macedo Mendes (@o-thiago e @o-thiago): ferramentas open-source, configurações declarativas em Nix e plataformas web.
       {% else %}
-        Open-source tools, declarative Nix configurations, embedded keyboard firmwares, and web platforms.
+        Projects built by Thiago Macedo Mendes (@o-thiago and @o-thiago): open-source tools, declarative Nix configurations, and web platforms.
       {% endif %}
     </p>
   </header>
@@ -41,14 +41,17 @@
           </div>
           
           <div class="flex items-center gap-2 text-xs">
+            {% if page.extra.author %}
+              <span class="text-slate-500 font-mono text-[11px]">{{ page.extra.author }}</span>
+            {% endif %}
             {% if page.extra.github %}
               <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-white">
-                [github]
+                [{{ trans(key="project_src_github") }}]
               </a>
             {% endif %}
             {% if page.extra.link %}
               <a href="{{ page.extra.link }}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-white">
-                [live-demo]
+                [{{ trans(key="project_live_demo") }}]
               </a>
             {% endif %}
           </div>

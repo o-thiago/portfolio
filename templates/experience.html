@@ -12,16 +12,16 @@
   <!-- Header -->
   <header class="border-b-2 border-[#2d3748] pb-4 space-y-2">
     <div class="text-xs text-[#38bdf8] font-bold uppercase tracking-wider">
-      [03. WORK & SCIENTIFIC RESEARCH LOG]
+      {% if lang == "pt" %}[03. HISTÓRICO DE ATUAÇÃO PROFISSIONAL & PESQUISA]{% else %}[03. WORK & SCIENTIFIC RESEARCH LOG]{% endif %}
     </div>
     <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
       {% if lang == "pt" %}Experiência Profissional & Pesquisa{% else %}Experience & Research Log{% endif %}
     </h1>
     <p class="text-xs sm:text-sm text-slate-300">
       {% if lang == "pt" %}
-        Histórico de atuação profissional, bolsas de pesquisa científica e administração de infraestrutura de TI.
+        Histórico de atuação profissional, bolsas de pesquisa científica e administração de infraestrutura de TI de Thiago Macedo Mendes.
       {% else %}
-        Record of industry roles, scientific research appointments, and infrastructure administration experience.
+        Record of industry roles, scientific research appointments, and infrastructure administration experience by Thiago Macedo Mendes.
       {% endif %}
     </p>
   </header>
@@ -36,21 +36,31 @@
           <span class="text-white font-bold text-sm">
             {% if lang == "pt" %}Assistente Administrativo & Desenvolvedor de Software{% else %}Administrative Assistant & Software Developer{% endif %}
           </span>
-          <div class="text-[#38bdf8]">IFRO / GPMecatrônica (via Belém Rio Segurança Ltda)</div>
+          <div class="text-[#38bdf8]">IFRO / GPMecatrônica ({% if lang == "pt" %}via Belém Rio Segurança Ltda{% else %}via Belém Rio Segurança Ltda{% endif %})</div>
         </div>
-        <div class="text-slate-500 font-mono">Jan 2025 – Dec 2025 • Porto Velho, RO</div>
+        <div class="text-slate-500 font-mono">
+          {% if lang == "pt" %}Jan 2025 – Dez 2025 • Porto Velho, RO, Brasil{% else %}Jan 2025 – Dec 2025 • Porto Velho, RO, Brazil{% endif %}
+        </div>
       </div>
 
       <ul class="space-y-1.5 text-xs text-slate-300">
-        <li>• {% if lang == "pt" %}Atuação como desenvolvedor e pesquisador terceirizado no Grupo de Pesquisa GPMecatrônica.{% else %}Outsourced developer and researcher at the GPMecatrônica Research Group.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Desenvolvimento de aplicações web em Next.js, React, Tailwind CSS e oRPC.{% else %}Developed full-stack web applications using Next.js, React, Tailwind CSS, and oRPC.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Padronização de ambientes de desenvolvimento e builds herméticos com Docker e Nix Flakes.{% else %}Standardized development environments and build pipelines using Docker and Nix flakes.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Participação em atividades de robótica teórica e coautoria de artigos científicos.{% else %}Contributed to theoretical robotics research initiatives and co-authored scientific research papers.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Suporte técnico, manutenção preventiva de hardware e configuração de redes locais.{% else %}Workstation hardware maintenance, OS diagnostics, and local network configuration.{% endif %}</li>
+        {% if lang == "pt" %}
+          <li>• Prestador terceirizado atuando no desenvolvimento e pesquisa junto ao Grupo de Pesquisa GPMecatrônica.</li>
+          <li>• Desenvolvimento full-stack de aplicações web em Next.js, React, Tailwind CSS e oRPC.</li>
+          <li>• Padronização de ambientes de desenvolvimento e builds herméticos com Docker e Nix Flakes.</li>
+          <li>• Participação em atividades de robótica teórica e coautoria de artigos científicos do grupo.</li>
+          <li>• Suporte técnico em bancada, diagnóstico de hardware e configuração de redes locais.</li>
+        {% else %}
+          <li>• Outsourced software developer and researcher at the GPMecatrônica Research Group.</li>
+          <li>• Developed full-stack web applications using Next.js, React, Tailwind CSS, and oRPC.</li>
+          <li>• Standardized development environments and build pipelines using Docker and Nix flakes.</li>
+          <li>• Contributed to theoretical robotics research initiatives and co-authored scientific research papers.</li>
+          <li>• Workstation hardware maintenance, component diagnostics, and local network configuration.</li>
+        {% endif %}
       </ul>
 
       <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-500 font-mono">
-        TAGS: Next.js • TypeScript • TailwindCSS • Docker • Nix • Robotics
+        TAGS: Next.js • TypeScript • TailwindCSS • Docker • NixFlakes • Robotics
       </div>
     </div>
 
@@ -61,16 +71,27 @@
           <span class="text-white font-bold text-sm">
             {% if lang == "pt" %}Estagiário de Infraestrutura de TI{% else %}IT Infrastructure Intern{% endif %}
           </span>
-          <div class="text-[#38bdf8]">Censipam – Centro Regional de Porto Velho (Ministério da Defesa)</div>
+          <div class="text-[#38bdf8]">
+            {% if lang == "pt" %}Censipam – Centro Regional de Porto Velho (Ministério da Defesa){% else %}Censipam – Amazon Protection System (Ministry of Defense){% endif %}
+          </div>
         </div>
-        <div class="text-slate-500 font-mono">Aug 2023 – Oct 2024 • Porto Velho, RO</div>
+        <div class="text-slate-500 font-mono">
+          {% if lang == "pt" %}Ago 2023 – Out 2024 • Porto Velho, RO, Brasil{% else %}Aug 2023 – Oct 2024 • Porto Velho, RO, Brazil{% endif %}
+        </div>
       </div>
 
       <ul class="space-y-1.5 text-xs text-slate-300">
-        <li>• {% if lang == "pt" %}Manutenção da infraestrutura operacional de TI do Censipam para monitoramento da Amazônia.{% else %}Maintained federal operational IT infrastructure monitoring the Brazilian Amazon.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Montagem, diagnóstico em nível de componente e instalação corporativa de SOs Linux/Windows.{% else %}Hardware assembly, component diagnostics, and Linux/Windows enterprise deployment.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Cabeamento estruturado, manobra de patch panels e configuração de telefonia IP (VoIP).{% else %}Structured network cabling, patch panel routing, and IP telephony (VoIP) configuration.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Atendimento técnico a usuários e conformidade com diretrizes de segurança da informação.{% else %}Direct user support and compliance with federal data security standards.{% endif %}</li>
+        {% if lang == "pt" %}
+          <li>• Manutenção da infraestrutura operacional de TI do Censipam dedicada ao monitoramento da Amazônia Legal.</li>
+          <li>• Montagem de servidores e desktops, diagnóstico de bancada e instalação corporativa de SOs Linux e Windows.</li>
+          <li>• Cabeamento estruturado, manobra em patch panels e conectorização de telefonia IP (VoIP).</li>
+          <li>• Atendimento técnico direto a usuários internos sob rigorosas diretrizes de segurança da informação.</li>
+        {% else %}
+          <li>• Maintained federal operational IT infrastructure monitoring the Brazilian Amazon.</li>
+          <li>• Hardware assembly, component diagnostics, and Linux/Windows enterprise deployments.</li>
+          <li>• Structured network cabling, patch panel routing, and IP telephony (VoIP) configuration.</li>
+          <li>• Direct user support and compliance with federal data security standards.</li>
+        {% endif %}
       </ul>
 
       <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-500 font-mono">
@@ -85,15 +106,25 @@
           <span class="text-white font-bold text-sm">
             {% if lang == "pt" %}Pesquisador Científico (Bolsista){% else %}Scientific Researcher (Fellow){% endif %}
           </span>
-          <div class="text-[#38bdf8]">IFRO - Grupo de Pesquisa em Soluções Tecnológicas (GoTec)</div>
+          <div class="text-[#38bdf8]">
+            {% if lang == "pt" %}IFRO - Grupo de Pesquisa em Soluções Tecnológicas (GoTec){% else %}IFRO - Technological Solutions Research Group (GoTec){% endif %}
+          </div>
         </div>
-        <div class="text-slate-500 font-mono">Feb 2024 – Jul 2024 • Porto Velho, RO</div>
+        <div class="text-slate-500 font-mono">
+          {% if lang == "pt" %}Fev 2024 – Jul 2024 • Porto Velho, RO, Brasil{% else %}Feb 2024 – Jul 2024 • Porto Velho, RO, Brazil{% endif %}
+        </div>
       </div>
 
       <ul class="space-y-1.5 text-xs text-slate-300">
-        <li>• {% if lang == "pt" %}Bolsista de pesquisa em desenvolvimento de sistemas web para gestão institucional.{% else %}Research fellow focusing on full-stack web engineering for institutional management.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Desenvolvimento da plataforma "Radar da Inovação" em TypeScript, ReactJS, Laravel e MySQL.{% else %}Developed the "Innovation Radar" web platform with TypeScript, React, Laravel, and MySQL.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Criação de biblioteca de componentes documentada no Storybook e contêineres Docker.{% else %}Implemented UI design systems with Storybook and Docker containerized pipelines.{% endif %}</li>
+        {% if lang == "pt" %}
+          <li>• Bolsista de pesquisa científica focado em engenharia web para sistemas de gestão institucional.</li>
+          <li>• Desenvolvimento da plataforma "Radar da Inovação" em TypeScript, ReactJS, Laravel e banco de dados MySQL.</li>
+          <li>• Criação de biblioteca de componentes documentada no Storybook e contêineres Docker para desenvolvimento.</li>
+        {% else %}
+          <li>• Research fellow focusing on full-stack web engineering for institutional management.</li>
+          <li>• Developed the "Innovation Radar" web platform with TypeScript, React, Laravel, and MySQL.</li>
+          <li>• Implemented UI design systems with Storybook and Docker containerized pipelines.</li>
+        {% endif %}
       </ul>
 
       <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-500 font-mono">
@@ -108,14 +139,23 @@
           <span class="text-white font-bold text-sm">
             {% if lang == "pt" %}Pesquisador Voluntário{% else %}Voluntary Researcher{% endif %}
           </span>
-          <div class="text-[#38bdf8]">IFRO - Grupo de Pesquisa em Soluções Tecnológicas (GoTec)</div>
+          <div class="text-[#38bdf8]">
+            {% if lang == "pt" %}IFRO - Grupo de Pesquisa em Soluções Tecnológicas (GoTec){% else %}IFRO - Technological Solutions Research Group (GoTec){% endif %}
+          </div>
         </div>
-        <div class="text-slate-500 font-mono">Sep 2023 – Feb 2024 • Porto Velho, RO</div>
+        <div class="text-slate-500 font-mono">
+          {% if lang == "pt" %}Set 2023 – Fev 2024 • Porto Velho, RO, Brasil{% else %}Sep 2023 – Feb 2024 • Porto Velho, RO, Brazil{% endif %}
+        </div>
       </div>
 
       <ul class="space-y-1.5 text-xs text-slate-300">
-        <li>• {% if lang == "pt" %}Capacitação técnica em arquitetura web e modelagem inicial do banco de dados.{% else %}Technical training in web architecture and initial database schema design.{% endif %}</li>
-        <li>• {% if lang == "pt" %}Apresentação de trabalhos científicos na Expo Favela e na Semana Nacional de C&T.{% else %}Represented research at Expo Favela and the National Week of Science & Technology.{% endif %}</li>
+        {% if lang == "pt" %}
+          <li>• Capacitação técnica em arquitetura web moderna e modelagem de banco de dados relacional.</li>
+          <li>• Apresentação de trabalhos científicos e extensão comunitária na Expo Favela e Semana Nacional de C&T.</li>
+        {% else %}
+          <li>• Technical training in web architecture and initial database schema design.</li>
+          <li>• Represented research at Expo Favela and the National Week of Science & Technology.</li>
+        {% endif %}
       </ul>
 
       <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-500 font-mono">

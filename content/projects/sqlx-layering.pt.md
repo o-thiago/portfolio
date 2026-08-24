@@ -6,17 +6,24 @@ weight = 4
 
 [extra]
 category = "Rust / Sistemas"
+author = "@o-thiago"
 github = "https://github.com/o-thiago/sqlx-conditional-queries-layering"
 stack = ["Rust", "SQLx", "PostgreSQL", "Rust Assíncrono", "Tipagem Estática"]
 +++
 
-## Motivação do Projeto
+## Motivação & Contexto
 
-Ao construir filtros de busca e paginação complexos no backend, desenvolvedores frequentemente enfrentam um dilema:
-1. **ORMs Pesados:** Alto custo de abstração em tempo de execução e perda de controle sobre a consulta gerada.
-2. **Concatenação de Strings:** Risco de injeção de SQL e fragilidade no bind de parâmetros.
+No desenvolvimento de motores de busca, paginação e filtros complexos em sistemas backend, desenvolvedores enfrentam com frequência dois extremos:
+1. **ORMs Pesados:** Alto custo de overhead em tempo de execução e perda de controle fino sobre a execução das queries SQL.
+2. **Concatenação de Strings:** Elevado risco de injeção de SQL (SQL injection) e fragilidade no bind de parâmetros.
 
-Este projeto implementa um padrão de **Camadas de Consulta (Query Layering)** em **Rust** utilizando o **SQLx**, garantindo segurança e clareza na montagem atômica de queries parametrizadas.
+Este projeto de código aberto (publicado sob o handle **`@o-thiago`**) propõe um **Padrão de Camadas para Consultas** em **Rust** utilizando a biblioteca **SQLx**, garantindo segurança de tipos em tempo de compilação e composição modular de predicados SQL.
+
+---
+
+## Padrão Arquitetural
+
+Ao encapsular predicados de filtragem em métodos puros que operam sobre instâncias de `sqlx::QueryBuilder`, regras isoladas de negócio (filtros de status, intervalos temporais, busca textual multicoluna e ordenação dinâmica) podem ser encadeadas em uma única execução atômica:
 
 ```rust
 pub struct UserFilter {
@@ -45,3 +52,12 @@ impl UserFilter {
     }
 }
 ```
+
+---
+
+## Benefícios
+
+- Zero overhead de alocação além do vetor de parâmetros do banco.
+- Proteção nativa e estrita contra SQL injection via queries parametrizadas.
+- Fragmentos de consulta modulares e fáceis de testar em microsserviços.
+- Repositório mantido no GitHub: [github.com/o-thiago/sqlx-conditional-queries-layering](https://github.com/o-thiago/sqlx-conditional-queries-layering).

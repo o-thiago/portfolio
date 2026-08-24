@@ -31,15 +31,23 @@ nav_projects = "Projects"
 nav_experience = "Experience"
 nav_awards = "Awards"
 nav_resume = "Resume"
-hero_status = "Open for Software Engineering Internships & Research Collaborations"
+toggle_theme = "Toggle Light/Dark Theme"
+
+# Home Hero
+banner_top = "+====================================================================+\n|  THIAGO MACEDO MENDES :: PORTFOLIO & REPOSITORIES (NO-JS)          |\n|  UNIR (B.S. CS '29) | IFRO ('25) | GPMecatrônica Research Group     |\n+====================================================================+"
 hero_greeting = "Hi, I'm"
 hero_desc = "A <strong class=\"text-white font-medium\">Computer Science student</strong> at UNIR and <strong class=\"text-white font-medium\">Systems Developer</strong> passionate about low-level computing, NixOS reproducibility, and performant web architecture."
+location_label = "HOST"
 location_text = "Porto Velho, RO - Brazil"
+education_label = "ACAD"
 education_text = "UNIR (B.S. CS '29) & IFRO ('25)"
+researcher_label = "LAB"
 researcher_text = "Researcher @ GPMecatrônica"
 btn_projects = "View Projects"
 btn_resume = "Resume / CV"
 btn_contact = "Get in Touch"
+
+# Section 01
 section_who_i_am = "Who I Am"
 link_complete_bio = "Read complete bio →"
 dev_title = "The Developer"
@@ -47,21 +55,30 @@ dev_desc = "Focused on systems programming, memory safety, and reproducible infr
 student_title = "The Student & Researcher"
 student_desc = "Pursuing Computer Science at UNIR and Informatics graduate from IFRO. Active researcher in mechatronics, robotics, and authoring scientific papers."
 person_title = "The Person"
-person_desc = "Minimalist and ergonomics enthusiast. Bilingual in PT & EN, avid reader, math enthusiast, and open source advocate."
+person_desc = "Minimalist computing and Linux enthusiast. Bilingual in PT & EN, avid reader, math enthusiast, and open source advocate."
+
+# Section 02
 section_featured_projects = "Featured Projects"
 link_all_projects = "All projects (4) →"
 link_read_deep_dive = "Read deep-dive →"
+project_src_github = "src/github"
+project_live_demo = "live-demo"
+
+# Section 03
 section_experience = "Experience & Research"
 link_detailed_timeline = "Detailed timeline →"
+
+# Section 04
 section_awards = "Distinctions & Olympiads"
 link_all_awards = "All awards (12+) →"
-ai_agent_badge = "AI-Agent & Machine Friendly"
+
+# Section 05
+section_crawlers = "CRAWLERS & AI AGENT DISCOVERY"
 ai_agent_title = "Looking to ingest or index this portfolio with an AI agent?"
-ai_agent_desc = "This entire site is built with zero client-side JavaScript, semantic markup, and complies with the modern /llms.txt standard for instant parsing by LLMs, bots, and curl."
-btn_fetch_llms = "Fetch /llms.txt"
-btn_fetch_llms_full = "Fetch /llms-full.txt"
-footer_summary = "Computer Science student at UNIR & researcher at GPMecatrônica. Focused on low-level systems, Nix, web architecture, and clean engineering."
-no_js_badge = "⚡ 0kB JS • Pure Static HTML+CSS"
+ai_agent_desc = "This entire site is built with semantic markup, zero bloat, and complies with the modern /llms.txt standard for instant parsing by LLMs, bots, and curl."
+
+# Footer
+footer_hosted = "HOSTED ON GITHUB PAGES • NO TRACKERS • NO COOKIES"
 rights_reserved = "All rights reserved."
 
 [languages.pt]
@@ -76,15 +93,23 @@ nav_projects = "Projetos"
 nav_experience = "Experiência"
 nav_awards = "Prêmios"
 nav_resume = "Currículo"
-hero_status = "Aberto a Estágios em Desenvolvimento de Software e Pesquisa"
+toggle_theme = "Alternar Tema Claro/Escuro"
+
+# Home Hero
+banner_top = "+====================================================================+\n|  THIAGO MACEDO MENDES :: PORTFÓLIO & REPOSITÓRIOS (NO-JS)          |\n|  UNIR (Bacharelado CC '29) | IFRO ('25) | Grupo GPMecatrônica      |\n+====================================================================+"
 hero_greeting = "Olá, eu sou o"
 hero_desc = "<strong class=\"text-white font-medium\">Estudante de Ciência da Computação</strong> na UNIR e <strong class=\"text-white font-medium\">Desenvolvedor de Sistemas</strong> apaixonado por computação de baixo nível, reprodutibilidade com NixOS e arquitetura web de alta performance."
+location_label = "LOCAL"
 location_text = "Porto Velho, RO - Brasil"
+education_label = "ACAD"
 education_text = "UNIR (Bacharelado CC '29) & IFRO ('25)"
+researcher_label = "LAB"
 researcher_text = "Pesquisador @ GPMecatrônica"
 btn_projects = "Ver Projetos"
 btn_resume = "Currículo / CV"
 btn_contact = "Entrar em Contato"
+
+# Section 01
 section_who_i_am = "Quem Sou Eu"
 link_complete_bio = "Ler biografia completa →"
 dev_title = "O Desenvolvedor"
@@ -92,30 +117,41 @@ dev_desc = "Foco em programação de sistemas, segurança de memória e infraest
 student_title = "O Estudante & Pesquisador"
 student_desc = "Graduando em Ciência da Computação na UNIR e formado em Informática pelo IFRO. Pesquisador ativo em mecatrônica, robótica e coautor de artigos científicos."
 person_title = "A Pessoa"
-person_desc = "Entusiasta de ergonomia e minimalismo. Bilíngue (PT/EN), leitor ávido, apaixonado por matemática e software livre."
+person_desc = "Entusiasta de computação minimalista e ecossistema Linux. Bilíngue (PT/EN), leitor ávido, apaixonado por matemática e software livre."
+
+# Section 02
 section_featured_projects = "Projetos em Destaque"
 link_all_projects = "Todos os projetos (4) →"
 link_read_deep_dive = "Ver detalhes →"
+project_src_github = "código/github"
+project_live_demo = "projeto no ar"
+
+# Section 03
 section_experience = "Experiência & Pesquisa"
 link_detailed_timeline = "Linha do tempo detalhada →"
+
+# Section 04
 section_awards = "Distinções & Olimpíadas"
 link_all_awards = "Todas as premiações (12+) →"
-ai_agent_badge = "Otimizado para Agentes de IA & LLMs"
+
+# Section 05
+section_crawlers = "RASTREADORES & DESCOBERTA POR AGENTES DE IA"
 ai_agent_title = "Deseja indexar ou consultar este portfólio com um agente de IA?"
-ai_agent_desc = "Este site foi desenvolvido com zero JavaScript no cliente, marcação semântica e segue o padrão /llms.txt para leitura direta por LLMs, bots e curl."
-btn_fetch_llms = "Acessar /llms.txt"
-btn_fetch_llms_full = "Acessar /llms-full.txt"
-footer_summary = "Estudante de Ciência da Computação na UNIR e pesquisador no GPMecatrônica. Foco em sistemas de baixo nível, Nix, arquitetura web e engenharia limpa."
-no_js_badge = "⚡ 0kB JS • HTML+CSS 100% Estático"
+ai_agent_desc = "Este site foi desenvolvido com marcação semântica, arquitetura limpa e segue o padrão /llms.txt para leitura direta por LLMs, bots e curl."
+
+# Footer
+footer_hosted = "HOSPEDADO NO GITHUB PAGES • SEM RASTREADORES • SEM COOKIES"
 rights_reserved = "Todos os direitos reservados."
 
 [extra]
 name = "Thiago Macedo Mendes"
 handle = "o-thiago"
+alias = "o-thiago"
 tagline = "Computer Science Student & Systems Developer"
 location = "Porto Velho, Rondônia, Brazil"
 email = "thiagomm@pm.me"
 phone = "+55 (69) 99314-6868"
+github = "https://github.com/o-thiago"
 github = "https://github.com/o-thiago"
 linkedin = "https://www.linkedin.com/in/thiagomacedomendes"
 site_url = "https://o-thiago.github.io"

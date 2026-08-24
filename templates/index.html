@@ -13,11 +13,7 @@
   <section class="retro-box p-5 sm:p-6 space-y-4">
     
     <!-- ASCII Title -->
-    <div class="text-xs sm:text-sm text-[#4ade80] font-mono leading-tight whitespace-pre overflow-x-auto pb-1 border-b border-[#2d3748]">
-+====================================================================+
-|  THIAGO MACEDO MENDES :: PORTFOLIO & REPOSITORIES (NO-JS)          |
-|  UNIR (B.S. CS '29) | IFRO ('25) | GPMecatrônica Research Group     |
-+====================================================================+</div>
+    <div class="text-xs sm:text-sm text-[#4ade80] font-mono leading-tight whitespace-pre overflow-x-auto pb-1 border-b border-[#2d3748]">{{ trans(key="banner_top") }}</div>
 
     <!-- Intro Text -->
     <div class="space-y-3 pt-1">
@@ -31,9 +27,9 @@
 
       <!-- System Meta Table -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs pt-2 border-t border-[#1e293b] text-slate-400">
-        <div><span class="text-slate-500">HOST:</span> <span class="text-slate-200">{{ trans(key="location_text") }}</span></div>
-        <div><span class="text-slate-500">ACAD:</span> <span class="text-slate-200">{{ trans(key="education_text") }}</span></div>
-        <div><span class="text-slate-500">LAB:</span> <span class="text-slate-200">{{ trans(key="researcher_text") }}</span></div>
+        <div><span class="text-slate-500">{{ trans(key="location_label") }}:</span> <span class="text-slate-200">{{ trans(key="location_text") }}</span></div>
+        <div><span class="text-slate-500">{{ trans(key="education_label") }}:</span> <span class="text-slate-200">{{ trans(key="education_text") }}</span></div>
+        <div><span class="text-slate-500">{{ trans(key="researcher_label") }}:</span> <span class="text-slate-200">{{ trans(key="researcher_text") }}</span></div>
       </div>
     </div>
 
@@ -71,7 +67,9 @@
       <!-- Box 1: Developer -->
       <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
         <div class="space-y-2">
-          <div class="text-xs text-sky-400 font-bold uppercase tracking-wider">[01. DEV / SYSTEMS]</div>
+          <div class="text-xs text-sky-400 font-bold uppercase tracking-wider">
+            {% if lang == "pt" %}[01. DEV / SISTEMAS]{% else %}[01. DEV / SYSTEMS]{% endif %}
+          </div>
           <h3 class="text-base font-bold text-white">{{ trans(key="dev_title") }}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
             {{ trans(key="dev_desc") }}
@@ -85,7 +83,9 @@
       <!-- Box 2: Student -->
       <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
         <div class="space-y-2">
-          <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">[02. ACADEMIC / LAB]</div>
+          <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">
+            {% if lang == "pt" %}[02. ACADÊMICO / LAB]{% else %}[02. ACADEMIC / LAB]{% endif %}
+          </div>
           <h3 class="text-base font-bold text-white">{{ trans(key="student_title") }}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
             {{ trans(key="student_desc") }}
@@ -99,14 +99,16 @@
       <!-- Box 3: Person -->
       <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
         <div class="space-y-2">
-          <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">[03. PERSON / LINUX]</div>
+          <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">
+            {% if lang == "pt" %}[03. PESSOAL / LINUX]{% else %}[03. PERSON / LINUX]{% endif %}
+          </div>
           <h3 class="text-base font-bold text-white">{{ trans(key="person_title") }}</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
             {{ trans(key="person_desc") }}
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
-          <code>[Minimalism] [PT/EN] [Free Software]</code>
+          <code>{% if lang == "pt" %}[Minimalismo] [PT/EN] [Software Livre]{% else %}[Minimalism] [PT/EN] [Free Software]{% endif %}</code>
         </div>
       </div>
 
@@ -130,9 +132,11 @@
       <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
-            <span class="text-[#38bdf8] font-bold">[NixOS / Systems]</span>
-            <a href="https://github.com/o-thiago/toof-os" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [src/github]
+            <span class="text-[#38bdf8] font-bold">
+              {% if lang == "pt" %}[NixOS / Sistemas]{% else %}[NixOS / Systems]{% endif %}
+            </span>
+            <a href="https://github.com/o-thiago/ToofOS" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
+              [{{ trans(key="project_src_github") }}]
             </a>
           </div>
           <h3 class="text-base font-bold text-white">
@@ -158,9 +162,11 @@
       <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
-            <span class="text-[#4ade80] font-bold">[Web / Research]</span>
+            <span class="text-[#4ade80] font-bold">
+              {% if lang == "pt" %}[Web / Pesquisa]{% else %}[Web / Research]{% endif %}
+            </span>
             <a href="https://github.com/o-thiago/gpm-cards" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [src/github]
+              [{{ trans(key="project_src_github") }}]
             </a>
           </div>
           <h3 class="text-base font-bold text-white">
@@ -170,7 +176,7 @@
             {% if lang == "pt" %}
               Plataforma web de cartões de membros para o grupo de pesquisa GPMecatrônica. Next.js, PostgreSQL e orquestração de serviços com process-compose no Nix.
             {% else %}
-              Full-stack card generation and member showcase application for GPMecatrônica. Powered by Next.js, PostgreSQL with Nix-based process-compose local services.
+              Full-stack credential generation and member showcase application for GPMecatrônica. Powered by Next.js, PostgreSQL with Nix-based process-compose local services.
             {% endif %}
           </p>
         </div>
@@ -182,13 +188,15 @@
         </div>
       </article>
 
-      <!-- Project 3: sqlx-layering -->
+      <!-- Project 3: sqlx-layering (Author: @o-thiago) -->
       <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
-            <span class="text-[#c084fc] font-bold">[Rust / Database]</span>
+            <span class="text-[#c084fc] font-bold">
+              {% if lang == "pt" %}[Rust / Banco de Dados • @o-thiago]{% else %}[Rust / Database • @o-thiago]{% endif %}
+            </span>
             <a href="https://github.com/o-thiago/sqlx-conditional-queries-layering" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [src/github]
+              [{{ trans(key="project_src_github") }}]
             </a>
           </div>
           <h3 class="text-base font-bold text-white">
@@ -196,14 +204,14 @@
           </h3>
           <p class="text-xs text-slate-300 leading-relaxed">
             {% if lang == "pt" %}
-              Padrão arquitetural em Rust para composição segura de consultas SQL dinâmicas com SQLx QueryBuilder mantendo garantias de tipo em tempo de compilação.
+              Padrão arquitetural em Rust desenvolvido sob o perfil <strong>@o-thiago</strong> para composição segura de consultas SQL dinâmicas com SQLx QueryBuilder mantendo garantias de tipo estáticas.
             {% else %}
-              Architectural pattern in Rust for type-safe dynamic SQL query composition using SQLx QueryBuilder without sacrificing compile-time guarantees.
+              Architectural pattern in Rust developed under the <strong>@o-thiago</strong> handle for type-safe dynamic SQL query composition using SQLx QueryBuilder without sacrificing compile-time guarantees.
             {% endif %}
           </p>
         </div>
         <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
-          <span class="text-slate-500 font-mono">Rust • SQLx • TypeSafe</span>
+          <span class="text-slate-500 font-mono">Rust • SQLx • @o-thiago</span>
           <a href="{{ config.base_url }}{{ lang_prefix }}/projects/sqlx-layering/" class="text-[#4ade80]">
             {{ trans(key="link_read_deep_dive") }}
           </a>
@@ -214,7 +222,9 @@
       <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
         <div class="space-y-2">
           <div class="flex items-center justify-between text-xs">
-            <span class="text-[#f59e0b] font-bold">[Web / Research]</span>
+            <span class="text-[#f59e0b] font-bold">
+              {% if lang == "pt" %}[Web / Pesquisa]{% else %}[Web / Research]{% endif %}
+            </span>
           </div>
           <h3 class="text-base font-bold text-white">
             <a href="{{ config.base_url }}{{ lang_prefix }}/projects/innovation-radar/">Radar da Inovação (GoTec)</a>
@@ -257,7 +267,7 @@
           <span class="font-bold text-white">
             {% if lang == "pt" %}Assistente Administrativo & Dev{% else %}Admin Assistant & Software Dev{% endif %} @ <span class="text-[#38bdf8]">GPMecatrônica / IFRO</span>
           </span>
-          <span class="text-slate-500 font-mono">Jan 2025 – Dec 2025</span>
+          <span class="text-slate-500 font-mono">{% if lang == "pt" %}Jan 2025 – Dez 2025{% else %}Jan 2025 – Dec 2025{% endif %}</span>
         </div>
         <p class="text-slate-400">
           {% if lang == "pt" %}
@@ -272,9 +282,9 @@
       <div class="retro-box p-4 space-y-1 text-xs">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
           <span class="font-bold text-white">
-            {% if lang == "pt" %}Estagiário de Infraestrutura de TI{% else %}IT Infrastructure Intern{% endif %} @ <span class="text-[#38bdf8]">Censipam (Ministério da Defesa)</span>
+            {% if lang == "pt" %}Estagiário de Infraestrutura de TI{% else %}IT Infrastructure Intern{% endif %} @ <span class="text-[#38bdf8]">Censipam ({% if lang == "pt" %}Ministério da Defesa{% else %}Ministry of Defense{% endif %})</span>
           </span>
-          <span class="text-slate-500 font-mono">Aug 2023 – Oct 2024</span>
+          <span class="text-slate-500 font-mono">{% if lang == "pt" %}Ago 2023 – Out 2024{% else %}Aug 2023 – Oct 2024{% endif %}</span>
         </div>
         <p class="text-slate-400">
           {% if lang == "pt" %}
@@ -291,7 +301,7 @@
           <span class="font-bold text-white">
             {% if lang == "pt" %}Pesquisador Científico (Bolsista){% else %}Scientific Researcher (Fellow){% endif %} @ <span class="text-[#38bdf8]">GoTec / IFRO</span>
           </span>
-          <span class="text-slate-500 font-mono">Sep 2023 – Jul 2024</span>
+          <span class="text-slate-500 font-mono">{% if lang == "pt" %}Set 2023 – Jul 2024{% else %}Sep 2023 – Jul 2024{% endif %}</span>
         </div>
         <p class="text-slate-400">
           {% if lang == "pt" %}
@@ -331,7 +341,7 @@
         <div class="text-white font-medium">
           {% if lang == "pt" %}Olimpíada Brasileira de Robótica{% else %}Brazilian Robotics Olympiad{% endif %}
         </div>
-        <p class="text-slate-400">{% if lang == "pt" %}OBR Teórica (sensores, controle, lógica).{% else %}Theoretical robotics and kinematics.{% endif %}</p>
+        <p class="text-slate-400">{% if lang == "pt" %}OBR Teórica (sensores, controle, lógica).{% else %}Theoretical robotics and control logic.{% endif %}</p>
       </div>
 
       <div class="retro-box p-3 space-y-1 border-l-4 border-l-sky-400">
@@ -348,7 +358,7 @@
   <!-- Section 05: Machine / AI Crawlers Endpoints Box -->
   <section class="retro-box p-5 space-y-3">
     <div class="text-xs font-bold text-[#38bdf8] uppercase tracking-wider">
-      [05. CRAWLERS & AI AGENT DISCOVERY]
+      [05. {{ trans(key="section_crawlers") }}]
     </div>
     
     <p class="text-xs text-slate-300 leading-relaxed">

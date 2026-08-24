@@ -12,36 +12,41 @@
   <!-- Header -->
   <header class="border-b-2 border-[#2d3748] pb-4 space-y-2">
     <div class="text-xs text-[#38bdf8] font-bold uppercase tracking-wider">
-      [01. WHOAMI & BACKGROUND]
+      {% if lang == "pt" %}[01. BIOGRAFIA & FILOSOFIA DE ENGENHARIA]{% else %}[01. BIOGRAPHY & SYSTEMS PHILOSOPHY]{% endif %}
     </div>
     <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-      {% if lang == "pt" %}Sobre Mim / Biografia{% else %}About Me / Biography{% endif %}
+      {% if lang == "pt" %}Sobre Thiago Macedo Mendes{% else %}About Thiago Macedo Mendes{% endif %}
     </h1>
     <p class="text-xs sm:text-sm text-slate-300">
       {% if lang == "pt" %}
-        Engenharia de sistemas, computação declarativa, hardware ergonômico e formação científica.
+        Engenharia de sistemas, reprodutibilidade com Nix, desenvolvimento de software e pesquisa acadêmica.
       {% else %}
-        Systems engineering, declarative computing, ergonomic hardware, and academic research.
+        Systems engineering, declarative reproducibility with Nix, software development, and academic research.
       {% endif %}
     </p>
   </header>
 
   <!-- Quick Info Box -->
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+  <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
     <div class="retro-box p-3 space-y-1">
-      <div class="text-slate-500 font-bold">LOCATION</div>
-      <div class="text-white font-semibold">Porto Velho, RO - Brazil</div>
-      <div class="text-slate-400 text-[11px]">Amazon Basin (Western Region)</div>
+      <div class="text-slate-500 font-bold">{% if lang == "pt" %}LOCALIZAÇÃO{% else %}LOCATION{% endif %}</div>
+      <div class="text-white font-semibold">Porto Velho, RO - {% if lang == "pt" %}Brasil{% else %}Brazil{% endif %}</div>
+      <div class="text-slate-400 text-[11px]">{% if lang == "pt" %}Amazônia Ocidental{% else %}Western Amazon{% endif %}</div>
     </div>
     <div class="retro-box p-3 space-y-1">
-      <div class="text-slate-500 font-bold">EDUCATION</div>
-      <div class="text-white font-semibold">B.S. in Computer Science</div>
+      <div class="text-slate-500 font-bold">{% if lang == "pt" %}HANDLES / ALIAS{% else %}HANDLES / ALIAS{% endif %}</div>
+      <div class="text-white font-semibold">@o-thiago • @o-thiago</div>
+      <div class="text-slate-400 text-[11px]">GitHub & Online Profiles</div>
+    </div>
+    <div class="retro-box p-3 space-y-1">
+      <div class="text-slate-500 font-bold">{% if lang == "pt" %}FORMAÇÃO{% else %}EDUCATION{% endif %}</div>
+      <div class="text-white font-semibold">{% if lang == "pt" %}Bacharelado em CC{% else %}B.S. in Computer Science{% endif %}</div>
       <div class="text-slate-400 text-[11px]">UNIR (2026-2029) • IFRO (2023-2025)</div>
     </div>
     <div class="retro-box p-3 space-y-1">
-      <div class="text-slate-500 font-bold">LANGUAGES</div>
-      <div class="text-white font-semibold">Portuguese & English</div>
-      <div class="text-slate-400 text-[11px]">Bilingual (Speaker) • Spanish</div>
+      <div class="text-slate-500 font-bold">{% if lang == "pt" %}IDIOMAS{% else %}LANGUAGES{% endif %}</div>
+      <div class="text-white font-semibold">{% if lang == "pt" %}Português & Inglês{% else %}Portuguese & English{% endif %}</div>
+      <div class="text-slate-400 text-[11px]">{% if lang == "pt" %}Bilíngue (Palestrante) • Espanhol{% else %}Bilingual (Keynote Speaker) • Spanish{% endif %}</div>
     </div>
   </div>
 
@@ -53,7 +58,7 @@
   <!-- Retro Navigation Footer -->
   <div class="flex flex-wrap items-center justify-between gap-3 text-xs pt-4 border-t border-[#2d3748]">
     <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-[#38bdf8]">
-      &lt;-- {% if lang == "pt" %}Ver Projetos{% else %}Explore Projects{% endif %}
+      &lt;-- {% if lang == "pt" %}Ver Projetos & Repositórios{% else %}Explore Projects & Repositories{% endif %}
     </a>
     <a href="{{ config.base_url }}{{ lang_prefix }}/experience/" class="text-[#38bdf8]">
       {% if lang == "pt" %}Histórico Profissional & Pesquisa{% else %}Experience & Research Log{% endif %} --&gt;
