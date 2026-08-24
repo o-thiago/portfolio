@@ -22,13 +22,17 @@ def get_cv_root() -> Path:
     if (cache / "resumes").exists():
         subprocess.run(["git", "pull"], cwd=cache, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         return cache
-    cache.parent.mkdir(parents=True, exist_ok=True)
-    token = os.environ.get("CV_PAT") or os.environ.get("GITHUB_TOKEN")
+    token = os.environ.get("CV_PAT") or os.environ.get("GH_PAT")
     repo_url = REMOTE_REPO
     if token and "github.com" in repo_url and "@" not in repo_url:
         repo_url = repo_url.replace("https://", f"https://x-access-token:{token}@")
-    res = subprocess.run(["git", "clone", "--depth", "1", repo_url, str(cache)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    return cache if res.returncode == 0 and (cache / "resumes").exists() else None
+    res = subprocess.run(["git", "clone", "--depth", "1", repo_url, str(cache)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if res.returncode != 0 or not (cache / "resumes").exists():
+        raise RuntimeError(
+            f"Failed to clone private CV repository from {REMOTE_REPO}.\n"
+            "If running in CI, add a GitHub secret named 'CV_PAT' with read access to the repo."
+        )
+    return cache
 
 def clean(s: str) -> str:
     s = re.sub(r'(?<!\\)%.*$', '', s, flags=re.M)
