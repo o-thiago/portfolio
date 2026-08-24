@@ -3,18 +3,22 @@
 {% block content %}
 <div class="retro-box max-w-xl mx-auto text-center p-8 space-y-4 font-mono">
   <div class="text-3xl font-bold text-amber-400">
-    [ 404 :: FILE NOT FOUND ]
+    {% if lang == "pt" %}[ 404 :: ARQUIVO NÃO ENCONTRADO ]{% else %}[ 404 :: FILE NOT FOUND ]{% endif %}
   </div>
   
   <p class="text-xs sm:text-sm text-slate-300">
-    The requested URI does not exist on this server.
+    {% if lang == "pt" %}
+      O caminho solicitado não foi localizado neste servidor.
+    {% else %}
+      The requested URI does not exist on this server.
+    {% endif %}
   </p>
 
   <div class="pt-4 flex items-center justify-center gap-3">
-    <a href="{{ config.base_url }}/" class="retro-btn">
+    <a href="{{ config.base_url }}{% if lang == 'pt' %}/pt{% endif %}/" class="retro-btn">
       <span>&gt; cd ~/</span>
     </a>
-    <a href="{{ config.base_url }}/projects/" class="retro-btn">
+    <a href="{{ config.base_url }}{% if lang == 'pt' %}/pt{% endif %}/projects/" class="retro-btn">
       <span>&gt; ls ~/projects</span>
     </a>
   </div>

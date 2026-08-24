@@ -33,12 +33,12 @@
     <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#1e293b] text-xs">
       {% if page.extra.github %}
         <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="retro-btn">
-          <span>&gt; Repository (GitHub)</span>
+          <span>&gt; {% if lang == "pt" %}Repositório (GitHub){% else %}Repository (GitHub){% endif %}</span>
         </a>
       {% endif %}
       {% if page.extra.link %}
         <a href="{{ page.extra.link }}" target="_blank" rel="noopener noreferrer" class="retro-btn text-emerald-400">
-          <span>&gt; Live Deployment</span>
+          <span>&gt; {% if lang == "pt" %}Projeto no Ar{% else %}Live Deployment{% endif %}</span>
         </a>
       {% endif %}
     </div>
@@ -60,10 +60,10 @@
   <!-- Navigation Footer -->
   <div class="flex items-center justify-between text-xs pt-4 border-t border-[#2d3748]">
     <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-[#38bdf8]">
-      &lt;-- {% if lang == "pt" %}Voltar para Projetos{% else %}Back to Projects List{% endif %}
+      &lt;-- {% if lang == "pt" %}Voltar para Lista de Projetos{% else %}Back to Projects List{% endif %}
     </a>
     <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-slate-400">
-      GitHub Profile (@o-thiago) --&gt;
+      {% if lang == "pt" %}Perfil no GitHub (@o-thiago) --&gt;{% else %}GitHub Profile (@o-thiago) --&gt;{% endif %}
     </a>
   </div>
 
