@@ -1,6 +1,6 @@
 +++
-title = "About Thiago Macedo Mendes"
-description = "Computer Science student at UNIR and software developer."
+title = "Thiago Macedo Mendes"
+description = "Computer Science student (UNIR) and IT Technician (IFRO) focused on software development and IT infrastructure. Experience working as a researcher for the GPMecatrônica and Gotec groups, and in IT infrastructure at Censipam. Skilled in TypeScript, Python, Java, Rust, PHP, React, Next.js, and databases (MySQL, PostgreSQL, MongoDB). Seeking a Software Development internship to apply my technical background to real-world projects."
 template = "about.html"
 
 [extra]
