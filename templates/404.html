@@ -3,15 +3,11 @@
 {% block content %}
 <div class="retro-box max-w-xl mx-auto text-center p-8 space-y-4 font-mono">
   <div class="text-3xl font-bold text-amber-400">
-    {% if lang == "pt" %}[ 404 :: ARQUIVO NÃO ENCONTRADO ]{% else %}[ 404 :: FILE NOT FOUND ]{% endif %}
+    {{ trans(key="error_404_title") }}
   </div>
   
   <p class="text-xs sm:text-sm text-slate-300">
-    {% if lang == "pt" %}
-      O caminho solicitado não foi localizado neste servidor.
-    {% else %}
-      The requested URI does not exist on this server.
-    {% endif %}
+    {{ trans(key="error_404_desc") }}
   </p>
 
   <div class="pt-4 flex items-center justify-center gap-3">

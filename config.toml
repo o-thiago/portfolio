@@ -26,12 +26,17 @@ theme = "nord"
 [languages.en.translations]
 lang_code = "en"
 lang_name = "English"
+og_locale = "en_US"
 nav_about = "About"
 nav_projects = "Projects"
 nav_experience = "Experience"
 nav_awards = "Awards"
 nav_resume = "Resume"
 toggle_theme = "Toggle Light/Dark Theme"
+
+# 404
+error_404_title = "[ 404 :: FILE NOT FOUND ]"
+error_404_desc = "The requested URI does not exist on this server."
 
 # Home Hero
 banner_top = "+====================================================================+\n|  THIAGO MACEDO MENDES :: PORTFOLIO & REPOSITORIES (NO-JS)          |\n|  UNIR (B.S. CS '29) | IFRO ('25) | GPMecatrônica Research Group     |\n+====================================================================+"
@@ -47,32 +52,57 @@ btn_projects = "View Projects"
 btn_resume = "Resume / CV"
 btn_contact = "Get in Touch"
 
-# Section 01
+# Home Section 01
 section_who_i_am = "Who I Am"
 link_complete_bio = "Read complete bio →"
+dev_tag = "[01. DEV / SYSTEMS]"
 dev_title = "The Developer"
 dev_desc = "Focused on systems programming, memory safety, and reproducible infrastructure. Passionate about C, Rust, NixOS, TypeScript, and building zero-bloat, high-performance software."
+student_tag = "[02. ACADEMIC / LAB]"
 student_title = "The Student & Researcher"
 student_desc = "Pursuing Computer Science at UNIR and Informatics graduate from IFRO. Active researcher in mechatronics, robotics, and authoring scientific papers."
+person_tag = "[03. PERSON / LINUX]"
 person_title = "The Person"
 person_desc = "Minimalist computing and Linux enthusiast. Bilingual in PT & EN, avid reader, math enthusiast, and open source advocate."
+person_code = "[Minimalism] [PT/EN] [Free Software]"
 
-# Section 02
+# Home Section 02
 section_featured_projects = "Featured Projects"
 link_all_projects = "All projects (4) →"
 link_read_deep_dive = "Read deep-dive →"
 project_src_github = "src/github"
 project_live_demo = "live-demo"
 
-# Section 03
+# Home Section 03
 section_experience = "Experience & Research"
 link_detailed_timeline = "Detailed timeline →"
+home_exp1_title = "Admin Assistant & Software Dev @ <span class=\"text-[#38bdf8]\">GPMecatrônica / IFRO</span>"
+home_exp1_date = "Jan 2025 – Dec 2025"
+home_exp1_desc = "Developed Next.js web applications, configured reproducible development environments using Docker and Nix, and co-authored scientific papers."
+home_exp2_title = "IT Infrastructure Intern @ <span class=\"text-[#38bdf8]\">Censipam (Ministry of Defense)</span>"
+home_exp2_date = "Aug 2023 – Oct 2024"
+home_exp2_desc = "Maintained mission-critical IT infrastructure for Amazon Protection System (Ministry of Defense), hardware diagnostics, and IP telephony."
+home_exp3_title = "Scientific Researcher (Fellow) @ <span class=\"text-[#38bdf8]\">GoTec / IFRO</span>"
+home_exp3_date = "Sep 2023 – Jul 2024"
+home_exp3_desc = "Full-stack development of \"Innovation Radar\" in TypeScript, React, Laravel, and MySQL. Research dissemination at Expo Favela and SNCT."
 
-# Section 04
+# Home Section 04
 section_awards = "Distinctions & Olympiads"
 link_all_awards = "All awards (12+) →"
+home_award1_badge = "🥇 Gold Medal (2025)"
+home_award1_title = "Tesouro Direto Olympiad"
+home_award1_desc = "National financial mathematics."
+home_award2_badge = "🥈 Silver Medal (2025)"
+home_award2_title = "OBR (Theoretical Robotics)"
+home_award2_desc = "Sensors, control, and robotics logic."
+home_award3_badge = "🏆 4th Place (State) (2025)"
+home_award3_title = "OBR (Artistic Robotics)"
+home_award3_desc = "Rondônia state-level competition."
+home_award4_badge = "🏅 Honorable Mention (2025)"
+home_award4_title = "Math Without Borders"
+home_award4_desc = "International math competition."
 
-# Section 05
+# Home Section 05
 section_crawlers = "CRAWLERS & AI AGENT DISCOVERY"
 ai_agent_title = "Looking to ingest or index this portfolio with an AI agent?"
 ai_agent_desc = "This entire site is built with semantic markup, zero bloat, and complies with the modern /llms.txt standard for instant parsing by LLMs, bots, and curl."
@@ -81,6 +111,123 @@ ai_agent_desc = "This entire site is built with semantic markup, zero bloat, and
 footer_hosted = "HOSTED ON GITHUB PAGES • NO TRACKERS • NO COOKIES"
 rights_reserved = "All rights reserved."
 
+# About Page
+about_tag = "[01. BIOGRAPHY & SYSTEMS PHILOSOPHY]"
+about_title = "About Thiago Macedo Mendes"
+about_subtitle = "Systems engineering, declarative reproducibility with Nix, software development, and academic research."
+about_location_label = "LOCATION"
+about_location_val = "Porto Velho, RO - Brazil"
+about_location_sub = "Western Amazon"
+about_handles_label = "HANDLES / ALIAS"
+about_handles_sub = "GitHub & Online Profiles"
+about_edu_label = "EDUCATION"
+about_edu_val = "B.S. in Computer Science"
+about_edu_sub = "UNIR (2026-2029) • IFRO (2023-2025)"
+about_lang_label = "LANGUAGES"
+about_lang_val = "Portuguese & English"
+about_lang_sub = "Bilingual (Keynote Speaker) • Spanish"
+about_btn_projects = "Explore Projects & Repositories"
+about_btn_experience = "Experience & Research Log"
+
+# Projects Listing & Detail
+projects_tag = "[02. REPOSITORIES & OPEN SOURCE]"
+projects_title = "Projects & Repositories"
+projects_subtitle = "Projects built by Thiago Macedo Mendes (@o-thiago and @o-thiago): open-source tools, declarative Nix configurations, and web platforms."
+project_breadcrumb = "~/projects"
+project_author_label = "Author:"
+project_repo_btn = "Repository (GitHub)"
+project_demo_btn = "Live Deployment"
+project_back_btn = "Back to Projects List"
+project_profiles_label = "GitHub Profiles:"
+
+# Experience Page
+experience_tag = "[03. WORK & SCIENTIFIC RESEARCH LOG]"
+experience_title = "Experience & Research Log"
+experience_subtitle = "Record of industry roles, scientific research appointments, and infrastructure administration experience by Thiago Macedo Mendes."
+exp1_role = "Administrative Assistant & Software Developer"
+exp1_company = "IFRO / GPMecatrônica (via Belém Rio Segurança Ltda)"
+exp1_date = "Jan 2025 – Dec 2025 • Porto Velho, RO, Brazil"
+exp1_b1 = "Outsourced software developer and researcher at the GPMecatrônica Research Group."
+exp1_b2 = "Developed full-stack web applications using Next.js, React, Tailwind CSS, and oRPC."
+exp1_b3 = "Standardized development environments and build pipelines using Docker and Nix flakes."
+exp1_b4 = "Contributed to theoretical robotics research initiatives and co-authored scientific research papers."
+exp1_b5 = "Workstation hardware maintenance, component diagnostics, and local network configuration."
+
+exp2_role = "IT Infrastructure Intern"
+exp2_company = "Censipam – Amazon Protection System (Ministry of Defense)"
+exp2_date = "Aug 2023 – Oct 2024 • Porto Velho, RO, Brazil"
+exp2_b1 = "Maintained federal operational IT infrastructure monitoring the Brazilian Amazon."
+exp2_b2 = "Hardware assembly, component diagnostics, and Linux/Windows enterprise deployments."
+exp2_b3 = "Structured network cabling, patch panel routing, and IP telephony (VoIP) configuration."
+exp2_b4 = "Direct user support and compliance with federal data security standards."
+
+exp3_role = "Scientific Researcher (Fellow)"
+exp3_company = "IFRO - Technological Solutions Research Group (GoTec)"
+exp3_date = "Feb 2024 – Jul 2024 • Porto Velho, RO, Brazil"
+exp3_b1 = "Research fellow focusing on full-stack web engineering for institutional management."
+exp3_b2 = "Developed the \"Innovation Radar\" web platform with TypeScript, React, Laravel, and MySQL."
+exp3_b3 = "Implemented UI design systems with Storybook and Docker containerized pipelines."
+
+exp4_role = "Voluntary Researcher"
+exp4_company = "IFRO - Technological Solutions Research Group (GoTec)"
+exp4_date = "Sep 2023 – Feb 2024 • Porto Velho, RO, Brazil"
+exp4_b1 = "Technical training in web architecture and initial database schema design."
+exp4_b2 = "Represented research at Expo Favela and the National Week of Science & Technology."
+
+# Awards Page
+awards_tag = "[04. OLYMPIADS, MEDALS & DISTINCTIONS]"
+awards_title = "Awards, Olympiads & Distinctions"
+awards_subtitle = "Record of competitive academic olympiad medals, robotics & informatics competitions, keynote talks, and certifications."
+award1_badge = "🥇 GOLD MEDAL"
+award1_date = "2025"
+award1_title = "Tesouro Direto Financial Education Olympiad"
+award1_desc = "National-level financial mathematics & economics competition."
+
+award2_badge = "🥈 SILVER MEDAL"
+award2_date = "2025"
+award2_title = "Brazilian Robotics Olympiad (OBR - Theoretical)"
+award2_desc = "National silver medal in control systems, sensors, and robotics logic."
+
+award3_badge = "🏆 4th PLACE (STATE LEVEL)"
+award3_date = "2025"
+award3_title = "Brazilian Robotics Olympiad (OBR - Artistic Robotics)"
+award3_desc = "4th Place in the Artistic Robotics category at the Rondônia State Stage."
+
+award4_badge = "🏅 HONORABLE MENTION"
+award4_date = "2025"
+award4_title = "International Math Olympiad \"Math Without Borders\""
+award4_desc = "International math competition covering combinatorics, geometry, and number theory."
+
+award5_badge = "🎖️ MERIT HONOR"
+award5_date = "2024"
+award5_title = "Brazilian Robotics Olympiad (OBR - Theoretical)"
+award5_desc = "State and national merit recognition in microcontrollers and robotics theory."
+
+awards_list_title = "[COMPETITIONS, TALKS & EVENTS]"
+awards_p1 = "<strong class=\"text-white\">Brazilian Robotics Olympiad (OBR Artistic 2025):</strong> 4th Place at the Rondônia State Stage."
+awards_p2 = "<strong class=\"text-white\">Brazilian Olympiad in Informatics (OBI):</strong> Phase 2 Competitor (2024, 2025); Phase 1 (2023). Competitive problem solving in C/C++."
+awards_p3 = "<strong class=\"text-white\">Speaker at 1st Polyglot Meeting of Calama (2024):</strong> Keynote lecture on <em>\"English Fundamentals: Cognitive Strategies for Accelerated Acquisition\"</em>."
+awards_p4 = "<strong class=\"text-white\">Brazilian Astronomy and Astronautics Olympiad (OBA 2025):</strong> Participant in astrophysics and celestial mechanics."
+awards_p5 = "<strong class=\"text-white\">National Week of Science and Technology (SNCT 2023, 2024):</strong> Scientific exhibitor presenting software prototypes."
+awards_p6 = "<strong class=\"text-white\">Rondoniense Week of Art, Heritage and Culture (2023):</strong> Exhibitor representing regional innovation and software projects."
+
+# Resume Page
+resume_tag = "[05. CURRICULUM VITAE / RESUME]"
+resume_title = "Curriculum Vitae"
+resume_subtitle = "Printable version of Thiago Macedo Mendes' technical resume and academic curriculum."
+resume_btn_print = "Print / Export PDF"
+resume_summary_title = "== SUMMARY / PROFILE =="
+resume_summary_desc = "Computer Science undergraduate at UNIR (B.S. '29) and Informatics graduate from IFRO ('25). Experienced in systems programming (C, Rust, NixOS), web applications (TypeScript, Next.js, React, Laravel), containerized pipelines, and IT infrastructure. Academic researcher with scientific publications, competitive robotics distinctions, and English fluency."
+resume_exp_title = "== PROFESSIONAL & RESEARCH EXPERIENCE =="
+resume_edu_title = "== ACADEMIC EDUCATION =="
+resume_skills_title = "== SKILLS & TECH =="
+resume_skills_l1 = "Languages & Tech:"
+resume_skills_l2 = "Systems & Tools:"
+resume_skills_l3 = "Databases & Infra:"
+resume_skills_l4 = "Natural Languages:"
+resume_skills_l4_val = "Portuguese (Native), English (Fluent/Bilingual), Spanish (Elementary)."
+resume_awards_title = "== HONORS & AWARDS =="
+
 [languages.pt]
 title = "Thiago Macedo Mendes"
 description = "Estudante de Ciência da Computação (UNIR) e Desenvolvedor de Sistemas. Foco em sistemas de baixo nível, NixOS e arquitetura web de alta performance."
@@ -88,12 +235,17 @@ description = "Estudante de Ciência da Computação (UNIR) e Desenvolvedor de S
 [languages.pt.translations]
 lang_code = "pt"
 lang_name = "Português"
+og_locale = "pt_BR"
 nav_about = "Sobre"
 nav_projects = "Projetos"
 nav_experience = "Experiência"
 nav_awards = "Prêmios"
 nav_resume = "Currículo"
 toggle_theme = "Alternar Tema Claro/Escuro"
+
+# 404
+error_404_title = "[ 404 :: ARQUIVO NÃO ENCONTRADO ]"
+error_404_desc = "O caminho solicitado não foi localizado neste servidor."
 
 # Home Hero
 banner_top = "+====================================================================+\n|  THIAGO MACEDO MENDES :: PORTFÓLIO & REPOSITÓRIOS (NO-JS)          |\n|  UNIR (Bacharelado CC '29) | IFRO ('25) | Grupo GPMecatrônica      |\n+====================================================================+"
@@ -109,32 +261,57 @@ btn_projects = "Ver Projetos"
 btn_resume = "Currículo / CV"
 btn_contact = "Entrar em Contato"
 
-# Section 01
+# Home Section 01
 section_who_i_am = "Quem Sou Eu"
 link_complete_bio = "Ler biografia completa →"
+dev_tag = "[01. DEV / SISTEMAS]"
 dev_title = "O Desenvolvedor"
 dev_desc = "Foco em programação de sistemas, segurança de memória e infraestrutura reproduzível. Apaixonado por C, Rust, NixOS, TypeScript e software de alta performance sem excessos."
+student_tag = "[02. ACADÊMICO / LAB]"
 student_title = "O Estudante & Pesquisador"
 student_desc = "Graduando em Ciência da Computação na UNIR e formado em Informática pelo IFRO. Pesquisador ativo em mecatrônica, robótica e coautor de artigos científicos."
+person_tag = "[03. PESSOAL / LINUX]"
 person_title = "A Pessoa"
 person_desc = "Entusiasta de computação minimalista e ecossistema Linux. Bilíngue (PT/EN), leitor ávido, apaixonado por matemática e software livre."
+person_code = "[Minimalismo] [PT/EN] [Software Livre]"
 
-# Section 02
+# Home Section 02
 section_featured_projects = "Projetos em Destaque"
 link_all_projects = "Todos os projetos (4) →"
 link_read_deep_dive = "Ver detalhes →"
 project_src_github = "código/github"
 project_live_demo = "projeto no ar"
 
-# Section 03
+# Home Section 03
 section_experience = "Experiência & Pesquisa"
 link_detailed_timeline = "Linha do tempo detalhada →"
+home_exp1_title = "Assistente Administrativo & Dev @ <span class=\"text-[#38bdf8]\">GPMecatrônica / IFRO</span>"
+home_exp1_date = "Jan 2025 – Dez 2025"
+home_exp1_desc = "Desenvolvimento de aplicações web com Next.js e oRPC, padronização de ambientes com Docker e Nix, atividades de robótica e artigos científicos."
+home_exp2_title = "Estagiário de Infraestrutura de TI @ <span class=\"text-[#38bdf8]\">Censipam (Ministério da Defesa)</span>"
+home_exp2_date = "Ago 2023 – Out 2024"
+home_exp2_desc = "Manutenção de infraestrutura de TI do Censipam (monitoramento da Amazônia), diagnóstico de hardware, telefonia IP e suporte técnico."
+home_exp3_title = "Pesquisador Científico (Bolsista) @ <span class=\"text-[#38bdf8]\">GoTec / IFRO</span>"
+home_exp3_date = "Set 2023 – Jul 2024"
+home_exp3_desc = "Desenvolvimento da plataforma \"Radar da Inovação\" em TypeScript, React, Laravel e MySQL. Apresentações científicas na Expo Favela e SNCT."
 
-# Section 04
+# Home Section 04
 section_awards = "Distinções & Olimpíadas"
 link_all_awards = "Todas as premiações (12+) →"
+home_award1_badge = "🥇 Medalha de Ouro (2025)"
+home_award1_title = "Olimpíada Tesouro Direto"
+home_award1_desc = "Educação financeira e matemática."
+home_award2_badge = "🥈 Medalha de Prata (2025)"
+home_award2_title = "OBR Teórica (Robótica)"
+home_award2_desc = "Sensores, controle e lógica."
+home_award3_badge = "🏆 4º Lugar Estadual (2025)"
+home_award3_title = "OBR Artística (Robótica)"
+home_award3_desc = "Etapa estadual de Rondônia."
+home_award4_badge = "🏅 Menção Honrosa (2025)"
+home_award4_title = "Matemática Sem Fronteiras"
+home_award4_desc = "Olimpíada internacional de matemática."
 
-# Section 05
+# Home Section 05
 section_crawlers = "RASTREADORES & DESCOBERTA POR AGENTES DE IA"
 ai_agent_title = "Deseja indexar ou consultar este portfólio com um agente de IA?"
 ai_agent_desc = "Este site foi desenvolvido com marcação semântica, arquitetura limpa e segue o padrão /llms.txt para leitura direta por LLMs, bots e curl."
@@ -142,6 +319,123 @@ ai_agent_desc = "Este site foi desenvolvido com marcação semântica, arquitetu
 # Footer
 footer_hosted = "HOSPEDADO NO GITHUB PAGES • SEM RASTREADORES • SEM COOKIES"
 rights_reserved = "Todos os direitos reservados."
+
+# About Page
+about_tag = "[01. BIOGRAFIA & FILOSOFIA DE ENGENHARIA]"
+about_title = "Sobre Thiago Macedo Mendes"
+about_subtitle = "Engenharia de sistemas, reprodutibilidade com Nix, desenvolvimento de software e pesquisa acadêmica."
+about_location_label = "LOCALIZAÇÃO"
+about_location_val = "Porto Velho, RO - Brasil"
+about_location_sub = "Amazônia Ocidental"
+about_handles_label = "HANDLES / ALIAS"
+about_handles_sub = "Perfis no GitHub & Web"
+about_edu_label = "FORMAÇÃO"
+about_edu_val = "Bacharelado em CC"
+about_edu_sub = "UNIR (2026-2029) • IFRO (2023-2025)"
+about_lang_label = "IDIOMAS"
+about_lang_val = "Português & Inglês"
+about_lang_sub = "Bilíngue (Palestrante) • Espanhol"
+about_btn_projects = "Ver Projetos & Repositórios"
+about_btn_experience = "Histórico Profissional & Pesquisa"
+
+# Projects Listing & Detail
+projects_tag = "[02. REPOSITÓRIOS & CÓDIGO ABERTO]"
+projects_title = "Projetos & Repositórios"
+projects_subtitle = "Projetos desenvolvidos por Thiago Macedo Mendes (@o-thiago e @o-thiago): ferramentas open-source, configurações declarativas em Nix e plataformas web."
+project_breadcrumb = "~/projetos"
+project_author_label = "Autor:"
+project_repo_btn = "Repositório (GitHub)"
+project_demo_btn = "Demonstração no Ar"
+project_back_btn = "Voltar para Lista de Projetos"
+project_profiles_label = "Perfis no GitHub:"
+
+# Experience Page
+experience_tag = "[03. HISTÓRICO DE ATUAÇÃO PROFISSIONAL & PESQUISA]"
+experience_title = "Experiência Profissional & Pesquisa"
+experience_subtitle = "Histórico de atuação profissional, bolsas de pesquisa científica e administração de infraestrutura de TI de Thiago Macedo Mendes."
+exp1_role = "Assistente Administrativo & Desenvolvedor de Software"
+exp1_company = "IFRO / GPMecatrônica (via Belém Rio Segurança Ltda)"
+exp1_date = "Jan 2025 – Dez 2025 • Porto Velho, RO, Brasil"
+exp1_b1 = "Prestador terceirizado atuando no desenvolvimento e pesquisa junto ao Grupo de Pesquisa GPMecatrônica."
+exp1_b2 = "Desenvolvimento full-stack de aplicações web em Next.js, React, Tailwind CSS e oRPC."
+exp1_b3 = "Padronização de ambientes de desenvolvimento e builds herméticos com Docker e Nix Flakes."
+exp1_b4 = "Participação em atividades de robótica teórica e coautoria de artigos científicos do grupo."
+exp1_b5 = "Suporte técnico em bancada, diagnóstico de hardware e configuração de redes locais."
+
+exp2_role = "Estagiário de Infraestrutura de TI"
+exp2_company = "Censipam – Centro Regional de Porto Velho (Ministério da Defesa)"
+exp2_date = "Ago 2023 – Out 2024 • Porto Velho, RO, Brasil"
+exp2_b1 = "Manutenção da infraestrutura operacional de TI do Censipam dedicada ao monitoramento da Amazônia Legal."
+exp2_b2 = "Montagem de servidores e desktops, diagnóstico de bancada e instalação corporativa de SOs Linux e Windows."
+exp2_b3 = "Cabeamento estruturado, manobra em patch panels e conectorização de telefonia IP (VoIP)."
+exp2_b4 = "Atendimento técnico direto a usuários internos sob rigorosas diretrizes de segurança da informação."
+
+exp3_role = "Pesquisador Científico (Bolsista)"
+exp3_company = "IFRO - Grupo de Pesquisa em Soluções Tecnológicas (GoTec)"
+exp3_date = "Fev 2024 – Jul 2024 • Porto Velho, RO, Brasil"
+exp3_b1 = "Bolsista de pesquisa científica focado em engenharia web para sistemas de gestão institucional."
+exp3_b2 = "Desenvolvimento da plataforma \"Radar da Inovação\" em TypeScript, ReactJS, Laravel e banco de dados MySQL."
+exp3_b3 = "Criação de biblioteca de componentes documentada no Storybook e contêineres Docker para desenvolvimento."
+
+exp4_role = "Pesquisador Voluntário"
+exp4_company = "IFRO - Grupo de Pesquisa em Soluções Tecnológicas (GoTec)"
+exp4_date = "Set 2023 – Fev 2024 • Porto Velho, RO, Brasil"
+exp4_b1 = "Capacitação técnica em arquitetura web moderna e modelagem de banco de dados relacional."
+exp4_b2 = "Apresentação de trabalhos científicos e extensão comunitária na Expo Favela e Semana Nacional de C&T."
+
+# Awards Page
+awards_tag = "[04. OLIMPÍADAS, MEDALHAS & DISTINÇÕES]"
+awards_title = "Prêmios, Olimpíadas & Distinções"
+awards_subtitle = "Medalhas em competições acadêmicas, olimpíadas de robótica e informática, palestras e certificações técnicas."
+award1_badge = "🥇 MEDALHA DE OURO"
+award1_date = "2025"
+award1_title = "Olimpíada de Educação Financeira Tesouro Direto"
+award1_desc = "Conquista nacional em conceitos econômicos e matemática financeira."
+
+award2_badge = "🥈 MEDALHA DE PRATA"
+award2_date = "2025"
+award2_title = "Olimpíada Brasileira de Robótica (OBR Teórica)"
+award2_desc = "Medalha de prata nacional avaliando algoritmos, sensores e controle."
+
+award3_badge = "🏆 4º LUGAR ESTADUAL"
+award3_date = "2025"
+award3_title = "Olimpíada Brasileira de Robótica (OBR Artística)"
+award3_desc = "4º Lugar na modalidade de Robótica Artística na etapa estadual de Rondônia."
+
+award4_badge = "🏅 MENÇÃO HONROSA"
+award4_date = "2025"
+award4_title = "Olimpíada Internacional \"Matemática Sem Fronteiras\""
+award4_desc = "Competição internacional de resolução de problemas matemáticos."
+
+award5_badge = "🎖️ HONRA AO MÉRITO"
+award5_date = "2024"
+award5_title = "Olimpíada Brasileira de Robótica (OBR Teórica)"
+award5_desc = "Reconhecimento de mérito estadual e nacional em microcontroladores e princípios de robótica."
+
+awards_list_title = "[COMPETIÇÕES, PALESTRAS & EVENTOS]"
+awards_p1 = "<strong class=\"text-white\">Olimpíada Brasileira de Robótica (OBR Artística 2025):</strong> 4º Lugar na Fase Estadual de Rondônia."
+awards_p2 = "<strong class=\"text-white\">Olimpíada Brasileira de Informática (OBI):</strong> Participação na Fase 2 (2024, 2025) e Fase 1 (2023). Programação competitiva em C/C++."
+awards_p3 = "<strong class=\"text-white\">Palestrante no 1º Encontro Poliglota de Calama (2024):</strong> Apresentação sobre <em>\"Fundamentos do Inglês: Estratégias Cognitivas para Aquisição Acelerada\"</em>."
+awards_p4 = "<strong class=\"text-white\">Olimpíada Brasileira de Astronomia e Astronáutica (OBA 2025):</strong> Participação em astrofísica e mecânica celeste."
+awards_p5 = "<strong class=\"text-white\">Semana Nacional de Ciência e Tecnologia (SNCT 2023, 2024):</strong> Expositor científico de soluções em software."
+awards_p6 = "<strong class=\"text-white\">Semana Rondoniense de Arte, Patrimônio e Cultura (2023):</strong> Expositor de projetos de informática."
+
+# Resume Page
+resume_tag = "[05. CURRÍCULO VITAE / RESUMO PROFISSIONAL]"
+resume_title = "Curriculum Vitae"
+resume_subtitle = "Versão para impressão do currículo profissional e acadêmico de Thiago Macedo Mendes."
+resume_btn_print = "Imprimir / Salvar em PDF"
+resume_summary_title = "== RESUMO PROFISSIONAL =="
+resume_summary_desc = "Graduando em Ciência da Computação na UNIR ('29) e Técnico em Informática formado pelo IFRO ('25). Experiência em desenvolvimento de sistemas (C, Rust, NixOS), aplicações web modernas (TypeScript, Next.js, React, Laravel), pipelines conteinerizados e infraestrutura de TI. Pesquisador acadêmico com artigos científicos, medalhas em robótica e fluência em inglês."
+resume_exp_title = "== EXPERIÊNCIA PROFISSIONAL & PESQUISA =="
+resume_edu_title = "== FORMAÇÃO ACADÊMICA =="
+resume_skills_title = "== HABILIDADES & TECNOLOGIAS =="
+resume_skills_l1 = "Linguagens & Tecnologias:"
+resume_skills_l2 = "Sistemas & Ferramentas:"
+resume_skills_l3 = "Bancos de Dados & Infra:"
+resume_skills_l4 = "Idiomas:"
+resume_skills_l4_val = "Português (Nativo), Inglês (Fluente/Bilíngue), Espanhol (Básico)."
+resume_awards_title = "== DISTINÇÕES & PREMIAÇÕES =="
 
 [extra]
 name = "Thiago Macedo Mendes"

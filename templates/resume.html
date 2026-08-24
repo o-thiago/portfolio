@@ -13,18 +13,18 @@
   <div class="no-print retro-box p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
     <div>
       <span class="text-white font-bold">
-        {% if lang == "pt" %}[05. CURRÍCULO / VITAE]{% else %}[05. CURRICULUM VITAE / RESUME]{% endif %}
+        {{ trans(key="resume_tag") }}
       </span>
       <p class="text-slate-400 text-[11px]">
-        {% if lang == "pt" %}Formato para impressão (Ctrl+P). Padrão idêntico ao modelo em LaTeX.{% else %}Printable format (Ctrl+P). Matches standard LaTeX CV output.{% endif %}
+        {{ trans(key="resume_subtitle") }}
       </p>
     </div>
     <div class="flex items-center gap-2">
       <a href="mailto:{{ config.extra.email }}" class="retro-btn">
-        <span>&gt; {% if lang == "pt" %}E-mail de Contato{% else %}Email Thiago{% endif %}</span>
+        <span>&gt; {{ trans(key="btn_contact") }}</span>
       </a>
       <a href="{{ config.base_url }}/llms.txt" class="retro-btn text-amber-400">
-        <span>&gt; {% if lang == "pt" %}Contexto Markdown{% else %}Raw Context{% endif %}</span>
+        <span>&gt; llms.txt</span>
       </a>
     </div>
   </div>
@@ -34,15 +34,17 @@
     
     <!-- Resume Header -->
     <div class="text-center space-y-1 border-b-2 border-[#2d3748] pb-4 print:border-black">
-      <h1 class="text-xl sm:text-2xl font-bold text-white print:text-black uppercase">Thiago Macedo Mendes</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-white print:text-black uppercase">{{ config.extra.name }}</h1>
       <div class="flex flex-wrap items-center justify-center gap-x-2 text-xs text-slate-400 print:text-black">
-        <span>Porto Velho, RO - {% if lang == "pt" %}Brasil{% else %}Brazil{% endif %}</span>
+        <span>{{ trans(key="location_text") }}</span>
         <span>•</span>
-        <a href="tel:+5569993146868" class="text-slate-300 print:text-black">+55 (69) 99314-6868</a>
+        <a href="tel:+5569993146868" class="text-slate-300 print:text-black">{{ config.extra.phone }}</a>
         <span>•</span>
         <a href="mailto:{{ config.extra.email }}" class="text-sky-400 print:text-black">{{ config.extra.email }}</a>
         <span>•</span>
         <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">linkedin.com/in/thiagomacedomendes</a>
+        <span>•</span>
+        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">github.com/o-thiago</a>
         <span>•</span>
         <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">github.com/o-thiago</a>
       </div>
@@ -51,161 +53,109 @@
     <!-- Summary -->
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {% if lang == "pt" %}RESUMO PROFISSIONAL{% else %}SUMMARY{% endif %} ==
+        {{ trans(key="resume_summary_title") }}
       </div>
       <p class="text-slate-300 print:text-black leading-relaxed">
-        {% if lang == "pt" %}
-          Estudante de Ciência da Computação (UNIR) e Técnico em Informática (IFRO) com foco em desenvolvimento de software, programação de sistemas e infraestrutura de TI. Experiência como pesquisador nos grupos GPMecatrônica e GoTec, e em infraestrutura no Censipam (Ministério da Defesa). Conhecimentos em C, Rust, TypeScript, Python, Java, PHP, React, Next.js, NixOS e bancos de dados (MySQL, PostgreSQL, MongoDB). Em busca de estágio em Desenvolvimento de Software para aplicar bagagem técnica em projetos de alto impacto.
-        {% else %}
-          Computer Science student (UNIR) and IT Technician (IFRO) focused on software development, systems programming, and IT infrastructure. Experience working as a researcher for the GPMecatrônica and GoTec groups, and in IT infrastructure at Censipam (Ministry of Defense). Skilled in C, Rust, TypeScript, Python, Java, PHP, React, Next.js, NixOS, and databases (MySQL, PostgreSQL, MongoDB). Seeking a Software Development internship to apply my technical background to real-world projects.
-        {% endif %}
+        {{ trans(key="resume_summary_desc") }}
       </p>
     </section>
 
     <!-- Experience -->
     <section class="space-y-3">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {% if lang == "pt" %}EXPERIÊNCIA PROFISSIONAL & PESQUISA{% else %}EXPERIENCE{% endif %} ==
+        {{ trans(key="resume_exp_title") }}
       </div>
 
       <!-- Role 1 -->
       <div class="space-y-1">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>IFRO - {% if lang == "pt" %}Instituto Federal de Rondônia{% else %}Federal Institute of Rondônia{% endif %}</span>
-          <span class="text-slate-500 print:text-black text-xs">Porto Velho, RO, {% if lang == "pt" %}Brasil{% else %}Brazil{% endif %}</span>
+          <span>{{ trans(key="exp1_company") }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp1_date") }}</span>
         </div>
         <div class="text-slate-400 print:text-black italic text-xs">
-          {% if lang == "pt" %}
-            Assistente Administrativo / Desenvolvedor Terceirizado (GPMecatrônica) • Jan 2025 – Dez 2025
-          {% else %}
-            Administrative Assistant / Outsourced Developer (GPMecatrônica) • Jan 2025 – Dec 2025
-          {% endif %}
+          {{ trans(key="exp1_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          {% if lang == "pt" %}
-            <li>• Prestador de serviços terceirizado no Grupo de Pesquisa em Mecatrônica (GPMecatrônica), via Belém Rio Segurança Ltda.</li>
-            <li>• Desenvolvimento de aplicações web (Next.js, React, Tailwind CSS, oRPC) para projetos internos do laboratório.</li>
-            <li>• Contribuição em atividades de robótica teórica e coautoria de artigos científicos do grupo.</li>
-            <li>• Suporte técnico, manutenção preventiva de computadores e padronização de ambientes com Docker e Nix.</li>
-          {% else %}
-            <li>• Outsourced contractor at the GPMecatrônica Research Group, in partnership with Belém Rio Segurança Ltda.</li>
-            <li>• Developed web applications (Next.js, React, Tailwind CSS, oRPC) for internal GPMecatrônica projects.</li>
-            <li>• Contributed to robotics activities and the production of scientific papers for the group.</li>
-            <li>• Performed technical support, hardware maintenance, and environment standardization using Docker and Nix.</li>
-          {% endif %}
+          <li>• {{ trans(key="exp1_b1") }}</li>
+          <li>• {{ trans(key="exp1_b2") }}</li>
+          <li>• {{ trans(key="exp1_b3") }}</li>
+          <li>• {{ trans(key="exp1_b4") }}</li>
+          <li>• {{ trans(key="exp1_b5") }}</li>
         </ul>
       </div>
 
       <!-- Role 2 -->
       <div class="space-y-1 pt-2">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>Censipam ({% if lang == "pt" %}Ministério da Defesa{% else %}Ministry of Defense{% endif %})</span>
-          <span class="text-slate-500 print:text-black text-xs">Porto Velho, RO, {% if lang == "pt" %}Brasil{% else %}Brazil{% endif %}</span>
+          <span>{{ trans(key="exp2_company") }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp2_date") }}</span>
         </div>
         <div class="text-slate-400 print:text-black italic text-xs">
-          {% if lang == "pt" %}
-            Estagiário de Infraestrutura de TI • Ago 2023 – Out 2024
-          {% else %}
-            IT Infrastructure Intern • Aug 2023 – Oct 2024
-          {% endif %}
+          {{ trans(key="exp2_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          {% if lang == "pt" %}
-            <li>• Manutenção da infraestrutura de TI do Centro Regional de Porto Velho do Censipam (Ministério da Defesa).</li>
-            <li>• Manutenção de hardware (montagem, diagnóstico em bancada) e instalação corporativa de sistemas operacionais.</li>
-            <li>• Conectorização de pontos de rede e telefonia IP na infraestrutura predial e suporte técnico a usuários internos.</li>
-          {% else %}
-            <li>• Maintained the IT infrastructure for Censipam (Ministry of Defense).</li>
-            <li>• Performed hardware maintenance (assembly, diagnostics) and installed operating systems.</li>
-            <li>• Configured IP telephony network points within the building's infrastructure and provided technical support to internal users.</li>
-          {% endif %}
+          <li>• {{ trans(key="exp2_b1") }}</li>
+          <li>• {{ trans(key="exp2_b2") }}</li>
+          <li>• {{ trans(key="exp2_b3") }}</li>
+          <li>• {{ trans(key="exp2_b4") }}</li>
         </ul>
       </div>
 
       <!-- Role 3 -->
       <div class="space-y-1 pt-2">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>IFRO - {% if lang == "pt" %}Instituto Federal de Rondônia{% else %}Federal Institute of Rondônia{% endif %}</span>
-          <span class="text-slate-500 print:text-black text-xs">Porto Velho, RO, {% if lang == "pt" %}Brasil{% else %}Brazil{% endif %}</span>
+          <span>{{ trans(key="exp3_company") }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp3_date") }}</span>
         </div>
         <div class="text-slate-400 print:text-black italic text-xs">
-          {% if lang == "pt" %}
-            Pesquisador Científico (Bolsista - Grupo GoTec) • Fev 2024 – Jul 2024
-          {% else %}
-            Scientific Researcher (GoTec Group) • Feb 2024 – Jul 2024
-          {% endif %}
+          {{ trans(key="exp3_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          {% if lang == "pt" %}
-            <li>• Bolsista de pesquisa no Grupo de Soluções Tecnológicas (GoTec), focado em desenvolvimento de sistemas web.</li>
-            <li>• Atuação no desenvolvimento da plataforma "Radar da Inovação", no frontend e backend (TypeScript, ReactJS, Laravel, PHP, MySQL).</li>
-            <li>• Utilização de Docker para conteinerização e Storybook para documentação de componentes de interface.</li>
-          {% else %}
-            <li>• Research fellow at the Technological Solutions Research Group (GoTec), focusing on web system development.</li>
-            <li>• Contributed to the development of the "Innovation Radar" web solution, working on front-end and back-end (TypeScript, ReactJS, Laravel, PHP, MySQL).</li>
-            <li>• Utilized Docker for containerization and Storybook for component documentation.</li>
-          {% endif %}
+          <li>• {{ trans(key="exp3_b1") }}</li>
+          <li>• {{ trans(key="exp3_b2") }}</li>
+          <li>• {{ trans(key="exp3_b3") }}</li>
         </ul>
       </div>
 
       <!-- Role 4 -->
       <div class="space-y-1 pt-2">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>IFRO - {% if lang == "pt" %}Instituto Federal de Rondônia{% else %}Federal Institute of Rondônia{% endif %}</span>
-          <span class="text-slate-500 print:text-black text-xs">Porto Velho, RO, {% if lang == "pt" %}Brasil{% else %}Brazil{% endif %}</span>
+          <span>{{ trans(key="exp4_company") }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp4_date") }}</span>
         </div>
         <div class="text-slate-400 print:text-black italic text-xs">
-          {% if lang == "pt" %}
-            Pesquisador Voluntário (Grupo GoTec) • Set 2023 – Fev 2024
-          {% else %}
-            Voluntary Researcher (GoTec Group) • Sep 2023 – Feb 2024
-          {% endif %}
+          {{ trans(key="exp4_role") }}
         </div>
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1">
-          {% if lang == "pt" %}
-            <li>• Pesquisador voluntário no GoTec com foco em capacitação técnica em desenvolvimento web (TypeScript, ReactJS, Laravel, PHP).</li>
-            <li>• Auxílio na modelagem arquitetural inicial e banco de dados do projeto "Radar da Inovação".</li>
-            <li>• Representação do GoTec em eventos de divulgação científica, incluindo apresentações na Expo Favela e SNCT.</li>
-          {% else %}
-            <li>• Voluntary researcher at GoTec, focusing on technical training in web development (TypeScript, ReactJS, Laravel, PHP).</li>
-            <li>• Assisted with the initial architecture of the "Innovation Radar" project.</li>
-            <li>• Represented GoTec at scientific dissemination events, including presentations at Expo Favela.</li>
-          {% endif %}
+          <li>• {{ trans(key="exp4_b1") }}</li>
+          <li>• {{ trans(key="exp4_b2") }}</li>
         </ul>
       </div>
     </section>
 
     <!-- Education -->
-    <section class="space-y-2">
+    <section class="space-y-3">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {% if lang == "pt" %}FORMAÇÃO ACADÊMICA{% else %}EDUCATION{% endif %} ==
+        {{ trans(key="resume_edu_title") }}
       </div>
-
-      <div class="space-y-0.5">
-        <div class="flex justify-between text-white print:text-black font-bold">
-          <span>{% if lang == "pt" %}Universidade Federal de Rondônia (UNIR){% else %}Federal University of Rondônia (UNIR){% endif %}</span>
-          <span class="text-slate-500 print:text-black text-xs">Porto Velho, RO</span>
+      
+      <div class="space-y-1">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
+          <span>{{ config.extra.university }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">2026 – 2029</span>
         </div>
         <div class="text-slate-400 print:text-black text-xs">
-          {% if lang == "pt" %}
-            Bacharelado em Ciência da Computação • Fev 2026 – Dez 2029
-          {% else %}
-            Bachelor's Degree, Computer Science • Feb 2026 – Dec 2029
-          {% endif %}
+          {{ trans(key="about_edu_val") }}
         </div>
       </div>
 
-      <div class="space-y-0.5 pt-1">
-        <div class="flex justify-between text-white print:text-black font-bold">
-          <span>{% if lang == "pt" %}Instituto Federal de Rondônia (IFRO){% else %}Federal Institute of Rondônia (IFRO){% endif %}</span>
-          <span class="text-slate-500 print:text-black text-xs">Porto Velho, RO</span>
+      <div class="space-y-1 pt-1">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
+          <span>{{ config.extra.institute }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">2023 – 2025</span>
         </div>
         <div class="text-slate-400 print:text-black text-xs">
-          {% if lang == "pt" %}
-            Técnico em Informática Integrado ao Ensino Médio • Fev 2023 – Dez 2025
-          {% else %}
-            Technical Course in Informatics Integrated with High School • Feb 2023 – Dec 2025
-          {% endif %}
+          {{ config.extra.institute_degree }}
         </div>
       </div>
     </section>
@@ -213,43 +163,29 @@
     <!-- Skills -->
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {% if lang == "pt" %}HABILIDADES & TECNOLOGIAS{% else %}SKILLS & TECH{% endif %} ==
+        {{ trans(key="resume_skills_title") }}
       </div>
       <ul class="text-slate-300 print:text-black space-y-1 text-xs">
-        <li>• <strong class="text-white print:text-black">{% if lang == "pt" %}Linguagens & Tecnologias:{% else %}Languages & Tech:{% endif %}</strong> C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind.</li>
-        <li>• <strong class="text-white print:text-black">{% if lang == "pt" %}Sistemas & Ferramentas:{% else %}Systems & Tools:{% endif %}</strong> NixOS, Linux Administration, Docker, Git, CI/CD.</li>
-        <li>• <strong class="text-white print:text-black">{% if lang == "pt" %}Bancos de Dados & Infra:{% else %}Databases & Infra:{% endif %}</strong> PostgreSQL, MySQL, SQLite, MongoDB, Redes de Computadores, Telefonia IP.</li>
-        <li>• <strong class="text-white print:text-black">{% if lang == "pt" %}Idiomas:{% else %}Natural Languages:{% endif %}</strong> {% if lang == "pt" %}Português (Nativo), Inglês (Fluente/Bilíngue), Espanhol (Básico).{% else %}Portuguese (Native), English (Fluent/Bilingual), Spanish (Elementary).{% endif %}</li>
+        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l1") }}</strong> C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind.</li>
+        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l2") }}</strong> NixOS, Linux Administration, Docker, Git, CI/CD.</li>
+        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l3") }}</strong> PostgreSQL, MySQL, SQLite, MongoDB, Redes de Computadores, Telefonia IP.</li>
+        <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l4") }}</strong> {{ trans(key="resume_skills_l4_val") }}</li>
       </ul>
     </section>
 
     <!-- Distinctions -->
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {% if lang == "pt" %}DISTINÇÕES & PREMIAÇÕES{% else %}HONORS & AWARDS{% endif %} ==
+        {{ trans(key="resume_awards_title") }}
       </div>
       <ul class="text-slate-300 print:text-black space-y-0.5 text-xs">
-        {% if lang == "pt" %}
-          <li>• Medalha de Ouro – Olimpíada de Educação Financeira Tesouro Direto (2025)</li>
-          <li>• Medalha de Prata – Olimpíada Brasileira de Robótica (Modalidade Teórica 2025)</li>
-          <li>• 4º Lugar Estadual – Olimpíada Brasileira de Robótica (Modalidade Artística 2025)</li>
-          <li>• Menção Honrosa – Olimpíada Internacional de Matemática "Matemática Sem Fronteiras" (2025)</li>
-          <li>• Honra ao Mérito – Olimpíada Brasileira de Robótica (Modalidade Teórica 2024)</li>
-          <li>• Participação na Olimpíada Brasileira de Informática (OBI Fase 2 em 2024 e 2025; Fase 1 em 2023)</li>
-          <li>• Palestrante no 1º Encontro Poliglota de Calama – Fundamentos do Inglês (2024)</li>
-          <li>• Bootcamps Desenvolvedor Python e Desenvolvedor Full Stack (IGTI / XP Educação)</li>
-          <li>• Curso de Tratamento e Proteção de Dados Pessoais (Ministério da Defesa 2024)</li>
-        {% else %}
-          <li>• Gold Medal – Tesouro Direto Financial Education Olympiad (2025)</li>
-          <li>• Silver Medal – Brazilian Robotics Olympiad (Theoretical 2025)</li>
-          <li>• 4th Place (State Stage) – Brazilian Robotics Olympiad (Artistic Robotics 2025)</li>
-          <li>• Honorable Mention – International Math Olympiad "Math Without Borders" (2025)</li>
-          <li>• Merit Honor – Brazilian Robotics Olympiad (Theoretical 2024)</li>
-          <li>• Competitor – Brazilian Olympiad in Informatics (OBI Phase 2)</li>
-          <li>• Speaker at 1st Polyglot Meeting of Calama – English Fundamentals (2024)</li>
-          <li>• Python Developer and Full Stack Developer Bootcamps (IGTI / XP Educação)</li>
-          <li>• Personal Data Processing and Protection Course (Ministry of Defense 2024)</li>
-        {% endif %}
+        <li>• {{ trans(key="award1_badge") }} – {{ trans(key="award1_title") }} ({{ trans(key="award1_date") }})</li>
+        <li>• {{ trans(key="award2_badge") }} – {{ trans(key="award2_title") }} ({{ trans(key="award2_date") }})</li>
+        <li>• {{ trans(key="award3_badge") }} – {{ trans(key="award3_title") }} ({{ trans(key="award3_date") }})</li>
+        <li>• {{ trans(key="award4_badge") }} – {{ trans(key="award4_title") }} ({{ trans(key="award4_date") }})</li>
+        <li>• {{ trans(key="award5_badge") }} – {{ trans(key="award5_title") }} ({{ trans(key="award5_date") }})</li>
+        <li>• {{ trans(key="awards_p2") | safe }}</li>
+        <li>• {{ trans(key="awards_p3") | safe }}</li>
       </ul>
     </section>
 
