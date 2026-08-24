@@ -11,9 +11,9 @@
 Thiago Macedo Mendes is a Computer Science undergraduate student at the Federal University of Rondônia (UNIR) and software developer from Porto Velho, Rondônia, in the Brazilian Western Amazon basin.
 
 His work spans three main dimensions:
-1. **The Systems Developer:** Building low-overhead, zero-bloat systems in C and Rust, managing declarative operating systems with Nix and NixOS, configuring low-latency embedded firmware for split ergonomic mechanical keyboards (ZMK, QMK), and developing high-performance web systems.
+1. **The Systems Developer:** Building low-overhead, zero-bloat systems in C and Rust, managing declarative operating systems with Nix and NixOS, and developing high-performance web systems.
 2. **The Student & Researcher:** Academic researcher at GPMecatrônica (Mechatronics Research Group) and GoTec (Technological Solutions Research Group), co-authoring scientific papers, building institutional web platforms, and winning medals in national and international academic olympiads (Robotics, Mathematics, Financial Education, Informatics).
-3. **The Person:** Enthusiast of minimalist computing, the Unix philosophy, 34-key columnar ergonomic keyboards (Urchin, Ferris Sweep), linguistics (fluent/bilingual in Portuguese and English, public speaker on language acquisition, studying Spanish), and open-source software advocacy.
+3. **The Person:** Enthusiast of minimalist computing, the Unix philosophy, linguistics (fluent/bilingual in Portuguese and English, public speaker on language acquisition, studying Spanish), and open-source software advocacy.
 
 ---
 
@@ -78,11 +78,6 @@ His work spans three main dimensions:
 - **Stack:** Nix Flakes, NixOS, Raspberry Pi 4, Linux Kernel, Broadcom VC4
 - **Summary:** Declarative operating system configuration for Raspberry Pi 4 ARM64 single-board computers using Nix flakes, custom kernel modules, VC4 graphics drivers, and Bluetooth.
 
-### Urchin 34-Key Split Keyboard ZMK Firmware
-- **URL:** https://github.com/o-thiago/urchin-zmk-firmware
-- **Stack:** ZMK Firmware, Zephyr RTOS, C, Devicetree, BLE
-- **Summary:** Custom firmware for an ultra-compact 34-key columnar ergonomic split keyboard featuring home-row mods, custom multi-key combos, sticky layers, and power-optimized wireless Bluetooth.
-
 ### GPMecatrônica Cards & Research Platform
 - **URL:** https://github.com/o-thiago/gpm-cards
 - **Stack:** Next.js 14, TypeScript, PostgreSQL, Tailwind CSS, Nix process-compose, Docker
@@ -93,10 +88,9 @@ His work spans three main dimensions:
 - **Stack:** Rust, SQLx, PostgreSQL, Async Rust
 - **Summary:** Architectural pattern in Rust for compile-time safe, dynamic SQL query composition and filtering using `sqlx::QueryBuilder`.
 
-### fifine-rgb
-- **URL:** https://github.com/o-thiago/fifine-rgb
-- **Stack:** C / Rust, Linux HID, libusb, Nix Flakes
-- **Summary:** Native Linux command-line tool to configure RGB illumination modes on Fifine USB microphones via raw HID feature reports.
+### Innovation Radar
+- **Stack:** TypeScript, ReactJS, Laravel, PHP, MySQL, Docker, Storybook
+- **Summary:** Institutional web application developed for the GoTec research group to track innovation projects and research intellectual property.
 
 ---
 
@@ -117,7 +111,7 @@ His work spans three main dimensions:
 ## 6. Technical Stack & Skills
 
 - **Programming Languages:** C, Rust, TypeScript, JavaScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3.
-- **Systems & DevOps:** NixOS, Linux Administration, Docker, Git, ZMK Firmware, QMK, Zephyr RTOS, process-compose, Bash/Shell.
+- **Systems & DevOps:** NixOS, Linux Administration, Docker, Git, process-compose, Bash/Shell.
 - **Frameworks & Libraries:** Next.js, React, Laravel, Tailwind CSS, SQLx, Storybook.
 - **Databases:** PostgreSQL, MySQL, SQLite, MongoDB.
 - **Natural Languages:** Portuguese (Native), English (Fluent / Bilingual), Spanish (Elementary).
