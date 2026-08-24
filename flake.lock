@@ -1,13 +1,23 @@
 {
   "nodes": {
     "cv": {
-      "flake": false,
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
       "locked": {
-        "lastModified": 1787603147,
-        "narHash": "sha256-HdSDM0RwRl6nEUKoBVUMQo5e7izJ52wwQ00cQTaKZWc=",
+        "lastModified": 1787606354,
+        "narHash": "sha256-gRSf4teO5/c77rjnSVr2GfOBqlYu3AXcmNWWU3mMpME=",
         "owner": "o-thiago",
         "repo": "resume-template",
-        "rev": "1de8ec40d4d04eefc67d23f1a9758e310ee47fac",
+        "rev": "1057967892d7bfe2693115db68c403a826aed784",
         "type": "github"
       },
       "original": {

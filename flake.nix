@@ -7,7 +7,11 @@
     systems.url = "github:nix-systems/default";
     cv = {
       url = "github:o-thiago/resume-template";
-      flake = false;
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
     };
   };
 
