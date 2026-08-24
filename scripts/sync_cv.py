@@ -21,6 +21,7 @@ def get_cv_root() -> Path:
     for p in LOCAL_CANDIDATES:
         if (p / "resumes").exists():
             return p
+
     cache = ROOT / ".cache" / "curriculum-vitae"
     if (cache / "resumes").exists():
         subprocess.run(
@@ -31,11 +32,19 @@ def get_cv_root() -> Path:
             stderr=subprocess.DEVNULL,
         )
         return cache
+
     token = os.environ.get("CV_PAT", "").strip()
-    repo_url = REMOTE_REPO
-    if token and "github.com" in repo_url:
-        clean_url = re.sub(r"^https?://(?:[^@]+@)?github\.com/", "", repo_url)
-        repo_url = f"https://x-access-token:{token}@github.com/{clean_url}"
+    if not token:
+        msg = (
+            "CV_PAT environment variable is missing or empty.\n"
+            "Set the 'CV_PAT' secret with repository read permissions in GitHub Actions."
+        )
+        raise RuntimeError(msg)
+
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    clean_url = re.sub(r"^https?://(?:[^@]+@)?github\.com/", "", REMOTE_REPO)
+    repo_url = f"https://x-access-token:{token}@github.com/{clean_url}"
+
     res = subprocess.run(
         ["git", "clone", "--depth", "1", repo_url, str(cache)],
         check=False,
@@ -45,9 +54,8 @@ def get_cv_root() -> Path:
     if res.returncode != 0 or not (cache / "resumes").exists():
         err_detail = res.stderr.strip() or res.stdout.strip()
         msg = (
-            f"Failed to clone CV repository from {REMOTE_REPO}.\n"
-            f"Git error output: {err_detail}\n"
-            "If the repository is private, ensure the secret 'CV_PAT' is set with read access."
+            f"Failed to clone CV repository from {REMOTE_REPO} (check CV_PAT permissions):\n"
+            f"{err_detail}"
         )
         raise RuntimeError(msg)
     return cache
