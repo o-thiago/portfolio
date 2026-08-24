@@ -5,11 +5,11 @@ default:
     @just --list
 
 # Watch Tailwind CSS and run Zola live-reload dev server concurrently
-dev:
+dev: sync-cv
     @mkdir -p static
     @sh -c "tailwindcss -i styles/input.css -o static/style.css --watch & zola serve --port 1111 --interface 127.0.0.1"
 
-# Synchronize curriculum-vitae submodule: compile LaTeX PDFs and generate content
+# Synchronize curriculum-vitae: compile LaTeX PDFs and generate content
 sync-cv:
     @if command -v python3 >/dev/null 2>&1; then \
         python3 scripts/sync_cv.py; \
