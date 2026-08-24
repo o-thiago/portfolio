@@ -6,7 +6,6 @@
 ## Core Information
 - Full Name: Thiago Macedo Mendes
 - GitHub: https://github.com/o-thiago
-- GitHub (Alias): https://github.com/o-thiago
 - LinkedIn: https://www.linkedin.com/in/thiagomacedomendes/
 - Email: thiagomm@pm.me
 - Location: Porto Velho, Rondônia, Brazil
@@ -25,7 +24,7 @@
 ## Featured Projects
 - **toof-os** (https://github.com/o-thiago/ToofOS): Declarative NixOS configuration built for the DACC Station (a gaming arcade console project at UNIR) on Raspberry Pi 4 with custom `nix-ld` game runtimes.
 - **gpm-cards** (https://github.com/o-thiago/gpm-cards): Web platform for member profiles and card generation for GPMecatrônica with Next.js, PostgreSQL, and Nix process-compose services.
-- **sqlx-conditional-queries-layering** (https://github.com/o-thiago/sqlx-conditional-queries-layering): Declarative macro library in Rust for composing and merging conditional SQL query templates on top of SQLx. Author: @o-thiago.
+- **sqlx-conditional-queries-layering** (https://github.com/o-thiago/sqlx-conditional-queries-layering): Declarative macro library in Rust for composing and merging conditional SQL query templates on top of SQLx.
 - **Innovation Radar**: Web platform for tracking innovation initiatives and research IP at IFRO with React, Laravel, Docker.
 
 ## Honors & Olympiad Medals

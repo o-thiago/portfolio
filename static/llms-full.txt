@@ -2,7 +2,6 @@
 
 - **Author:** Thiago Macedo Mendes
 - **GitHub:** https://github.com/o-thiago
-- **GitHub (Alias):** https://github.com/o-thiago
 - **LinkedIn:** https://www.linkedin.com/in/thiagomacedomendes/
 - **Email:** thiagomm@pm.me
 - **Phone:** +55 (69) 99314-6868
@@ -83,7 +82,7 @@ Thiago Macedo Mendes is a Computer Science undergraduate at UNIR ('29) and Infor
 
 ### sqlx-conditional-queries-layering
 - **URL:** https://github.com/o-thiago/sqlx-conditional-queries-layering
-- **Author:** Thiago Macedo Mendes (@o-thiago)
+- **Author:** Thiago Macedo Mendes
 - **Stack:** Rust, SQLx, Declarative Macros, paste, macro_metavar_expr
 - **Summary:** Rust declarative macro library for defining, extending, and merging conditional SQL query templates on top of sqlx_conditional_queries at compile time.
 

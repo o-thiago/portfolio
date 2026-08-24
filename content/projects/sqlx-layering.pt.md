@@ -15,7 +15,7 @@ stack = ["Rust", "SQLx", "Macros Declarativas", "paste", "macro_metavar_expr"]
 
 Ao usar o **SQLx** no Rust, a biblioteca [`sqlx_conditional_queries`](https://docs.rs/sqlx_conditional_queries) permite definir variáveis condicionais (`{#var}`) com `match` dentro da string da query.
 
-Porém, ela não oferecia uma forma direta de reutilizar ou combinar esses templates. Cada query precisava declarar todas as variáveis e condições do zero. O **`sqlx_conditional_queries_layering`** (que publiquei sob o handle **`@o-thiago`**) foi criado para permitir:
+Porém, ela não oferecia uma forma direta de reutilizar ou combinar esses templates. Cada query precisava declarar todas as variáveis e condições do zero. O **`sqlx_conditional_queries_layering`** foi criado para permitir:
 1. Criar templates de queries que geram novas macros reutilizáveis.
 2. Injetar novas variáveis em templates existentes.
 3. Mesclar (merge) duas ou mais queries em uma só em tempo de compilação.
@@ -91,4 +91,4 @@ let result = lewdy_with_return_id_query!(
 ## Repositório
 
 - **GitHub:** [github.com/o-thiago/sqlx-conditional-queries-layering](https://github.com/o-thiago/sqlx-conditional-queries-layering)
-- **Autor:** Thiago Macedo Mendes (`@o-thiago` / `@o-thiago`)
+- **Autor:** Thiago Macedo Mendes (`@o-thiago`)
