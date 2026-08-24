@@ -9,48 +9,94 @@
   --font-serif: 'Georgia', 'Times New Roman', Times, serif;
 }
 
+/* CSS Theme Variables (Dark Mode Default) */
+:root {
+  --bg-main: #0c0e12;
+  --bg-box: #11141a;
+  --bg-subtle: #1e2430;
+  --bg-code: #080a0e;
+  --border-color: #2d3748;
+  --border-subtle: #1e293b;
+  --shadow-color: #1a202c;
+  --text-main: #d1d5db;
+  --text-bright: #ffffff;
+  --text-muted: #94a3b8;
+  --text-heading: #ffffff;
+  --accent-cyan: #38bdf8;
+  --accent-green: #4ade80;
+  --accent-amber: #fbbf24;
+}
+
+/* Pure CSS Light Mode Theme (Triggered by #theme-toggle checkbox) */
+:root:has(#theme-toggle:checked) {
+  --bg-main: #f5f2eb;
+  --bg-box: #ffffff;
+  --bg-subtle: #e8e3d8;
+  --bg-code: #eae5da;
+  --border-color: #334155;
+  --border-subtle: #cbd5e1;
+  --shadow-color: #94a3b8;
+  --text-main: #1e293b;
+  --text-bright: #090d13;
+  --text-muted: #64748b;
+  --text-heading: #0f172a;
+  --accent-cyan: #0284c7;
+  --accent-green: #16a34a;
+  --accent-amber: #b45309;
+}
+
+/* Theme Toggle Button Icon Visibility */
+.theme-icon-light {
+  display: inline;
+}
+.theme-icon-dark {
+  display: none;
+}
+
+:root:has(#theme-toggle:checked) .theme-icon-light {
+  display: none !important;
+}
+:root:has(#theme-toggle:checked) .theme-icon-dark {
+  display: inline !important;
+}
+
 /* Base Terminal / Old Web Styling */
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
-  background-color: #0c0e12;
+  background-color: var(--bg-main);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 body {
   font-family: var(--font-mono);
-  background-color: #0c0e12;
-  color: #d1d5db;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   line-height: 1.6;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 /* Retro Links */
 a {
-  color: #38bdf8;
+  color: var(--accent-cyan);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: #4ade80;
-  background-color: #1e293b;
+  color: var(--accent-green);
+  background-color: var(--bg-subtle);
 }
 
-/* Retro ASCII Box / Card */
+/* Retro Boxes */
 .retro-box {
-  background-color: #11141a;
-  border: 2px solid #2d3748;
-  box-shadow: 4px 4px 0px 0px #1a202c;
+  background-color: var(--bg-box);
+  border: 2px solid var(--border-color);
+  box-shadow: 4px 4px 0px 0px var(--shadow-color);
   transition: all 0.1s ease;
 }
 
 .retro-box:hover {
-  border-color: #4b5563;
-}
-
-.retro-box-accent {
-  background-color: #11141a;
-  border: 2px solid #0284c7;
-  box-shadow: 4px 4px 0px 0px #0369a1;
+  border-color: var(--accent-cyan);
 }
 
 /* Retro Buttons */
@@ -63,20 +109,22 @@ a:hover {
   font-size: 0.8125rem;
   font-weight: 600;
   text-decoration: none;
-  background-color: #1e2430;
-  border: 2px solid #475569;
-  color: #f1f5f9;
-  box-shadow: 3px 3px 0px 0px #0f172a;
+  background-color: var(--bg-subtle);
+  border: 2px solid var(--border-color);
+  color: var(--text-bright);
+  box-shadow: 3px 3px 0px 0px var(--shadow-color);
+  cursor: pointer;
+  user-select: none;
   transition: all 0.05s ease;
 }
 
 .retro-btn:hover {
-  background-color: #334155;
-  color: #38bdf8;
-  border-color: #38bdf8;
+  background-color: var(--bg-box);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
   text-decoration: none;
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px 0px #0284c7;
+  box-shadow: 4px 4px 0px 0px var(--accent-cyan);
 }
 
 .retro-btn:active {
@@ -84,67 +132,92 @@ a:hover {
   box-shadow: 1px 1px 0px 0px #000;
 }
 
-.retro-btn-green {
-  background-color: #14532d;
-  border-color: #22c55e;
-  color: #f0fdf4;
-  box-shadow: 3px 3px 0px 0px #052e16;
+/* Dynamic header/footer colors */
+header.retro-header {
+  background-color: var(--bg-box);
+  border-bottom: 2px solid var(--border-color);
 }
 
-.retro-btn-green:hover {
-  background-color: #166534;
-  color: #86efac;
-  border-color: #86efac;
-  box-shadow: 4px 4px 0px 0px #15803d;
+footer.retro-footer {
+  background-color: var(--bg-box);
+  border-top: 2px solid var(--border-color);
 }
 
-/* Retro Header Divider */
-.retro-hr {
-  border: 0;
-  border-top: 2px dashed #334155;
-  margin: 1.5rem 0;
+/* Dynamic Text Overrides for light mode */
+:root:has(#theme-toggle:checked) .text-white {
+  color: #0f172a !important;
+}
+
+:root:has(#theme-toggle:checked) .text-slate-200,
+:root:has(#theme-toggle:checked) .text-slate-300 {
+  color: #1e293b !important;
+}
+
+:root:has(#theme-toggle:checked) .text-slate-400 {
+  color: #475569 !important;
+}
+
+:root:has(#theme-toggle:checked) .text-slate-500 {
+  color: #64748b !important;
+}
+
+:root:has(#theme-toggle:checked) .border-\[\#2d3748\],
+:root:has(#theme-toggle:checked) .border-\[\#1e293b\],
+:root:has(#theme-toggle:checked) .border-\[\#334155\] {
+  border-color: #cbd5e1 !important;
+}
+
+:root:has(#theme-toggle:checked) .bg-\[\#11141a\],
+:root:has(#theme-toggle:checked) .bg-\[\#080a0e\],
+:root:has(#theme-toggle:checked) .bg-\[\#0c0e12\] {
+  background-color: #ffffff !important;
+}
+
+:root:has(#theme-toggle:checked) .bg-\[\#1e2430\],
+:root:has(#theme-toggle:checked) .bg-\[\#1e293b\] {
+  background-color: #e8e3d8 !important;
 }
 
 /* Markdown typography for old web */
 .prose-custom {
-  color: #cbd5e1;
+  color: var(--text-main);
   font-size: 0.9375rem;
 }
 
 .prose-custom h1 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--text-heading);
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  border-bottom: 2px solid #334155;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.35rem;
 }
 
 .prose-custom h2 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--accent-cyan);
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
 }
 
 .prose-custom h2::before {
   content: "## ";
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .prose-custom h3 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #4ade80;
+  color: var(--accent-green);
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
 .prose-custom h3::before {
   content: "### ";
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .prose-custom p {
@@ -159,21 +232,21 @@ a:hover {
 
 .prose-custom ul li::before {
   content: "• ";
-  color: #38bdf8;
+  color: var(--accent-cyan);
   font-weight: bold;
 }
 
 .prose-custom code:not(pre code) {
-  background-color: #1e293b;
-  color: #f59e0b;
+  background-color: var(--bg-subtle);
+  color: var(--accent-amber);
   padding: 0.1rem 0.35rem;
-  border: 1px solid #334155;
+  border: 1px solid var(--border-subtle);
   font-size: 0.85em;
 }
 
 pre {
-  background-color: #080a0e !important;
-  border: 2px solid #2d3748;
+  background-color: var(--bg-code) !important;
+  border: 2px solid var(--border-color);
   padding: 1rem;
   overflow-x: auto;
   margin: 1.25rem 0;
