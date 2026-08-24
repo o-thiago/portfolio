@@ -17,6 +17,8 @@
           buildInputs = with pkgs; [
             zola
             tailwindcss_4
+            python3
+            texliveFull
           ];
 
           portfolioSite = pkgs.stdenv.mkDerivation {
@@ -28,6 +30,9 @@
 
             buildPhase = ''
               mkdir -p static
+              if [ -f scripts/sync_cv.py ]; then
+                python3 scripts/sync_cv.py || true
+              fi
               tailwindcss -i styles/input.css -o static/style.css --minify
               zola build -o $out
             '';

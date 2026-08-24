@@ -13,15 +13,24 @@
   <div class="no-print retro-box p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
     <div>
       <span class="text-white font-bold">
-        [05. {{ trans(key="resume_tag") }}]
+        [05. {{ trans(lang=lang, key="resume_tag") }}]
       </span>
       <p class="text-slate-400 text-[11px]">
-        {{ trans(key="resume_subtitle") }}
+        {{ trans(lang=lang, key="resume_subtitle") }}
       </p>
     </div>
     <div class="flex items-center gap-2">
+      {% if lang == "pt" %}
+        <a href="{{ config.base_url }}/curriculo.pdf" target="_blank" download="curriculo-thiago-macedo-mendes.pdf" class="retro-btn text-emerald-400">
+          <span>&gt; {{ trans(lang=lang, key="btn_download_pdf") }}</span>
+        </a>
+      {% else %}
+        <a href="{{ config.base_url }}/resume.pdf" target="_blank" download="resume-thiago-macedo-mendes.pdf" class="retro-btn text-emerald-400">
+          <span>&gt; {{ trans(lang=lang, key="btn_download_pdf") }}</span>
+        </a>
+      {% endif %}
       <a href="mailto:{{ config.extra.email }}" class="retro-btn">
-        <span>&gt; {{ trans(key="btn_contact") }}</span>
+        <span>&gt; {{ trans(lang=lang, key="btn_contact") }}</span>
       </a>
       <a href="{{ config.base_url }}/llms.txt" class="retro-btn text-amber-400">
         <span>&gt; llms.txt</span>
@@ -34,154 +43,107 @@
     
     <!-- Resume Header -->
     <div class="text-center space-y-1 border-b-2 border-[#2d3748] pb-4 print:border-black">
-      <h1 class="text-xl sm:text-2xl font-bold text-white print:text-black uppercase">{{ config.extra.name }}</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-white print:text-black uppercase">{{ section.extra.name | default(value=config.extra.name) }}</h1>
       <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-400 print:text-black">
-        <span>{{ trans(key="location_text") }}</span>
-        <a href="tel:+5569993146868" class="text-slate-300 print:text-black">{{ config.extra.phone }}</a>
-        <a href="mailto:{{ config.extra.email }}" class="text-sky-400 print:text-black">{{ config.extra.email }}</a>
-        <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">linkedin.com/in/thiagomacedomendes</a>
-        <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">github.com/o-thiago</a>
+        <span>{{ section.extra.location }}</span>
+        <a href="tel:{{ section.extra.phone | replace(from=' ', to='') }}" class="text-slate-300 print:text-black">{{ section.extra.phone }}</a>
+        <a href="mailto:{{ section.extra.email }}" class="text-sky-400 print:text-black">{{ section.extra.email }}</a>
+        <a href="{{ section.extra.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">linkedin.com/in/thiagomacedomendes</a>
+        <a href="{{ section.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 print:text-black">github.com/o-thiago</a>
       </div>
     </div>
 
     <!-- Summary -->
+    {% if section.extra.summary %}
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {{ trans(key="resume_summary_title") }} ==
+        == {{ section.extra.summary_title | upper }} ==
       </div>
       <p class="text-slate-300 print:text-black leading-relaxed">
-        {{ trans(key="resume_summary_desc") }}
+        {{ section.extra.summary }}
       </p>
     </section>
+    {% endif %}
 
     <!-- Experience -->
+    {% if section.extra.experience %}
     <section class="space-y-3">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {{ trans(key="resume_exp_title") }} ==
+        == {{ section.extra.experience_title | upper }} ==
       </div>
 
-      <!-- Role 1 -->
-      <div class="space-y-1">
+      {% for exp in section.extra.experience %}
+      <div class="space-y-1 {% if not loop.first %}pt-2{% endif %}">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>{{ trans(key="exp1_company") }}</span>
-          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp1_date") }}</span>
+          <span>{{ exp.company }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">{{ exp.date }}</span>
         </div>
         <div class="text-slate-400 print:text-black italic text-xs">
-          {{ trans(key="exp1_role") }}
+          {{ exp.role }}
         </div>
+        {% if exp.bullets %}
         <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1 pl-4 list-disc">
-          <li>{{ trans(key="exp1_b1") }}</li>
-          <li>{{ trans(key="exp1_b2") }}</li>
-          <li>{{ trans(key="exp1_b3") }}</li>
-          <li>{{ trans(key="exp1_b4") }}</li>
-          <li>{{ trans(key="exp1_b5") }}</li>
+          {% for b in exp.bullets %}
+          <li>{{ b }}</li>
+          {% endfor %}
         </ul>
+        {% endif %}
       </div>
-
-      <!-- Role 2 -->
-      <div class="space-y-1 pt-2">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>{{ trans(key="exp2_company") }}</span>
-          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp2_date") }}</span>
-        </div>
-        <div class="text-slate-400 print:text-black italic text-xs">
-          {{ trans(key="exp2_role") }}
-        </div>
-        <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1 pl-4 list-disc">
-          <li>{{ trans(key="exp2_b1") }}</li>
-          <li>{{ trans(key="exp2_b2") }}</li>
-          <li>{{ trans(key="exp2_b3") }}</li>
-          <li>{{ trans(key="exp2_b4") }}</li>
-        </ul>
-      </div>
-
-      <!-- Role 3 -->
-      <div class="space-y-1 pt-2">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>{{ trans(key="exp3_company") }}</span>
-          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp3_date") }}</span>
-        </div>
-        <div class="text-slate-400 print:text-black italic text-xs">
-          {{ trans(key="exp3_role") }}
-        </div>
-        <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1 pl-4 list-disc">
-          <li>{{ trans(key="exp3_b1") }}</li>
-          <li>{{ trans(key="exp3_b2") }}</li>
-          <li>{{ trans(key="exp3_b3") }}</li>
-        </ul>
-      </div>
-
-      <!-- Role 4 -->
-      <div class="space-y-1 pt-2">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>{{ trans(key="exp4_company") }}</span>
-          <span class="text-slate-500 print:text-black text-xs font-mono">{{ trans(key="exp4_date") }}</span>
-        </div>
-        <div class="text-slate-400 print:text-black italic text-xs">
-          {{ trans(key="exp4_role") }}
-        </div>
-        <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pt-1 pl-4 list-disc">
-          <li>{{ trans(key="exp4_b1") }}</li>
-          <li>{{ trans(key="exp4_b2") }}</li>
-        </ul>
-      </div>
+      {% endfor %}
     </section>
+    {% endif %}
 
     <!-- Education -->
+    {% if section.extra.education %}
     <section class="space-y-3">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {{ trans(key="resume_edu_title") }} ==
+        == {{ section.extra.education_title | upper }} ==
       </div>
       
-      <div class="space-y-1">
+      {% for edu in section.extra.education %}
+      <div class="space-y-1 {% if not loop.first %}pt-1{% endif %}">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>{{ config.extra.university }}</span>
-          <span class="text-slate-500 print:text-black text-xs font-mono">2026 – 2029</span>
+          <span>{{ edu.institution }}</span>
+          <span class="text-slate-500 print:text-black text-xs font-mono">{{ edu.date }}</span>
         </div>
-        <div class="text-slate-400 print:text-black text-xs">
-          {{ trans(key="about_edu_val") }}
+        <div class="text-slate-400 print:text-black text-xs italic">
+          {{ edu.degree }}
         </div>
       </div>
-
-      <div class="space-y-1 pt-1">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-white print:text-black font-bold">
-          <span>{{ config.extra.institute }}</span>
-          <span class="text-slate-500 print:text-black text-xs font-mono">2023 – 2025</span>
-        </div>
-        <div class="text-slate-400 print:text-black text-xs">
-          {{ config.extra.institute_degree }}
-        </div>
-      </div>
+      {% endfor %}
     </section>
+    {% endif %}
 
     <!-- Skills -->
+    {% if section.extra.skills_tech or section.extra.skills_lang %}
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {{ trans(key="resume_skills_title") }} ==
+        == {{ section.extra.skills_title | upper }} ==
       </div>
       <ul class="text-slate-300 print:text-black space-y-1 text-xs pl-4 list-disc">
-        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l1") }}</strong> C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3, Tailwind.</li>
-        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l2") }}</strong> NixOS, Linux Administration, Docker, Git, CI/CD.</li>
-        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l3") }}</strong> PostgreSQL, MySQL, SQLite, MongoDB, Computer Networks, IP Telephony.</li>
-        <li><strong class="text-white print:text-black">{{ trans(key="resume_skills_l4") }}</strong> {{ trans(key="resume_skills_l4_val") }}</li>
+        {% if section.extra.skills_tech %}
+        <li><strong class="text-white print:text-black">{{ section.extra.skills_tech_label }}:</strong> {{ section.extra.skills_tech }}</li>
+        {% endif %}
+        {% if section.extra.skills_lang %}
+        <li><strong class="text-white print:text-black">{{ section.extra.skills_lang_label }}:</strong> {{ section.extra.skills_lang }}</li>
+        {% endif %}
       </ul>
     </section>
+    {% endif %}
 
-    <!-- Distinctions -->
+    <!-- Certifications -->
+    {% if section.extra.certifications %}
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        == {{ trans(key="resume_awards_title") }} ==
+        == {{ section.extra.certifications_title | upper }} ==
       </div>
       <ul class="text-slate-300 print:text-black space-y-0.5 text-xs pl-4 list-disc">
-        <li>🥇 {{ trans(key="award1_badge") }} – {{ trans(key="award1_title") }} ({{ trans(key="award1_date") }})</li>
-        <li>🥈 {{ trans(key="award2_badge") }} – {{ trans(key="award2_title") }} ({{ trans(key="award2_date") }})</li>
-        <li>🏆 {{ trans(key="award3_badge") }} – {{ trans(key="award3_title") }} ({{ trans(key="award3_date") }})</li>
-        <li>🏅 {{ trans(key="award4_badge") }} – {{ trans(key="award4_title") }} ({{ trans(key="award4_date") }})</li>
-        <li>🎖️ {{ trans(key="award5_badge") }} – {{ trans(key="award5_title") }} ({{ trans(key="award5_date") }})</li>
-        <li><strong class="text-white print:text-black">{{ trans(key="awards_p2_title") }}:</strong> {{ trans(key="awards_p2_desc") }}</li>
-        <li><strong class="text-white print:text-black">{{ trans(key="awards_p3_title") }}:</strong> {{ trans(key="awards_p3_desc") }}</li>
+        {% for cert in section.extra.certifications %}
+        <li>{{ cert }}</li>
+        {% endfor %}
       </ul>
     </section>
+    {% endif %}
 
   </div>
 

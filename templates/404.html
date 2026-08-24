@@ -3,11 +3,11 @@
 {% block content %}
 <div class="retro-box max-w-xl mx-auto text-center p-8 space-y-4 font-mono">
   <div class="text-3xl font-bold text-amber-400">
-    [ 404 :: {{ trans(key="error_404_title") }} ]
+    [ 404 :: {{ trans(lang=lang, key="error_404_title") }} ]
   </div>
   
   <p class="text-xs sm:text-sm text-slate-300">
-    {{ trans(key="error_404_desc") }}
+    {{ trans(lang=lang, key="error_404_desc") }}
   </p>
 
   <div class="pt-4 flex items-center justify-center gap-3">
