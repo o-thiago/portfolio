@@ -35,40 +35,13 @@ def get_cv_root() -> Path:
         )
         return cache
 
-    token = os.environ.get("CV_PAT", "").strip()
-    if not token:
-        msg = (
-            "CV_PAT environment variable is missing or empty.\n"
-            "Set the 'CV_PAT' secret with repository read permissions in GitHub Actions."
-        )
-        raise RuntimeError(msg)
-
     cache.parent.mkdir(parents=True, exist_ok=True)
-    clean_url = re.sub(r"^https?://(?:[^@]+@)?github\.com/", "", REMOTE_REPO)
-    repo_url = f"https://{token}@github.com/{clean_url}"
-
-    res = subprocess.run(
-        [
-            "git",
-            "-c",
-            "http.https://github.com/.extraheader=",
-            "clone",
-            "--depth",
-            "1",
-            repo_url,
-            str(cache),
-        ],
-        check=False,
-        capture_output=True,
-        text=True,
+    subprocess.run(
+        ["git", "clone", "--depth", "1", REMOTE_REPO, str(cache)],
+        check=True,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
     )
-    if res.returncode != 0 or not (cache / "resumes").exists():
-        err_detail = res.stderr.strip() or res.stdout.strip()
-        msg = (
-            f"Failed to clone CV repository from {REMOTE_REPO} (check CV_PAT permissions):\n"
-            f"{err_detail}"
-        )
-        raise RuntimeError(msg)
     return cache
 
 
@@ -77,15 +50,14 @@ def clean(s: str) -> str:
     s = re.sub(r"\\(?:begin|end)\{[^}]+\}", "", s)
     s = re.sub(r"\\(?:textbf|textit|emph|c)\{([^}]*)\}", r"\1", s)
     s = re.sub(r"\\href\{[^}]*\}\{([^}]*)\}", r"\1", s)
-    replacements = [
+    for a, b in [
         (r"\_", "_"),
         (r"\&", "&"),
         (r"\%", "%"),
         (r"\$", "$"),
         ("``", '"'),
         ("''", '"'),
-    ]
-    for a, b in replacements:
+    ]:
         s = s.replace(a, b)
     return re.sub(r"\s+", " ", s).strip()
 
