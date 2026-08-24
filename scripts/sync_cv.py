@@ -31,11 +31,11 @@ def get_cv_root() -> Path:
             stderr=subprocess.DEVNULL,
         )
         return cache
-    token = os.environ.get("CV_PAT") or os.environ.get("GH_PAT")
+    token = (os.environ.get("CV_PAT") or os.environ.get("GH_PAT") or "").strip()
     repo_url = REMOTE_REPO
     if token and "github.com" in repo_url:
-        clean_url = re.sub(r"https?://(?:[^@]+@)?github\.com/", "", repo_url)
-        repo_url = f"https://{token}@github.com/{clean_url}"
+        clean_url = re.sub(r"^https?://(?:[^@]+@)?github\.com/", "", repo_url)
+        repo_url = f"https://x-access-token:{token}@github.com/{clean_url}"
     res = subprocess.run(
         ["git", "clone", "--depth", "1", repo_url, str(cache)],
         check=False,

@@ -20,6 +20,8 @@ concurrency:
 
 jobs:
   build:
+    environment:
+      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -34,8 +36,8 @@ jobs:
 
       - name: Build site
         env:
-          CV_PAT: ${{ secrets.CV_PAT }}
-          CV_REPO_URL: ${{ secrets.CV_REPO_URL || 'https://github.com/o-thiago/resume-template.git' }}
+          CV_PAT: ${{ secrets.CV_PAT || secrets.cv_pat || secrets.GH_PAT || secrets.gh_pat || secrets.PAT || secrets.pat || secrets.PERSONAL_ACCESS_TOKEN }}
+          CV_REPO_URL: ${{ secrets.CV_REPO_URL || secrets.cv_repo_url || 'https://github.com/o-thiago/resume-template.git' }}
         run: nix develop --command just build
 
       - name: Upload GitHub Pages artifact
