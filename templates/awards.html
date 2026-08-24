@@ -19,9 +19,9 @@
     </h1>
     <p class="text-xs sm:text-sm text-slate-300">
       {% if lang == "pt" %}
-        Medalhas em competições acadêmicas, palestras de divulgação científica e certificações.
+        Medalhas em competições acadêmicas, olimpíadas de robótica e informática, palestras e certificações técnicas.
       {% else %}
-        Record of competitive academic olympiad medals, scientific dissemination talks, and technical certifications.
+        Record of competitive academic olympiad medals, robotics & informatics competitions, keynote talks, and certifications.
       {% endif %}
     </p>
   </header>
@@ -53,7 +53,21 @@
         {% if lang == "pt" %}Olimpíada Brasileira de Robótica (OBR Teórica){% else %}Brazilian Robotics Olympiad (OBR - Theoretical){% endif %}
       </h2>
       <p class="text-xs text-slate-300">
-        {% if lang == "pt" %}Medalha de prata avaliando algoritmos, sensores e controle.{% else %}National silver medal in control systems, sensors, and robotics logic.{% endif %}
+        {% if lang == "pt" %}Medalha de prata nacional avaliando algoritmos, sensores e controle.{% else %}National silver medal in control systems, sensors, and robotics logic.{% endif %}
+      </p>
+    </div>
+
+    <!-- 4th Place OBR Artística Estadual -->
+    <div class="retro-box p-4 space-y-2 border-l-4 border-l-purple-400">
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-purple-400 font-bold">🏆 {% if lang == "pt" %}4º LUGAR ESTADUAL{% else %}4th PLACE (STATE LEVEL){% endif %}</span>
+        <span class="text-slate-500 font-mono">2025</span>
+      </div>
+      <h2 class="text-sm font-bold text-white">
+        {% if lang == "pt" %}Olimpíada Brasileira de Robótica (OBR Artística){% else %}Brazilian Robotics Olympiad (OBR - Artistic Robotics){% endif %}
+      </h2>
+      <p class="text-xs text-slate-300">
+        {% if lang == "pt" %}4º Lugar na modalidade de Robótica Artística na etapa estadual de Rondônia.{% else %}4th Place in the Artistic Robotics category at the Rondônia State Stage.{% endif %}
       </p>
     </div>
 
@@ -72,7 +86,7 @@
     </div>
 
     <!-- Merit Honor -->
-    <div class="retro-box p-4 space-y-2 border-l-4 border-l-teal-400">
+    <div class="retro-box p-4 space-y-2 border-l-4 border-l-teal-400 md:col-span-2">
       <div class="flex items-center justify-between text-xs">
         <span class="text-teal-400 font-bold">🎖️ {% if lang == "pt" %}HONRA AO MÉRITO{% else %}MERIT HONOR{% endif %}</span>
         <span class="text-slate-500 font-mono">2024</span>
@@ -81,7 +95,7 @@
         {% if lang == "pt" %}Olimpíada Brasileira de Robótica (OBR Teórica){% else %}Brazilian Robotics Olympiad (OBR - Theoretical){% endif %}
       </h2>
       <p class="text-xs text-slate-300">
-        {% if lang == "pt" %}Reconhecimento de mérito estadual e nacional em princípios de robótica.{% else %}State and national merit recognition in microcontrollers and robotics theory.{% endif %}
+        {% if lang == "pt" %}Reconhecimento de mérito estadual e nacional em microcontroladores e princípios de robótica.{% else %}State and national merit recognition in microcontrollers and robotics theory.{% endif %}
       </p>
     </div>
 
@@ -95,12 +109,14 @@
     
     <ul class="space-y-2 text-xs text-slate-300">
       {% if lang == "pt" %}
+        <li>• <strong class="text-white">Olimpíada Brasileira de Robótica (OBR Artística 2025):</strong> 4º Lugar na Fase Estadual de Rondônia.</li>
         <li>• <strong class="text-white">Olimpíada Brasileira de Informática (OBI):</strong> Participação na Fase 2 (2024, 2025) e Fase 1 (2023). Programação competitiva em C/C++.</li>
         <li>• <strong class="text-white">Palestrante no 1º Encontro Poliglota de Calama (2024):</strong> Apresentação sobre <em>"Fundamentos do Inglês: Estratégias Cognitivas para Aquisição Acelerada"</em>.</li>
         <li>• <strong class="text-white">Olimpíada Brasileira de Astronomia e Astronáutica (OBA 2025):</strong> Participação em astrofísica e mecânica celeste.</li>
         <li>• <strong class="text-white">Semana Nacional de Ciência e Tecnologia (SNCT 2023, 2024):</strong> Expositor científico de soluções em software.</li>
         <li>• <strong class="text-white">Semana Rondoniense de Arte, Patrimônio e Cultura (2023):</strong> Expositor de projetos de informática.</li>
       {% else %}
+        <li>• <strong class="text-white">Brazilian Robotics Olympiad (OBR Artistic 2025):</strong> 4th Place at the Rondônia State Stage.</li>
         <li>• <strong class="text-white">Brazilian Olympiad in Informatics (OBI):</strong> Phase 2 Competitor (2024, 2025); Phase 1 (2023). Competitive problem solving in C/C++.</li>
         <li>• <strong class="text-white">Speaker at 1st Polyglot Meeting of Calama (2024):</strong> Keynote lecture on <em>"English Fundamentals: Cognitive Strategies for Accelerated Acquisition"</em>.</li>
         <li>• <strong class="text-white">Brazilian Astronomy and Astronautics Olympiad (OBA 2025):</strong> Participant in astrophysics and celestial mechanics.</li>
