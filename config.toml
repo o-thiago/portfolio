@@ -1,5 +1,5 @@
 # Zola Configuration for Thiago Macedo Mendes' Portfolio
-base_url = "https://o-thiago.github.io"
+base_url = "https://o-thiago.github.io/portfolio"
 title = "Thiago Macedo Mendes"
 description = "Estudante de Ciência da Computação (UNIR) e desenvolvedor. C, Rust, TypeScript, NixOS e infraestrutura."
 default_language = "en"
