@@ -36,7 +36,7 @@ jobs:
 
       - name: Build site
         env:
-          CV_PAT: ${{ secrets.CV_PAT || secrets.cv_pat }}
+          CV_PAT: ${{ secrets.CV_PAT }}
         run: nix develop --command just build
 
       - name: Upload GitHub Pages artifact
