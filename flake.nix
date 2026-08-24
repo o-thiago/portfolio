@@ -17,7 +17,10 @@
           buildInputs = with pkgs; [
             zola
             tailwindcss_4
-            (python3.withPackages (ps: [ ps.tomli-w ]))
+            (python3.withPackages (ps: [
+              ps.tomli-w
+              ps.pylatexenc
+            ]))
             texliveFull
           ];
 
