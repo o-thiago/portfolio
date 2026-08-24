@@ -15,7 +15,7 @@ stack = ["Rust", "SQLx", "Declarative Macros", "paste", "macro_metavar_expr"]
 
 When working with **SQLx** in Rust, the [`sqlx_conditional_queries`](https://docs.rs/sqlx_conditional_queries) crate allows defining conditional template variables (`{#var}`) using `match` expressions within a query string.
 
-However, it lacked a way to reuse or compose these templates. Every query had to declare all its variables and matching logic in a single monolithic call. I built **`sqlx_conditional_queries_layering`** (published on GitHub as **`@o-thiago`**) to allow:
+However, it lacked a way to reuse or compose these templates. Every query had to declare all its variables and matching logic in a single monolithic call. I built **`sqlx_conditional_queries_layering`** to allow:
 1. Creating base query templates that generate reusable macros.
 2. Injecting additional variables into existing templates.
 3. Merging two or more independent query templates into a single final macro at compile time.
@@ -91,4 +91,4 @@ let result = lewdy_with_return_id_query!(
 ## Repository
 
 - **GitHub:** [github.com/o-thiago/sqlx-conditional-queries-layering](https://github.com/o-thiago/sqlx-conditional-queries-layering)
-- **Author:** Thiago Macedo Mendes (`@o-thiago` / `@o-thiago`)
+- **Author:** Thiago Macedo Mendes (`@o-thiago`)
