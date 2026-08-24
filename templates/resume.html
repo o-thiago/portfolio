@@ -13,7 +13,7 @@
   <div class="no-print retro-box p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
     <div>
       <span class="text-white font-bold">
-        {{ trans(key="resume_tag") }}
+        [05. {{ trans(key="resume_tag") }}]
       </span>
       <p class="text-slate-400 text-[11px]">
         {{ trans(key="resume_subtitle") }}
@@ -53,7 +53,7 @@
     <!-- Summary -->
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        {{ trans(key="resume_summary_title") }}
+        == {{ trans(key="resume_summary_title") }} ==
       </div>
       <p class="text-slate-300 print:text-black leading-relaxed">
         {{ trans(key="resume_summary_desc") }}
@@ -63,7 +63,7 @@
     <!-- Experience -->
     <section class="space-y-3">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        {{ trans(key="resume_exp_title") }}
+        == {{ trans(key="resume_exp_title") }} ==
       </div>
 
       <!-- Role 1 -->
@@ -136,7 +136,7 @@
     <!-- Education -->
     <section class="space-y-3">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        {{ trans(key="resume_edu_title") }}
+        == {{ trans(key="resume_edu_title") }} ==
       </div>
       
       <div class="space-y-1">
@@ -163,7 +163,7 @@
     <!-- Skills -->
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        {{ trans(key="resume_skills_title") }}
+        == {{ trans(key="resume_skills_title") }} ==
       </div>
       <ul class="text-slate-300 print:text-black space-y-1 text-xs">
         <li>• <strong class="text-white print:text-black">{{ trans(key="resume_skills_l1") }}</strong> C, Rust, TypeScript, Python, Java, PHP, Nix, SQL, HTML5, CSS3/Tailwind.</li>
@@ -176,16 +176,16 @@
     <!-- Distinctions -->
     <section class="space-y-2">
       <div class="text-white print:text-black font-bold uppercase tracking-wider border-b border-[#2d3748] pb-1 print:border-black">
-        {{ trans(key="resume_awards_title") }}
+        == {{ trans(key="resume_awards_title") }} ==
       </div>
       <ul class="text-slate-300 print:text-black space-y-0.5 text-xs">
-        <li>• {{ trans(key="award1_badge") }} – {{ trans(key="award1_title") }} ({{ trans(key="award1_date") }})</li>
-        <li>• {{ trans(key="award2_badge") }} – {{ trans(key="award2_title") }} ({{ trans(key="award2_date") }})</li>
-        <li>• {{ trans(key="award3_badge") }} – {{ trans(key="award3_title") }} ({{ trans(key="award3_date") }})</li>
-        <li>• {{ trans(key="award4_badge") }} – {{ trans(key="award4_title") }} ({{ trans(key="award4_date") }})</li>
-        <li>• {{ trans(key="award5_badge") }} – {{ trans(key="award5_title") }} ({{ trans(key="award5_date") }})</li>
-        <li>• {{ trans(key="awards_p2") | safe }}</li>
-        <li>• {{ trans(key="awards_p3") | safe }}</li>
+        <li>• 🥇 {{ trans(key="award1_badge") }} – {{ trans(key="award1_title") }} ({{ trans(key="award1_date") }})</li>
+        <li>• 🥈 {{ trans(key="award2_badge") }} – {{ trans(key="award2_title") }} ({{ trans(key="award2_date") }})</li>
+        <li>• 🏆 {{ trans(key="award3_badge") }} – {{ trans(key="award3_title") }} ({{ trans(key="award3_date") }})</li>
+        <li>• 🏅 {{ trans(key="award4_badge") }} – {{ trans(key="award4_title") }} ({{ trans(key="award4_date") }})</li>
+        <li>• 🎖️ {{ trans(key="award5_badge") }} – {{ trans(key="award5_title") }} ({{ trans(key="award5_date") }})</li>
+        <li>• <strong class="text-white print:text-black">{{ trans(key="awards_p2_title") }}:</strong> {{ trans(key="awards_p2_desc") }}</li>
+        <li>• <strong class="text-white print:text-black">{{ trans(key="awards_p3_title") }}:</strong> {{ trans(key="awards_p3_desc") }}</li>
       </ul>
     </section>
 
