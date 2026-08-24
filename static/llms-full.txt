@@ -85,8 +85,9 @@ His work spans three main dimensions:
 
 ### SQLx Conditional Queries Layering Pattern
 - **URL:** https://github.com/o-thiago/sqlx-conditional-queries-layering
-- **Stack:** Rust, SQLx, PostgreSQL, Async Rust
-- **Summary:** Architectural pattern in Rust for compile-time safe, dynamic SQL query composition and filtering using `sqlx::QueryBuilder`.
+- **Author:** Thiago Macedo Mendes (@o-thiago)
+- **Stack:** Rust, SQLx, Declarative Macros, Metaprogramming, paste, macro_metavar_expr
+- **Summary:** Advanced declarative macro library in Rust enabling template definition, variable inheritance, and pairwise merging of conditional SQL queries on top of sqlx_conditional_queries with zero runtime overhead.
 
 ### Innovation Radar
 - **Stack:** TypeScript, ReactJS, Laravel, PHP, MySQL, Docker, Storybook
