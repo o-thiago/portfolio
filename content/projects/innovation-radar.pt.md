@@ -9,7 +9,7 @@ category = "Web / Pesquisa"
 stack = ["TypeScript", "React", "Laravel", "PHP", "MySQL", "Docker", "Storybook"]
 +++
 
-## O que é o projeto
+## O que é o projeto?
 
 O **Radar da Inovação** é uma plataforma web criada dentro do grupo de pesquisa **GoTec** (IFRO - Campus Porto Velho Calama) para catalogar, mapear e acompanhar iniciativas de inovação tecnológica, projetos de pesquisa e registros de propriedade intelectual.
 
@@ -24,6 +24,6 @@ O **Radar da Inovação** é uma plataforma web criada dentro do grupo de pesqui
 
 ---
 
-## Autor
+## Links
 
-- {{ author_link() }}
+- **Autor:** {{ author_link() }}

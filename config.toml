@@ -66,7 +66,7 @@ person_code_free_software = "Open Source"
 
 # Home Section 02
 section_featured_projects = "Featured Projects"
-link_all_projects = "All projects (4) →"
+link_all_projects = "All projects →"
 link_read_deep_dive = "Details →"
 project_src_github = "src/github"
 project_live_demo = "live demo"
@@ -176,7 +176,7 @@ person_code_free_software = "Software Livre"
 
 # Home Section 02
 section_featured_projects = "Projetos em Destaque"
-link_all_projects = "Todos os projetos (4) →"
+link_all_projects = "Todos os projetos →"
 link_read_deep_dive = "Ver detalhes →"
 project_src_github = "código/github"
 project_live_demo = "projeto no ar"

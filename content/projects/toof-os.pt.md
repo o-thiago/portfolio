@@ -6,12 +6,11 @@ weight = 1
 
 [extra]
 category = "NixOS / Sistemas"
-author = "@o-thiago"
-github = "https://github.com/o-thiago/ToofOS"
+repo = "ToofOS"
 stack = ["Nix Flakes", "NixOS", "Raspberry Pi 4", "DACC Station (UNIR)", "nix-ld", "SDL2", "Wayland"]
 +++
 
-## O que é o projeto
+## O que é o projeto?
 
 O **`toof-os`** é uma configuração personalizada do **NixOS** feita para rodar no **DACC Station** — um projeto de console arcade desenvolvido no **Departamento Acadêmico de Ciência da Computação (DACC)** da **Universidade Federal de Rondônia (UNIR)**.
 

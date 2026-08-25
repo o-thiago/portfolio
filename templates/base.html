@@ -22,15 +22,15 @@
   <meta property="og:url" content="{{ current_url | default(value=config.base_url) }}">
   <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ cv.name }}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
-  <meta property="og:image" content="{{ config.base_url }}/avatar.svg">
+  <meta property="og:image" content="{{ get_url(path='avatar.svg') }}">
   <meta property="og:locale" content="{{ trans(lang=lang, key='og_locale') }}">
   <meta property="og:site_name" content="{{ cv.name }}">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="{{ config.base_url }}/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="{{ get_url(path='favicon.svg') }}">
 
   <!-- Stylesheet (Tailwind CSS v4 Precompiled) -->
-  <link rel="stylesheet" href="{{ config.base_url }}/style.css">
+  <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
 
   <!-- JSON-LD Structured Data for AI & Search Engines -->
   <script type="application/ld+json">

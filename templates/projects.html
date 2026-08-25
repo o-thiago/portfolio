@@ -40,7 +40,11 @@
           
           <div class="flex items-center gap-2 text-xs">
             <span class="text-slate-500 font-mono text-[11px]">{{ page.extra.author | default(value="@" ~ cv.handle) }}</span>
-            {% if page.extra.github %}
+            {% if page.extra.repo %}
+              <a href="{{ cv.github }}/{{ page.extra.repo }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-white">
+                [{{ trans(lang=lang, key="project_src_github") }}]
+              </a>
+            {% elif page.extra.github %}
               <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-white">
                 [{{ trans(lang=lang, key="project_src_github") }}]
               </a>

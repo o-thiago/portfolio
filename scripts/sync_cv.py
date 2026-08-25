@@ -441,6 +441,16 @@ def main() -> None:
         make_llms_full_txt(canonical), encoding="utf-8"
     )
 
+    # Ensure Tailwind CSS stylesheet is compiled if tailwindcss CLI is available
+    if tw := shutil.which("tailwindcss"):
+        with contextlib.suppress(OSError, subprocess.SubprocessError):
+            subprocess.run(
+                [tw, "-i", "styles/input.css", "-o", "static/style.css", "--minify"],
+                cwd=ROOT,
+                capture_output=True,
+                check=False,
+            )
+
 
 if __name__ == "__main__":
     main()

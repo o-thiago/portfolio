@@ -6,8 +6,7 @@ weight = 1
 
 [extra]
 category = "NixOS / Systems"
-author = "@o-thiago"
-github = "https://github.com/o-thiago/ToofOS"
+repo = "ToofOS"
 stack = ["Nix Flakes", "NixOS", "Raspberry Pi 4", "DACC Station (UNIR)", "nix-ld", "SDL2", "Wayland"]
 +++
 

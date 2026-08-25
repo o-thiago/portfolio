@@ -38,7 +38,11 @@
 
     <!-- Links -->
     <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#1e293b] text-xs">
-      {% if page.extra.github %}
+      {% if page.extra.repo %}
+        <a href="{{ cv.github }}/{{ page.extra.repo }}" target="_blank" rel="noopener noreferrer" class="retro-btn">
+          <span>&gt; {{ trans(lang=lang, key="project_repo_btn") }}</span>
+        </a>
+      {% elif page.extra.github %}
         <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" class="retro-btn">
           <span>&gt; {{ trans(lang=lang, key="project_repo_btn") }}</span>
         </a>

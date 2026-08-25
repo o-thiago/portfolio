@@ -1,1 +1,1 @@
-{% set p = load_data(path="data/profile.toml") %}{{ p.name }} (@{{ p.handle }})
+{% set p = load_data(path="data/profile.toml") %}<a href="{{ p.github }}" target="_blank" rel="noopener noreferrer">{{ p.name }} (@{{ p.handle }})</a>
