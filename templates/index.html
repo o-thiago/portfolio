@@ -12,26 +12,26 @@
   {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
 
   <!-- Terminal Header / Banner Box -->
-  <section class="retro-box p-5 sm:p-6 space-y-4">
+  <section class="retro-box p-4 sm:p-6 space-y-4 min-w-0">
     
     <!-- ASCII Title -->
-    <div class="text-xs sm:text-sm text-[#4ade80] font-mono leading-tight whitespace-pre overflow-x-auto pb-1 border-b border-[#2d3748]">{{ trans(lang=lang, key="banner_top") }}</div>
+    <div class="text-[10px] sm:text-xs md:text-sm text-[#4ade80] font-mono leading-tight whitespace-pre overflow-x-auto pb-2 border-b border-[#2d3748] max-w-full min-w-0">{{ trans(lang=lang, key="banner_top") }}</div>
 
     <!-- Intro Text -->
-    <div class="space-y-3 pt-1">
-      <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+    <div class="space-y-3 pt-1 min-w-0">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight break-words">
         {{ trans(lang=lang, key="hero_greeting") }} <span class="text-[#38bdf8]">{{ cv.name }}</span>
       </h1>
       
-      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+      <p class="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed break-words">
         {{ trans(lang=lang, key="hero_desc") | safe }}
       </p>
 
       <!-- System Meta Table -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs pt-2 border-t border-[#1e293b] text-slate-400">
-        <div><span class="text-slate-500">{{ trans(lang=lang, key="location_label") }}:</span> <span class="text-slate-200">{{ cv.location }}</span></div>
-        <div><span class="text-slate-500">{{ trans(lang=lang, key="education_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="education_text") }}</span></div>
-        <div><span class="text-slate-500">{{ trans(lang=lang, key="researcher_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="researcher_text") }}</span></div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs pt-2 border-t border-[#1e293b] text-slate-400 min-w-0">
+        <div class="break-words"><span class="text-slate-500">{{ trans(lang=lang, key="location_label") }}:</span> <span class="text-slate-200">{{ cv.location }}</span></div>
+        <div class="break-words"><span class="text-slate-500">{{ trans(lang=lang, key="education_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="education_text") }}</span></div>
+        <div class="break-words"><span class="text-slate-500">{{ trans(lang=lang, key="researcher_label") }}:</span> <span class="text-slate-200">{{ trans(lang=lang, key="researcher_text") }}</span></div>
       </div>
     </div>
 
@@ -54,12 +54,12 @@
   </section>
 
   <!-- Section 01: Three Dimensions / Who I Am -->
-  <section class="space-y-4">
-    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
-      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 01. {{ trans(lang=lang, key="section_who_i_am") }}
+  <section class="space-y-4 min-w-0">
+    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2 gap-2">
+      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 min-w-0">
+        <span class="text-[#38bdf8] shrink-0">&gt;&gt;</span> <span class="truncate">01. {{ trans(lang=lang, key="section_who_i_am") }}</span>
       </h2>
-      <a href="{{ config.base_url }}{{ lang_prefix }}/about/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
+      <a href="{{ config.base_url }}{{ lang_prefix }}/about/" class="text-xs text-[#38bdf8] hover:text-[#4ade80] shrink-0">
         [{{ trans(lang=lang, key="link_complete_bio") }}]
       </a>
     </div>
@@ -67,49 +67,49 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       
       <!-- Box 1: Developer -->
-      <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
-        <div class="space-y-2">
+      <div class="retro-box p-4 space-y-2 flex flex-col justify-between min-w-0">
+        <div class="space-y-2 min-w-0">
           <div class="text-xs text-sky-400 font-bold uppercase tracking-wider">
             [01. {{ trans(lang=lang, key="dev_tag") }}]
           </div>
-          <h3 class="text-base font-bold text-white">{{ trans(lang=lang, key="dev_title") }}</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
+          <h3 class="text-base font-bold text-white break-words">{{ trans(lang=lang, key="dev_title") }}</h3>
+          <p class="text-xs text-slate-300 leading-relaxed break-words">
             {{ trans(lang=lang, key="dev_desc") }}
           </p>
         </div>
-        <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
+        <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400 break-words">
           <code>[C] [Rust] [NixOS] [TypeScript]</code>
         </div>
       </div>
 
       <!-- Box 2: Student -->
-      <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
-        <div class="space-y-2">
+      <div class="retro-box p-4 space-y-2 flex flex-col justify-between min-w-0">
+        <div class="space-y-2 min-w-0">
           <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">
             [02. {{ trans(lang=lang, key="student_tag") }}]
           </div>
-          <h3 class="text-base font-bold text-white">{{ trans(lang=lang, key="student_title") }}</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
+          <h3 class="text-base font-bold text-white break-words">{{ trans(lang=lang, key="student_title") }}</h3>
+          <p class="text-xs text-slate-300 leading-relaxed break-words">
             {{ trans(lang=lang, key="student_desc") }}
           </p>
         </div>
-        <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
+        <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400 break-words">
           <code>[UNIR] [IFRO] [GPMecatrônica]</code>
         </div>
       </div>
 
       <!-- Box 3: Person -->
-      <div class="retro-box p-4 space-y-2 flex flex-col justify-between">
-        <div class="space-y-2">
+      <div class="retro-box p-4 space-y-2 flex flex-col justify-between min-w-0">
+        <div class="space-y-2 min-w-0">
           <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">
             [03. {{ trans(lang=lang, key="person_tag") }}]
           </div>
-          <h3 class="text-base font-bold text-white">{{ trans(lang=lang, key="person_title") }}</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
+          <h3 class="text-base font-bold text-white break-words">{{ trans(lang=lang, key="person_title") }}</h3>
+          <p class="text-xs text-slate-300 leading-relaxed break-words">
             {{ trans(lang=lang, key="person_desc") }}
           </p>
         </div>
-        <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400">
+        <div class="pt-2 border-t border-[#1e293b] text-[11px] text-slate-400 break-words">
           <code>[Linux] [PT/EN] [{{ trans(lang=lang, key="person_code_free_software") }}]</code>
         </div>
       </div>
@@ -118,12 +118,12 @@
   </section>
 
   <!-- Section 02: Featured Projects -->
-  <section class="space-y-4">
-    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
-      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 02. {{ trans(lang=lang, key="section_featured_projects") }}
+  <section class="space-y-4 min-w-0">
+    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2 gap-2">
+      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 min-w-0">
+        <span class="text-[#38bdf8] shrink-0">&gt;&gt;</span> <span class="truncate">02. {{ trans(lang=lang, key="section_featured_projects") }}</span>
       </h2>
-      <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
+      <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" class="text-xs text-[#38bdf8] hover:text-[#4ade80] shrink-0">
         [{{ trans(lang=lang, key="link_all_projects") }}]
       </a>
     </div>
@@ -138,34 +138,34 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {% if proj_sec and proj_sec.pages %}
         {% for proj in proj_sec.pages %}
-          <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs">
+          <article class="retro-box p-4 sm:p-5 space-y-3 flex flex-col justify-between min-w-0">
+            <div class="space-y-2 min-w-0">
+              <div class="flex flex-wrap items-center justify-between gap-1 text-xs">
                 <span class="text-[#38bdf8] font-bold">[{{ proj.extra.category | default(value="Project") }}]</span>
                 {% if proj.extra.repo %}
-                  <a href="{{ cv.github }}/{{ proj.extra.repo }}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
+                  <a href="{{ cv.github }}/{{ proj.extra.repo }}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white shrink-0">
                     [{{ trans(lang=lang, key="project_src_github") }}]
                   </a>
                 {% elif proj.extra.github %}
-                  <a href="{{ proj.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
+                  <a href="{{ proj.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white shrink-0">
                     [{{ trans(lang=lang, key="project_src_github") }}]
                   </a>
                 {% endif %}
               </div>
-              <h3 class="text-base font-bold text-white">
+              <h3 class="text-base font-bold text-white break-words">
                 <a href="{{ proj.permalink }}">{{ proj.title }}</a>
               </h3>
-              <p class="text-xs text-slate-300 leading-relaxed">
+              <p class="text-xs text-slate-300 leading-relaxed break-words">
                 {{ proj.description }}
               </p>
             </div>
-            <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
-              <span class="text-slate-500 font-mono">
+            <div class="pt-2 border-t border-[#1e293b] flex flex-wrap items-center justify-between gap-2 text-xs min-w-0">
+              <span class="text-slate-500 font-mono break-words">
                 {% if proj.extra.stack %}
                   {{ proj.extra.stack | slice(end=3) | join(sep=", ") }}
                 {% endif %}
               </span>
-              <a href="{{ proj.permalink }}" class="text-[#4ade80]">
+              <a href="{{ proj.permalink }}" class="text-[#4ade80] shrink-0 font-semibold">
                 {{ trans(lang=lang, key="link_read_deep_dive") }}
               </a>
             </div>
@@ -176,12 +176,12 @@
   </section>
 
   <!-- Section 03: Work & Research Timeline -->
-  <section class="space-y-4">
-    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
-      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 03. {{ trans(lang=lang, key="section_experience") }}
+  <section class="space-y-4 min-w-0">
+    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2 gap-2">
+      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 min-w-0">
+        <span class="text-[#38bdf8] shrink-0">&gt;&gt;</span> <span class="truncate">03. {{ trans(lang=lang, key="section_experience") }}</span>
       </h2>
-      <a href="{{ config.base_url }}{{ lang_prefix }}/experience/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
+      <a href="{{ config.base_url }}{{ lang_prefix }}/experience/" class="text-xs text-[#38bdf8] hover:text-[#4ade80] shrink-0">
         [{{ trans(lang=lang, key="link_detailed_timeline") }}]
       </a>
     </div>
@@ -196,15 +196,15 @@
     <div class="space-y-3">
       {% if exp_sec and exp_sec.extra.experience %}
         {% for exp in exp_sec.extra.experience | slice(end=3) %}
-          <div class="retro-box p-4 space-y-1 text-xs">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200">
-              <span class="font-bold text-white">
+          <div class="retro-box p-4 space-y-1 text-xs min-w-0">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-200 gap-1 min-w-0">
+              <span class="font-bold text-white break-words">
                 {{ exp.role }} @ <span class="text-[#38bdf8]">{{ exp.company }}</span>
               </span>
-              <span class="text-slate-500 font-mono">{{ exp.date }}</span>
+              <span class="text-slate-500 font-mono shrink-0">{{ exp.date }}</span>
             </div>
             {% if exp.bullets and exp.bullets | length > 0 %}
-              <p class="text-slate-400">
+              <p class="text-slate-400 break-words">
                 {{ exp.bullets[0] }}
               </p>
             {% endif %}
@@ -215,12 +215,12 @@
   </section>
 
   <!-- Section 04: Distinctions & Awards -->
-  <section class="space-y-4">
-    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2">
-      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-        <span class="text-[#38bdf8]">&gt;&gt;</span> 04. {{ trans(lang=lang, key="section_awards") }}
+  <section class="space-y-4 min-w-0">
+    <div class="flex items-center justify-between border-b-2 border-[#2d3748] pb-2 gap-2">
+      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 min-w-0">
+        <span class="text-[#38bdf8] shrink-0">&gt;&gt;</span> <span class="truncate">04. {{ trans(lang=lang, key="section_awards") }}</span>
       </h2>
-      <a href="{{ config.base_url }}{{ lang_prefix }}/awards/" class="text-xs text-[#38bdf8] hover:text-[#4ade80]">
+      <a href="{{ config.base_url }}{{ lang_prefix }}/awards/" class="text-xs text-[#38bdf8] hover:text-[#4ade80] shrink-0">
         [{{ trans(lang=lang, key="link_all_awards") }}]
       </a>
     </div>
@@ -235,9 +235,9 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
       {% if aw_sec and aw_sec.extra.awards %}
         {% for aw in aw_sec.extra.awards | slice(end=4) %}
-          <div class="retro-box p-3 space-y-1 border-l-4 {{ aw.border }}">
-            <div class="{{ aw.color }} font-bold">{{ aw.icon }} {{ aw.badge }}</div>
-            <div class="text-white font-medium line-clamp-2">
+          <div class="retro-box p-3 space-y-1 border-l-4 {{ aw.border }} min-w-0">
+            <div class="{{ aw.color }} font-bold break-words">{{ aw.icon }} {{ aw.badge }}</div>
+            <div class="text-white font-medium line-clamp-2 break-words">
               {{ aw.title }}
             </div>
           </div>
@@ -247,12 +247,12 @@
   </section>
 
   <!-- Section 05: Machine / AI Crawlers Endpoints Box -->
-  <section class="retro-box p-5 space-y-3">
+  <section class="retro-box p-4 sm:p-5 space-y-3 min-w-0">
     <div class="text-xs font-bold text-[#38bdf8] uppercase tracking-wider">
       [05. {{ trans(lang=lang, key="section_crawlers") }}]
     </div>
     
-    <p class="text-xs text-slate-300 leading-relaxed">
+    <p class="text-xs text-slate-300 leading-relaxed break-words">
       {{ trans(lang=lang, key="ai_agent_desc") }}
     </p>
 

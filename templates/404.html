@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="retro-box max-w-xl mx-auto text-center p-8 space-y-4 font-mono">
-  <div class="text-3xl font-bold text-amber-400">
+<div class="retro-box max-w-xl mx-auto text-center p-5 sm:p-8 space-y-4 font-mono min-w-0">
+  <div class="text-xl sm:text-3xl font-bold text-amber-400 break-words">
     [ 404 :: {{ trans(lang=lang, key="error_404_title") }} ]
   </div>
   
-  <p class="text-xs sm:text-sm text-slate-300">
+  <p class="text-xs sm:text-sm text-slate-300 break-words">
     {{ trans(lang=lang, key="error_404_desc") }}
   </p>
 
-  <div class="pt-4 flex items-center justify-center gap-3">
+  <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
     <a href="{{ config.base_url }}{% if lang == 'pt' %}/pt{% endif %}/" class="retro-btn">
       <span>&gt; cd ~/</span>
     </a>
