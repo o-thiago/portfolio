@@ -76,7 +76,7 @@
   }
   </script>
 </head>
-<body class="min-h-screen flex flex-col font-mono selection:bg-[#38bdf8] selection:text-black">
+<body class="min-h-screen flex flex-col font-mono selection:bg-[#38bdf8] selection:text-black overflow-x-hidden min-w-0">
   <!-- Pure No-JS CSS Theme Checkbox -->
   <input type="checkbox" id="theme-toggle" class="sr-only hidden" aria-label="{{ trans(lang=lang, key='toggle_theme') }}">
   
@@ -117,40 +117,40 @@
   {% endif %}
 
   <!-- Top Terminal Bar (Retro Unix Header) -->
-  <header class="retro-header no-print">
-    <div class="max-w-4xl mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+  <header class="retro-header no-print w-full min-w-0">
+    <div class="max-w-4xl w-full mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0">
       
       <!-- Prompt Logo -->
-      <a href="{{ config.base_url }}{{ lang_prefix }}/" class="text-sm font-bold tracking-tight hover:text-sky-400 no-underline flex items-center gap-2">
+      <a href="{{ config.base_url }}{{ lang_prefix }}/" class="text-xs sm:text-sm font-bold tracking-tight hover:text-sky-400 no-underline flex items-center gap-1 sm:gap-2 truncate min-w-0">
         <span class="text-emerald-500 font-bold">{{ cv.handle }}@portovelho</span><span class="text-slate-400">:</span><span class="text-sky-500">~</span><span class="text-slate-400">$</span>
       </a>
 
       <!-- Retro Navigation Menu -->
-      <nav class="flex flex-wrap items-center gap-2 text-xs">
+      <nav class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs min-w-0">
         <a href="{{ config.base_url }}{{ lang_prefix }}/about/" 
-           class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
+           class="px-1.5 sm:px-2 py-1 text-[11px] sm:text-xs hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
           [{{ trans(lang=lang, key="nav_about") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/projects/" 
-           class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
+           class="px-1.5 sm:px-2 py-1 text-[11px] sm:text-xs hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
           [{{ trans(lang=lang, key="nav_projects") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/experience/" 
-           class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
+           class="px-1.5 sm:px-2 py-1 text-[11px] sm:text-xs hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
           [{{ trans(lang=lang, key="nav_experience") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/awards/" 
-           class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
+           class="px-1.5 sm:px-2 py-1 text-[11px] sm:text-xs hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
           [{{ trans(lang=lang, key="nav_awards") }}]
         </a>
         <a href="{{ config.base_url }}{{ lang_prefix }}/resume/" 
-           class="px-2 py-1 hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
+           class="px-1.5 sm:px-2 py-1 text-[11px] sm:text-xs hover:text-sky-400 hover:bg-[#1e2430]/30 border border-transparent hover:border-[#475569] no-underline">
           [{{ trans(lang=lang, key="nav_resume") }}]
         </a>
 
         <!-- Pure No-JS Theme Toggle Button -->
         <label for="theme-toggle" 
-               class="retro-btn text-[11px] px-1.5 py-0.5 cursor-pointer select-none" 
+               class="retro-btn text-[10px] sm:text-[11px] px-1.5 py-0.5 cursor-pointer select-none shrink-0" 
                title="{{ trans(lang=lang, key='toggle_theme') }}" 
                aria-label="{{ trans(lang=lang, key='toggle_theme') }}">
           <span class="theme-icon-light">🌙 DARK</span>
@@ -158,7 +158,7 @@
         </label>
 
         <!-- Retro Language Switcher (US Flag & Brazil Flag) -->
-        <div class="flex items-center gap-1 border-l border-[#334155] pl-2 ml-1">
+        <div class="flex items-center gap-1 border-l border-[#334155] pl-1.5 sm:pl-2 ml-0.5 sm:ml-1 shrink-0">
           <!-- US Flag Link -->
           <a href="{{ target_url_en }}" 
              class="flex items-center gap-1 px-1.5 py-0.5 border text-[11px] no-underline {% if lang == 'en' %}bg-[#1e293b]/40 border-[#38bdf8] text-[#38bdf8] font-bold{% else %}border-[#334155] text-slate-400 hover:border-slate-400 hover:text-white{% endif %}" 
@@ -199,24 +199,24 @@
   </header>
 
   <!-- Main Document Container -->
-  <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8 sm:py-10">
+  <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-6 sm:py-10 min-w-0">
     {% block content %}
     {% endblock content %}
   </main>
 
   <!-- Retro Web Footer -->
-  <footer class="retro-footer text-xs py-8 no-print">
-    <div class="max-w-4xl mx-auto px-4 space-y-6">
+  <footer class="retro-footer text-xs py-6 sm:py-8 no-print w-full min-w-0">
+    <div class="max-w-4xl w-full mx-auto px-4 space-y-6 min-w-0">
       
       <!-- Status -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0">
+        <div class="min-w-0">
           <span class="font-bold">{{ cv.name }}</span>
           <span class="text-slate-400"> :: </span>
-          <span>{{ cv.location }}</span>
+          <span class="text-slate-400 sm:text-inherit">{{ cv.location }}</span>
         </div>
 
-        <div class="flex flex-wrap items-center gap-2">
+        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] sm:text-xs min-w-0 break-all">
           <a href="mailto:{{ cv.email }}" class="text-sky-500">{{ cv.email }}</a>
           <span class="text-slate-400">|</span>
           <a href="{{ cv.github }}" target="_blank" rel="noopener noreferrer" class="text-sky-500">github/{{ cv.handle }}</a>
@@ -244,7 +244,7 @@
         </span>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between text-slate-400 text-[11px] pt-2">
+      <div class="flex flex-col sm:flex-row items-center justify-between text-slate-400 text-[11px] pt-2 gap-2 text-center sm:text-left">
         <p>© {{ now() | date(format="%Y") }} {{ cv.name }} — {{ trans(lang=lang, key="rights_reserved") }}</p>
         <p class="font-mono">{{ trans(lang=lang, key="footer_hosted") }}</p>
       </div>

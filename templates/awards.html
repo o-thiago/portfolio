@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="space-y-8">
+<div class="space-y-8 min-w-0">
   
   {% if lang == "pt" %}
     {% set lang_prefix = "/pt" %}
@@ -10,29 +10,29 @@
   {% endif %}
 
   <!-- Header -->
-  <header class="border-b-2 border-[#2d3748] pb-4 space-y-2">
+  <header class="border-b-2 border-[#2d3748] pb-4 space-y-2 min-w-0">
     <div class="text-xs text-[#38bdf8] font-bold uppercase tracking-wider">
       [04. {{ trans(lang=lang, key="awards_tag") }}]
     </div>
-    <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight break-words">
       {{ trans(lang=lang, key="awards_title") }}
     </h1>
-    <p class="text-xs sm:text-sm text-slate-300">
+    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed break-words">
       {{ trans(lang=lang, key="awards_subtitle") }}
     </p>
   </header>
 
   <!-- Major Medals & Honors Grid -->
   {% if section.extra.awards %}
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-0">
     {% for award in section.extra.awards %}
       {% if award.is_major %}
-      <div class="retro-box p-4 space-y-2 border-l-4 {{ award.border }}">
-        <div class="flex items-center justify-between text-xs">
-          <span class="{{ award.color }} font-bold">{{ award.icon }} {{ award.badge }}</span>
-          {% if award.year %}<span class="text-slate-500 font-mono">{{ award.year }}</span>{% endif %}
+      <div class="retro-box p-4 space-y-2 border-l-4 {{ award.border }} min-w-0">
+        <div class="flex flex-wrap items-center justify-between gap-1 text-xs">
+          <span class="{{ award.color }} font-bold break-words">{{ award.icon }} {{ award.badge }}</span>
+          {% if award.year %}<span class="text-slate-500 font-mono shrink-0">{{ award.year }}</span>{% endif %}
         </div>
-        <h2 class="text-sm font-bold text-white">
+        <h2 class="text-sm font-bold text-white break-words">
           {{ award.title }}
         </h2>
       </div>
@@ -41,15 +41,15 @@
   </div>
 
   <!-- Participations & Certifications List -->
-  <div class="retro-box p-5 space-y-3">
+  <div class="retro-box p-4 sm:p-5 space-y-3 min-w-0">
     <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">
       [{{ trans(lang=lang, key="awards_list_title") }}]
     </div>
     
-    <ul class="space-y-2 text-xs text-slate-300 pl-4 list-disc">
+    <ul class="space-y-2 text-xs text-slate-300 pl-4 list-disc break-words">
       {% for award in section.extra.awards %}
         {% if not award.is_major %}
-          <li><span class="text-slate-200">{{ award.raw }}</span></li>
+          <li><span class="text-slate-200 break-words">{{ award.raw }}</span></li>
         {% endif %}
       {% endfor %}
     </ul>
@@ -58,7 +58,7 @@
 
   <!-- Additional Narrative -->
   {% if section.content %}
-  <div class="prose-custom pt-4">
+  <div class="prose-custom pt-4 min-w-0 break-words">
     {{ section.content | safe }}
   </div>
   {% endif %}

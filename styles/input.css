@@ -94,6 +94,8 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--bg-main);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -101,6 +103,11 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
+  max-width: 100%;
+  overflow-x: hidden;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Retro Links */
@@ -108,6 +115,8 @@ a {
   color: var(--accent-cyan);
   text-decoration: underline;
   text-underline-offset: 3px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 a:hover {
@@ -121,6 +130,8 @@ a:hover {
   border: 2px solid var(--border-color);
   box-shadow: 4px 4px 0px 0px var(--shadow-color);
   transition: all 0.1s ease;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .retro-box:hover {
@@ -144,6 +155,8 @@ a:hover {
   cursor: pointer;
   user-select: none;
   transition: all 0.05s ease;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .retro-btn:hover {
@@ -245,6 +258,10 @@ footer.retro-footer {
 .prose-custom {
   color: var(--text-main);
   font-size: 0.9375rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .prose-custom h1 {
@@ -255,6 +272,7 @@ footer.retro-footer {
   margin-bottom: 0.75rem;
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.35rem;
+  overflow-wrap: break-word;
 }
 
 .prose-custom h2 {
@@ -263,6 +281,7 @@ footer.retro-footer {
   color: var(--accent-cyan);
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
+  overflow-wrap: break-word;
 }
 
 .prose-custom h2::before {
@@ -276,6 +295,7 @@ footer.retro-footer {
   color: var(--accent-green);
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 .prose-custom h3::before {
@@ -302,6 +322,35 @@ footer.retro-footer {
   font-size: 0.85em;
   font-family: var(--font-mono);
   font-weight: 600;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose-custom table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.prose-custom th,
+.prose-custom td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose-custom th {
+  background-color: var(--bg-subtle);
+  color: var(--text-bright);
+  font-weight: 700;
+}
+
+.prose-custom img {
+  max-width: 100%;
+  height: auto;
 }
 
 pre {
@@ -316,6 +365,8 @@ pre {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   line-height: 1.6;
+  max-width: 100%;
+  min-width: 0;
 }
 
 pre code {
