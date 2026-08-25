@@ -128,78 +128,50 @@
       </a>
     </div>
 
+    {% if lang == "pt" %}
+      {% set proj_path = "projects/_index.pt.md" %}
+    {% else %}
+      {% set proj_path = "projects/_index.md" %}
+    {% endif %}
+    {% set proj_sec = get_section(path=proj_path, default=false) %}
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      
-      <!-- Project 1: toof-os -->
-      <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
-        <div class="space-y-2">
-          <div class="flex items-center justify-between text-xs">
-            <span class="text-[#38bdf8] font-bold">[NixOS / Systems]</span>
-            <a href="{{ cv.github }}/ToofOS" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [{{ trans(lang=lang, key="project_src_github") }}]
-            </a>
-          </div>
-          <h3 class="text-base font-bold text-white">
-            <a href="{{ config.base_url }}{{ lang_prefix }}/projects/toof-os/">toof-os</a>
-          </h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            NixOS operating system powering the <strong>UNIR DACC Station</strong> arcade console (Raspberry Pi 4), featuring universal <code>nix-ld</code> game runtimes and low-latency tuning.
-          </p>
-        </div>
-        <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
-          <span class="text-slate-500 font-mono">NixOS, DACC Station (UNIR)</span>
-          <a href="{{ config.base_url }}{{ lang_prefix }}/projects/toof-os/" class="text-[#4ade80]">
-            {{ trans(lang=lang, key="link_read_deep_dive") }}
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 2: gpm-cards -->
-      <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
-        <div class="space-y-2">
-          <div class="flex items-center justify-between text-xs">
-            <span class="text-[#4ade80] font-bold">[Web / Research]</span>
-            <a href="{{ cv.github }}/gpm-cards" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
-              [{{ trans(lang=lang, key="project_src_github") }}]
-            </a>
-          </div>
-          <h3 class="text-base font-bold text-white">
-            <a href="{{ config.base_url }}{{ lang_prefix }}/projects/gpm-cards/">GPMecatrônica Cards Platform</a>
-          </h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Full-stack credential generation and member showcase application for GPMecatrônica with Next.js, PostgreSQL, and Nix process-compose local services.
-          </p>
-        </div>
-        <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
-          <span class="text-slate-500 font-mono">Next.js, PostgreSQL</span>
-          <a href="{{ config.base_url }}{{ lang_prefix }}/projects/gpm-cards/" class="text-[#4ade80]">
-            {{ trans(lang=lang, key="link_read_deep_dive") }}
-          </a>
-        </div>
-      </article>
-
-
-      <!-- Project 4: innovation-radar -->
-      <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
-        <div class="space-y-2">
-          <div class="flex items-center justify-between text-xs">
-            <span class="text-[#f59e0b] font-bold">[Web / Research]</span>
-          </div>
-          <h3 class="text-base font-bold text-white">
-            <a href="{{ config.base_url }}{{ lang_prefix }}/projects/innovation-radar/">Radar da Inovação (GoTec)</a>
-          </h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Institutional web platform for tracking innovation initiatives and research intellectual property developed for GoTec (IFRO).
-          </p>
-        </div>
-        <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
-          <span class="text-slate-500 font-mono">React, Laravel, MySQL</span>
-          <a href="{{ config.base_url }}{{ lang_prefix }}/projects/innovation-radar/" class="text-[#4ade80]">
-            {{ trans(lang=lang, key="link_read_deep_dive") }}
-          </a>
-        </div>
-      </article>
-
+      {% if proj_sec and proj_sec.pages %}
+        {% for proj in proj_sec.pages %}
+          <article class="retro-box p-5 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-[#38bdf8] font-bold">[{{ proj.extra.category | default(value="Project") }}]</span>
+                {% if proj.extra.repo %}
+                  <a href="{{ cv.github }}/{{ proj.extra.repo }}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
+                    [{{ trans(lang=lang, key="project_src_github") }}]
+                  </a>
+                {% elif proj.extra.github %}
+                  <a href="{{ proj.extra.github }}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">
+                    [{{ trans(lang=lang, key="project_src_github") }}]
+                  </a>
+                {% endif %}
+              </div>
+              <h3 class="text-base font-bold text-white">
+                <a href="{{ proj.permalink }}">{{ proj.title }}</a>
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                {{ proj.description }}
+              </p>
+            </div>
+            <div class="pt-2 border-t border-[#1e293b] flex items-center justify-between text-xs">
+              <span class="text-slate-500 font-mono">
+                {% if proj.extra.stack %}
+                  {{ proj.extra.stack | slice(end=3) | join(sep=", ") }}
+                {% endif %}
+              </span>
+              <a href="{{ proj.permalink }}" class="text-[#4ade80]">
+                {{ trans(lang=lang, key="link_read_deep_dive") }}
+              </a>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
     </div>
   </section>
 
