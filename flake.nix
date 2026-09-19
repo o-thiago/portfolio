@@ -38,10 +38,11 @@
               ps.tomli-w
               ps.pyyaml
             ]))
-            typst
             git
             cacert
           ];
+
+          cvPackage = inputs.cv.packages.${pkgs.system}.default;
 
           portfolioSite = pkgs.stdenv.mkDerivation {
             pname = "thiago-portfolio";
@@ -56,8 +57,14 @@
               rm -rf data
               mkdir -p data
               cp -f ${inputs.cv-data}/cv.yaml data/cv.yaml
+              if [ -f ${cvPackage}/resume.pdf ]; then
+                cp -f --no-preserve=mode ${cvPackage}/resume.pdf static/resume.pdf
+              fi
+              if [ -f ${cvPackage}/curriculo.pdf ]; then
+                cp -f --no-preserve=mode ${cvPackage}/curriculo.pdf static/curriculo.pdf
+              fi
               if [ -f scripts/sync_cv.py ]; then
-                CV_DATA_DIR=${inputs.cv-data} CV_DIR=${inputs.cv} python3 scripts/sync_cv.py
+                CV_DATA_DIR=${inputs.cv-data} CV_DIR=${cvPackage} python3 scripts/sync_cv.py
               fi
               tailwindcss -i styles/input.css -o static/style.css --minify
               zola build -o $out
@@ -76,11 +83,11 @@
                 echo "Building CSS and launching Zola development server..."
                 mkdir -p static data
                 cp -f ${inputs.cv-data}/cv.yaml data/cv.yaml
-                if [ -f ${inputs.cv}/resume.pdf ]; then
-                  cp -f ${inputs.cv}/resume.pdf static/resume.pdf
+                if [ -f ${cvPackage}/resume.pdf ]; then
+                  cp -f --no-preserve=mode ${cvPackage}/resume.pdf static/resume.pdf
                 fi
-                if [ -f ${inputs.cv}/curriculo.pdf ]; then
-                  cp -f ${inputs.cv}/curriculo.pdf static/curriculo.pdf
+                if [ -f ${cvPackage}/curriculo.pdf ]; then
+                  cp -f --no-preserve=mode ${cvPackage}/curriculo.pdf static/curriculo.pdf
                 fi
                 ${pkgs.tailwindcss_4}/bin/tailwindcss -i styles/input.css -o static/style.css
                 ${pkgs.zola}/bin/zola serve --port 1111 --interface 127.0.0.1
@@ -97,14 +104,14 @@
               if [ -f ${inputs.cv-data}/cv.schema.json ]; then
                 cp -f ${inputs.cv-data}/cv.schema.json data/cv.schema.json
               fi
-              if [ -f ${inputs.cv}/resume.pdf ]; then
-                cp -f ${inputs.cv}/resume.pdf static/resume.pdf
+              if [ -f ${cvPackage}/resume.pdf ]; then
+                cp -f --no-preserve=mode ${cvPackage}/resume.pdf static/resume.pdf
               fi
-              if [ -f ${inputs.cv}/curriculo.pdf ]; then
-                cp -f ${inputs.cv}/curriculo.pdf static/curriculo.pdf
+              if [ -f ${cvPackage}/curriculo.pdf ]; then
+                cp -f --no-preserve=mode ${cvPackage}/curriculo.pdf static/curriculo.pdf
               fi
               export CV_DATA_DIR="${inputs.cv-data}"
-              export CV_DIR="${inputs.cv}"
+              export CV_DIR="${cvPackage}"
 
               echo ""
               echo "   Personal Portfolio Dev Shell"

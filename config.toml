@@ -127,7 +127,7 @@ resume_tag = "CURRICULUM VITAE"
 resume_title = "Curriculum Vitae"
 resume_subtitle = "Printable and downloadable CV."
 resume_btn_print = "Print / Save PDF"
-btn_download_pdf = "Download PDF (LaTeX)"
+btn_download_pdf = "Download PDF (Typst)"
 
 [languages.pt]
 description = "Estudante de Ciência da Computação (UNIR) e desenvolvedor. C, Rust, TypeScript, NixOS e infraestrutura."
@@ -258,7 +258,7 @@ resume_tag = "CURRÍCULO"
 resume_title = "Curriculum Vitae"
 resume_subtitle = "Versão para impressão e download do currículo."
 resume_btn_print = "Imprimir / Salvar PDF"
-btn_download_pdf = "Baixar PDF (LaTeX)"
+btn_download_pdf = "Baixar PDF (Typst)"
 
 [extra]
 tagline = "Computer Science Student & Systems Developer"

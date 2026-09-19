@@ -27,19 +27,14 @@ AWARD_ICONS = [
 ]
 
 
-def sync_pdf(cv_dir: Path, sub: str, name: str, dst: Path) -> None:
-    """Copy precompiled Typst PDF or compile if typst CLI exists."""
-    for cand in (cv_dir / f"{name}.pdf", cv_dir / "resumes" / sub / f"{name}.pdf"):
+def sync_pdf(cv_dir: Path, name: str, dst: Path) -> None:
+    """Copy precompiled PDF provided by the cv module."""
+    for cand in (cv_dir / f"{name}.pdf", cv_dir / "result" / f"{name}.pdf"):
         if cand.exists():
+            dst.unlink(missing_ok=True)
             shutil.copy2(cand, dst)
+            dst.chmod(0o644)
             return
-    typ = cv_dir / "resumes" / sub / f"{name}.typ"
-    if typ.exists() and shutil.which("typst"):
-        subprocess.run(
-            ["typst", "compile", "--root", str(cv_dir), str(typ), str(dst)],
-            capture_output=True,
-            check=False,
-        )
 
 
 def parse_award(item: str) -> dict:
@@ -220,7 +215,7 @@ def main() -> None:
 
     data: dict[str, dict] = {}
     for lang, sub, name, ext in TARGETS:
-        sync_pdf(cv_template_dir, sub, name, ROOT / "static" / f"{name}.pdf")
+        sync_pdf(cv_template_dir, name, ROOT / "static" / f"{name}.pdf")
         d = dict(raw[lang])
         d["site_url"] = f"https://{d['handle']}.github.io"
         d["awards"] = [parse_award(c) for c in d.get("certifications", [])]

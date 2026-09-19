@@ -17,7 +17,7 @@ sync-cv:
     @if command -v python3 >/dev/null 2>&1; then \
         python3 scripts/sync_cv.py; \
     else \
-        nix shell --impure --expr 'with import <nixpkgs> {}; [ (python3.withPackages (ps: [ ps.tomli-w ps.pyyaml ])) typst tailwindcss_4 ]' --command python3 scripts/sync_cv.py; \
+        nix shell --impure --expr 'with import <nixpkgs> {}; [ (python3.withPackages (ps: [ ps.tomli-w ps.pyyaml ])) tailwindcss_4 ]' --command python3 scripts/sync_cv.py; \
     fi
 
 # Build production static site (includes fresh CV sync)
