@@ -19,6 +19,7 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
+        cv-data.follows = "cv-data";
       };
     };
   };
