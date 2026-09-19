@@ -16,16 +16,17 @@
         ]
       },
       "locked": {
-        "dirtyRev": "c1bfcb7382489e74524380cc6f6a780233d5ad50-dirty",
-        "dirtyShortRev": "c1bfcb7-dirty",
-        "lastModified": 1789850088,
-        "narHash": "sha256-2KNbXRUuHktFwQSvQPzXmIlRtFy5tY+P5ftabYUxwUQ=",
+        "lastModified": 1789850702,
+        "narHash": "sha256-hYebuYlxa6iq5himzpu0zPbcQMPPCT70dSoNQ58pKk8=",
+        "ref": "4b1c87369bf26f4f9b4018b1ff6a651cf13998e7",
+        "rev": "4b1c87369bf26f4f9b4018b1ff6a651cf13998e7",
+        "revCount": 36,
         "type": "git",
-        "url": "file:///home/rika/Programming/curriculum-vitae"
+        "url": "file:./submodules/curriculum-vitae"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/rika/Programming/curriculum-vitae"
+        "url": "file:./submodules/curriculum-vitae"
       }
     },
     "cv-data": {
@@ -41,16 +42,17 @@
         ]
       },
       "locked": {
-        "dirtyRev": "1c1d1b7136217e313c823d4e1735cd84f5e7dff6-dirty",
-        "dirtyShortRev": "1c1d1b7-dirty",
-        "lastModified": 1789850088,
-        "narHash": "sha256-Y1MqImZf0Z/KTXjeKdRr7pYvjZEvOD5t2np3pvgbAVQ=",
+        "lastModified": 1789801906,
+        "narHash": "sha256-xi9eZzt8BbGA8cJHSy9ml5snTgEgl936l7vWlt1uKvk=",
+        "ref": "refs/heads/main",
+        "rev": "f1bd9ea9ebf6484330462bc463559f81109b1d55",
+        "revCount": 5,
         "type": "git",
-        "url": "file:///home/rika/Programming/cv-data"
+        "url": "file:./submodules/cv-data"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/rika/Programming/cv-data"
+        "url": "file:./submodules/cv-data"
       }
     },
     "flake-parts": {
