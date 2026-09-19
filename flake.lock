@@ -16,16 +16,17 @@
         ]
       },
       "locked": {
-        "dirtyRev": "51dab2a314058e71c86c2fb9e53a78cdc15334ba-dirty",
-        "dirtyShortRev": "51dab2a-dirty",
-        "lastModified": 1789852744,
+        "lastModified": 1789853410,
         "narHash": "sha256-AgT7Y+Z9RjL5eybdn4FvQXIQE23PMKkRgAgFDfvftm0=",
-        "type": "git",
-        "url": "file:../curriculum-vitae"
+        "owner": "o-thiago",
+        "repo": "resume-template",
+        "rev": "cab13fe7662811a848b5c2a2928a1878b3e64621",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:../curriculum-vitae"
+        "owner": "o-thiago",
+        "repo": "resume-template",
+        "type": "github"
       }
     },
     "cv-data": {
@@ -41,17 +42,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1789852186,
-        "narHash": "sha256-8wEYd4mL0+E8/kwWzT3aqgIjKLy3AStR2/UOyKwUc38=",
-        "ref": "refs/heads/main",
-        "rev": "4bd1aff66606fa4a7c7018d81b3e509dc3121202",
-        "revCount": 8,
-        "type": "git",
-        "url": "file:../cv-data"
+        "lastModified": 1789854446,
+        "narHash": "sha256-/sXeZtcp5n61g0rdO8nmvptDXZtDdFKzY6Epd7Re3VQ=",
+        "owner": "o-thiago",
+        "repo": "cv-data",
+        "rev": "a937c7871e66c604f6a54f5374af77cc2d890205",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:../cv-data"
+        "owner": "o-thiago",
+        "repo": "cv-data",
+        "type": "github"
       }
     },
     "flake-parts": {
