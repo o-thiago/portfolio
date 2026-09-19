@@ -9,7 +9,8 @@
     {% set lang_prefix = "" %}
   {% endif %}
 
-  {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+  {% set raw_cv = load_data(path="data/cv.yaml") %}
+  {% set cv = raw_cv[lang] %}
 
   <!-- Action Bar -->
   <div class="no-print retro-box p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs min-w-0">

@@ -211,7 +211,6 @@ def main() -> None:
     raw = yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
 
     (ROOT / "static").mkdir(exist_ok=True)
-    (ROOT / "data").mkdir(exist_ok=True)
 
     data: dict[str, dict] = {}
     for lang, sub, name, ext in TARGETS:
@@ -220,8 +219,6 @@ def main() -> None:
         d["site_url"] = f"https://{d['handle']}.github.io"
         d["awards"] = [parse_award(c) for c in d.get("certifications", [])]
         data[lang] = d
-
-        (ROOT / f"data/cv.{lang}.toml").write_text(tomli_w.dumps(d), encoding="utf-8")
 
         for folder, page in [
             (
@@ -260,20 +257,6 @@ def main() -> None:
             out.write_text(f"+++\n{tomli_w.dumps(page)}+++\n", encoding="utf-8")
 
     canonical = data["en"]
-    profile_fields = [
-        "name",
-        "handle",
-        "email",
-        "phone",
-        "location",
-        "github",
-        "linkedin",
-        "site_url",
-    ]
-    (ROOT / "data/profile.toml").write_text(
-        tomli_w.dumps({k: canonical[k] for k in profile_fields}),
-        encoding="utf-8",
-    )
     (ROOT / "static/humans.txt").write_text(
         make_humans_txt(canonical), encoding="utf-8"
     )

@@ -9,7 +9,8 @@
     {% set lang_prefix = "" %}
   {% endif %}
 
-  {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+  {% set raw_cv = load_data(path="data/cv.yaml") %}
+  {% set cv = raw_cv[lang] %}
 
   <!-- Header -->
   <header class="border-b-2 border-[#2d3748] pb-4 space-y-2 min-w-0">

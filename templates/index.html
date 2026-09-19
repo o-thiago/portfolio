@@ -9,7 +9,8 @@
     {% set lang_prefix = "" %}
   {% endif %}
 
-  {% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+  {% set raw_cv = load_data(path="data/cv.yaml") %}
+  {% set cv = raw_cv[lang] %}
 
   <!-- Terminal Header / Banner Box -->
   <section class="retro-box p-4 sm:p-6 space-y-4 min-w-0">

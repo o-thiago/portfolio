@@ -1,1 +1,1 @@
-{% set p = load_data(path="data/profile.toml") %}{{ p.github }}
+{% set raw_cv = load_data(path="data/cv.yaml") %}{{ raw_cv.en.github }}

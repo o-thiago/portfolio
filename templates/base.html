@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}" class="scroll-smooth">
-{% set cv = load_data(path="data/cv." ~ lang ~ ".toml") %}
+{% set raw_cv = load_data(path="data/cv.yaml") %}
+{% set cv = raw_cv[lang] %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

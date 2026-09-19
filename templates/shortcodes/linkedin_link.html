@@ -1,1 +1,1 @@
-{% set p = load_data(path="data/profile.toml") %}<a href="{{ p.linkedin }}" target="_blank" rel="noopener noreferrer">{{ p.linkedin | replace(from="https://", to="") }}</a>
+{% set raw_cv = load_data(path="data/cv.yaml") %}{% set p = raw_cv.en %}<a href="{{ p.linkedin }}" target="_blank" rel="noopener noreferrer">{{ p.linkedin | replace(from="https://", to="") }}</a>

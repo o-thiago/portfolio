@@ -6,7 +6,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     cv-data = {
-      url = "git+file:../cv-data";
+      url = "git+file:///home/rika/Programming/cv-data";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -14,12 +14,11 @@
       };
     };
     cv = {
-      url = "git+file:../curriculum-vitae";
+      url = "git+file:///home/rika/Programming/curriculum-vitae";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
-        cv-data.follows = "cv-data";
       };
     };
   };
@@ -51,6 +50,9 @@
 
             buildPhase = ''
               mkdir -p static
+              rm -rf data
+              mkdir -p data
+              cp -f ${inputs.cv-data}/cv.yaml data/cv.yaml
               if [ -f scripts/sync_cv.py ]; then
                 CV_DATA_DIR=${inputs.cv-data} CV_DIR=${inputs.cv} python3 scripts/sync_cv.py
               fi

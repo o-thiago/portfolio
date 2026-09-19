@@ -1,1 +1,1 @@
-{% set p = load_data(path="data/profile.toml") %}<a href="mailto:{{ p.email }}">{{ p.email }}</a>
+{% set raw_cv = load_data(path="data/cv.yaml") %}<a href="mailto:{{ raw_cv.en.email }}">{{ raw_cv.en.email }}</a>

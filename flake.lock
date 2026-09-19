@@ -2,9 +2,6 @@
   "nodes": {
     "cv": {
       "inputs": {
-        "cv-data": [
-          "cv-data"
-        ],
         "flake-parts": [
           "flake-parts"
         ],
@@ -16,17 +13,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1789801929,
-        "narHash": "sha256-CX0P0AmLTkfulfoMROLw3PjFxjjX9tMVv+jtpln97Ww=",
-        "ref": "refs/heads/main",
-        "rev": "5e699c215adabc24f864562ec2033b1b9d910c42",
-        "revCount": 31,
+        "dirtyRev": "bf7230e8e64653de815c4790a3a4f25408063901-dirty",
+        "dirtyShortRev": "bf7230e-dirty",
+        "lastModified": 1789849275,
+        "narHash": "sha256-2FIQtthqkUgqTjpt7OLuLRnYEp1GPGiQ2hIUQ8/kmGk=",
         "type": "git",
-        "url": "file:../curriculum-vitae"
+        "url": "file:///home/rika/Programming/curriculum-vitae"
       },
       "original": {
         "type": "git",
-        "url": "file:../curriculum-vitae"
+        "url": "file:///home/rika/Programming/curriculum-vitae"
       }
     },
     "cv-data": {
@@ -37,22 +33,22 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "resume-template": "resume-template",
         "systems": [
           "systems"
         ]
       },
       "locked": {
+        "dirtyRev": "f1bd9ea9ebf6484330462bc463559f81109b1d55-dirty",
+        "dirtyShortRev": "f1bd9ea-dirty",
         "lastModified": 1789801906,
-        "narHash": "sha256-eWGF/P5SC1an39ufOps5EHrPBmpV8wctM26RASCzy08=",
-        "ref": "refs/heads/main",
-        "rev": "5ebce004cc42a4eaae6e3dbb8e02f42ad2a0a4e1",
-        "revCount": 5,
+        "narHash": "sha256-avN59DeeiFIlTGrO6CxhXKAOxQ/cjieyQgO58BeQ5Bk=",
         "type": "git",
-        "url": "file:../cv-data"
+        "url": "file:///home/rika/Programming/cv-data"
       },
       "original": {
         "type": "git",
-        "url": "file:../cv-data"
+        "url": "file:///home/rika/Programming/cv-data"
       }
     },
     "flake-parts": {
@@ -102,6 +98,34 @@
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
         "type": "github"
+      }
+    },
+    "resume-template": {
+      "inputs": {
+        "flake-parts": [
+          "cv-data",
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "cv-data",
+          "nixpkgs"
+        ],
+        "systems": [
+          "cv-data",
+          "systems"
+        ]
+      },
+      "locked": {
+        "dirtyRev": "bf7230e8e64653de815c4790a3a4f25408063901-dirty",
+        "dirtyShortRev": "bf7230e-dirty",
+        "lastModified": 1789849275,
+        "narHash": "sha256-2FIQtthqkUgqTjpt7OLuLRnYEp1GPGiQ2hIUQ8/kmGk=",
+        "type": "git",
+        "url": "file:///home/rika/Programming/curriculum-vitae"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/rika/Programming/curriculum-vitae"
       }
     },
     "root": {

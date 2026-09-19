@@ -1,0 +1,4 @@
+[submodule "submodules/cv-data"]
+	path = submodules/cv-data
+	url = git@github.com-thiago:o-thiago/cv-data.git
+	branch = main

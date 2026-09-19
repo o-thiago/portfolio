@@ -15,8 +15,6 @@ content/resume/
 content/experience/
 content/awards/
 
-# Generated CV identity/content data consumed via Zola's load_data()
-data/
 
 # Cache & local temp
 .cache/
