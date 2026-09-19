@@ -2,9 +2,7 @@
 template = "about.html"
 +++
 
-## Olá!
-
-Sou o **{{ name() }}**, estudante de Ciência da Computação na **UNIR** e técnico em Informática formado pelo **IFRO**, morando em **Porto Velho, Rondônia**.
+## Olá! Sou **{{ <name /> }}**, estudante de Ciência da Computação na **UNIR** e formado em Informática pelo **IFRO**, baseado em **Porto Velho, Rondônia, Brasil**.
 
 Trabalho com desenvolvimento de sistemas em C e Rust, gerenciamento declarativo de ambientes Linux com **NixOS** e desenvolvimento web full-stack com TypeScript, React, Next.js e Laravel.
 
@@ -59,6 +57,6 @@ Minha trajetória integra formação técnica, graduação em andamento e projet
 
 Sinta-se à vontade para entrar em contato:
 
-- **E-mail:** {{ email_link() }}
-- **LinkedIn:** {{ linkedin_link() }}
-- **GitHub:** {{ github_link() }}
+- **E-mail:** {{ <email_link /> }}
+- **LinkedIn:** {{ <linkedin_link /> }}
+- **GitHub:** {{ <github_link /> }}

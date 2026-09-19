@@ -37,5 +37,5 @@ services.postgres."gpm-cards-db" = {
 
 ## Links
 
-- **Repository:** {{ github_link(repo="gpm-cards") }}
-- **Author:** {{ author_link() }}
+- **GitHub:** {{ <github_link repo="gpm-cards" /> }}
+- **Author:** {{ <author_link /> }}

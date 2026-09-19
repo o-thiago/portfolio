@@ -77,5 +77,5 @@ Because students build games with different engines, packaging each game as a se
 ## Links
 
 - **Project:** [DACC Station](https://github.com/vinytacana/dacc_station_integration) — UNIR
-- **Repository:** {{ github_link(repo="ToofOS") }}
-- **Author:** {{ author_link() }}
+- **Repository:** {{ <github_link repo="ToofOS" /> }}
+- **Author:** {{ <author_link /> }}

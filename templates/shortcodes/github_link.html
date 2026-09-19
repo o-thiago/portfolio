@@ -1,1 +1,0 @@
-{% set raw_cv = load_data(path="data/cv.yaml") %}{% set p = raw_cv.en %}<a href="{{ p.github }}{% if repo %}/{{ repo }}{% endif %}" target="_blank" rel="noopener noreferrer">{{ p.github | replace(from="https://", to="") }}{% if repo %}/{{ repo }}{% endif %}</a>

@@ -1,0 +1,19 @@
+{% component name() %}
+{% set cv = load_data(path="data/cv.yaml") %}{{ cv.en.name }}
+{% endcomponent name %}
+
+{% component author_link() %}
+{% set cv = load_data(path="data/cv.yaml") %}<a href="{{ cv.en.github }}" target="_blank" rel="noopener noreferrer">{{ cv.en.name }} (@{{ cv.en.handle }})</a>
+{% endcomponent author_link %}
+
+{% component github_link(repo="") %}
+{% set cv = load_data(path="data/cv.yaml") %}<a href="{{ cv.en.github }}{% if repo %}/{{ repo }}{% endif %}" target="_blank" rel="noopener noreferrer">{{ cv.en.github | replace(from="https://", to="") }}{% if repo %}/{{ repo }}{% endif %}</a>
+{% endcomponent github_link %}
+
+{% component email_link() %}
+{% set cv = load_data(path="data/cv.yaml") %}<a href="mailto:{{ cv.en.email }}">{{ cv.en.email }}</a>
+{% endcomponent email_link %}
+
+{% component linkedin_link() %}
+{% set cv = load_data(path="data/cv.yaml") %}<a href="{{ cv.en.linkedin }}" target="_blank" rel="noopener noreferrer">{{ cv.en.linkedin | replace(from="https://", to="") }}</a>
+{% endcomponent linkedin_link %}

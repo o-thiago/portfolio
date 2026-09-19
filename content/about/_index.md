@@ -4,7 +4,7 @@ template = "about.html"
 
 ## Hello!
 
-I'm **{{ name() }}**, a Computer Science student at **UNIR** and Informatics graduate from **IFRO**, based in **Porto Velho, Rondônia, Brazil**.
+I'm **{{ <name /> }}**, a Computer Science student at **UNIR** and Informatics graduate from **IFRO**, based in **Porto Velho, Rondônia, Brazil**.
 
 I mainly work with systems programming in C and Rust, declarative Linux system management with **NixOS**, and full-stack web development using TypeScript, React, Next.js, and Laravel.
 
@@ -59,6 +59,6 @@ My background combines undergraduate coursework and hands-on experience in resea
 
 Feel free to reach out:
 
-- **Email:** {{ email_link() }}
-- **LinkedIn:** {{ linkedin_link() }}
-- **GitHub:** {{ github_link() }}
+- **Email:** {{ <email_link /> }}
+- **LinkedIn:** {{ <linkedin_link /> }}
+- **GitHub:** {{ <github_link /> }}

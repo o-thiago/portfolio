@@ -77,5 +77,5 @@ Como os alunos criam jogos em ferramentas diversas, empacotar cada jogo individu
 ## Links
 
 - **Projeto:** [DACC Station](https://github.com/vinytacana/dacc_station_integration) — UNIR
-- **Repositório:** {{ github_link(repo="ToofOS") }}
-- **Autor:** {{ author_link() }}
+- **Repositório:** {{ <github_link repo="ToofOS" /> }}
+- **Autor:** {{ <author_link /> }}

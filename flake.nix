@@ -40,6 +40,7 @@
             ]))
             typst
             git
+            cacert
           ];
 
           portfolioSite = pkgs.stdenv.mkDerivation {
@@ -48,6 +49,7 @@
             src = ./.;
 
             nativeBuildInputs = buildInputs;
+            SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
 
             buildPhase = ''
               mkdir -p static

@@ -2,6 +2,9 @@
   "nodes": {
     "cv": {
       "inputs": {
+        "cv-data": [
+          "cv-data"
+        ],
         "flake-parts": [
           "flake-parts"
         ],
@@ -13,10 +16,10 @@
         ]
       },
       "locked": {
-        "dirtyRev": "bf7230e8e64653de815c4790a3a4f25408063901-dirty",
-        "dirtyShortRev": "bf7230e-dirty",
-        "lastModified": 1789849275,
-        "narHash": "sha256-2FIQtthqkUgqTjpt7OLuLRnYEp1GPGiQ2hIUQ8/kmGk=",
+        "dirtyRev": "c1bfcb7382489e74524380cc6f6a780233d5ad50-dirty",
+        "dirtyShortRev": "c1bfcb7-dirty",
+        "lastModified": 1789850088,
+        "narHash": "sha256-2KNbXRUuHktFwQSvQPzXmIlRtFy5tY+P5ftabYUxwUQ=",
         "type": "git",
         "url": "file:///home/rika/Programming/curriculum-vitae"
       },
@@ -33,16 +36,15 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "resume-template": "resume-template",
         "systems": [
           "systems"
         ]
       },
       "locked": {
-        "dirtyRev": "f1bd9ea9ebf6484330462bc463559f81109b1d55-dirty",
-        "dirtyShortRev": "f1bd9ea-dirty",
-        "lastModified": 1789801906,
-        "narHash": "sha256-avN59DeeiFIlTGrO6CxhXKAOxQ/cjieyQgO58BeQ5Bk=",
+        "dirtyRev": "1c1d1b7136217e313c823d4e1735cd84f5e7dff6-dirty",
+        "dirtyShortRev": "1c1d1b7-dirty",
+        "lastModified": 1789850088,
+        "narHash": "sha256-Y1MqImZf0Z/KTXjeKdRr7pYvjZEvOD5t2np3pvgbAVQ=",
         "type": "git",
         "url": "file:///home/rika/Programming/cv-data"
       },
@@ -56,11 +58,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1787559586,
-        "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
+        "lastModified": 1788450739,
+        "narHash": "sha256-glZLQlzIn1fXH6PazR2iUmTo7kzzyYSshrWhLS9TqCU=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
+        "rev": "31729ca8cbdb4fa927b34e5f4353e6a83f39e993",
         "type": "github"
       },
       "original": {
@@ -71,11 +73,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1787498568,
-        "narHash": "sha256-9i/VTdusq/+NM/tz+J1Re+ojkMB8MBf0QshnYfzHz30=",
+        "lastModified": 1789785513,
+        "narHash": "sha256-B44WL6h0XoLjJ41bUPJk0X5SDinLCII//6EcBLXKiJ0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "56c02bc00adcf003215cc4bd996d6efaf4cff188",
+        "rev": "20b1ddd1aa5ace70c9468305030aa4f9ef79671b",
         "type": "github"
       },
       "original": {
@@ -87,45 +89,17 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1785031560,
-        "narHash": "sha256-OmshNvn2vupOFpYinLUu+1Dnpu4n7Q5N3ggGVNHpkUI=",
+        "lastModified": 1788057806,
+        "narHash": "sha256-DTQSMxzDWmT0zhguthvegnVkn7CFqGCv4IHCzk5ZUpM=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "0e79af5e3d4dcfcd676ab5ba3f95d2e3352e078c",
+        "rev": "596e2e3940e09b2abbeb03f75fa1828c57fcd72c",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
         "type": "github"
-      }
-    },
-    "resume-template": {
-      "inputs": {
-        "flake-parts": [
-          "cv-data",
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "cv-data",
-          "nixpkgs"
-        ],
-        "systems": [
-          "cv-data",
-          "systems"
-        ]
-      },
-      "locked": {
-        "dirtyRev": "bf7230e8e64653de815c4790a3a4f25408063901-dirty",
-        "dirtyShortRev": "bf7230e-dirty",
-        "lastModified": 1789849275,
-        "narHash": "sha256-2FIQtthqkUgqTjpt7OLuLRnYEp1GPGiQ2hIUQ8/kmGk=",
-        "type": "git",
-        "url": "file:///home/rika/Programming/curriculum-vitae"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///home/rika/Programming/curriculum-vitae"
       }
     },
     "root": {
