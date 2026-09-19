@@ -14,11 +14,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789798280,
-        "narHash": "sha256-yONj9WCcGk02uyPpiWbMArFSbUUdwGWqwCzWcawUtLs=",
+        "lastModified": 1789801499,
+        "narHash": "sha256-XJX/bvNoBw2uoCv+bMjkBlHAsP04hfUjfsVZzWfRNCs=",
         "ref": "refs/heads/main",
-        "rev": "e0e19467732c1e69d2d7d46a9ad86ec1ec48cf23",
-        "revCount": 25,
+        "rev": "982a1e21643cb6fb0d3be7e5f48e1f1c27510234",
+        "revCount": 28,
         "type": "git",
         "url": "file:///home/rika/Programming/curriculum-vitae"
       },
@@ -28,13 +28,26 @@
       }
     },
     "cv-data": {
-      "flake": false,
+      "inputs": {
+        "flake-parts": [
+          "cv",
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "cv",
+          "nixpkgs"
+        ],
+        "systems": [
+          "cv",
+          "systems"
+        ]
+      },
       "locked": {
-        "lastModified": 1789797810,
-        "narHash": "sha256-MH+R8Bou/K792X/TNpkNvU+Kz5/g7sqOs4e3he5Gk/U=",
+        "lastModified": 1789801472,
+        "narHash": "sha256-NktQDtotg+Q1KKq7xRRgyQLjKJD7QPBmEkAK7NAWYps=",
         "ref": "refs/heads/main",
-        "rev": "96dc0273fd4031e207d78e7bd8bc1021ebdcd4a6",
-        "revCount": 1,
+        "rev": "79cce818f3bcd0942ad1b28aab71d9bca7cacbe6",
+        "revCount": 3,
         "type": "git",
         "url": "file:///home/rika/Programming/cv-data"
       },
@@ -44,13 +57,23 @@
       }
     },
     "cv-data_2": {
-      "flake": false,
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
       "locked": {
-        "lastModified": 1789797810,
-        "narHash": "sha256-MH+R8Bou/K792X/TNpkNvU+Kz5/g7sqOs4e3he5Gk/U=",
+        "lastModified": 1789801472,
+        "narHash": "sha256-NktQDtotg+Q1KKq7xRRgyQLjKJD7QPBmEkAK7NAWYps=",
         "ref": "refs/heads/main",
-        "rev": "96dc0273fd4031e207d78e7bd8bc1021ebdcd4a6",
-        "revCount": 1,
+        "rev": "79cce818f3bcd0942ad1b28aab71d9bca7cacbe6",
+        "revCount": 3,
         "type": "git",
         "url": "file:///home/rika/Programming/cv-data"
       },

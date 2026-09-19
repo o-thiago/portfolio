@@ -7,7 +7,11 @@
     systems.url = "github:nix-systems/default";
     cv-data = {
       url = "git+file:///home/rika/Programming/cv-data";
-      flake = false;
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
     };
     cv = {
       url = "git+file:///home/rika/Programming/curriculum-vitae";
