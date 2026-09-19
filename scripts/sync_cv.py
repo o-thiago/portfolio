@@ -36,12 +36,51 @@ def find_match(
 
 
 def get_cv_data_root() -> Path | None:
-    """Locate local or cloned cv-data repository root."""
+    """Fetch and synchronize cv-data repository."""
     if env_data := os.getenv("CV_DATA_DIR"):
         p = Path(env_data)
         if (p / "cv.yaml").exists() or (p / "cv.toml").exists():
             return p
 
+    cache = ROOT / ".cache/cv-data"
+    repo_sources = [
+        os.getenv("CV_DATA_REPO_URL"),
+        "git@github.com-thiago:o-thiago/cv-data.git",
+        "https://github.com/o-thiago/cv-data.git",
+        str(ROOT.parent / "cv-data"),
+        str(Path.home() / "Programming/cv-data"),
+    ]
+
+    # If already cloned, pull/fetch latest commits
+    if cache.exists() and (cache / ".git").exists():
+        with contextlib.suppress(OSError, subprocess.SubprocessError):
+            subprocess.run(
+                ["git", "-C", str(cache), "pull", "--ff-only"],
+                capture_output=True,
+                check=False,
+            )
+        if (cache / "cv.yaml").exists() or (cache / "cv.toml").exists():
+            return cache
+
+    # Clone from repo sources
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    shutil.rmtree(cache, ignore_errors=True)
+
+    for src in repo_sources:
+        if not src:
+            continue
+        try:
+            res = subprocess.run(
+                ["git", "clone", "--depth=1", src, str(cache)],
+                capture_output=True,
+                check=False,
+            )
+            if res.returncode == 0 and (cache / "cv.yaml").exists():
+                return cache
+        except Exception:
+            continue
+
+    # Fallback to local working copy if git clone could not be performed
     for p in (
         ROOT.parent / "cv-data",
         Path.home() / "Programming/cv-data",
@@ -50,45 +89,55 @@ def get_cv_data_root() -> Path | None:
         if (p / "cv.yaml").exists() or (p / "cv.toml").exists():
             return p
 
-    cache = ROOT / ".cache/cv-data"
-    if (cache / "cv.yaml").exists() or (cache / "cv.toml").exists():
-        with contextlib.suppress(OSError, subprocess.SubprocessError):
-            subprocess.run(
-                ["git", "-C", str(cache), "pull"],
-                capture_output=True,
-                check=False,
-            )
-        return cache
-
-    shutil.rmtree(cache, ignore_errors=True)
-    cache.parent.mkdir(parents=True, exist_ok=True)
-    with contextlib.suppress(OSError, subprocess.SubprocessError):
-        subprocess.run(
-            [
-                "git",
-                "clone",
-                "--depth=1",
-                os.getenv(
-                    "CV_DATA_REPO_URL",
-                    "https://github.com/o-thiago/cv-data.git",
-                ),
-                str(cache),
-            ],
-            capture_output=True,
-            check=False,
-        )
-    if (cache / "cv.yaml").exists() or (cache / "cv.toml").exists():
-        return cache
     return None
 
 
 def get_cv_template_root() -> Path | None:
-    """Locate local or cloned curriculum-vitae repository root for Typst templates."""
+    """Fetch and synchronize curriculum-vitae repository for Typst templates."""
     if cv_env := os.getenv("CV_DIR"):
         p = Path(cv_env)
         if (p / "resumes").exists():
             return p
 
+    cache = ROOT / ".cache/curriculum-vitae"
+    repo_sources = [
+        os.getenv("CV_REPO_URL"),
+        "git@github.com-thiago:o-thiago/resume-template.git",
+        "https://github.com/o-thiago/resume-template.git",
+        str(ROOT.parent / "curriculum-vitae"),
+        str(Path.home() / "Programming/curriculum-vitae"),
+    ]
+
+    # If already cloned, pull/fetch latest commits
+    if cache.exists() and (cache / ".git").exists():
+        with contextlib.suppress(OSError, subprocess.SubprocessError):
+            subprocess.run(
+                ["git", "-C", str(cache), "pull", "--ff-only"],
+                capture_output=True,
+                check=False,
+            )
+        if (cache / "resumes").exists():
+            return cache
+
+    # Clone from repo sources
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    shutil.rmtree(cache, ignore_errors=True)
+
+    for src in repo_sources:
+        if not src:
+            continue
+        try:
+            res = subprocess.run(
+                ["git", "clone", "--depth=1", src, str(cache)],
+                capture_output=True,
+                check=False,
+            )
+            if res.returncode == 0 and (cache / "resumes").exists():
+                return cache
+        except Exception:
+            continue
+
+    # Fallback to local directory
     for p in (
         ROOT.parent / "curriculum-vitae",
         Path.home() / "Programming/curriculum-vitae",
@@ -97,34 +146,7 @@ def get_cv_template_root() -> Path | None:
         if (p / "resumes").exists():
             return p
 
-    cache = ROOT / ".cache/curriculum-vitae"
-    if (cache / "resumes").exists():
-        with contextlib.suppress(OSError, subprocess.SubprocessError):
-            subprocess.run(
-                ["git", "-C", str(cache), "pull"],
-                capture_output=True,
-                check=False,
-            )
-        return cache
-
-    shutil.rmtree(cache, ignore_errors=True)
-    cache.parent.mkdir(parents=True, exist_ok=True)
-    with contextlib.suppress(OSError, subprocess.SubprocessError):
-        subprocess.run(
-            [
-                "git",
-                "clone",
-                "--depth=1",
-                os.getenv(
-                    "CV_REPO_URL",
-                    "https://github.com/o-thiago/resume-template.git",
-                ),
-                str(cache),
-            ],
-            capture_output=True,
-            check=False,
-        )
-    return cache if (cache / "resumes").exists() else None
+    return None
 
 
 def load_cv_data(cv_root: Path) -> dict:
