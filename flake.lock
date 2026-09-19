@@ -42,11 +42,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789801906,
-        "narHash": "sha256-xi9eZzt8BbGA8cJHSy9ml5snTgEgl936l7vWlt1uKvk=",
+        "lastModified": 1789852186,
+        "narHash": "sha256-8wEYd4mL0+E8/kwWzT3aqgIjKLy3AStR2/UOyKwUc38=",
         "ref": "refs/heads/main",
-        "rev": "f1bd9ea9ebf6484330462bc463559f81109b1d55",
-        "revCount": 5,
+        "rev": "4bd1aff66606fa4a7c7018d81b3e509dc3121202",
+        "revCount": 8,
         "type": "git",
         "url": "file:./submodules/cv-data"
       },
