@@ -18,7 +18,7 @@ This document outlines strict, mandatory rules for any AI agent or automated con
 
 ---
 
-## 3. Submodule & Architecture Integrity
-- **Understand the pipeline**: `submodules/cv-data` is the upstream submodule providing `cv.yaml` (validated by `cv.schema.json`). Changes to core CV data must be made in `submodules/cv-data/cv.yaml` and adhere to its schema.
-- **Symlinks & Dev environment**: `data` is a symlink pointing to `submodules/cv-data`. Do not break or overwrite this symlink structure.
+## 3. Architecture & Nix Data Pipeline
+- **Understand the pipeline**: Personal data is sourced directly from the `cv-data` Nix flake (`inputs.cv-data`). Core CV data changes should be made in `cv-data` (`../cv-data/cv.yaml`) and adhere to its schema.
+- **Nix-provided data**: `data/cv.yaml` is dynamically provided on the Nix side (via `buildPhase` during Nix builds, and via `shellHook` / `apps.default` during development). Do not commit `data/` or rely on a `submodules/cv-data` git submodule.
 - **Build integrity**: When modifying templates, scripts, or styles, ensure the site builds cleanly via Zola and Nix without regressions.

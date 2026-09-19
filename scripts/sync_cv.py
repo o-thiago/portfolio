@@ -201,8 +201,18 @@ def make_llms_full_txt(d: dict) -> str:
 
 def main() -> None:
     """Synchronize CV documents, PDF files, and static machine endpoints."""
-    cv_data_dir = Path(os.getenv("CV_DATA_DIR", ROOT.parent / "cv-data"))
-    cv_template_dir = Path(os.getenv("CV_DIR", ROOT.parent / "curriculum-vitae"))
+    default_data_dir = (
+        ROOT.parent / "cv-data"
+        if (ROOT.parent / "cv-data" / "cv.yaml").exists()
+        else ROOT / "data"
+    )
+    cv_data_dir = Path(os.getenv("CV_DATA_DIR", default_data_dir))
+    default_cv_dir = (
+        ROOT.parent / "curriculum-vitae"
+        if (ROOT.parent / "curriculum-vitae").exists()
+        else ROOT / "submodules/curriculum-vitae"
+    )
+    cv_template_dir = Path(os.getenv("CV_DIR", default_cv_dir))
 
     yaml_file = cv_data_dir / "cv.yaml"
     if not yaml_file.exists():

@@ -11,6 +11,9 @@ dev: sync-cv
 
 # Synchronize CV data from central cv-data: compile Typst PDFs and generate content
 sync-cv:
+    @if [ ! -f data/cv.yaml ] && [ -f ../cv-data/cv.yaml ]; then \
+        mkdir -p data && cp -f ../cv-data/cv.yaml data/cv.yaml; \
+    fi
     @if command -v python3 >/dev/null 2>&1; then \
         python3 scripts/sync_cv.py; \
     else \

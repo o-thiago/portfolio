@@ -6,7 +6,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     cv-data = {
-      url = "git+file:./submodules/cv-data";
+      url = "git+file:../cv-data";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -74,7 +74,8 @@
             program = toString (
               pkgs.writeShellScript "serve" ''
                 echo "Building CSS and launching Zola development server..."
-                mkdir -p static
+                mkdir -p static data
+                cp -f ${inputs.cv-data}/cv.yaml data/cv.yaml
                 ${pkgs.tailwindcss_4}/bin/tailwindcss -i styles/input.css -o static/style.css
                 ${pkgs.zola}/bin/zola serve --port 1111 --interface 127.0.0.1
               ''
@@ -85,9 +86,17 @@
             packages = buildInputs ++ (with pkgs; [ just ]);
 
             shellHook = ''
+              mkdir -p data
+              cp -f ${inputs.cv-data}/cv.yaml data/cv.yaml
+              if [ -f ${inputs.cv-data}/cv.schema.json ]; then
+                cp -f ${inputs.cv-data}/cv.schema.json data/cv.schema.json
+              fi
+              export CV_DATA_DIR="${inputs.cv-data}"
+
               echo ""
               echo "   Personal Portfolio Dev Shell"
               echo "   Stack: Pure No-JS / Zola (Rust SSG) / Tailwind CSS v4 / Nix"
+              echo "   CV Data: Provided via Nix from cv-data flake"
               echo ""
               echo "Available commands (via just):"
               echo "  just dev       - Watch CSS and run Zola live-reload dev server"

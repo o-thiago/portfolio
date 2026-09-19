@@ -48,11 +48,11 @@
         "rev": "4bd1aff66606fa4a7c7018d81b3e509dc3121202",
         "revCount": 8,
         "type": "git",
-        "url": "file:./submodules/cv-data"
+        "url": "file:../cv-data"
       },
       "original": {
         "type": "git",
-        "url": "file:./submodules/cv-data"
+        "url": "file:../cv-data"
       }
     },
     "flake-parts": {
