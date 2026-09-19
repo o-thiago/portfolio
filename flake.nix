@@ -6,7 +6,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     cv-data = {
-      url = "git+file:///home/rika/Programming/cv-data";
+      url = "git+file:../cv-data";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -14,11 +14,12 @@
       };
     };
     cv = {
-      url = "git+file:///home/rika/Programming/curriculum-vitae";
+      url = "git+file:../curriculum-vitae";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
+        cv-data.follows = "cv-data";
       };
     };
   };

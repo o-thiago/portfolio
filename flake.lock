@@ -2,7 +2,9 @@
   "nodes": {
     "cv": {
       "inputs": {
-        "cv-data": "cv-data",
+        "cv-data": [
+          "cv-data"
+        ],
         "flake-parts": [
           "flake-parts"
         ],
@@ -20,45 +22,16 @@
         "rev": "5e699c215adabc24f864562ec2033b1b9d910c42",
         "revCount": 31,
         "type": "git",
-        "url": "file:///home/rika/Programming/curriculum-vitae"
+        "url": "file:../curriculum-vitae"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/rika/Programming/curriculum-vitae"
+        "url": "file:../curriculum-vitae"
       }
     },
     "cv-data": {
       "inputs": {
         "flake-parts": [
-          "cv",
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "cv",
-          "nixpkgs"
-        ],
-        "systems": [
-          "cv",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789801906,
-        "narHash": "sha256-eWGF/P5SC1an39ufOps5EHrPBmpV8wctM26RASCzy08=",
-        "ref": "refs/heads/main",
-        "rev": "5ebce004cc42a4eaae6e3dbb8e02f42ad2a0a4e1",
-        "revCount": 5,
-        "type": "git",
-        "url": "file:///home/rika/Programming/cv-data"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///home/rika/Programming/cv-data"
-      }
-    },
-    "cv-data_2": {
-      "inputs": {
-        "flake-parts": [
           "flake-parts"
         ],
         "nixpkgs": [
@@ -75,11 +48,11 @@
         "rev": "5ebce004cc42a4eaae6e3dbb8e02f42ad2a0a4e1",
         "revCount": 5,
         "type": "git",
-        "url": "file:///home/rika/Programming/cv-data"
+        "url": "file:../cv-data"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/rika/Programming/cv-data"
+        "url": "file:../cv-data"
       }
     },
     "flake-parts": {
@@ -134,7 +107,7 @@
     "root": {
       "inputs": {
         "cv": "cv",
-        "cv-data": "cv-data_2",
+        "cv-data": "cv-data",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "systems": "systems"
