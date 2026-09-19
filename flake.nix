@@ -5,8 +5,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
+    cv-data = {
+      url = "git+file:///home/rika/Programming/cv-data";
+      flake = false;
+    };
     cv = {
-      url = "github:o-thiago/resume-template";
+      url = "git+file:///home/rika/Programming/curriculum-vitae";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -27,9 +31,9 @@
             tailwindcss_4
             (python3.withPackages (ps: [
               ps.tomli-w
-              ps.pylatexenc
+              ps.pyyaml
             ]))
-            texliveFull
+            typst
             git
           ];
 
@@ -43,7 +47,7 @@
             buildPhase = ''
               mkdir -p static
               if [ -f scripts/sync_cv.py ]; then
-                CV_DIR=${inputs.cv} python3 scripts/sync_cv.py
+                CV_DATA_DIR=${inputs.cv-data} CV_DIR=${inputs.cv} python3 scripts/sync_cv.py
               fi
               tailwindcss -i styles/input.css -o static/style.css --minify
               zola build -o $out

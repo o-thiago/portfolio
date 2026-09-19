@@ -2,6 +2,7 @@
   "nodes": {
     "cv": {
       "inputs": {
+        "cv-data": "cv-data",
         "flake-parts": [
           "flake-parts"
         ],
@@ -13,17 +14,49 @@
         ]
       },
       "locked": {
-        "lastModified": 1787606354,
-        "narHash": "sha256-gRSf4teO5/c77rjnSVr2GfOBqlYu3AXcmNWWU3mMpME=",
-        "owner": "o-thiago",
-        "repo": "resume-template",
-        "rev": "1057967892d7bfe2693115db68c403a826aed784",
-        "type": "github"
+        "lastModified": 1789798280,
+        "narHash": "sha256-yONj9WCcGk02uyPpiWbMArFSbUUdwGWqwCzWcawUtLs=",
+        "ref": "refs/heads/main",
+        "rev": "e0e19467732c1e69d2d7d46a9ad86ec1ec48cf23",
+        "revCount": 25,
+        "type": "git",
+        "url": "file:///home/rika/Programming/curriculum-vitae"
       },
       "original": {
-        "owner": "o-thiago",
-        "repo": "resume-template",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/rika/Programming/curriculum-vitae"
+      }
+    },
+    "cv-data": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789797810,
+        "narHash": "sha256-MH+R8Bou/K792X/TNpkNvU+Kz5/g7sqOs4e3he5Gk/U=",
+        "ref": "refs/heads/main",
+        "rev": "96dc0273fd4031e207d78e7bd8bc1021ebdcd4a6",
+        "revCount": 1,
+        "type": "git",
+        "url": "file:///home/rika/Programming/cv-data"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/rika/Programming/cv-data"
+      }
+    },
+    "cv-data_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789797810,
+        "narHash": "sha256-MH+R8Bou/K792X/TNpkNvU+Kz5/g7sqOs4e3he5Gk/U=",
+        "ref": "refs/heads/main",
+        "rev": "96dc0273fd4031e207d78e7bd8bc1021ebdcd4a6",
+        "revCount": 1,
+        "type": "git",
+        "url": "file:///home/rika/Programming/cv-data"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/rika/Programming/cv-data"
       }
     },
     "flake-parts": {
@@ -78,6 +111,7 @@
     "root": {
       "inputs": {
         "cv": "cv",
+        "cv-data": "cv-data_2",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "systems": "systems"

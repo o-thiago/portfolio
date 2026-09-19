@@ -1,27 +1,30 @@
 #!/usr/bin/env python3
-"""Fetch curriculum-vitae LaTeX sources and generate site content."""
+"""Fetch central CV data (YAML/TOML) and generate site content and PDFs."""
 
 import contextlib
 import os
 import re
 import shutil
 import subprocess
-import tempfile
 from pathlib import Path
 
 import tomli_w  # type: ignore[import-not-found]
-from pylatexenc.latex2text import LatexNodes2Text  # type: ignore[import-not-found]
+
+try:
+    import tomllib  # type: ignore[import-not-found]
+except ImportError:
+    import tomli as tomllib  # type: ignore[no-redef]
+
+try:
+    import yaml  # type: ignore[import-not-found]
+except ImportError:
+    yaml = None  # type: ignore[assignment]
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGETS = [
     ("en", "en", "resume", ".md"),
     ("pt", "pt-br", "curriculo", ".pt.md"),
 ]
-
-
-def clean(s: str) -> str:
-    """Strip LaTeX formatting artifacts and normalize whitespace."""
-    return " ".join(LatexNodes2Text().latex_to_text(s).split())
 
 
 def find_match(
@@ -32,18 +35,68 @@ def find_match(
     return m.group(group) if m else ""
 
 
-def get_cv_root() -> Path | None:
-    """Locate local or cloned curriculum-vitae repository root."""
+def get_cv_data_root() -> Path | None:
+    """Locate local or cloned cv-data repository root."""
+    if env_data := os.getenv("CV_DATA_DIR"):
+        p = Path(env_data)
+        if (p / "cv.yaml").exists() or (p / "cv.toml").exists():
+            return p
+
+    for p in (
+        ROOT.parent / "cv-data",
+        Path.home() / "Programming/cv-data",
+        ROOT / "submodules/cv-data",
+    ):
+        if (p / "cv.yaml").exists() or (p / "cv.toml").exists():
+            return p
+
+    cache = ROOT / ".cache/cv-data"
+    if (cache / "cv.yaml").exists() or (cache / "cv.toml").exists():
+        with contextlib.suppress(OSError, subprocess.SubprocessError):
+            subprocess.run(
+                ["git", "-C", str(cache), "pull"],
+                capture_output=True,
+                check=False,
+            )
+        return cache
+
+    shutil.rmtree(cache, ignore_errors=True)
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    with contextlib.suppress(OSError, subprocess.SubprocessError):
+        subprocess.run(
+            [
+                "git",
+                "clone",
+                "--depth=1",
+                os.getenv(
+                    "CV_DATA_REPO_URL",
+                    "https://github.com/o-thiago/cv-data.git",
+                ),
+                str(cache),
+            ],
+            capture_output=True,
+            check=False,
+        )
+    if (cache / "cv.yaml").exists() or (cache / "cv.toml").exists():
+        return cache
+    return None
+
+
+def get_cv_template_root() -> Path | None:
+    """Locate local or cloned curriculum-vitae repository root for Typst templates."""
     if cv_env := os.getenv("CV_DIR"):
         p = Path(cv_env)
         if (p / "resumes").exists():
             return p
+
     for p in (
         ROOT.parent / "curriculum-vitae",
         Path.home() / "Programming/curriculum-vitae",
+        ROOT / "submodules/curriculum-vitae",
     ):
         if (p / "resumes").exists():
             return p
+
     cache = ROOT / ".cache/curriculum-vitae"
     if (cache / "resumes").exists():
         with contextlib.suppress(OSError, subprocess.SubprocessError):
@@ -53,6 +106,7 @@ def get_cv_root() -> Path | None:
                 check=False,
             )
         return cache
+
     shutil.rmtree(cache, ignore_errors=True)
     cache.parent.mkdir(parents=True, exist_ok=True)
     with contextlib.suppress(OSError, subprocess.SubprocessError):
@@ -73,23 +127,53 @@ def get_cv_root() -> Path | None:
     return cache if (cache / "resumes").exists() else None
 
 
-def build_pdf(src: Path, name: str, dst: Path) -> None:
-    """Compile LaTeX document to PDF in a temporary isolated directory."""
-    if not (src / f"{name}.tex").exists():
+def load_cv_data(cv_root: Path) -> dict:
+    """Load structured CV data from YAML or TOML."""
+    yaml_file = cv_root / "cv.yaml"
+    if yaml_file.exists() and yaml is not None:
+        return yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
+
+    toml_file = cv_root / "cv.toml"
+    if toml_file.exists():
+        return tomllib.loads(toml_file.read_text(encoding="utf-8"))
+
+    if yaml_file.exists():
+        # Fallback if pyyaml is missing but cv.yaml exists
+        raise RuntimeError("PyYAML required to read cv.yaml, or provide cv.toml")
+
+    raise FileNotFoundError(f"Neither cv.yaml nor cv.toml found in {cv_root}")
+
+
+def build_pdf(cv_root: Path | None, sub: str, name: str, dst: Path) -> None:
+    """Compile Typst document or copy compiled PDF to dst."""
+    if not cv_root:
         return
-    with tempfile.TemporaryDirectory() as tmp:
-        for f in src.iterdir():
-            if f.is_file():
-                shutil.copy2(f, tmp)
+
+    typ_file = cv_root / "resumes" / sub / f"{name}.typ"
+    if typ_file.exists() and shutil.which("typst"):
         with contextlib.suppress(OSError, subprocess.SubprocessError):
             subprocess.run(
-                ["pdflatex", "-interaction=nonstopmode", f"{name}.tex"],
-                cwd=tmp,
+                [
+                    "typst",
+                    "compile",
+                    "--root",
+                    str(cv_root),
+                    str(typ_file),
+                    str(dst),
+                ],
                 capture_output=True,
                 check=False,
             )
-        if (out := Path(tmp) / f"{name}.pdf").exists():
-            shutil.copy2(out, dst)
+        return
+
+    # Fallbacks if already precompiled
+    for candidate in (
+        cv_root / "resumes" / sub / f"{name}.pdf",
+        cv_root / f"{name}.pdf",
+    ):
+        if candidate.exists():
+            shutil.copy2(candidate, dst)
+            return
 
 
 def parse_award(item: str) -> dict:
@@ -147,85 +231,6 @@ def parse_award(item: str) -> dict:
         "year": year,
         "is_major": False,
         "raw": item,
-    }
-
-
-def parse_cv(path: Path) -> dict:
-    """Parse resume LaTeX file into structured metadata dictionary."""
-    text = path.read_text(encoding="utf-8")
-    header = find_match(r"\\begin\{center\}(.*?)\\end\{center\}", text)
-    github = find_match(r"\\href\{(https://[^}]*github\.com/[^}]+)\}", header)
-
-    secs = dict(
-        re.findall(
-            r"\\section\{([^}]+)\}(.*?)(?=\\section\{|\\end\{document\})",
-            text,
-            re.DOTALL,
-        )
-    )
-
-    def get_sec(*keys: str) -> str:
-        return next((k for k in keys if k in secs), keys[0])
-
-    def items(s: str) -> list[str]:
-        return [clean(x) for x in re.findall(r"\\item\s+([^\n\\]+(?:\\.[^\n\\]*)*)", s)]
-
-    def entries(
-        sec: str, keys: tuple[str, ...], *, with_bullets: bool = False
-    ) -> list[dict]:
-        return [
-            dict(
-                zip(keys, p, strict=False),
-                **({"bullets": items(c)} if with_bullets else {}),
-            )
-            for c in secs.get(sec, "").split(r"\cventry")[1:]
-            if len(p := [clean(x) for x in re.findall(r"\{([^}]*)\}", c[:300])][:4])
-            == 4
-        ]
-
-    exp_k = get_sec("Experience", "Experiência")
-    edu_k = get_sec("Education", "Educação")
-    sum_k = get_sec("Summary", "Resumo")
-    cert_k = get_sec("Certifications", "Certificações")
-    skills_k = get_sec("Skills", "Habilidades")
-
-    raw_certs = items(secs.get(cert_k, ""))
-    skill_items = re.findall(
-        r"\\item\s+\\textbf\{([^}]+)\}\s*([^\n\\]+(?:\\.[^\n\\]*)*)",
-        secs.get(skills_k, ""),
-    )
-    skills = [
-        {"label": clean(lbl).rstrip(":"), "value": clean(val)}
-        for lbl, val in skill_items
-    ]
-
-    loc_part = (
-        header.split(r"\\ [0.1cm]")[1].split(r"{\textbullet}")[0]
-        if r"\\ [0.1cm]" in header
-        else ""
-    )
-
-    return {
-        "name": clean(find_match(r"\\textbf\{([^}]+)\}", header)),
-        "handle": github.rstrip("/").split("/")[-1],
-        "location": clean(loc_part),
-        "phone": clean(find_match(r"(\+55[^\n\\{]+)", header)),
-        "email": find_match(r"\\href\{mailto:([^}]+)\}", header),
-        "linkedin": find_match(r"\\href\{(https://[^}]*linkedin\.com/[^}]+)\}", header),
-        "github": github,
-        "summary_title": sum_k,
-        "summary": clean(secs.get(sum_k, "")),
-        "experience_title": exp_k,
-        "education_title": edu_k,
-        "skills_title": skills_k,
-        "skills": skills,
-        "certifications_title": cert_k,
-        "certifications": raw_certs,
-        "awards": [parse_award(c) for c in raw_certs],
-        "experience": entries(
-            exp_k, ("company", "location", "role", "date"), with_bullets=True
-        ),
-        "education": entries(edu_k, ("institution", "location", "degree", "date")),
     }
 
 
@@ -366,17 +371,24 @@ def make_llms_full_txt(d: dict) -> str:
 
 def main() -> None:
     """Synchronize CV documents, PDF files, and static machine endpoints."""
-    if not (cv := get_cv_root()):
+    cv_data_dir = get_cv_data_root()
+    if not cv_data_dir:
+        print("Error: Could not locate central cv-data repository.")
         return
+
+    cv_template_dir = get_cv_template_root()
 
     (ROOT / "static").mkdir(exist_ok=True)
     (ROOT / "data").mkdir(exist_ok=True)
 
+    raw = load_cv_data(cv_data_dir)
+
     data: dict[str, dict] = {}
     for lang, sub, name, ext in TARGETS:
-        build_pdf(cv / "resumes" / sub, name, ROOT / "static" / f"{name}.pdf")
-        d = parse_cv(cv / "resumes" / sub / f"{name}.tex")
+        build_pdf(cv_template_dir, sub, name, ROOT / "static" / f"{name}.pdf")
+        d = dict(raw[lang])
         d["site_url"] = f"https://{d['handle']}.github.io"
+        d["awards"] = [parse_award(c) for c in d.get("certifications", [])]
         data[lang] = d
 
         (ROOT / f"data/cv.{lang}.toml").write_text(tomli_w.dumps(d), encoding="utf-8")

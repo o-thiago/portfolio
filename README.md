@@ -8,7 +8,7 @@ Static site built with [Zola](https://www.getzola.org/) and [Tailwind CSS](https
 
 - Static HTML/CSS without client-side JavaScript.
 - Multilingual (English and Portuguese).
-- Automatic CV synchronization with LaTeX source files (`curriculum-vitae` submodule) and compiled PDF downloads.
+- Automatic CV synchronization with central CV data repository (`cv-data`) and Typst compiled PDF downloads.
 - `llms.txt` and OpenGraph/JSON-LD metadata support.
 
 ## Development
@@ -28,7 +28,7 @@ The site will be available at `http://127.0.0.1:1111`.
 ## Build
 
 ```bash
-# Synchronize CV, compile PDFs, and build static output to public/
+# Synchronize CV, compile Typst PDFs, and build static output to public/
 just build
 
 # Or build via Nix
@@ -37,10 +37,10 @@ nix build
 
 ## Curriculum Vitae Sync
 
-The resume data and downloadable PDFs are synchronized directly from the LaTeX source in `submodules/curriculum-vitae`:
+The resume data and downloadable PDFs are synchronized directly from the central `cv-data` repository and the Typst templates:
 
 ```bash
 just sync-cv
 ```
 
-This compiles `resume.tex` and `curriculo.tex` to `static/*.pdf` and generates the corresponding markdown pages under `content/resume/` and `content/experience/`.
+This compiles `resume.typ` and `curriculo.typ` to `static/*.pdf` and generates the corresponding markdown pages under `content/resume/`, `content/experience/`, and `content/awards/`.
