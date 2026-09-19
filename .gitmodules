@@ -1,4 +1,0 @@
-[submodule "submodules/curriculum-vitae"]
-	path = submodules/curriculum-vitae
-	url = git@github.com-thiago:o-thiago/resume-template.git
-	branch = main

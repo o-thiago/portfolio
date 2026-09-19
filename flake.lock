@@ -16,17 +16,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1789850702,
-        "narHash": "sha256-hYebuYlxa6iq5himzpu0zPbcQMPPCT70dSoNQ58pKk8=",
-        "ref": "4b1c87369bf26f4f9b4018b1ff6a651cf13998e7",
-        "rev": "4b1c87369bf26f4f9b4018b1ff6a651cf13998e7",
-        "revCount": 36,
+        "dirtyRev": "51dab2a314058e71c86c2fb9e53a78cdc15334ba-dirty",
+        "dirtyShortRev": "51dab2a-dirty",
+        "lastModified": 1789852744,
+        "narHash": "sha256-AgT7Y+Z9RjL5eybdn4FvQXIQE23PMKkRgAgFDfvftm0=",
         "type": "git",
-        "url": "file:./submodules/curriculum-vitae"
+        "url": "file:../curriculum-vitae"
       },
       "original": {
         "type": "git",
-        "url": "file:./submodules/curriculum-vitae"
+        "url": "file:../curriculum-vitae"
       }
     },
     "cv-data": {

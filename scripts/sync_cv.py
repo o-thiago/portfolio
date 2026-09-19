@@ -207,11 +207,7 @@ def main() -> None:
         else ROOT / "data"
     )
     cv_data_dir = Path(os.getenv("CV_DATA_DIR", default_data_dir))
-    default_cv_dir = (
-        ROOT.parent / "curriculum-vitae"
-        if (ROOT.parent / "curriculum-vitae").exists()
-        else ROOT / "submodules/curriculum-vitae"
-    )
+    default_cv_dir = ROOT.parent / "curriculum-vitae"
     cv_template_dir = Path(os.getenv("CV_DIR", default_cv_dir))
 
     yaml_file = cv_data_dir / "cv.yaml"

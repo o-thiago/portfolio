@@ -14,7 +14,7 @@
       };
     };
     cv = {
-      url = "git+file:./submodules/curriculum-vitae";
+      url = "git+file:../curriculum-vitae";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -76,6 +76,12 @@
                 echo "Building CSS and launching Zola development server..."
                 mkdir -p static data
                 cp -f ${inputs.cv-data}/cv.yaml data/cv.yaml
+                if [ -f ${inputs.cv}/resume.pdf ]; then
+                  cp -f ${inputs.cv}/resume.pdf static/resume.pdf
+                fi
+                if [ -f ${inputs.cv}/curriculo.pdf ]; then
+                  cp -f ${inputs.cv}/curriculo.pdf static/curriculo.pdf
+                fi
                 ${pkgs.tailwindcss_4}/bin/tailwindcss -i styles/input.css -o static/style.css
                 ${pkgs.zola}/bin/zola serve --port 1111 --interface 127.0.0.1
               ''
@@ -86,17 +92,24 @@
             packages = buildInputs ++ (with pkgs; [ just ]);
 
             shellHook = ''
-              mkdir -p data
+              mkdir -p data static
               cp -f ${inputs.cv-data}/cv.yaml data/cv.yaml
               if [ -f ${inputs.cv-data}/cv.schema.json ]; then
                 cp -f ${inputs.cv-data}/cv.schema.json data/cv.schema.json
               fi
+              if [ -f ${inputs.cv}/resume.pdf ]; then
+                cp -f ${inputs.cv}/resume.pdf static/resume.pdf
+              fi
+              if [ -f ${inputs.cv}/curriculo.pdf ]; then
+                cp -f ${inputs.cv}/curriculo.pdf static/curriculo.pdf
+              fi
               export CV_DATA_DIR="${inputs.cv-data}"
+              export CV_DIR="${inputs.cv}"
 
               echo ""
               echo "   Personal Portfolio Dev Shell"
               echo "   Stack: Pure No-JS / Zola (Rust SSG) / Tailwind CSS v4 / Nix"
-              echo "   CV Data: Provided via Nix from cv-data flake"
+              echo "   CV Data & PDFs: Provided via Nix flakes (cv-data & curriculum-vitae)"
               echo ""
               echo "Available commands (via just):"
               echo "  just dev       - Watch CSS and run Zola live-reload dev server"
