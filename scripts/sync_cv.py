@@ -43,16 +43,39 @@ def get_cv_data_root() -> Path | None:
             return p
 
     cache = ROOT / ".cache/cv-data"
+    local_sources = [
+        ROOT.parent / "cv-data",
+        ROOT / "../cv-data",
+        Path.home() / "Programming/cv-data",
+        ROOT / "submodules/cv-data",
+    ]
     repo_sources = [
         os.getenv("CV_DATA_REPO_URL"),
+        str((ROOT.parent / "cv-data").resolve()),
+        str((Path.home() / "Programming/cv-data").resolve()),
         "git@github.com-thiago:o-thiago/cv-data.git",
         "https://github.com/o-thiago/cv-data.git",
-        str(ROOT.parent / "cv-data"),
-        str(Path.home() / "Programming/cv-data"),
     ]
 
-    # If already cloned, pull/fetch latest commits
+    # If already cloned, pull/fetch latest commits from local ../ and remotes
     if cache.exists() and (cache / ".git").exists():
+        for local in local_sources:
+            if (local / ".git").exists():
+                with contextlib.suppress(OSError, subprocess.SubprocessError):
+                    subprocess.run(
+                        [
+                            "git",
+                            "-C",
+                            str(cache),
+                            "pull",
+                            "--ff-only",
+                            str(local.resolve()),
+                            "HEAD",
+                        ],
+                        capture_output=True,
+                        check=False,
+                    )
+                break
         with contextlib.suppress(OSError, subprocess.SubprocessError):
             subprocess.run(
                 ["git", "-C", str(cache), "pull", "--ff-only"],
@@ -62,7 +85,7 @@ def get_cv_data_root() -> Path | None:
         if (cache / "cv.yaml").exists() or (cache / "cv.toml").exists():
             return cache
 
-    # Clone from repo sources
+    # Clone from repo sources (prioritizing ../ sibling repo, then remotes)
     cache.parent.mkdir(parents=True, exist_ok=True)
     shutil.rmtree(cache, ignore_errors=True)
 
@@ -75,17 +98,15 @@ def get_cv_data_root() -> Path | None:
                 capture_output=True,
                 check=False,
             )
-            if res.returncode == 0 and (cache / "cv.yaml").exists():
+            if res.returncode == 0 and (
+                (cache / "cv.yaml").exists() or (cache / "cv.toml").exists()
+            ):
                 return cache
         except Exception:
             continue
 
     # Fallback to local working copy if git clone could not be performed
-    for p in (
-        ROOT.parent / "cv-data",
-        Path.home() / "Programming/cv-data",
-        ROOT / "submodules/cv-data",
-    ):
+    for p in local_sources:
         if (p / "cv.yaml").exists() or (p / "cv.toml").exists():
             return p
 
@@ -100,16 +121,39 @@ def get_cv_template_root() -> Path | None:
             return p
 
     cache = ROOT / ".cache/curriculum-vitae"
+    local_sources = [
+        ROOT.parent / "curriculum-vitae",
+        ROOT / "../curriculum-vitae",
+        Path.home() / "Programming/curriculum-vitae",
+        ROOT / "submodules/curriculum-vitae",
+    ]
     repo_sources = [
         os.getenv("CV_REPO_URL"),
+        str((ROOT.parent / "curriculum-vitae").resolve()),
+        str((Path.home() / "Programming/curriculum-vitae").resolve()),
         "git@github.com-thiago:o-thiago/resume-template.git",
         "https://github.com/o-thiago/resume-template.git",
-        str(ROOT.parent / "curriculum-vitae"),
-        str(Path.home() / "Programming/curriculum-vitae"),
     ]
 
-    # If already cloned, pull/fetch latest commits
+    # If already cloned, pull/fetch latest commits from local ../ and remotes
     if cache.exists() and (cache / ".git").exists():
+        for local in local_sources:
+            if (local / ".git").exists():
+                with contextlib.suppress(OSError, subprocess.SubprocessError):
+                    subprocess.run(
+                        [
+                            "git",
+                            "-C",
+                            str(cache),
+                            "pull",
+                            "--ff-only",
+                            str(local.resolve()),
+                            "HEAD",
+                        ],
+                        capture_output=True,
+                        check=False,
+                    )
+                break
         with contextlib.suppress(OSError, subprocess.SubprocessError):
             subprocess.run(
                 ["git", "-C", str(cache), "pull", "--ff-only"],
@@ -119,7 +163,7 @@ def get_cv_template_root() -> Path | None:
         if (cache / "resumes").exists():
             return cache
 
-    # Clone from repo sources
+    # Clone from repo sources (prioritizing ../ sibling repo, then remotes)
     cache.parent.mkdir(parents=True, exist_ok=True)
     shutil.rmtree(cache, ignore_errors=True)
 
@@ -138,11 +182,7 @@ def get_cv_template_root() -> Path | None:
             continue
 
     # Fallback to local directory
-    for p in (
-        ROOT.parent / "curriculum-vitae",
-        Path.home() / "Programming/curriculum-vitae",
-        ROOT / "submodules/curriculum-vitae",
-    ):
+    for p in local_sources:
         if (p / "resumes").exists():
             return p
 
@@ -150,20 +190,18 @@ def get_cv_template_root() -> Path | None:
 
 
 def load_cv_data(cv_root: Path) -> dict:
-    """Load structured CV data from YAML or TOML."""
+    """Load structured CV data from YAML (cv.yaml)."""
     yaml_file = cv_root / "cv.yaml"
-    if yaml_file.exists() and yaml is not None:
-        return yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
+    if yaml_file.exists():
+        if yaml is not None:
+            return yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
+        raise RuntimeError("PyYAML required to read cv.yaml")
 
     toml_file = cv_root / "cv.toml"
     if toml_file.exists():
         return tomllib.loads(toml_file.read_text(encoding="utf-8"))
 
-    if yaml_file.exists():
-        # Fallback if pyyaml is missing but cv.yaml exists
-        raise RuntimeError("PyYAML required to read cv.yaml, or provide cv.toml")
-
-    raise FileNotFoundError(f"Neither cv.yaml nor cv.toml found in {cv_root}")
+    raise FileNotFoundError(f"cv.yaml not found in {cv_root}")
 
 
 def build_pdf(cv_root: Path | None, sub: str, name: str, dst: Path) -> None:
