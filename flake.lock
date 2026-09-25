@@ -42,11 +42,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789854446,
-        "narHash": "sha256-/sXeZtcp5n61g0rdO8nmvptDXZtDdFKzY6Epd7Re3VQ=",
+        "lastModified": 1789858775,
+        "narHash": "sha256-af9ixL6DVHlqcOIM9cls/QzFlqfwQKgcOmWQOs5wkrk=",
         "owner": "o-thiago",
         "repo": "cv-data",
-        "rev": "a937c7871e66c604f6a54f5374af77cc2d890205",
+        "rev": "2ad36a4f452e817cdb97118bcb11af27e3178777",
         "type": "github"
       },
       "original": {
